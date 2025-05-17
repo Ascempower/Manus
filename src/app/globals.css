@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* New Color Palette */
+    --background: 0 0% 100%; /* #FFFFFF White */
+    --foreground: 0 0% 0%; /* #000000 Black */
+
+    --card: 0 0% 100%; /* #FFFFFF White */
+    --card-foreground: 0 0% 0%; /* #000000 Black */
+
+    --popover: 0 0% 100%; /* #FFFFFF White */
+    --popover-foreground: 0 0% 0%; /* #000000 Black */
+
+    --primary: 165 19% 32%; /* #42615A Deep Forest Green */
+    --primary-foreground: 0 0% 100%; /* #FFFFFF White */
+
+    --secondary: 181 25% 73%; /* #A7C9CA Teal Blue */
+    --secondary-foreground: 0 0% 0%; /* #000000 Black */
+
+    --muted: 210 40% 96.1%; /* Keeping original muted for now, can be adjusted */
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 20 60% 60%; /* #DD8B66 Warm Beige/Coral */
+    --accent-foreground: 0 0% 0%; /* #000000 Black */
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%; /* White text on destructive */
+
+    --border: 214.3 31.8% 91.4%; /* Keeping original border for now, can be adjusted */
+    --input: 214.3 31.8% 91.4%; /* Keeping original input for now, can be adjusted */
+    --ring: 165 19% 32%; /* #42615A Deep Forest Green for ring */
+
+    --radius: 0.5rem;
+
+    /* Brand colors are now primarily managed via tailwind.config.js */
+    /* These can be removed or kept for non-Tailwind specific CSS if needed */
+    --brand-white: 0 0% 100%; /* #FFFFFF */
+    --brand-teal-blue: 181 25% 73%; /* #A7C9CA */
+    --brand-deep-forest-green: 165 19% 32%; /* #42615A */
+    --brand-warm-beige-coral: 20 60% 60%; /* #DD8B66 */
+    --brand-black: 0 0% 0%; /* #000000 */
+  }
+
+  .dark {
+    /* Update dark mode colors according to new palette if specified, or invert light mode */
+    /* For now, let's define a basic dark theme based on the new palette */
+    --background: 0 0% 10%; /* Darker background */
+    --foreground: 0 0% 95%; /* Lighter foreground */
+
+    --card: 0 0% 15%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 15%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 165 19% 42%; /* Slightly lighter Deep Forest Green */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 181 25% 63%; /* Slightly darker Teal Blue */
+    --secondary-foreground: 0 0% 0%;
+
+    --muted: 217.2 32.6% 27.5%;
+    --muted-foreground: 215 20.2% 75.1%;
+
+    --accent: 20 60% 70%; /* Slightly lighter Warm Beige/Coral */
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 217.2 32.6% 27.5%;
+    --input: 217.2 32.6% 27.5%;
+    --ring: 165 19% 42%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-poppins font-normal;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-poppins font-bold;
+  }
+}
+
