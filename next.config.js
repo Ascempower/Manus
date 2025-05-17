@@ -1,9 +1,8 @@
 /** @type {import("next").NextConfig} */
-const nextConfig = {
-  // Removing "output: export" to enable dynamic routing on Vercel
-  // This allows for server-side rendering and API routes
+module.exports = {
+  // Using CommonJS format for better compatibility with Vercel
   swcMinify: true,
   reactStrictMode: true,
+  // Ensuring proper output configuration for Vercel deployment
+  // Removed "output: export" to enable dynamic routing
 };
-
-export default nextConfig;
