@@ -1,9 +1,5 @@
-/** @type {import("next").NextConfig} */
-const nextConfig = {
-  swcMinify: true,
-  reactStrictMode: true,
-  // Ensuring proper output configuration for Vercel deployment
-  // Removed "output: export" to enable dynamic routing
-};
+// Import configuration from next.config.cjs
+import nextConfig from './next.config.cjs';
 
-module.exports = nextConfig;
+// Export the configuration
+export default nextConfig;
