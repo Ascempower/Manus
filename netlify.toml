@@ -1,6 +1,6 @@
 [build]
   command = "pnpm install --no-frozen-lockfile && npm run build"
-  publish = "."
+  publish = ".next"
 
 [build.environment]
   NODE_VERSION = "20.0.0"
