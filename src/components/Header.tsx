@@ -60,7 +60,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-brand-teal-blue/40 bg-brand-deep-forest-green text-brand-white">
       <div className="container flex h-16 max-w-screen-2xl items-center justify-between">
         <Link href="/" className="mr-6 flex items-center space-x-2">
-          <img src="/assets/logos/main-logo-orange.jpg" alt="Choice Insurance Agency Logo" style={{ width: '180px', height: 'auto' }} />
+          <img src="/assets/logos/main-logo-orange.png" alt="Choice Insurance Agency Logo" style={{ width: '180px', height: 'auto' }} />
         </Link>
 
         {/* Desktop Navigation */}
@@ -153,7 +153,7 @@ export default function Header() {
                   href="/"
                   className="flex items-center gap-2 text-lg font-semibold mb-4"
                 >
-                  <img src="/assets/logos/main-logo-orange.jpg" alt="Choice Insurance Agency Logo" style={{ width: '140px', height: 'auto' }} />
+                  <img src="/assets/logos/main-logo-orange.png" alt="Choice Insurance Agency Logo" style={{ width: '140px', height: 'auto' }} />
                 </Link>
                 <Link
                   href="/"
