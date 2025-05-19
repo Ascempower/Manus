@@ -58,9 +58,13 @@ export default function Header() {
   const quoteNowUrl = "https://www.planenroll.com/?purl=kOW7ufSy";
   return (
     <header className="sticky top-0 z-50 w-full border-b border-brand-teal-blue/40 bg-brand-deep-forest-green text-brand-white">
-      <div className="container flex h-16 max-w-screen-2xl items-center justify-between">
-        <Link href="/" className="mr-6 flex items-center space-x-2">
-          <img src="/assets/logos/main-logo-orange.png" alt="Choice Insurance Agency Logo" style={{ width: '180px', height: 'auto' }} />
+      <div className="container mx-auto px-4 flex h-16 items-center justify-between">
+        <Link href="/" className="mr-6 flex items-center">
+          <img 
+            src="/assets/logos/main-logo-orange.png" 
+            alt="Choice Insurance Agency Logo" 
+            className="max-h-10 w-auto object-contain" 
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -132,16 +136,16 @@ export default function Header() {
         </NavigationMenu>
 
         <div className="flex items-center gap-x-2">
-          <Button asChild className="hidden lg:flex bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black">
+          <Button asChild className="hidden md:flex bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black text-sm md:text-base">
             <Link href={quoteNowUrl} target="_blank" rel="noopener noreferrer">Quote Now</Link>
           </Button>
-          <Button asChild className="hidden lg:flex bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black">
+          <Button asChild className="hidden md:flex bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black text-sm md:text-base">
             <Link href="https://calendly.com/choiceinsuranceagency/30-minute-meeting" target="_blank" rel="noopener noreferrer">Book a Free Consultation</Link>
           </Button>
 
           {/* Mobile Navigation */}
           <Sheet>
-            <SheetTrigger asChild className="lg:hidden">
+            <SheetTrigger asChild className="md:hidden">
               <Button variant="outline" size="icon" className="shrink-0 bg-brand-deep-forest-green hover:bg-brand-teal-blue text-brand-white border-brand-teal-blue">
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">Toggle navigation menu</span>
@@ -153,7 +157,11 @@ export default function Header() {
                   href="/"
                   className="flex items-center gap-2 text-lg font-semibold mb-4"
                 >
-                  <img src="/assets/logos/main-logo-orange.png" alt="Choice Insurance Agency Logo" style={{ width: '140px', height: 'auto' }} />
+                  <img 
+                    src="/assets/logos/main-logo-orange.png" 
+                    alt="Choice Insurance Agency Logo" 
+                    className="max-h-8 w-auto object-contain" 
+                  />
                 </Link>
                 <Link
                   href="/"
