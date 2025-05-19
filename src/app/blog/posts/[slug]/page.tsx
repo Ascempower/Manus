@@ -482,8 +482,15 @@ const blogPosts: Record<string, BlogPost> = {
   },
 };
 
+// Define the correct type for the params
+type Props = {
+  params: {
+    slug: string;
+  };
+};
+
 // Generate metadata for the page
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = blogPosts[params.slug];
   
   if (!post) {
@@ -504,7 +511,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
+// Use the correct Props type for the component
+export default function BlogPostPage({ params }: Props) {
   const post = blogPosts[params.slug];
   
   if (!post) {
