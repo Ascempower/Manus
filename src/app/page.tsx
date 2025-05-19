@@ -115,7 +115,7 @@ export default function HomePage() {
             Let Choice Insurance help you navigate the complexities of insurance. Contact us today for a free, no-obligation consultation.
           </p>
           <Button size="lg" asChild className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black font-semibold">
-            <Link href="/contact">Get a Free Quote Today</Link>
+            <Link href="/contact#get-a-quote">Get a Free Quote Today</Link>
           </Button>
         </div>
       </section>

@@ -35,7 +35,7 @@ export default function ContactForm() {
         <Textarea id="message" name="message" rows={5} required className="mt-1 w-full" />
       </div>
       <div>
-        <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white">
+        <Button type="submit" className="w-full bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black">
           Send Message
         </Button>
       </div>
