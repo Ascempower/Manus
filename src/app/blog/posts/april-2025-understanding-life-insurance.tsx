@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Understanding Life Insurance Options in 2025: A Complete Guide | Choice Insurance',
-  description: 'Explore life insurance options for 2025 including term vs. whole life, policy riders, and how to choose the right coverage for your family's financial security.',
+  description: 'Explore life insurance options for 2025 including term vs. whole life, policy riders, and how to choose the right coverage for your family\'s financial security.',
   keywords: 'life insurance 2025, term life insurance, whole life insurance, life insurance riders, family financial security, life insurance comparison, Choice Insurance',
 };
 
@@ -284,38 +284,34 @@ export default function LifeInsuranceBlogPost() {
         <li>Company history and reputation</li>
       </ul>
       
-      <h2 className="text-2xl font-bold mt-8 mb-4">Steps to Purchase Life Insurance in 2025</h2>
+      <h2 className="text-2xl font-bold mt-8 mb-4">Getting Started with Life Insurance</h2>
       
-      <ol className="list-decimal pl-6 mb-6">
-        <li className="mb-2"><strong>Assess your needs:</strong> Calculate your coverage requirements based on your financial obligations and goals.</li>
-        
-        <li className="mb-2"><strong>Research policy types:</strong> Determine whether term, whole life, or another policy type best meets your needs.</li>
-        
-        <li className="mb-2"><strong>Compare quotes:</strong> Obtain quotes from multiple insurers or work with an independent agent who can shop multiple companies.</li>
-        
-        <li className="mb-2"><strong>Complete the application:</strong> Provide detailed information about your health, lifestyle, and financial situation.</li>
-        
-        <li className="mb-2"><strong>Undergo underwriting:</strong> This may involve a medical exam, although no-exam options are increasingly available.</li>
-        
-        <li className="mb-2"><strong>Review the policy:</strong> Carefully examine the policy details before accepting.</li>
-        
-        <li className="mb-2"><strong>Make your first premium payment:</strong> Coverage typically begins once the first payment is processed.</li>
-      </ol>
+      <p className="mb-6">At Choice Insurance Agency, we understand that navigating life insurance options can be complex. Our experienced agents can help you:</p>
       
-      <h2 className="text-2xl font-bold mt-8 mb-4">Get Personalized Life Insurance Guidance</h2>
+      <ul className="list-disc pl-6 mb-6">
+        <li>Assess your specific coverage needs</li>
+        <li>Compare policies from multiple top-rated insurers</li>
+        <li>Understand policy features and riders</li>
+        <li>Find coverage that fits your budget</li>
+        <li>Review and update your coverage as life changes</li>
+      </ul>
       
-      <p className="mb-6">Life insurance decisions are highly personal and depend on your unique financial situation, family circumstances, and long-term goals. At Choice Insurance Agency, our experienced life insurance specialists can help you navigate your options and find the coverage that best protects your loved ones.</p>
-      
-      <div className="bg-brand-warm-beige-coral/10 border border-brand-warm-beige-coral rounded-lg p-6 mb-8">
-        <p className="mb-4 font-semibold text-lg">Ready to secure your family's financial future?</p>
-        <Link href="https://calendly.com/choiceinsuranceagency/30-minute-meeting" className="inline-block bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-white font-semibold py-2 px-4 rounded">
+      <div className="bg-gray-100 p-6 rounded-lg mt-8 mb-8">
+        <h3 className="text-xl font-semibold mb-4">Ready to Protect Your Family's Future?</h3>
+        <p className="mb-4">Our life insurance specialists are here to provide personalized guidance and help you find the right coverage for your needs.</p>
+        <Link 
+          href="https://calendly.com/choiceinsuranceagency/30-minute-meeting"
+          className="inline-block bg-brand-warm-beige-coral text-white font-medium py-2 px-6 rounded-md hover:bg-opacity-90 transition-colors"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Book a Free Consultation
         </Link>
       </div>
       
-      <hr className="my-8 border-gray-300" />
-      
-      <p className="text-sm text-gray-600 italic">This blog post is for informational purposes only and is not intended as professional advice. Life insurance products, features, and regulations vary by state and company. Contact Choice Insurance Agency for personalized guidance based on your specific situation.</p>
+      <p className="text-sm text-gray-600 mt-8">
+        <em>This blog post is for informational purposes only and is not intended as professional advice. Life insurance products, features, and prices vary by company, location, and individual circumstances. Contact Choice Insurance Agency for personalized guidance.</em>
+      </p>
     </article>
   );
 }
