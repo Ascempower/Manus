@@ -19,10 +19,10 @@ export default function Footer() {
             </p>
             {/* Social Media Icons */}
             <div className="flex space-x-4">
-              <Link href="#" target="_blank" rel="noopener noreferrer" className="text-brand-teal-blue hover:text-brand-white">
+              <Link href="https://www.facebook.com/profile.php?id=100093359186285" target="_blank" rel="noopener noreferrer" className="text-brand-teal-blue hover:text-brand-white">
                 <Facebook size={24} />
               </Link>
-              <Link href="#" target="_blank" rel="noopener noreferrer" className="text-brand-teal-blue hover:text-brand-white">
+              <Link href="https://www.instagram.com/aliciacampbell5587/" target="_blank" rel="noopener noreferrer" className="text-brand-teal-blue hover:text-brand-white">
                 <Instagram size={24} />
               </Link>
             </div>
@@ -87,4 +87,3 @@ export default function Footer() {
     </footer>
   );
 }
-
