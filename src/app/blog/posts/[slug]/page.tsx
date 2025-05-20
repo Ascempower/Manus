@@ -488,6 +488,13 @@ type PageProps = {
   searchParams?: any;
 };
 
+// Required for static export with dynamic routes
+export async function generateStaticParams() {
+  return Object.keys(blogPosts).map(slug => ({
+    slug: slug
+  }));
+}
+
 // Generate metadata for the page
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const post = blogPosts[params.slug];
