@@ -482,15 +482,14 @@ const blogPosts: Record<string, BlogPost> = {
   },
 };
 
-// Define the correct type for the params
-type Props = {
-  params: {
-    slug: string;
-  };
+// Use Next.js 15.3.2 compatible types
+type PageProps = {
+  params: any;
+  searchParams?: any;
 };
 
 // Generate metadata for the page
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const post = blogPosts[params.slug];
   
   if (!post) {
@@ -511,8 +510,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-// Use the correct Props type for the component
-export default function BlogPostPage({ params }: Props) {
+// Use the correct PageProps type for the component
+export default function BlogPostPage({ params }: PageProps) {
   const post = blogPosts[params.slug];
   
   if (!post) {
