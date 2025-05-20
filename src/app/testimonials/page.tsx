@@ -8,40 +8,40 @@ export const metadata: Metadata = {
   description: 'Read what our clients say about their experience with Choice Insurance Agency. We are committed to providing excellent service and tailored insurance solutions.',
 };
 
-export const testimonials = [
-  {
-    quote: "Choice Insurance made finding the right Medicare plan so easy! Their agent was knowledgeable and patient, answering all my questions. Highly recommend!",
-    name: "Ada T.",
-    location: "Illinois",
-    service: "Medicare Planning"
-  },
-  {
-    quote: "I was overwhelmed with life insurance options, but the team at Choice Insurance helped me understand everything and find an affordable policy that protects my family. Great service!",
-    name: "Derek E.",
-    location: "Georgia",
-    service: "Life Insurance"
-  },
-  {
-    quote: "Switching my health insurance was seamless thanks to Choice Insurance. They found me better coverage for a lower premium. I couldn't be happier.",
-    name: "Pearl L.",
-    location: "Texas",
-    service: "Health Insurance"
-  },
-  {
-    quote: "The peace of mind I have from my final expense plan is invaluable. The agent was compassionate and explained everything clearly. Thank you, Choice Insurance!",
-    name: "Clarence S.",
-    location: "Ohio",
-    service: "Final Expense Planning"
-  },
-  {
-    quote: "As a small business owner, finding the right employee benefits package was crucial. Choice Insurance provided expert advice and found us a great solution.",
-    name: "Mason L.",
-    location: "Kentucky",
-    service: "Employee Benefits"
-  }
-];
-
 export default function TestimonialsPage() {
+  const testimonials = [
+    {
+      quote: "Choice Insurance made finding the right Medicare plan so easy! Their agent was knowledgeable and patient, answering all my questions. Highly recommend!",
+      name: "Ada T.",
+      location: "Illinois",
+      service: "Medicare Planning"
+    },
+    {
+      quote: "I was overwhelmed with life insurance options, but the team at Choice Insurance helped me understand everything and find an affordable policy that protects my family. Great service!",
+      name: "Derek E.",
+      location: "Georgia",
+      service: "Life Insurance"
+    },
+    {
+      quote: "Switching my health insurance was seamless thanks to Choice Insurance. They found me better coverage for a lower premium. I couldn't be happier.",
+      name: "Pearl L.",
+      location: "Texas",
+      service: "Health Insurance"
+    },
+    {
+      quote: "The peace of mind I have from my final expense plan is invaluable. The agent was compassionate and explained everything clearly. Thank you, Choice Insurance!",
+      name: "Clarence S.",
+      location: "Ohio",
+      service: "Final Expense Planning"
+    },
+    {
+      quote: "As a small business owner, finding the right employee benefits package was crucial. Choice Insurance provided expert advice and found us a great solution.",
+      name: "Mason L.",
+      location: "Kentucky",
+      service: "Employee Benefits"
+    }
+  ];
+
   return (
     <div className="bg-brand-white text-brand-black">
       {/* Page Header */}
