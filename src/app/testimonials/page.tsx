@@ -1,4 +1,3 @@
-""
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
@@ -11,31 +10,31 @@ export const metadata: Metadata = {
 const testimonials = [
   {
     quote: "Choice Insurance made finding the right Medicare plan so easy! Their agent was knowledgeable and patient, answering all my questions. Highly recommend!",
-    name: "Jane D.",
+    name: "Ada T.",
     location: "Illinois",
     service: "Medicare Planning"
   },
   {
     quote: "I was overwhelmed with life insurance options, but the team at Choice Insurance helped me understand everything and find an affordable policy that protects my family. Great service!",
-    name: "John S.",
+    name: "Derek E.",
     location: "Georgia",
     service: "Life Insurance"
   },
   {
     quote: "Switching my health insurance was seamless thanks to Choice Insurance. They found me better coverage for a lower premium. I couldn't be happier.",
-    name: "Maria L.",
+    name: "Pearl L.",
     location: "Texas",
     service: "Health Insurance"
   },
   {
     quote: "The peace of mind I have from my final expense plan is invaluable. The agent was compassionate and explained everything clearly. Thank you, Choice Insurance!",
-    name: "Robert P.",
+    name: "Clarence S.",
     location: "Ohio",
     service: "Final Expense Planning"
   },
   {
     quote: "As a small business owner, finding the right employee benefits package was crucial. Choice Insurance provided expert advice and found us a great solution.",
-    name: "Susan B.",
+    name: "Pearl L.",
     location: "Kentucky",
     service: "Employee Benefits"
   }
@@ -61,7 +60,7 @@ export default function TestimonialsPage() {
             {testimonials.map((testimonial, index) => (
               <div key={index} className="bg-brand-white p-6 rounded-lg shadow-lg flex flex-col border border-brand-teal-blue/30 hover:shadow-xl transition-shadow duration-300">
                 <blockquote className="text-brand-black/80 italic mb-4 flex-grow">
-                  <p className="before:content-['\“'] before:mr-1 before:text-2xl before:font-poppins after:content-['\”'] after:ml-1 after:text-2xl after:font-poppins">
+                  <p className="before:content-['\"'] before:mr-1 before:text-2xl before:font-poppins after:content-['\"'] after:ml-1 after:text-2xl after:font-poppins">
                     {testimonial.quote}
                   </p>
                 </blockquote>
@@ -81,7 +80,7 @@ export default function TestimonialsPage() {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6 font-poppins">Share Your Experience or Get in Touch!</h2>
           <p className="text-lg text-brand-white/90 mb-8 max-w-2xl mx-auto">
-            We value your feedback and are always here to help. If you have a story to share or need assistance with your insurance needs, please don’t hesitate to reach out.
+            We value your feedback and are always here to help. If you have a story to share or need assistance with your insurance needs, please don't hesitate to reach out.
           </p>
           <Button size="lg" asChild className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black font-semibold">
             <Link href="/contact">Contact Us Today</Link>
@@ -91,4 +90,3 @@ export default function TestimonialsPage() {
     </div>
   );
 }
-
