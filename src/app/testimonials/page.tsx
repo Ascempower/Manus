@@ -60,7 +60,7 @@ export default function TestimonialsPage() {
             {testimonials.map((testimonial, index) => (
               <div key={index} className="bg-brand-white p-6 rounded-lg shadow-lg flex flex-col border border-brand-teal-blue/30 hover:shadow-xl transition-shadow duration-300">
                 <blockquote className="text-brand-black/80 italic mb-4 flex-grow">
-                  <p className="before:content-['\"'] before:mr-1 before:text-2xl before:font-poppins after:content-['\"'] after:ml-1 after:text-2xl after:font-poppins">
+                  <p className="before:content-[\'\\22\'] before:mr-1 before:text-2xl before:font-poppins after:content-[\'\\22\'] after:ml-1 after:text-2xl after:font-poppins">
                     {testimonial.quote}
                   </p>
                 </blockquote>
