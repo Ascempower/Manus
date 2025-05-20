@@ -34,7 +34,7 @@ const testimonials = [
   },
   {
     quote: "As a small business owner, finding the right employee benefits package was crucial. Choice Insurance provided expert advice and found us a great solution.",
-    name: "Pearl L.",
+    name: "Mason L.",
     location: "Kentucky",
     service: "Employee Benefits"
   }
