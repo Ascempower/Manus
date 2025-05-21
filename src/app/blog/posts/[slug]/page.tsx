@@ -5,6 +5,7 @@ import Image from 'next/image';
 // Define the Props type for the page component
 type Props = {
   params: { slug: string };
+  searchParams: Record<string, string | string[] | undefined>;
 };
 
 // Generate static params for all blog posts
@@ -62,7 +63,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function BlogPost({ params }: Props) {
+export default function BlogPost({ params, searchParams }: Props) {
   const { slug } = params;
   
   // Content for March 2025 Medicare post
