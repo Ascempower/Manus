@@ -2,45 +2,6 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 
-// Define PageProps interface with params as a plain object (NO PROMISE TYPES)
-interface PageProps {
-  params: {
-    slug: string;
-  };
-  searchParams?: Record<string, string | string[] | undefined>;
-}
-
-// Function to get post data based on slug
-async function getPostData(slug: string) {
-  // This would normally fetch data from an API or database
-  // For now, we'll return mock data based on the slug
-  if (slug === 'march-2025-medicare-advantage-vs-supplement') {
-    return {
-      title: 'Medicare Advantage vs. Medicare Supplement: Which is Right for You in 2025?',
-      date: 'March 5, 2025',
-      content: 'Content for Medicare comparison post'
-    };
-  } else if (slug === 'april-2025-understanding-life-insurance') {
-    return {
-      title: 'Understanding Life Insurance Options: A Spring 2025 Guide for Families',
-      date: 'April 3, 2025',
-      content: 'Content for life insurance post'
-    };
-  } else if (slug === 'may-2025-health-insurance-changes') {
-    return {
-      title: 'Key Health Insurance Changes to Watch for in 2025',
-      date: 'May 10, 2025',
-      content: 'Content for health insurance changes post'
-    };
-  } else {
-    return {
-      title: 'Blog Post',
-      date: 'January 1, 2025',
-      content: 'Default content'
-    };
-  }
-}
-
 // Generate static params for all blog posts
 export function generateStaticParams() {
   return [
@@ -50,8 +11,8 @@ export function generateStaticParams() {
   ];
 }
 
-// Generate metadata for each blog post using the same PageProps interface
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+// Generate metadata for each blog post
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const { slug } = params;
   
   // Define metadata based on slug
@@ -96,8 +57,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-// Define the page component using the PageProps interface
-export default async function BlogPost({ params }: PageProps) {
+// Define the page component
+export default function BlogPost({ params }: { params: { slug: string } }) {
   // Access params.slug directly as a string
   const { slug } = params;
   
