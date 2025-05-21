@@ -2,11 +2,6 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 
-// Define the params type
-type Params = {
-  slug: string;
-};
-
 // Generate static params for all blog posts
 export async function generateStaticParams() {
   return [
@@ -20,7 +15,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ 
   params 
 }: { 
-  params: Params;
+  params: { slug: string } 
 }): Promise<Metadata> {
   const { slug } = params;
   
@@ -67,11 +62,7 @@ export async function generateMetadata({
 }
 
 // Define the page component
-export default function BlogPost({ 
-  params 
-}: { 
-  params: Params;
-}) {
+export default function BlogPost({ params }: { params: { slug: string } }) {
   const { slug } = params;
   
   // Content for March 2025 Medicare post
