@@ -2,9 +2,13 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 
-// Define the params type
+// Define the params type with Promise-like interface
 type Params = {
   slug: string;
+  then?: unknown;
+  catch?: unknown;
+  finally?: unknown;
+  [Symbol.toStringTag]?: string;
 };
 
 // Generate static params for all blog posts
@@ -21,7 +25,6 @@ export function generateMetadata({
   params 
 }: { 
   params: Params;
-  searchParams?: Record<string, string | string[] | undefined>;
 }): Metadata {
   const { slug } = params;
   
@@ -69,11 +72,9 @@ export function generateMetadata({
 
 // Define the page component
 export default function BlogPost({ 
-  params,
-  searchParams,
-}: {
+  params 
+}: { 
   params: Params;
-  searchParams?: Record<string, string | string[] | undefined>;
 }) {
   const { slug } = params;
   
