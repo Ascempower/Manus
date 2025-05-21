@@ -13,15 +13,15 @@ module.exports = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))", // Will be #FFFFFF (White)
-        foreground: "hsl(var(--foreground))", // Will be #000000 (Black)
+        background: "hsl(var(--background))", // Will be #FFFFFF White
+        foreground: "hsl(var(--foreground))", // Will be #000000 Black
         primary: {
-          DEFAULT: "hsl(var(--primary))", // Will be #42615A (Deep Forest Green)
-          foreground: "hsl(var(--primary-foreground))", // Will be #FFFFFF (White)
+          DEFAULT: "hsl(var(--primary))", // Will be #42615A Deep Forest Green
+          foreground: "hsl(var(--primary-foreground))", // Will be #FFFFFF White
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))", // Will be #A7C9CA (Teal Blue)
-          foreground: "hsl(var(--secondary-foreground))", // Will be #000000 (Black)
+          DEFAULT: "hsl(var(--secondary))", // Will be #A7C9CA Teal Blue
+          foreground: "hsl(var(--secondary-foreground))", // Will be #000000 Black
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
@@ -32,8 +32,8 @@ module.exports = {
           foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))", // Will be #DD8B66 (Warm Beige/Coral)
-          foreground: "hsl(var(--accent-foreground))", // Will be #000000 (Black)
+          DEFAULT: "hsl(var(--accent))", // Will be #DD8B66 Warm Beige/Coral
+          foreground: "hsl(var(--accent-foreground))", // Will be #000000 Black
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
@@ -43,12 +43,16 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // New Brand Colors from user
+        // Brand Colors with Accessibility Improvements
         brand: {
           white: "#FFFFFF",
           "teal-blue": "#A7C9CA",
+          "teal-blue-dark": "#6A9B9D", // Darker version for better contrast with white text
+          "teal-blue-darker": "#3A6B6D", // Even darker version for white text
           "deep-forest-green": "#42615A",
           "warm-beige-coral": "#DD8B66",
+          "warm-beige-coral-dark": "#C06B46", // Darker version for better contrast with white text
+          "warm-beige-coral-darker": "#A04B26", // Even darker version for white text
           black: "#000000",
         },
       },
@@ -82,4 +86,3 @@ module.exports = {
   },
   plugins: [require("tailwindcss-animate")],
 };
-

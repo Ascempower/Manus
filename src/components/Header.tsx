@@ -71,23 +71,23 @@ export default function Header() {
         <NavigationMenu className="hidden lg:flex">
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue hover:text-brand-black")}>
+              <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue-darker hover:text-brand-white")}>
                 <Link href="/">Home</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue hover:text-brand-black")}>
+              <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue-darker hover:text-brand-white")}>
                 <Link href="/about">About Us</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue hover:text-brand-black">Services</NavigationMenuTrigger>
+              <NavigationMenuTrigger className="bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue-darker hover:text-brand-white">Services</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-brand-white text-brand-black">
                   <li className="row-span-3">
                     <NavigationMenuLink asChild>
                       <Link
-                        className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-brand-teal-blue to-brand-deep-forest-green p-6 text-brand-white no-underline outline-none focus:shadow-md"
+                        className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-brand-teal-blue-darker to-brand-deep-forest-green p-6 text-brand-white no-underline outline-none focus:shadow-md"
                         href="/services"
                       >
                         <div className="mb-2 mt-4 text-lg font-bold font-poppins">
@@ -113,22 +113,22 @@ export default function Header() {
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue hover:text-brand-black")}>
+              <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue-darker hover:text-brand-white")}>
                 <Link href="/testimonials">Testimonials</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue hover:text-brand-black")}>
+              <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue-darker hover:text-brand-white")}>
                 <Link href="/faq">FAQ</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue hover:text-brand-black")}>
+              <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue-darker hover:text-brand-white")}>
                 <Link href="/contact">Contact Us</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
              <NavigationMenuItem>
-              <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue hover:text-brand-black")}>
+              <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue-darker hover:text-brand-white")}>
                 <Link href="/blog">Blog</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
@@ -136,17 +136,17 @@ export default function Header() {
         </NavigationMenu>
 
         <div className="flex items-center gap-x-2">
-          <Button asChild className="hidden md:flex bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black text-sm md:text-base">
+          <Button asChild className="hidden md:flex bg-brand-warm-beige-coral-darker hover:bg-brand-warm-beige-coral-dark text-brand-white text-sm md:text-base">
             <Link href={quoteNowUrl} target="_blank" rel="noopener noreferrer">Quote Now</Link>
           </Button>
-          <Button asChild className="hidden md:flex bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black text-sm md:text-base">
+          <Button asChild className="hidden md:flex bg-brand-warm-beige-coral-darker hover:bg-brand-warm-beige-coral-dark text-brand-white text-sm md:text-base">
             <Link href="https://calendly.com/choiceinsuranceagency/30-minute-meeting" target="_blank" rel="noopener noreferrer">Book a Free Consultation</Link>
           </Button>
 
           {/* Mobile Navigation */}
           <Sheet>
             <SheetTrigger asChild className="md:hidden">
-              <Button variant="outline" size="icon" className="shrink-0 bg-brand-deep-forest-green hover:bg-brand-teal-blue text-brand-white border-brand-teal-blue">
+              <Button variant="outline" size="icon" className="shrink-0 bg-brand-deep-forest-green hover:bg-brand-teal-blue-darker text-brand-white border-brand-teal-blue">
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">Toggle navigation menu</span>
               </Button>
@@ -165,52 +165,52 @@ export default function Header() {
                 </Link>
                 <Link
                   href="/"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-brand-white hover:text-brand-black hover:bg-brand-teal-blue"
+                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-brand-white hover:text-brand-white hover:bg-brand-teal-blue-darker"
                 >
                   Home
                 </Link>
                 <Link
                   href="/about"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-brand-white hover:text-brand-black hover:bg-brand-teal-blue"
+                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-brand-white hover:text-brand-white hover:bg-brand-teal-blue-darker"
                 >
                   About Us
                 </Link>
                 <Link
                   href="/services"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-brand-white hover:text-brand-black hover:bg-brand-teal-blue"
+                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-brand-white hover:text-brand-white hover:bg-brand-teal-blue-darker"
                 >
                   Services
                 </Link>
                 <Link
                   href="/testimonials"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-brand-white hover:text-brand-black hover:bg-brand-teal-blue"
+                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-brand-white hover:text-brand-white hover:bg-brand-teal-blue-darker"
                 >
                   Testimonials
                 </Link>
                 <Link
                   href="/faq"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-brand-white hover:text-brand-black hover:bg-brand-teal-blue"
+                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-brand-white hover:text-brand-white hover:bg-brand-teal-blue-darker"
                 >
                   FAQ
                 </Link>
                 <Link
                   href="/contact"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-brand-white hover:text-brand-black hover:bg-brand-teal-blue"
+                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-brand-white hover:text-brand-white hover:bg-brand-teal-blue-darker"
                 >
                   Contact Us
                 </Link>
                 <Link
                   href="/blog"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-brand-white hover:text-brand-black hover:bg-brand-teal-blue"
+                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-brand-white hover:text-brand-white hover:bg-brand-teal-blue-darker"
                 >
                   Blog
                 </Link>
               </nav>
               <div className="mt-auto">
-                <Button size="sm" className="w-full bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black mb-2" asChild>
+                <Button size="sm" className="w-full bg-brand-warm-beige-coral-darker hover:bg-brand-warm-beige-coral-dark text-brand-white mb-2" asChild>
                   <Link href={quoteNowUrl} target="_blank" rel="noopener noreferrer">Quote Now</Link>
                 </Button>
-                <Button size="sm" className="w-full bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black" asChild>
+                <Button size="sm" className="w-full bg-brand-warm-beige-coral-darker hover:bg-brand-warm-beige-coral-dark text-brand-white" asChild>
                   <Link href="https://calendly.com/choiceinsuranceagency/30-minute-meeting" target="_blank" rel="noopener noreferrer">Book a Free Consultation</Link>
                 </Button>
               </div>

@@ -7,7 +7,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="py-20 md:py-32 bg-gradient-to-br from-brand-deep-forest-green to-brand-teal-blue text-brand-white">
+      <section className="py-20 md:py-32 bg-gradient-to-br from-brand-deep-forest-green to-brand-teal-blue-dark text-brand-white">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 font-poppins">
             Choice Insurance: Your Trusted Partner for Health, Life & Medicare Insurance
@@ -15,7 +15,7 @@ export default function HomePage() {
           <p className="text-lg md:text-xl mb-10 max-w-3xl mx-auto text-brand-white/90">
             Choice Insurance provides personalized plans and expert guidance for residents of Illinois, Alabama, Georgia, Ohio, Kentucky, Mississippi, South Carolina, and Texas.
           </p>
-          <Button size="lg" asChild className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black font-semibold">
+          <Button size="lg" asChild className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral-dark text-brand-black font-semibold">
             <Link href="/contact#book-a-call">Book a Free Consultation</Link>
           </Button>
         </div>
@@ -27,13 +27,13 @@ export default function HomePage() {
           <p className="text-lg text-brand-black/80 mb-10 max-w-3xl mx-auto">
             Choice Insurance is an independent insurance agency specializing in Medicare Benefits, Individual Health Insurance, Employee Benefits, and Life Insurance plans. We partner with major insurance carriers to provide clients with a wide range of coverage options. Our plans are designed with a focus on affordability and tailored benefits, combined with personalized guidance to help clients make well-informed decisions.
           </p>
-          <Button asChild className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black">
+          <Button asChild className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral-dark text-brand-black">
             <Link href="/about">Learn More About Choice Insurance</Link>
           </Button>
         </div>
       </section>
       {/* Services Section */}
-      <section className="py-16 md:py-24 bg-brand-teal-blue/10">
+      <section className="py-16 md:py-24 bg-brand-teal-blue-dark/10">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-brand-deep-forest-green font-poppins">Insurance Services from Choice Insurance</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -52,7 +52,7 @@ export default function HomePage() {
                 </CardHeader>
                 <CardContent className="flex flex-col items-center">
                   <p className="text-brand-black/80 mb-4 text-center">{service.description}</p>
-                  <Button asChild className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black">
+                  <Button asChild className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral-dark text-brand-black">
                     <Link href={service.href}>Learn More →</Link>
                   </Button>
                 </CardContent>
@@ -60,7 +60,7 @@ export default function HomePage() {
             ))}
           </div>
           <div className="text-center mt-12">
-            <Button asChild className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black">
+            <Button asChild className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral-dark text-brand-black">
               <Link href="/services">Explore All Choice Insurance Services</Link>
             </Button>
           </div>
@@ -90,18 +90,18 @@ export default function HomePage() {
         </div>
       </section>
       {/* Testimonials Snippet */}
-      <section className="py-16 md:py-24 bg-brand-teal-blue/20">
+      <section className="py-16 md:py-24 bg-brand-teal-blue-dark/20">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-brand-deep-forest-green font-poppins">What Our Choice Insurance Clients Say</h2>
           <div className="max-w-2xl mx-auto bg-brand-white p-8 rounded-lg shadow-lg text-brand-black">
-            <MessageSquare size={32} className="text-brand-teal-blue mb-4" aria-hidden="true" />
+            <MessageSquare size={32} className="text-brand-deep-forest-green mb-4" aria-hidden="true" />
             <blockquote className="text-lg italic text-brand-black/80 mb-6">
               "Choice Insurance made finding the right Medicare plan so easy! Their agent was knowledgeable and patient, answering all my questions. Highly recommend!"
             </blockquote>
             <p className="text-right font-semibold text-brand-deep-forest-green">- Jane D., Illinois</p>
           </div>
           <div className="text-center mt-10">
-            <Button asChild className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black">
+            <Button asChild className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral-dark text-brand-black">
               <Link href="/testimonials">Read More Choice Insurance Testimonials</Link>
             </Button>
           </div>
@@ -114,7 +114,7 @@ export default function HomePage() {
           <p className="text-lg md:text-xl mb-10 max-w-2xl mx-auto text-brand-white/90">
             Let Choice Insurance help you navigate the complexities of insurance. Contact us today for a free, no-obligation consultation.
           </p>
-          <Button size="lg" asChild className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black font-semibold">
+          <Button size="lg" asChild className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral-dark text-brand-black font-semibold">
             <Link href="/contact#get-a-quote">Get a Free Quote Today</Link>
           </Button>
         </div>

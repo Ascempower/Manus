@@ -89,7 +89,7 @@ export default function FAQPage() {
   return (
     <div className="bg-brand-white text-brand-black">
       {/* Page Header */}
-      <section className="py-12 bg-brand-teal-blue/20">
+      <section className="py-12 bg-brand-teal-blue-dark/20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-brand-deep-forest-green font-poppins">Frequently Asked Questions</h1>
           <p className="text-lg text-brand-black/80 mt-4 max-w-3xl mx-auto">
@@ -109,9 +109,9 @@ export default function FAQPage() {
                   <AccordionItem 
                     value={`${categoryItem.category.replace(/\s+/g, '-')}-${index}`} 
                     key={index} 
-                    className="border-b border-brand-teal-blue/50 last:border-b-0"
+                    className="border-b border-brand-teal-blue-dark/50 last:border-b-0"
                   >
-                    <AccordionTrigger className="text-left hover:no-underline py-4 text-lg font-semibold text-brand-deep-forest-green hover:text-brand-teal-blue font-poppins">
+                    <AccordionTrigger className="text-left hover:no-underline py-4 text-lg font-semibold text-brand-deep-forest-green hover:text-brand-deep-forest-green/80 font-poppins">
                       {faq.question}
                     </AccordionTrigger>
                     <AccordionContent className="pt-2 pb-4 text-brand-black/80 leading-relaxed text-base">
@@ -132,7 +132,7 @@ export default function FAQPage() {
           <p className="text-lg text-brand-white/90 mb-8 max-w-2xl mx-auto">
             Our knowledgeable agents are ready to provide the answers and guidance you need. Contact us today for personalized assistance.
           </p>
-          <Button size="lg" asChild className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black font-semibold">
+          <Button size="lg" asChild className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral-dark text-brand-black font-semibold">
             <Link href="/contact">Contact Us Now</Link>
           </Button>
         </div>

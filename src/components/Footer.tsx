@@ -19,11 +19,13 @@ export default function Footer() {
             </p>
             {/* Social Media Icons */}
             <div className="flex space-x-4">
-              <Link href="https://www.facebook.com/profile.php?id=100093359186285" target="_blank" rel="noopener noreferrer" className="text-brand-teal-blue hover:text-brand-white">
-                <Facebook size={24} />
+              <Link href="https://www.facebook.com/profile.php?id=100093359186285" target="_blank" rel="noopener noreferrer" className="text-brand-teal-blue-dark hover:text-brand-white" aria-label="Visit our Facebook page">
+                <Facebook size={24} aria-hidden="true" />
+                <span className="sr-only">Facebook</span>
               </Link>
-              <Link href="https://www.instagram.com/choice2day/" target="_blank" rel="noopener noreferrer" className="text-brand-teal-blue hover:text-brand-white">
-                <Instagram size={24} />
+              <Link href="https://www.instagram.com/choice2day/" target="_blank" rel="noopener noreferrer" className="text-brand-teal-blue-dark hover:text-brand-white" aria-label="Visit our Instagram page">
+                <Instagram size={24} aria-hidden="true" />
+                <span className="sr-only">Instagram</span>
               </Link>
             </div>
           </div>
@@ -32,12 +34,12 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-bold text-brand-white mb-4 font-poppins">Quick Links</h3>
             <ul className="space-y-2">
-              <li><Link href="/" className="text-brand-white/80 hover:text-brand-teal-blue">Home</Link></li>
-              <li><Link href="/about" className="text-brand-white/80 hover:text-brand-teal-blue">About Us</Link></li>
-              <li><Link href="/services" className="text-brand-white/80 hover:text-brand-teal-blue">Services</Link></li>
-              <li><Link href="/blog" className="text-brand-white/80 hover:text-brand-teal-blue">Blog</Link></li>
-              <li><Link href="/faq" className="text-brand-white/80 hover:text-brand-teal-blue">FAQ</Link></li>
-              <li><Link href="/contact" className="text-brand-white/80 hover:text-brand-teal-blue">Contact Us</Link></li>
+              <li><Link href="/" className="text-brand-white/80 hover:text-brand-teal-blue-dark">Home</Link></li>
+              <li><Link href="/about" className="text-brand-white/80 hover:text-brand-teal-blue-dark">About Us</Link></li>
+              <li><Link href="/services" className="text-brand-white/80 hover:text-brand-teal-blue-dark">Services</Link></li>
+              <li><Link href="/blog" className="text-brand-white/80 hover:text-brand-teal-blue-dark">Blog</Link></li>
+              <li><Link href="/faq" className="text-brand-white/80 hover:text-brand-teal-blue-dark">FAQ</Link></li>
+              <li><Link href="/contact" className="text-brand-white/80 hover:text-brand-teal-blue-dark">Contact Us</Link></li>
             </ul>
           </div>
 
@@ -45,11 +47,11 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-bold text-brand-white mb-4 font-poppins">Our Services</h3>
             <ul className="space-y-2">
-              <li><Link href="/services/medicare-supplement" className="text-brand-white/80 hover:text-brand-teal-blue">Medicare Supplement</Link></li>
-              <li><Link href="/services/life-insurance" className="text-brand-white/80 hover:text-brand-teal-blue">Life Insurance</Link></li>
-              <li><Link href="/services/health-insurance" className="text-brand-white/80 hover:text-brand-teal-blue">Health Insurance</Link></li>
-              <li><Link href="/services/final-expense" className="text-brand-white/80 hover:text-brand-teal-blue">Final Expense</Link></li>
-              <li><Link href="/services/annuities" className="text-brand-white/80 hover:text-brand-teal-blue">Annuities</Link></li>
+              <li><Link href="/services/medicare-supplement" className="text-brand-white/80 hover:text-brand-teal-blue-dark">Medicare Supplement</Link></li>
+              <li><Link href="/services/life-insurance" className="text-brand-white/80 hover:text-brand-teal-blue-dark">Life Insurance</Link></li>
+              <li><Link href="/services/health-insurance" className="text-brand-white/80 hover:text-brand-teal-blue-dark">Health Insurance</Link></li>
+              <li><Link href="/services/final-expense" className="text-brand-white/80 hover:text-brand-teal-blue-dark">Final Expense</Link></li>
+              <li><Link href="/services/annuities" className="text-brand-white/80 hover:text-brand-teal-blue-dark">Annuities</Link></li>
             </ul>
           </div>
 
@@ -59,8 +61,8 @@ export default function Footer() {
             <address className="not-italic space-y-2 text-sm text-brand-white/80">
               <p>Choice Insurance Agency</p>
               <p>200 E 3rd<br />Alton IL 62002</p>
-              <p>Phone: <a href="tel:8772049648" className="hover:text-brand-teal-blue">(877) 204-9648</a></p>
-              <p>Email: <a href="mailto:a.campbell@insureyourchoices.com" className="hover:text-brand-teal-blue">a.campbell@insureyourchoices.com</a></p>
+              <p>Phone: <a href="tel:8772049648" className="hover:text-brand-teal-blue-dark" aria-label="Call us at 877-204-9648">(877) 204-9648</a></p>
+              <p>Email: <a href="mailto:a.campbell@insureyourchoices.com" className="hover:text-brand-teal-blue-dark" aria-label="Email us at a.campbell@insureyourchoices.com">a.campbell@insureyourchoices.com</a></p>
             </address>
           </div>
         </div>
@@ -71,9 +73,9 @@ export default function Footer() {
             &copy; {currentYear} Choice Insurance Agency. All rights reserved.
           </p>
           <div className="space-x-4 text-sm">
-            <Link href="/privacy-policy" className="text-brand-white/80 hover:text-brand-teal-blue">Privacy Policy</Link>
-            <Link href="/terms-of-service" className="text-brand-white/80 hover:text-brand-teal-blue">Terms of Service</Link>
-            <Link href="/accessibility-statement" className="text-brand-white/80 hover:text-brand-teal-blue">Accessibility</Link>
+            <Link href="/privacy-policy" className="text-brand-white/80 hover:text-brand-teal-blue-dark">Privacy Policy</Link>
+            <Link href="/terms-of-service" className="text-brand-white/80 hover:text-brand-teal-blue-dark">Terms of Service</Link>
+            <Link href="/accessibility-statement" className="text-brand-white/80 hover:text-brand-teal-blue-dark">Accessibility</Link>
           </div>
         </div>
 

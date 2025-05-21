@@ -57,13 +57,13 @@ export default function TestimonialsCarousel({ testimonials }: TestimonialsCarou
         <div className="flex">
           {testimonials.map((testimonial, index) => (
             <div key={index} className="flex-[0_0_100%] min-w-0 pl-4">
-              <div className="bg-brand-white p-8 rounded-lg shadow-lg flex flex-col border border-brand-teal-blue/30 mx-4 h-full">
+              <div className="bg-brand-white p-8 rounded-lg shadow-lg flex flex-col border border-brand-teal-blue-dark/30 mx-4 h-full">
                 <blockquote className="text-brand-black/80 italic mb-6 flex-grow text-lg">
                   <p className="before:content-[\'\\22\'] before:mr-1 before:text-3xl before:font-poppins after:content-[\'\\22\'] after:ml-1 after:text-3xl after:font-poppins">
                     {testimonial.quote}
                   </p>
                 </blockquote>
-                <div className="mt-auto pt-4 border-t border-brand-teal-blue/50">
+                <div className="mt-auto pt-4 border-t border-brand-teal-blue-dark/50">
                   <p className="font-bold text-xl text-brand-deep-forest-green font-poppins">{testimonial.name}</p>
                   <p className="text-sm text-brand-black/70">{testimonial.location}</p>
                   <p className="text-sm text-brand-black/70">Service: {testimonial.service}</p>
@@ -98,7 +98,7 @@ export default function TestimonialsCarousel({ testimonials }: TestimonialsCarou
             className={`w-3 h-3 rounded-full mx-1 transition-colors ${
               index === selectedIndex 
                 ? 'bg-brand-deep-forest-green' 
-                : 'bg-brand-teal-blue/30 hover:bg-brand-teal-blue/50'
+                : 'bg-brand-teal-blue-dark/40 hover:bg-brand-teal-blue-dark/60'
             }`}
             onClick={() => scrollTo(index)}
             aria-label={`Go to slide ${index + 1}`}

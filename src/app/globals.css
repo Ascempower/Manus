@@ -6,7 +6,7 @@
 
 @layer base {
   :root {
-    /* New Color Palette */
+    /* New Color Palette with Accessibility Improvements */
     --background: 0 0% 100%; /* #FFFFFF White */
     --foreground: 0 0% 0%; /* #000000 Black */
 
@@ -37,12 +37,15 @@
 
     --radius: 0.5rem;
 
-    /* Brand colors are now primarily managed via tailwind.config.js */
-    /* These can be removed or kept for non-Tailwind specific CSS if needed */
+    /* Brand colors with accessibility improvements */
     --brand-white: 0 0% 100%; /* #FFFFFF */
     --brand-teal-blue: 181 25% 73%; /* #A7C9CA */
+    --brand-teal-blue-dark: 181 25% 52%; /* #6A9B9D - Darker version for better contrast with white text */
+    --brand-teal-blue-darker: 181 30% 33%; /* #3A6B6D - Even darker version for white text */
     --brand-deep-forest-green: 165 19% 32%; /* #42615A */
     --brand-warm-beige-coral: 20 60% 60%; /* #DD8B66 */
+    --brand-warm-beige-coral-dark: 20 60% 45%; /* #C06B46 - Darker version for better contrast with white text */
+    --brand-warm-beige-coral-darker: 20 60% 30%; /* #A04B26 - Even darker version for white text */
     --brand-black: 0 0% 0%; /* #000000 */
   }
 
@@ -90,4 +93,3 @@
     @apply font-poppins font-bold;
   }
 }
-
