@@ -2,6 +2,11 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 
+// Define the params type
+type Params = {
+  slug: string;
+};
+
 // Generate static params for all blog posts
 export function generateStaticParams() {
   return [
@@ -15,7 +20,8 @@ export function generateStaticParams() {
 export function generateMetadata({ 
   params 
 }: { 
-  params: { slug: string } 
+  params: Params;
+  searchParams?: Record<string, string | string[] | undefined>;
 }): Metadata {
   const { slug } = params;
   
@@ -62,7 +68,13 @@ export function generateMetadata({
 }
 
 // Define the page component
-export default function BlogPost({ params }: { params: { slug: string } }) {
+export default function BlogPost({ 
+  params,
+  searchParams,
+}: {
+  params: Params;
+  searchParams?: Record<string, string | string[] | undefined>;
+}) {
   const { slug } = params;
   
   // Content for March 2025 Medicare post
