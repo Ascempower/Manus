@@ -4,9 +4,7 @@ import Image from 'next/image';
 
 // Define the PageProps interface as provided by the user
 interface PageProps {
-  params: {
-    slug: string;
-  };
+  params: { slug: string };
 }
 
 // Generate static params for all blog posts
@@ -18,8 +16,9 @@ export function generateStaticParams() {
   ];
 }
 
-// Generate metadata for each blog post
+// Generate metadata for each blog post - ensure params is treated as a plain object, not a Promise
 export function generateMetadata({ params }: PageProps): Metadata {
+  // Access params.slug directly as a string, not as a Promise
   const { slug } = params;
   
   // Define metadata based on slug
@@ -65,7 +64,9 @@ export function generateMetadata({ params }: PageProps): Metadata {
 }
 
 // Define the page component using the PageProps interface
+// Even though the function is async, params is still a plain object, not a Promise
 export default function BlogPost({ params }: PageProps) {
+  // Access params.slug directly as a string, not as a Promise
   const { slug } = params;
   
   // Content for March 2025 Medicare post
