@@ -2,6 +2,13 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 
+// Define the PageProps interface as provided by the user
+interface PageProps {
+  params: {
+    slug: string;
+  };
+}
+
 // Generate static params for all blog posts
 export function generateStaticParams() {
   return [
@@ -12,11 +19,7 @@ export function generateStaticParams() {
 }
 
 // Generate metadata for each blog post
-export function generateMetadata({ 
-  params 
-}: { 
-  params: { slug: string } 
-}): Metadata {
+export function generateMetadata({ params }: PageProps): Metadata {
   const { slug } = params;
   
   // Define metadata based on slug
@@ -61,8 +64,8 @@ export function generateMetadata({
   };
 }
 
-// Define the page component
-export default function BlogPost({ params }: { params: { slug: string } }) {
+// Define the page component using the PageProps interface
+export default function BlogPost({ params }: PageProps) {
   const { slug } = params;
   
   // Content for March 2025 Medicare post
