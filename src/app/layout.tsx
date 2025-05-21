@@ -6,6 +6,10 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Choice Insurance Agency - Health, Life & Medicare - Choice Insurance", // Added keyword
   description: "Your trusted partner for Medicare, Life & Health insurance with Choice Insurance in IL, GA, TX, AL, OH, KY, MS, SC. Personalized plans and expert guidance.", // Added keyword
+  icons: {
+    icon: '/images/favicon.png',
+    apple: '/images/favicon.png',
+  }
 };
 
 export default function RootLayout({
