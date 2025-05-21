@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 // Generate static params for all blog posts
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return [
     { slug: 'march-2025-medicare-advantage-vs-supplement' },
     { slug: 'april-2025-understanding-life-insurance' },
@@ -12,11 +12,11 @@ export async function generateStaticParams() {
 }
 
 // Generate metadata for each blog post
-export async function generateMetadata({ 
+export function generateMetadata({ 
   params 
 }: { 
   params: { slug: string } 
-}): Promise<Metadata> {
+}): Metadata {
   const { slug } = params;
   
   // Define metadata based on slug
