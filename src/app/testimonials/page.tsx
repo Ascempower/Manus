@@ -6,6 +6,10 @@ import TestimonialsCarousel from './TestimonialsCarousel';
 export const metadata: Metadata = {
   title: 'Client Testimonials - Choice Insurance Agency',
   description: 'Read what our clients say about their experience with Choice Insurance Agency. We are committed to providing excellent service and tailored insurance solutions.',
+  keywords: 'insurance testimonials, client reviews, Choice Insurance Agency reviews, insurance agency feedback, Medicare testimonials, life insurance testimonials',
+  alternates: {
+    canonical: 'https://choiceins.netlify.app/testimonials',
+  },
 };
 
 export default function TestimonialsPage() {

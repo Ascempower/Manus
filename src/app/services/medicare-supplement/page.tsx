@@ -6,6 +6,10 @@ import { Button } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: 'Medicare Supplement (Medigap) Plans - Choice Insurance Agency',
   description: 'Learn about Medicare Supplement (Medigap) plans and how they cover out-of-pocket costs not paid by Original Medicare. Choice Insurance Agency offers expert guidance.',
+  keywords: 'Medicare Supplement, Medigap, Medicare Plan G, Medicare Plan N, Medicare coverage gaps, Medicare deductibles, Medicare copayments, Medicare insurance, senior health insurance',
+  alternates: {
+    canonical: 'https://choiceins.netlify.app/services/medicare-supplement',
+  },
 };
 
 export default function MedicareSupplementPage() {
@@ -37,10 +41,10 @@ export default function MedicareSupplementPage() {
           <h2 className="text-3xl font-bold mb-6 text-brand-deep-forest-green font-poppins">What are Medicare Supplement (Medigap) Plans?</h2>
           <div className="space-y-4 text-lg text-brand-black/80 leading-relaxed font-poppins">
             <p>
-              Original Medicare (Parts A and B) provides essential health coverage, but it doesn’t cover all healthcare costs. Medicare Supplement Insurance, commonly known as Medigap, is private insurance designed to help pay for some of the out-of-pocket costs that Original Medicare doesn’t cover. These can include deductibles, copayments, and coinsurance for Medicare-covered services.
+              Original Medicare (Parts A and B) provides essential health coverage, but it doesn't cover all healthcare costs. Medicare Supplement Insurance, commonly known as Medigap, is private insurance designed to help pay for some of the out-of-pocket costs that Original Medicare doesn't cover. These can include deductibles, copayments, and coinsurance for Medicare-covered services.
             </p>
             <p>
-              Medigap policies are standardized by federal and state laws, meaning the benefits for each lettered plan (e.g., Plan G, Plan N) are the same regardless of the insurance company selling it. However, premiums can vary between companies. These plans generally don’t cover long-term care, vision or dental care, hearing aids, eyeglasses, or private-duty nursing.
+              Medigap policies are standardized by federal and state laws, meaning the benefits for each lettered plan (e.g., Plan G, Plan N) are the same regardless of the insurance company selling it. However, premiums can vary between companies. These plans generally don't cover long-term care, vision or dental care, hearing aids, eyeglasses, or private-duty nursing.
             </p>
           </div>
         </section>
@@ -101,4 +105,3 @@ export default function MedicareSupplementPage() {
     </div>
   );
 }
-

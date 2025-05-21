@@ -7,6 +7,10 @@ import ContactForm from "@/components/ContactForm";
 export const metadata: Metadata = {
   title: 'Contact Us - Choice Insurance Agency',
   description: 'Get in touch with Choice Insurance Agency for expert advice on Medicare, life, and health insurance. Book a consultation or request a quote today.',
+  keywords: 'insurance contact, insurance consultation, insurance quote, Choice Insurance Agency contact, insurance agency phone number, insurance agency email',
+  alternates: {
+    canonical: 'https://choiceins.netlify.app/contact',
+  },
 };
 
 export default function ContactPage() {
@@ -90,4 +94,3 @@ export default function ContactPage() {
     </div>
   );
 }
-

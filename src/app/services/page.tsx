@@ -6,6 +6,10 @@ import { Button } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: 'Our Insurance Services - Choice Insurance Agency',
   description: 'Explore comprehensive insurance solutions including Medicare, life insurance, health coverage, and more from Choice Insurance Agency.',
+  keywords: 'insurance services, Medicare Supplement, Hospital Indemnity, Cancer Insurance, Life Insurance, Final Expense, Annuities, Health Insurance, Choice Insurance Agency',
+  alternates: {
+    canonical: 'https://choiceins.netlify.app/services',
+  },
 };
 
 const services = [
@@ -37,7 +41,7 @@ const services = [
   {
     title: "Life Insurance",
     slug: "life-insurance",
-    excerpt: "Protect your family’s financial future with term life, whole life, or final expense insurance plans tailored to your needs.",
+    excerpt: "Protect your family's financial future with term life, whole life, or final expense insurance plans tailored to your needs.",
     detailsLink: "/services/life-insurance"
   },
   {
@@ -105,4 +109,3 @@ export default function ServicesPage() {
     </div>
   );
 }
-

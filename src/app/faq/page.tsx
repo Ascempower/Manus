@@ -12,6 +12,10 @@ import {
 export const metadata: Metadata = {
   title: 'Frequently Asked Questions - Choice Insurance Agency',
   description: 'Find answers to common questions about insurance, our services, and how Choice Insurance Agency can help you.',
+  keywords: 'insurance FAQ, Medicare questions, life insurance questions, insurance agency FAQ, insurance consultation, independent insurance agency, insurance policy review',
+  alternates: {
+    canonical: 'https://choiceins.netlify.app/faq',
+  },
 };
 
 const faqData = [
@@ -28,7 +32,7 @@ const faqData = [
       },
       {
         question: "How often should I review my insurance policies?",
-        answer: "It’s a good idea to review your insurance policies annually or whenever you experience a major life event, such as getting married, buying a home, having a child, or starting a new job. This ensures your coverage continues to meet your evolving needs."
+        answer: "It's a good idea to review your insurance policies annually or whenever you experience a major life event, such as getting married, buying a home, having a child, or starting a new job. This ensures your coverage continues to meet your evolving needs."
       }
     ]
   },
@@ -41,7 +45,7 @@ const faqData = [
       },
       {
         question: "What is a Medicare Supplement (Medigap) plan?",
-        answer: "Medigap plans help pay for some of the out-of-pocket costs that Original Medicare doesn’t cover, like deductibles, copayments, and coinsurance. They are sold by private insurance companies and are standardized, meaning benefits are the same for a lettered plan regardless of the insurer."
+        answer: "Medigap plans help pay for some of the out-of-pocket costs that Original Medicare doesn't cover, like deductibles, copayments, and coinsurance. They are sold by private insurance companies and are standardized, meaning benefits are the same for a lettered plan regardless of the insurer."
       },
       {
         question: "When can I enroll in Medicare?",
@@ -89,7 +93,7 @@ export default function FAQPage() {
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-brand-deep-forest-green font-poppins">Frequently Asked Questions</h1>
           <p className="text-lg text-brand-black/80 mt-4 max-w-3xl mx-auto">
-            Have questions about insurance or our services? We’ve compiled answers to some of the most common inquiries we receive. If you don’t find your answer here, please don’t hesitate to contact us.
+            Have questions about insurance or our services? We've compiled answers to some of the most common inquiries we receive. If you don't find your answer here, please don't hesitate to contact us.
           </p>
         </div>
       </section>
@@ -136,4 +140,3 @@ export default function FAQPage() {
     </div>
   );
 }
-

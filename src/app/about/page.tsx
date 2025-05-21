@@ -6,6 +6,10 @@ export const metadata: Metadata = {
   title: 'About Us - Choice Insurance Agency',
   description:
     'Learn about Choice Insurance Agency, our mission, values, and commitment to providing expert insurance guidance.',
+  keywords: 'insurance agency, Choice Insurance, insurance experts, insurance values, insurance mission, independent insurance agency, Illinois insurance, multi-state insurance',
+  alternates: {
+    canonical: 'https://choiceins.netlify.app/about',
+  },
 };
 
 export default function AboutPage() {
