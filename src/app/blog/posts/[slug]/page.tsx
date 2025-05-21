@@ -2,6 +2,13 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 
+// Define PageProps interface with params as a plain object (NO PROMISE TYPES)
+interface PageProps {
+  params: {
+    slug: string;
+  };
+}
+
 // Generate static params for all blog posts
 export function generateStaticParams() {
   return [
@@ -11,12 +18,8 @@ export function generateStaticParams() {
   ];
 }
 
-// Generate metadata for each blog post
-export function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Metadata {
+// Generate metadata for each blog post using the same PageProps interface
+export function generateMetadata({ params }: PageProps): Metadata {
   const { slug } = params;
   
   // Define metadata based on slug
@@ -61,12 +64,8 @@ export function generateMetadata({
   };
 }
 
-// Define the page component using the exact function signature provided
-export default async function BlogPost({
-  params,
-}: {
-  params: { slug: string };
-}) {
+// Define the page component using the PageProps interface
+export default async function Page({ params }: PageProps) {
   // Access params.slug directly as a string
   const { slug } = params;
   
