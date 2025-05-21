@@ -2,8 +2,12 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About Us - Choice Insurance Agency',
-  description: 'Learn about Choice Insurance Agency, our mission, values, and commitment to providing expert insurance guidance.',
+  title: 'About Choice Insurance Agency | Your Trusted Insurance Partner',
+  description: 'Learn about Choice Insurance Agency, our mission, values, and commitment to providing expert insurance guidance across IL, GA, TX, AL, OH, KY, MS, and SC.',
+  keywords: 'Choice Insurance Agency, about us, insurance mission, insurance values, independent insurance agency, insurance experts, insurance guidance, trusted insurance partner',
+  alternates: {
+    canonical: "https://insureyourchoices.com/about"
+  }
 };
 
 export default function AboutPage() {
@@ -25,7 +29,7 @@ export default function AboutPage() {
               Choice Insurance is an independent insurance agency with a longstanding commitment to serving the diverse insurance needs of individuals, families, and businesses. Founded on the principles of integrity, transparency, and client-focused service, we have grown by consistently putting our clients first. We specialize in Medicare Benefits, Individual Health Insurance, Employee Benefits, and Life Insurance plans, partnering with a wide array of major insurance carriers. This independence allows us to offer a broad spectrum of coverage options, ensuring that our clients receive plans tailored to their specific circumstances and budgets.
             </p>
             <p>
-              Our reach extends across Illinois and several other states, including Alabama, Georgia, Ohio, Kentucky, Mississippi, South Carolina, and Texas. This multi-state presence provides us with valuable insights into diverse insurance landscapes, enabling us to offer informed and comprehensive advice. We are dedicated to preparing you for tomorrow by closing today’s healthcare and financial gaps with smart, affordable, and personalized insurance solutions.
+              Our reach extends across Illinois and several other states, including Alabama, Georgia, Ohio, Kentucky, Mississippi, South Carolina, and Texas. This multi-state presence provides us with valuable insights into diverse insurance landscapes, enabling us to offer informed and comprehensive advice. We are dedicated to preparing you for tomorrow by closing today's healthcare and financial gaps with smart, affordable, and personalized insurance solutions.
             </p>
           </div>
         </section>
@@ -47,7 +51,7 @@ export default function AboutPage() {
         <section className="mb-12">
           <h2 className="text-3xl font-bold mb-6 text-brand-deep-forest-green font-poppins">Our Commitment to You</h2>
           <p className="text-lg text-brand-black/80 leading-relaxed">
-            At Choice Insurance Agency, we understand that navigating the world of insurance can be complex and overwhelming. That’s why we are committed to providing a client-first approach. We listen to your concerns, analyze your needs, and explain your options in clear, understandable language. Our goal is not just to sell you a policy, but to build a lasting relationship as your trusted insurance advisor. We are here to support you every step of the way, from selecting the right plan to assisting with claims and policy reviews. Your peace of mind is our priority.
+            At Choice Insurance Agency, we understand that navigating the world of insurance can be complex and overwhelming. That's why we are committed to providing a client-first approach. We listen to your concerns, analyze your needs, and explain your options in clear, understandable language. Our goal is not just to sell you a policy, but to build a lasting relationship as your trusted insurance advisor. We are here to support you every step of the way, from selecting the right plan to assisting with claims and policy reviews. Your peace of mind is our priority.
           </p>
         </section>
 
@@ -67,4 +71,3 @@ export default function AboutPage() {
     </div>
   );
 }
-

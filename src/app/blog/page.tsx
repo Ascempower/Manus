@@ -4,9 +4,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-  title: 'Insurance Blog | Choice Insurance Agency',
+  title: 'Insurance Blog | Choice Insurance Agency - Expert Insurance Insights',
   description: 'Stay informed with the latest insurance insights, tips, and industry updates from Choice Insurance Agency. Expert advice on Medicare, life insurance, health insurance, and more.',
-  keywords: 'insurance blog, Medicare, life insurance, health insurance, insurance tips, Choice Insurance',
+  keywords: 'insurance blog, Medicare, life insurance, health insurance, insurance tips, Choice Insurance, insurance advice, insurance updates, insurance industry news',
+  alternates: {
+    canonical: "https://insureyourchoices.com/blog"
+  }
 };
 
 export default function BlogPage() {

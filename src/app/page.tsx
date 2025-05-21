@@ -1,3 +1,12 @@
+export const metadata = {
+  title: "Choice Insurance Agency - Home | Expert Health, Life & Medicare Insurance",
+  description: "Choice Insurance provides personalized Medicare, Life & Health insurance solutions in IL, GA, TX, AL, OH, KY, MS, SC. Get expert guidance and affordable coverage tailored to your needs.",
+  keywords: "Choice Insurance, insurance agency, Medicare plans, life insurance, health insurance, insurance solutions, affordable insurance, insurance consultation",
+  alternates: {
+    canonical: "https://insureyourchoices.com"
+  }
+};
+
 "" // Add this line to make it a module, if not already
 import Link from "next/link";
 import { Button } from "@/components/ui/button";

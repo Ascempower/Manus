@@ -4,8 +4,12 @@ import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: 'Our Insurance Services - Choice Insurance Agency',
-  description: 'Explore comprehensive insurance solutions including Medicare, life insurance, health coverage, and more from Choice Insurance Agency.',
+  title: 'Insurance Services | Choice Insurance Agency - Medicare, Life & Health',
+  description: 'Explore comprehensive insurance solutions from Choice Insurance Agency including Medicare Supplement, Life Insurance, Health Coverage, Final Expense, and more. Expert guidance for IL, GA, TX, AL, OH, KY, MS, SC residents.',
+  keywords: 'Choice Insurance services, Medicare Supplement, Life Insurance, Health Insurance, Final Expense, Cancer Insurance, Annuities, Hospital Indemnity, insurance solutions',
+  alternates: {
+    canonical: "https://insureyourchoices.com/services"
+  }
 };
 
 const services = [
@@ -37,7 +41,7 @@ const services = [
   {
     title: "Life Insurance",
     slug: "life-insurance",
-    excerpt: "Protect your family’s financial future with term life, whole life, or final expense insurance plans tailored to your needs.",
+    excerpt: "Protect your family's financial future with term life, whole life, or final expense insurance plans tailored to your needs.",
     detailsLink: "/services/life-insurance"
   },
   {
@@ -105,4 +109,3 @@ export default function ServicesPage() {
     </div>
   );
 }
-
