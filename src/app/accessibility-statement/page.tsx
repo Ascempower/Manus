@@ -76,7 +76,7 @@ export default function AccessibilityStatementPage() {
       </p>
       <ul className="list-disc pl-6 space-y-2">
         <li>Phone: (877) 204-9648</li>
-        <li>E-mail: <a href="mailto:a.campbell@insureyourchoices.com" className="text-blue-600 hover:underline">a.campbell@insureyourchoices.com</a></li>
+        <li>E-mail: <a href="mailto:info@choiceinsurancehub.com" className="text-blue-600 hover:underline">info@choiceinsurancehub.com</a></li>
         <li>Contact Form: <Link href="/contact" className="text-blue-600 hover:underline">Visit our Contact Page</Link></li>
       </ul>
       <p>
@@ -90,4 +90,3 @@ export default function AccessibilityStatementPage() {
     </div>
   );
 }
-

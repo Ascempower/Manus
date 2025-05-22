@@ -60,7 +60,7 @@ export default function Footer() {
               <p>Choice Insurance Agency</p>
               <p>200 E 3rd<br />Alton IL 62002</p>
               <p>Phone: <a href="tel:8772049648" className="hover:text-brand-teal-blue">(877) 204-9648</a></p>
-              <p>Email: <a href="mailto:a.campbell@insureyourchoices.com" className="hover:text-brand-teal-blue">a.campbell@insureyourchoices.com</a></p>
+              <p>Email: <a href="mailto:info@choiceinsurancehub.com" className="hover:text-brand-teal-blue">info@choiceinsurancehub.com</a></p>
             </address>
           </div>
         </div>

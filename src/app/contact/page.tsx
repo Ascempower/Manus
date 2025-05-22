@@ -50,7 +50,7 @@ export default function ContactPage() {
                   <Mail size={28} className="text-brand-deep-forest-green mr-4 mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="font-bold text-xl text-brand-deep-forest-green font-poppins">Email</h3>
-                    <p className="text-brand-black/80"><a href="mailto:a.campbell@insureyourchoices.com" className="hover:text-brand-teal-blue underline">a.campbell@insureyourchoices.com</a></p>
+                    <p className="text-brand-black/80"><a href="mailto:info@choiceinsurancehub.com" className="hover:text-brand-teal-blue underline">info@choiceinsurancehub.com</a></p>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -90,4 +90,3 @@ export default function ContactPage() {
     </div>
   );
 }
-

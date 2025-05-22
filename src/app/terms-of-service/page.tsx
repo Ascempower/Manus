@@ -38,7 +38,7 @@ export default function TermsOfServicePage() {
         <li>To transmit, or procure the sending of, any advertising or promotional material, including any "junk mail", "chain letter," "spam," or any other similar solicitation.</li>
         <li>To impersonate or attempt to impersonate Choice Insurance Agency, a Choice Insurance Agency employee, another user, or any other person or entity.</li>
         <li>In any way that infringes upon the rights of others, or in any way is illegal, threatening, fraudulent, or harmful, or in connection with any unlawful, illegal, fraudulent, or harmful purpose or activity.</li>
-        <li>To engage in any other conduct that restricts or inhibits anyone’s use or enjoyment of the Service, or which, as determined by us, may harm or offend Choice Insurance Agency or users of the Service or expose them to liability.</li>
+        <li>To engage in any other conduct that restricts or inhibits anyone's use or enjoyment of the Service, or which, as determined by us, may harm or offend Choice Insurance Agency or users of the Service or expose them to liability.</li>
       </ul>
 
       <h2 className="text-2xl font-semibold mt-8 mb-4 text-gray-800">Intellectual Property</h2>
@@ -89,11 +89,10 @@ export default function TermsOfServicePage() {
         If you have any questions about these Terms, please contact us:
       </p>
       <ul className="list-disc pl-6 space-y-2">
-        <li>By email: <a href="mailto:a.campbell@insureyourchoices.com" className="text-blue-600 hover:underline">a.campbell@insureyourchoices.com</a></li>
+        <li>By email: <a href="mailto:info@choiceinsurancehub.com" className="text-blue-600 hover:underline">info@choiceinsurancehub.com</a></li>
         <li>By phone number: (877) 204-9648</li>
         <li>Through our <Link href="/contact" className="text-blue-600 hover:underline">Contact Page</Link></li>
       </ul>
     </div>
   );
 }
-
