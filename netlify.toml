@@ -1,8 +1,2 @@
-[[plugins]]
-package = "@verygoodsecurity/netlify-plugin-vgs"
-
-  [plugins.inputs]
-  # These environment variables will be set in Netlify
-  # VGS_CLIENT_ID = process.env.VGS_CLIENT_ID
-  # VGS_CLIENT_SECRET = process.env.VGS_CLIENT_SECRET
-  # VGS_VAULT_ID = process.env.VGS_VAULT_ID
+# VGS Integration is managed through the Netlify UI
+# See vgs-integration-notes.md for details
