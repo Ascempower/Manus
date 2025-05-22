@@ -1,11 +1,16 @@
 # VGS Integration is managed through the Netlify UI
 # See vgs-integration-notes.md for details
 
-# Disable HTML validation to work around the html-validate bug
+# Explicitly disable the html-validate plugin that's causing build failures
+[[plugins]]
+package = "netlify-plugin-html-validate"
+  [plugins.inputs]
+  enabled = false
+
+# Ensure proper CSS processing
 [build.processing]
   skip_processing = true
 
-# Ensure proper CSS processing
 [build.processing.css]
   bundle = true
   minify = true
