@@ -1,3 +1,4 @@
+/* Ensure proper CSS parsing by fixing any potential syntax issues */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
 @tailwind base;
@@ -22,7 +23,7 @@
     --secondary: 181 25% 73%; /* #A7C9CA Teal Blue */
     --secondary-foreground: 0 0% 0%; /* #000000 Black */
 
-    --muted: 210 40% 96.1%; /* Keeping original muted for now, can be adjusted */
+    --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
     --accent: 20 60% 60%; /* #DD8B66 Warm Beige/Coral */
@@ -31,14 +32,13 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%; /* White text on destructive */
 
-    --border: 214.3 31.8% 91.4%; /* Keeping original border for now, can be adjusted */
-    --input: 214.3 31.8% 91.4%; /* Keeping original input for now, can be adjusted */
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
     --ring: 165 19% 32%; /* #42615A Deep Forest Green for ring */
 
     --radius: 0.5rem;
 
-    /* Brand colors are now primarily managed via tailwind.config.js */
-    /* These can be removed or kept for non-Tailwind specific CSS if needed */
+    /* Brand colors */
     --brand-white: 0 0% 100%; /* #FFFFFF */
     --brand-teal-blue: 181 25% 73%; /* #A7C9CA */
     --brand-deep-forest-green: 165 19% 32%; /* #42615A */
@@ -47,10 +47,8 @@
   }
 
   .dark {
-    /* Update dark mode colors according to new palette if specified, or invert light mode */
-    /* For now, let's define a basic dark theme based on the new palette */
-    --background: 0 0% 10%; /* Darker background */
-    --foreground: 0 0% 95%; /* Lighter foreground */
+    --background: 0 0% 10%;
+    --foreground: 0 0% 95%;
 
     --card: 0 0% 15%;
     --card-foreground: 0 0% 95%;
@@ -58,16 +56,16 @@
     --popover: 0 0% 15%;
     --popover-foreground: 0 0% 95%;
 
-    --primary: 165 19% 42%; /* Slightly lighter Deep Forest Green */
+    --primary: 165 19% 42%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 181 25% 63%; /* Slightly darker Teal Blue */
+    --secondary: 181 25% 63%;
     --secondary-foreground: 0 0% 0%;
 
     --muted: 217.2 32.6% 27.5%;
     --muted-foreground: 215 20.2% 75.1%;
 
-    --accent: 20 60% 70%; /* Slightly lighter Warm Beige/Coral */
+    --accent: 20 60% 70%;
     --accent-foreground: 0 0% 0%;
 
     --destructive: 0 70% 50%;
@@ -90,4 +88,3 @@
     @apply font-poppins font-bold;
   }
 }
-
