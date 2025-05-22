@@ -1,16 +1,8 @@
-[build]
-  command = "pnpm install --no-frozen-lockfile && npm run build"
-  publish = ".next"
-
-[build.environment]
-  NODE_VERSION = "20.0.0"
-  NPM_VERSION = "9.6.7"
-  NPM_FLAGS = "--no-frozen-lockfile"
-
 [[plugins]]
-  package = "@netlify/plugin-nextjs"
+package = "@verygoodsecurity/netlify-plugin-vgs"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+  [plugins.inputs]
+  # These environment variables will be set in Netlify
+  # VGS_CLIENT_ID = process.env.VGS_CLIENT_ID
+  # VGS_CLIENT_SECRET = process.env.VGS_CLIENT_SECRET
+  # VGS_VAULT_ID = process.env.VGS_VAULT_ID
