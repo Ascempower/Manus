@@ -9,8 +9,5 @@
   bundle = true
   minify = true
 
-# Disable specific plugins
+# Empty plugins section to disable all UI plugins
 [plugins]
-  # This tells Netlify not to load any plugins from the UI
-  # Comment this out if you need other plugins from the Netlify UI
-  # but need to manually disable html-validate in the UI
