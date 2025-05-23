@@ -1,0 +1,7 @@
+# Minimal Netlify configuration
+# Explicitly set base and publish directories
+
+[build]
+  base = "/"
+  publish = "out"
+  command = "npm run build"
