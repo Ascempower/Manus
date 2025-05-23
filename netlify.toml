@@ -1,2 +1,20 @@
-# Minimal valid configuration
-# No plugins section to avoid parsing errors
+# Netlify configuration for Choice Insurance Hub website
+
+# Specify Next.js as the framework
+[build]
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
+
+# Framework detection
+[build.processing]
+  skip_processing = false
+
+[build.processing.html]
+  pretty_urls = true
+
+# Explicitly specify Next.js as the framework
+[[plugins]]
+package = "@netlify/plugin-nextjs"
