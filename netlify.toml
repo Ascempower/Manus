@@ -1,20 +1,7 @@
-# Netlify configuration for Choice Insurance Hub website with API routes support
-
-# Specify Next.js as the framework with SSR support
+# Basic Netlify configuration for Next.js with SSR
 [build]
   command = "npm run build"
   publish = ".next"
 
-[build.environment]
-  # Set Next.js to use server-side rendering
-  NETLIFY_NEXT_PLUGIN_SKIP = "false"
-  NODE_VERSION = "18"
-
-# Explicitly specify Next.js as the framework with SSR support
 [[plugins]]
-package = "@netlify/plugin-nextjs"
-  [plugins.inputs]
-  # Enable server-side rendering
-  ssr = true
-  # Enable API routes
-  includeFiles = ["api/**/*"]
+  package = "@netlify/plugin-nextjs"
