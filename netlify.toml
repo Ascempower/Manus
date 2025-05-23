@@ -1,13 +1,2 @@
-# VGS Integration is managed through the Netlify UI
-# See vgs-integration-notes.md for details
-
-# Ensure proper CSS processing
-[build.processing]
-  skip_processing = true
-
-[build.processing.css]
-  bundle = true
-  minify = true
-
-# Empty plugins section to disable all UI plugins
-[plugins]
+# Minimal valid configuration
+# No plugins section to avoid parsing errors
