@@ -1,8 +1,6 @@
 [build]
-  base = "root" # update this if your actual working directory is different
-  publish = "out"
-  command = "pnpm install && pnpm run build && pnpm run export"
+publish = "out"
+command = "pnpm install && pnpm run build && pnpm run export"
 
 [plugins]
-  package = "@netlify/plugin-nextjs"
-
+package = "@netlify/plugin-nextjs"
