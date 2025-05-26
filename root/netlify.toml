@@ -1,9 +1,8 @@
 [build]
-  base = "root"
-  command = "next build && next export"
+  base = "root" # update this if your actual working directory is different
   publish = "out"
+  command = "pnpm install && pnpm run build && pnpm run export"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+[plugins]
+  package = "@netlify/plugin-nextjs"
+
