@@ -5,3 +5,9 @@ publish = ".next"
 
 [[plugins]]
 package = "@netlify/plugin-nextjs"
+
+# Explicitly disable the website vulnerability plugin that's causing ECONNREFUSED errors
+[[plugins]]
+package = "netlify-plugin-is-website-vulnerable"
+  [plugins.inputs]
+  disable = true
