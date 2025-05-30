@@ -8,8 +8,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Ensure output is configured for static export
-  output: 'export',
+  // Output setting removed to enable API routes and SSR
 };
 
 module.exports = nextConfig;
