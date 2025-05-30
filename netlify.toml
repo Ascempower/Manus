@@ -9,4 +9,5 @@ package = "@netlify/plugin-nextjs"
 [[plugins]]
 package = "netlify-plugin-bundle-env"
   [plugins.inputs]
-  source = "."
+  directories = ["."]
+  include = ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"]
