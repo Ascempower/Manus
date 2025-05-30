@@ -9,5 +9,9 @@ package = "@netlify/plugin-nextjs"
 [[plugins]]
 package = "netlify-plugin-bundle-env"
   [plugins.inputs]
-  directories = ["."]
-  include = ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"]
+  include = [
+    "NEXT_PUBLIC_API_URL",
+    "NEXT_PUBLIC_FIREBASE_KEY",
+    "NEXT_PUBLIC_SENTRY_DSN"
+  ]
+  mask = true
