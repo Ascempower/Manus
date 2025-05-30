@@ -12,6 +12,7 @@ package = "@netlify/plugin-nextjs"
 [[plugins]]
 package = "netlify-plugin-bundle-env"
   [plugins.inputs]
+  directories = ["netlify/functions"]
   include = [
     "NEXT_PUBLIC_API_URL",
     "NEXT_PUBLIC_FIREBASE_KEY",
