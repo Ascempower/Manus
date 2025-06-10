@@ -18,22 +18,12 @@ import { cn } from "@/lib/utils";
 
 const services = [
   {
-    title: "Medicare Supplement",
+    title: "Medicare Supplement Plans",
     href: "/services/medicare-supplement",
     description: "Explore options for Medicare Supplement (Medigap) plans.",
   },
   {
-    title: "Life Insurance",
-    href: "/services/life-insurance",
-    description: "Secure your family’s future with various life insurance policies.",
-  },
-  {
-    title: "Health Insurance",
-    href: "/services/health-insurance",
-    description: "Find individual and group health insurance plans.",
-  },
-  {
-    title: "Hospital Indemnity",
+    title: "Hospital Indemnity Plans",
     href: "/services/hospital-indemnity",
     description: "Get coverage for hospital stays and related expenses.",
   },
@@ -43,14 +33,24 @@ const services = [
     description: "Specialized plans for critical illnesses like cancer.",
   },
   {
+    title: "Medicare Advantage Plan",
+    href: "/services/medicare-advantage",
+    description: "All-in-one alternatives to Original Medicare with additional benefits.",
+  },
+  {
+    title: "Life Insurance",
+    href: "/services/life-insurance",
+    description: "Secure your family's future with various life insurance policies.",
+  },
+  {
+    title: "Final Expense Plans",
+    href: "/services/final-expense",
+    description: "Cover end-of-life expenses and protect your loved ones.",
+  },
+  {
     title: "Annuities",
     href: "/services/annuities",
     description: "Plan for retirement with our annuity options.",
-  },
-  {
-    title: "Final Expense",
-    href: "/services/final-expense",
-    description: "Cover end-of-life expenses and protect your loved ones.",
   },
 ];
 
@@ -58,27 +58,27 @@ export default function Header() {
   const quoteNowUrl = "https://www.planenroll.com/?purl=kOW7ufSy";
   return (
     <header className="sticky top-0 z-50 w-full border-b border-brand-teal-blue/40 bg-brand-deep-forest-green text-brand-white">
-      <div className="container flex h-16 max-w-screen-2xl items-center justify-between">
-        <Link href="/" className="mr-6 flex items-center space-x-2">
-          <img src="/main-logo-white.png" alt="Choice Insurance Agency Logo" style={{ width: '150px', height: 'auto' }} />
+      <div className="container mx-auto px-4 flex h-16 items-center justify-between">
+        <Link href="/" className="mr-6 flex items-center">
+          <img 
+            src="/assets/logos/main-logo-orange.png" 
+            alt="Choice Insurance Agency Logo" 
+            className="max-h-10 w-auto object-contain" 
+          />
         </Link>
 
         {/* Desktop Navigation */}
         <NavigationMenu className="hidden lg:flex">
           <NavigationMenuList>
             <NavigationMenuItem>
-              <Link href="/" legacyBehavior passHref>
-                <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue hover:text-brand-black")}>
-                  Home
-                </NavigationMenuLink>
-              </Link>
+              <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue hover:text-brand-black")}>
+                <Link href="/">Home</Link>
+              </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="/about" legacyBehavior passHref>
-                <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue hover:text-brand-black")}>
-                  About Us
-                </NavigationMenuLink>
-              </Link>
+              <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue hover:text-brand-black")}>
+                <Link href="/about">About Us</Link>
+              </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuTrigger className="bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue hover:text-brand-black">Services</NavigationMenuTrigger>
@@ -99,7 +99,7 @@ export default function Header() {
                       </Link>
                     </NavigationMenuLink>
                   </li>
-                  {services.slice(0, 3).map((component) => (
+                  {services.map((component) => (
                     <ListItem
                       key={component.title}
                       title={component.title}
@@ -113,47 +113,39 @@ export default function Header() {
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="/testimonials" legacyBehavior passHref>
-                <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue hover:text-brand-black")}>
-                  Testimonials
-                </NavigationMenuLink>
-              </Link>
+              <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue hover:text-brand-black")}>
+                <Link href="/testimonials">Testimonials</Link>
+              </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="/faq" legacyBehavior passHref>
-                <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue hover:text-brand-black")}>
-                  FAQ
-                </NavigationMenuLink>
-              </Link>
+              <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue hover:text-brand-black")}>
+                <Link href="/faq">FAQ</Link>
+              </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="/contact" legacyBehavior passHref>
-                <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue hover:text-brand-black")}>
-                  Contact Us
-                </NavigationMenuLink>
-              </Link>
+              <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue hover:text-brand-black")}>
+                <Link href="/contact">Contact Us</Link>
+              </NavigationMenuLink>
             </NavigationMenuItem>
              <NavigationMenuItem>
-              <Link href="/blog" legacyBehavior passHref>
-                <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue hover:text-brand-black")}>
-                  Blog
-                </NavigationMenuLink>
-              </Link>
+              <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue hover:text-brand-black")}>
+                <Link href="/blog">Blog</Link>
+              </NavigationMenuLink>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
 
         <div className="flex items-center gap-x-2">
-          <Button asChild className="hidden lg:flex bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black">
+          <Button asChild className="hidden md:flex bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black text-sm md:text-base">
             <Link href={quoteNowUrl} target="_blank" rel="noopener noreferrer">Quote Now</Link>
           </Button>
-          <Button asChild className="hidden lg:flex bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black">
-            <Link href="/contact#book-a-call">Book a Free Consultation</Link>
+          <Button asChild className="hidden md:flex bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black text-sm md:text-base">
+            <Link href="https://calendly.com/choiceinsuranceagency/30-minute-meeting" target="_blank" rel="noopener noreferrer">Book a Free Consultation</Link>
           </Button>
 
           {/* Mobile Navigation */}
           <Sheet>
-            <SheetTrigger asChild className="lg:hidden">
+            <SheetTrigger asChild className="md:hidden">
               <Button variant="outline" size="icon" className="shrink-0 bg-brand-deep-forest-green hover:bg-brand-teal-blue text-brand-white border-brand-teal-blue">
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">Toggle navigation menu</span>
@@ -165,7 +157,11 @@ export default function Header() {
                   href="/"
                   className="flex items-center gap-2 text-lg font-semibold mb-4"
                 >
-                  <img src="/main-logo-white.png" alt="Choice Insurance Agency Logo" style={{ width: '120px', height: 'auto' }} />
+                  <img 
+                    src="/assets/logos/main-logo-orange.png" 
+                    alt="Choice Insurance Agency Logo" 
+                    className="max-h-8 w-auto object-contain" 
+                  />
                 </Link>
                 <Link
                   href="/"
@@ -215,7 +211,7 @@ export default function Header() {
                   <Link href={quoteNowUrl} target="_blank" rel="noopener noreferrer">Quote Now</Link>
                 </Button>
                 <Button size="sm" className="w-full bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black" asChild>
-                  <Link href="/contact#book-a-call">Book a Free Consultation</Link>
+                  <Link href="https://calendly.com/choiceinsuranceagency/30-minute-meeting" target="_blank" rel="noopener noreferrer">Book a Free Consultation</Link>
                 </Button>
               </div>
             </SheetContent>
@@ -251,4 +247,3 @@ const ListItem = React.forwardRef<
   );
 });
 ListItem.displayName = "ListItem";
-

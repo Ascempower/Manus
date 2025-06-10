@@ -12,17 +12,17 @@ export default function Footer() {
           {/* Logo and About */}
           <div>
             <Link href="/" className="mb-4 inline-block">
-              <img src="/main-logo-white.png" alt="Choice Insurance Agency Logo" style={{ width: '150px', height: 'auto' }} />
+              <img src="/assets/logos/main-logo-orange.png" alt="Choice Insurance Agency Logo" style={{ width: '150px', height: 'auto' }} />
             </Link>
             <p className="text-sm mb-4 text-brand-white/80">
               Your trusted partner for health, life, and Medicare insurance solutions. Helping you make informed choices for a secure future.
             </p>
             {/* Social Media Icons */}
             <div className="flex space-x-4">
-              <Link href="#" target="_blank" rel="noopener noreferrer" className="text-brand-teal-blue hover:text-brand-white">
+              <Link href="https://www.facebook.com/profile.php?id=100093359186285" target="_blank" rel="noopener noreferrer" className="text-brand-teal-blue hover:text-brand-white">
                 <Facebook size={24} />
               </Link>
-              <Link href="#" target="_blank" rel="noopener noreferrer" className="text-brand-teal-blue hover:text-brand-white">
+              <Link href="https://www.instagram.com/choice2day/" target="_blank" rel="noopener noreferrer" className="text-brand-teal-blue hover:text-brand-white">
                 <Instagram size={24} />
               </Link>
             </div>
@@ -87,4 +87,3 @@ export default function Footer() {
     </footer>
   );
 }
-
