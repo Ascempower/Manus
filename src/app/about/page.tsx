@@ -33,11 +33,11 @@ export default function AboutPage() {
         <section className="mb-12 bg-brand-teal-blue/10 p-8 rounded-lg">
           <h2 className="text-3xl font-bold mb-6 text-brand-deep-forest-green font-poppins">Our Mission and Values</h2>
           <p className="text-lg text-brand-black/80 leading-relaxed mb-4">
-            <strong>Mission:</strong> To empower our clients to make informed insurance decisions by providing expert guidance, personalized service, and a comprehensive range of high-quality, affordable insurance products. We strive to build long-term relationships based on trust and a deep understanding of our clients&apos; evolving needs.
+            <strong>Mission:</strong> To empower our clients to make informed insurance decisions by providing expert guidance, personalized service, and a comprehensive range of high-quality, affordable insurance products. We strive to build long-term relationships based on trust and a deep understanding of our clients' evolving needs.
           </p>
           <ul className="list-disc list-inside text-lg text-brand-black/80 leading-relaxed space-y-2">
             <li><strong>Integrity:</strong> We conduct our business with the utmost honesty and ethical standards.</li>
-            <li><strong>Client-Centricity:</strong> Our clients&apos; needs and best interests are at the heart of everything we do.</li>
+            <li><strong>Client-Centricity:</strong> Our clients' needs and best interests are at the heart of everything we do.</li>
             <li><strong>Expertise:</strong> We are committed to continuous learning and staying abreast of industry changes to provide knowledgeable advice.</li>
             <li><strong>Choice:</strong> As an independent agency, we offer a wide selection of plans to ensure the best fit for each client.</li>
             <li><strong>Advocacy:</strong> We stand by our clients, especially during challenging times like claims processing or navigating complex coverage issues.</li>

@@ -8,9 +8,9 @@ function escapeEntitiesInText(text) {
   // This is a simplified approach and may need refinement for edge cases
   return text.replace(/>([^<]*?)</g, (match, p1) => {
     let replaced = p1
-      .replace(/&quot;/g, &apos;&quot;&apos;)
-      .replace(/&apos;/g, &apos;&apos;&apos;);
-    return &apos;>&apos; + replaced + &apos;<';
+      .replace(/"/g, '"')
+      .replace(/'/g, ''');
+    return '>' + replaced + '<';
   });
 }
 

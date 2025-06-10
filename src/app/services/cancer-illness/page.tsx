@@ -56,7 +56,7 @@ export default function CancerIllnessPage() {
         <ul className="list-disc list-inside text-lg text-gray-700 leading-relaxed space-y-2 mb-4">
           <li>Individuals with a family history of cancer or other critical illnesses.</li>
           <li>Those with high-deductible health plans who could face significant out-of-pocket costs.</li>
-          <li>Anyone concerned about the financial impact of a serious illness on their savings and family&apos;s stability.</li>
+          <li>Anyone concerned about the financial impact of a serious illness on their savings and family's stability.</li>
           <li>Primary income earners whose inability to work would severely affect household finances.</li>
         </ul>
       </section>
@@ -64,7 +64,7 @@ export default function CancerIllnessPage() {
       <section className="mb-12 bg-blue-50 p-8 rounded-lg">
         <h2 className="text-3xl font-semibold mb-4 text-gray-800">Choice Insurance Agency: Your Partner in Protection</h2>
         <p className="text-lg text-gray-700 leading-relaxed mb-4">
-          At Choice Insurance Agency, we understand the peace of mind that comes with knowing you have financial protection against life&apos;s most serious health challenges. Our dedicated agents will:
+          At Choice Insurance Agency, we understand the peace of mind that comes with knowing you have financial protection against life's most serious health challenges. Our dedicated agents will:
         </p>
         <ul className="list-disc list-inside text-lg text-gray-700 leading-relaxed space-y-2">
           <li>Help you understand the different types of cancer and catastrophic illness policies available.</li>

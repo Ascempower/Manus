@@ -8,8 +8,8 @@ import { toggleVariants } from "@/components/ui/toggle"
 const ToggleGroupContext = React.createContext<
   VariantProps<typeof toggleVariants>
 >({
-  size: &quot;default&quot;,
-  variant: &quot;default&quot;,
+  size: "default",
+  variant: "default",
 })
 
 const ToggleGroup = React.forwardRef<

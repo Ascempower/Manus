@@ -41,12 +41,12 @@ export default function HomePage() {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-brand-deep-forest-green font-poppins">Our Insurance Services</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[ 
-              { title: &quot;Medicare Solutions&quot;, description: &quot;Navigate Medicare with confidence. We offer Supplement, Advantage, and Part D plans.&quot;, href: &quot;/services/medicare-supplement&quot; },
-              { title: &quot;Life Insurance&quot;, description: &quot;Protect your loved ones with term, whole, and final expense life insurance.&quot;, href: &quot;/services/life-insurance&quot; },
-              { title: &quot;Health Coverage&quot;, description: &quot;Find the right individual or family health insurance plan to meet your needs.&quot;, href: &quot;/services/health-insurance&quot; },
-              { title: &quot;Hospital Indemnity&quot;, description: &quot;Get extra financial protection for hospital stays and related expenses.&quot;, href: &quot;/services/hospital-indemnity&quot; },
-              { title: &quot;Cancer & Illness Plans&quot;, description: &quot;Specialized plans to help manage costs associated with critical illnesses.&quot;, href: &quot;/services/cancer-illness&quot; },
-              { title: &quot;Annuities&quot;, description: &quot;Secure your retirement with reliable income streams through annuities.&quot;, href: &quot;/services/annuities&quot; },
+              { title: "Medicare Solutions", description: "Navigate Medicare with confidence. We offer Supplement, Advantage, and Part D plans.", href: "/services/medicare-supplement" },
+              { title: "Life Insurance", description: "Protect your loved ones with term, whole, and final expense life insurance.", href: "/services/life-insurance" },
+              { title: "Health Coverage", description: "Find the right individual or family health insurance plan to meet your needs.", href: "/services/health-insurance" },
+              { title: "Hospital Indemnity", description: "Get extra financial protection for hospital stays and related expenses.", href: "/services/hospital-indemnity" },
+              { title: "Cancer & Illness Plans", description: "Specialized plans to help manage costs associated with critical illnesses.", href: "/services/cancer-illness" },
+              { title: "Annuities", description: "Secure your retirement with reliable income streams through annuities.", href: "/services/annuities" },
             ].map((service) => (
               <Card key={service.title} className="bg-brand-white shadow-lg hover:shadow-xl transition-shadow duration-300 text-brand-black">
                 <CardHeader>
@@ -100,7 +100,7 @@ export default function HomePage() {
           <div className="max-w-2xl mx-auto bg-brand-white p-8 rounded-lg shadow-lg text-brand-black">
             <MessageSquare size={32} className="text-brand-teal-blue mb-4" />
             <blockquote className="text-lg italic text-brand-black/80 mb-6">
-              &quot;Choice Insurance made finding the right Medicare plan so easy! Their agent was knowledgeable and patient, answering all my questions. Highly recommend!&quot;
+              "Choice Insurance made finding the right Medicare plan so easy! Their agent was knowledgeable and patient, answering all my questions. Highly recommend!"
             </blockquote>
             <p className="text-right font-semibold text-brand-deep-forest-green">- Jane D., Illinois</p>
           </div>

@@ -49,7 +49,7 @@ const useFormField = () => {
   const fieldState = getFieldState(fieldContext.name, formState)
 
   if (!fieldContext) {
-    throw new Error(&quot;useFormField should be used within <FormField>&quot;)
+    throw new Error("useFormField should be used within <FormField>")
   }
 
   const { id } = itemContext
@@ -84,7 +84,7 @@ const FormItem = React.forwardRef<
     </FormItemContext.Provider>
   )
 })
-FormItem.displayName = &quot;FormItem&quot;
+FormItem.displayName = "FormItem"
 
 const FormLabel = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
@@ -101,7 +101,7 @@ const FormLabel = React.forwardRef<
     />
   )
 })
-FormLabel.displayName = &quot;FormLabel&quot;
+FormLabel.displayName = "FormLabel"
 
 const FormControl = React.forwardRef<
   React.ElementRef<typeof Slot>,
@@ -123,7 +123,7 @@ const FormControl = React.forwardRef<
     />
   )
 })
-FormControl.displayName = &quot;FormControl&quot;
+FormControl.displayName = "FormControl"
 
 const FormDescription = React.forwardRef<
   HTMLParagraphElement,
@@ -140,7 +140,7 @@ const FormDescription = React.forwardRef<
     />
   )
 })
-FormDescription.displayName = &quot;FormDescription&quot;
+FormDescription.displayName = "FormDescription"
 
 const FormMessage = React.forwardRef<
   HTMLParagraphElement,

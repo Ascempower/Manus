@@ -42,12 +42,12 @@ type Action =
       toast: Partial<ToasterToast>
     }
   | {
-      type: &quot;DISMISS_TOAST&quot;
-      toastId?: ToasterToast[&quot;id&quot;]
+      type: "DISMISS_TOAST"
+      toastId?: ToasterToast["id"]
     }
   | {
-      type: &quot;REMOVE_TOAST&quot;
-      toastId?: ToasterToast[&quot;id&quot;]
+      type: "REMOVE_TOAST"
+      toastId?: ToasterToast["id"]
     }
 
 interface State {
@@ -64,7 +64,7 @@ const addToRemoveQueue = (toastId: string) => {
   const timeout = setTimeout(() => {
     toastTimeouts.delete(toastId)
     dispatch({
-      type: &quot;REMOVE_TOAST&quot;,
+      type: "REMOVE_TOAST",
       toastId: toastId,
     })
   }, TOAST_REMOVE_DELAY)
@@ -74,13 +74,13 @@ const addToRemoveQueue = (toastId: string) => {
 
 export const reducer = (state: State, action: Action): State => {
   switch (action.type) {
-    case &quot;ADD_TOAST&quot;:
+    case "ADD_TOAST":
       return {
         ...state,
         toasts: [action.toast, ...state.toasts].slice(0, TOAST_LIMIT),
       }
 
-    case &quot;UPDATE_TOAST&quot;:
+    case "UPDATE_TOAST":
       return {
         ...state,
         toasts: state.toasts.map((t) =>
@@ -88,11 +88,11 @@ export const reducer = (state: State, action: Action): State => {
         ),
       }
 
-    case &quot;DISMISS_TOAST&quot;: {
+    case "DISMISS_TOAST": {
       const { toastId } = action
 
       // ! Side effects ! - This could be extracted into a dismissToast() action,
-      // but I&apos;ll keep it here for simplicity
+      // but I'll keep it here for simplicity
       if (toastId) {
         addToRemoveQueue(toastId)
       } else {
@@ -113,7 +113,7 @@ export const reducer = (state: State, action: Action): State => {
         ),
       }
     }
-    case &quot;REMOVE_TOAST&quot;:
+    case "REMOVE_TOAST":
       if (action.toastId === undefined) {
         return {
           ...state,
@@ -145,13 +145,13 @@ function toast({ ...props }: Toast) {
 
   const update = (props: ToasterToast) =>
     dispatch({
-      type: &quot;UPDATE_TOAST&quot;,
+      type: "UPDATE_TOAST",
       toast: { ...props, id },
     })
-  const dismiss = () => dispatch({ type: &quot;DISMISS_TOAST&quot;, toastId: id })
+  const dismiss = () => dispatch({ type: "DISMISS_TOAST", toastId: id })
 
   dispatch({
-    type: &quot;ADD_TOAST&quot;,
+    type: "ADD_TOAST",
     toast: {
       ...props,
       id,
