@@ -8,7 +8,7 @@ const Separator = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>
 >(
   (
-    { className, orientation = "horizontal", decorative = true, ...props },
+    { className, orientation = &quot;horizontal&quot;, decorative = true, ...props },
     ref
   ) => (
     <SeparatorPrimitive.Root

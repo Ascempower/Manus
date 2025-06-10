@@ -37,7 +37,7 @@ export default function LifeInsurancePage() {
           <h2 className="text-3xl font-bold mb-6 text-brand-deep-forest-green font-poppins">What is Life Insurance?</h2>
           <div className="space-y-4 text-lg text-brand-black/80 leading-relaxed font-poppins">
             <p>
-              Life insurance is a contract between you and an insurer, where the insurer promises to pay a designated beneficiary a sum of money (the "death benefit") upon the death of the insured person. In return, you agree to pay premiums over a specified period. Life insurance provides financial security for your loved ones, helping them cover expenses like funeral costs, mortgage payments, daily living expenses, and future educational needs.
+              Life insurance is a contract between you and an insurer, where the insurer promises to pay a designated beneficiary a sum of money (the &quot;death benefit&quot;) upon the death of the insured person. In return, you agree to pay premiums over a specified period. Life insurance provides financial security for your loved ones, helping them cover expenses like funeral costs, mortgage payments, daily living expenses, and future educational needs.
             </p>
             <p>
               There are various types of life insurance policies, primarily categorized into term life and permanent life (such as whole life or universal life). Choosing the right type depends on your individual financial goals, family needs, and budget.
@@ -51,20 +51,20 @@ export default function LifeInsurancePage() {
             <div>
               <h3 className="text-2xl font-bold text-brand-deep-forest-green font-poppins mb-3">Term Life Insurance</h3>
               <p className="text-lg text-brand-black/80 leading-relaxed font-poppins">
-                Term life insurance provides coverage for a specific period (the "term"), such as 10, 20, or 30 years. It is often the most affordable type of life insurance, designed to provide financial protection during critical years, like when you have young children or a mortgage. If you pass away during the term, your beneficiaries receive the death benefit. If the term expires and you are still living, the coverage ends unless you renew it (often at a higher premium) or convert it to a permanent policy.
+                Term life insurance provides coverage for a specific period (the &quot;term&quot;), such as 10, 20, or 30 years. It is often the most affordable type of life insurance, designed to provide financial protection during critical years, like when you have young children or a mortgage. If you pass away during the term, your beneficiaries receive the death benefit. If the term expires and you are still living, the coverage ends unless you renew it (often at a higher premium) or convert it to a permanent policy.
               </p>
             </div>
             <div>
               <h3 className="text-2xl font-bold text-brand-deep-forest-green font-poppins mb-3">Whole Life Insurance</h3>
               <p className="text-lg text-brand-black/80 leading-relaxed font-poppins">
-                Whole life insurance is a type of permanent life insurance that provides lifelong coverage as long as premiums are paid. It includes a death benefit and a cash value component that grows over time on a tax-deferred basis. You can borrow against the cash value or surrender the policy for its cash value. Premiums for whole life are typically higher than term life but remain level throughout the policy's life.
+                Whole life insurance is a type of permanent life insurance that provides lifelong coverage as long as premiums are paid. It includes a death benefit and a cash value component that grows over time on a tax-deferred basis. You can borrow against the cash value or surrender the policy for its cash value. Premiums for whole life are typically higher than term life but remain level throughout the policy&apos;s life.
               </p>
             </div>
           </div>
           <div className="mt-8">
               <h3 className="text-2xl font-bold text-brand-deep-forest-green font-poppins mb-3">Final Expense Insurance</h3>
               <p className="text-lg text-brand-black/80 leading-relaxed font-poppins">
-               Final expense insurance, also known as burial insurance, is a type of whole life insurance with smaller death benefits, typically ranging from $5,000 to $25,000 or more. It's designed to cover end-of-life expenses such as funeral costs, medical bills, and other outstanding debts, so your loved ones aren't burdened with these costs. These policies often have simplified underwriting, making them easier to qualify for, especially for seniors.
+               Final expense insurance, also known as burial insurance, is a type of whole life insurance with smaller death benefits, typically ranging from $5,000 to $25,000 or more. It&apos;s designed to cover end-of-life expenses such as funeral costs, medical bills, and other outstanding debts, so your loved ones aren&apos;t burdened with these costs. These policies often have simplified underwriting, making them easier to qualify for, especially for seniors.
               </p>
           </div>
         </section>
@@ -83,7 +83,7 @@ export default function LifeInsurancePage() {
               <li>Anyone wishing to leave a financial legacy or cover final expenses.</li>
             </ul>
             <p>
-              The amount of life insurance you need depends on your financial obligations, income, and long-term goals. It's wise to regularly review your coverage as your life circumstances change.
+              The amount of life insurance you need depends on your financial obligations, income, and long-term goals. It&apos;s wise to regularly review your coverage as your life circumstances change.
             </p>
           </div>
         </section>
@@ -104,9 +104,9 @@ export default function LifeInsurancePage() {
         </section>
 
         <section className="text-center py-12 bg-brand-deep-forest-green text-brand-white rounded-lg">
-          <h2 className="text-3xl font-bold mb-4 font-poppins">Secure Your Family's Future Today</h2>
+          <h2 className="text-3xl font-bold mb-4 font-poppins">Secure Your Family&apos;s Future Today</h2>
           <p className="text-lg text-brand-white/90 mb-8 max-w-xl mx-auto">
-            Don't wait to protect the ones you love. Contact us for a complimentary life insurance consultation and quote.
+            Don&apos;t wait to protect the ones you love. Contact us for a complimentary life insurance consultation and quote.
           </p>
           <Button size="lg" asChild className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black font-semibold">
             <Link href="/contact#book-a-call">Request a Consultation</Link>

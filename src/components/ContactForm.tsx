@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 export default function ContactForm() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    alert("Form submitted! (This is a demo - no data was actually sent)");
+    alert(&quot;Form submitted! (This is a demo - no data was actually sent)&quot;);
   };
 
   return (

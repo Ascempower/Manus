@@ -16,7 +16,7 @@ const AccordionItem = React.forwardRef<
     {...props}
   />
 ))
-AccordionItem.displayName = "AccordionItem"
+AccordionItem.displayName = &quot;AccordionItem&quot;
 
 const AccordionTrigger = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Trigger>,
@@ -26,7 +26,7 @@ const AccordionTrigger = React.forwardRef<
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
-        "flex flex-1 items-center justify-between py-4 text-sm font-medium transition-all hover:underline text-left [&[data-state=open]>svg]:rotate-180",
+        "flex flex-1 items-center justify-between py-4 text-sm font-medium transition-all hover:underline text-left [&[data-state=open]>svg]:rotate-180&quot;,
         className
       )}
       {...props}

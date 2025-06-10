@@ -14,7 +14,7 @@ const Drawer = ({
     {...props}
   />
 )
-Drawer.displayName = "Drawer"
+Drawer.displayName = &quot;Drawer&quot;
 
 const DrawerTrigger = DrawerPrimitive.Trigger
 
@@ -53,7 +53,7 @@ const DrawerContent = React.forwardRef<
     </DrawerPrimitive.Content>
   </DrawerPortal>
 ))
-DrawerContent.displayName = "DrawerContent"
+DrawerContent.displayName = &quot;DrawerContent&quot;
 
 const DrawerHeader = ({
   className,
@@ -64,7 +64,7 @@ const DrawerHeader = ({
     {...props}
   />
 )
-DrawerHeader.displayName = "DrawerHeader"
+DrawerHeader.displayName = &quot;DrawerHeader&quot;
 
 const DrawerFooter = ({
   className,
@@ -75,7 +75,7 @@ const DrawerFooter = ({
     {...props}
   />
 )
-DrawerFooter.displayName = "DrawerFooter"
+DrawerFooter.displayName = &quot;DrawerFooter&quot;
 
 const DrawerTitle = React.forwardRef<
   React.ElementRef<typeof DrawerPrimitive.Title>,

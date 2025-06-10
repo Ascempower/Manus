@@ -16,7 +16,7 @@ export default function TermsOfServicePage() {
       <p className="text-center text-gray-600 mb-8">Last Updated: {lastUpdated}</p>
 
       <p>
-        Welcome to Choice Insurance Agency! These Terms of Service ("Terms", "Terms of Service") govern your use of our website https://www.insureyourchoices.com (the "Service") operated by Choice Insurance Agency ("us", "we", or "our").
+        Welcome to Choice Insurance Agency! These Terms of Service (&quot;Terms&quot;, &quot;Terms of Service&quot;) govern your use of our website https://www.insureyourchoices.com (the &quot;Service&quot;) operated by Choice Insurance Agency (&quot;us&quot;, &quot;we&quot;, or &quot;our&quot;).
       </p>
       <p>
         Please read these Terms of Service carefully before using our Service. Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users, and others who access or use the Service.
@@ -35,7 +35,7 @@ export default function TermsOfServicePage() {
       <ul className="list-disc pl-6 space-y-2">
         <li>In any way that violates any applicable national or international law or regulation.</li>
         <li>For the purpose of exploiting, harming, or attempting to exploit or harm minors in any way by exposing them to inappropriate content or otherwise.</li>
-        <li>To transmit, or procure the sending of, any advertising or promotional material, including any "junk mail", "chain letter," "spam," or any other similar solicitation.</li>
+        <li>To transmit, or procure the sending of, any advertising or promotional material, including any &quot;junk mail&quot;, &quot;chain letter,&quot; &quot;spam,&quot; or any other similar solicitation.</li>
         <li>To impersonate or attempt to impersonate Choice Insurance Agency, a Choice Insurance Agency employee, another user, or any other person or entity.</li>
         <li>In any way that infringes upon the rights of others, or in any way is illegal, threatening, fraudulent, or harmful, or in connection with any unlawful, illegal, fraudulent, or harmful purpose or activity.</li>
         <li>To engage in any other conduct that restricts or inhibits anyone’s use or enjoyment of the Service, or which, as determined by us, may harm or offend Choice Insurance Agency or users of the Service or expose them to liability.</li>
@@ -56,7 +56,7 @@ export default function TermsOfServicePage() {
 
       <h2 className="text-2xl font-semibold mt-8 mb-4 text-gray-800">Disclaimer of Warranties; Limitation of Liability</h2>
       <p>
-        The Service is provided on an "AS IS" and "AS AVAILABLE" basis. Choice Insurance Agency makes no representations or warranties of any kind, express or implied, as to the operation of their services, or the information, content or materials included therein. You expressly agree that your use of these services, their content, and any services or items obtained from us is at your sole risk.
+        The Service is provided on an &quot;AS IS&quot; and &quot;AS AVAILABLE&quot; basis. Choice Insurance Agency makes no representations or warranties of any kind, express or implied, as to the operation of their services, or the information, content or materials included therein. You expressly agree that your use of these services, their content, and any services or items obtained from us is at your sole risk.
       </p>
       <p>
         Neither Choice Insurance Agency nor any person associated with Choice Insurance Agency makes any warranty or representation with respect to the completeness, security, reliability, quality, accuracy, or availability of the services. Without limiting the foregoing, neither Choice Insurance Agency nor anyone associated with Choice Insurance Agency represents or warrants that the services, their content, or any services or items obtained through the services will be accurate, reliable, error-free, or uninterrupted, that defects will be corrected, that the services or the server that makes it available are free of viruses or other harmful components or that the services or any services or items obtained through the services will otherwise meet your needs or expectations.
