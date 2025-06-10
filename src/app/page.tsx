@@ -100,8 +100,8 @@ export default function HomePage() {
           <div className="max-w-2xl mx-auto bg-brand-white p-8 rounded-lg shadow-lg text-brand-black">
             <MessageSquare size={32} className="text-brand-teal-blue mb-4" />
             <blockquote className="text-lg italic text-brand-black/80 mb-6">
-              "Choice Insurance made finding the right Medicare plan so easy! Their agent was knowledgeable and patient, answering all my questions. Highly recommend!"
-            </blockquote>
+  &quot;Choice Insurance made finding the right Medicare plan so easy! Their agent was knowledgeable and patient, answering all my questions. Highly recommend!&quot;
+</blockquote>
             <p className="text-right font-semibold text-brand-deep-forest-green">- Jane D., Illinois</p>
           </div>
           <div className="text-center mt-10">
