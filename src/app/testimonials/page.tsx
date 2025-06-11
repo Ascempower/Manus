@@ -1,11 +1,19 @@
+<<<<<<< HEAD
 ""
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
+=======
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { Button } from "@/components/ui/button";
+import TestimonialsCarousel from './TestimonialsCarousel';
+>>>>>>> origin/accessibility-improvements
 
 export const metadata: Metadata = {
   title: 'Client Testimonials - Choice Insurance Agency',
   description: 'Read what our clients say about their experience with Choice Insurance Agency. We are committed to providing excellent service and tailored insurance solutions.',
+<<<<<<< HEAD
 };
 
 const testimonials = [
@@ -42,6 +50,48 @@ const testimonials = [
 ];
 
 export default function TestimonialsPage() {
+=======
+  keywords: 'insurance testimonials, client reviews, Choice Insurance Agency reviews, insurance agency feedback, Medicare testimonials, life insurance testimonials',
+  alternates: {
+    canonical: 'https://choiceins.netlify.app/testimonials',
+  },
+};
+
+export default function TestimonialsPage() {
+  const testimonials = [
+    {
+      quote: "Choice Insurance made finding the right Medicare plan so easy! Their agent was knowledgeable and patient, answering all my questions. Highly recommend!",
+      name: "Ada T.",
+      location: "Illinois",
+      service: "Medicare Planning"
+    },
+    {
+      quote: "I was overwhelmed with life insurance options, but the team at Choice Insurance helped me understand everything and find an affordable policy that protects my family. Great service!",
+      name: "Derek E.",
+      location: "Georgia",
+      service: "Life Insurance"
+    },
+    {
+      quote: "Switching my health insurance was seamless thanks to Choice Insurance. They found me better coverage for a lower premium. I couldn't be happier.",
+      name: "Pearl L.",
+      location: "Texas",
+      service: "Health Insurance"
+    },
+    {
+      quote: "The peace of mind I have from my final expense plan is invaluable. The agent was compassionate and explained everything clearly. Thank you, Choice Insurance!",
+      name: "Clarence S.",
+      location: "Ohio",
+      service: "Final Expense Planning"
+    },
+    {
+      quote: "As a small business owner, finding the right employee benefits package was crucial. Choice Insurance provided expert advice and found us a great solution.",
+      name: "Mason L.",
+      location: "Kentucky",
+      service: "Employee Benefits"
+    }
+  ];
+
+>>>>>>> origin/accessibility-improvements
   return (
     <div className="bg-brand-white text-brand-black">
       {/* Page Header */}
@@ -54,6 +104,7 @@ export default function TestimonialsPage() {
         </div>
       </section>
 
+<<<<<<< HEAD
       {/* Testimonials Grid */}
       <section className="py-16">
         <div className="container mx-auto px-4">
@@ -73,6 +124,12 @@ export default function TestimonialsPage() {
               </div>
             ))}
           </div>
+=======
+      {/* Testimonials Carousel */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <TestimonialsCarousel testimonials={testimonials} />
+>>>>>>> origin/accessibility-improvements
         </div>
       </section>
 
@@ -81,7 +138,11 @@ export default function TestimonialsPage() {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6 font-poppins">Share Your Experience or Get in Touch!</h2>
           <p className="text-lg text-brand-white/90 mb-8 max-w-2xl mx-auto">
+<<<<<<< HEAD
             We value your feedback and are always here to help. If you have a story to share or need assistance with your insurance needs, please don’t hesitate to reach out.
+=======
+            We value your feedback and are always here to help. If you have a story to share or need assistance with your insurance needs, please don't hesitate to reach out.
+>>>>>>> origin/accessibility-improvements
           </p>
           <Button size="lg" asChild className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black font-semibold">
             <Link href="/contact">Contact Us Today</Link>
@@ -91,4 +152,7 @@ export default function TestimonialsPage() {
     </div>
   );
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/accessibility-improvements

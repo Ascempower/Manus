@@ -6,6 +6,10 @@ import { Button } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: 'Life Insurance Plans - Choice Insurance Agency',
   description: 'Protect your loved ones with tailored life insurance solutions including term life, whole life, and final expense plans from Choice Insurance Agency.',
+  keywords: 'life insurance, term life insurance, whole life insurance, final expense insurance, burial insurance, family protection, life insurance quotes, affordable life insurance, life insurance policy',
+  alternates: {
+    canonical: 'https://choiceins.netlify.app/services/life-insurance',
+  },
 };
 
 export default function LifeInsurancePage() {
@@ -116,4 +120,3 @@ export default function LifeInsurancePage() {
     </div>
   );
 }
-

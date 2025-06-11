@@ -1,101 +1,148 @@
-import Link from "next/link";
-import type { Metadata } from 'next';
+import React from 'react';
+import { Metadata } from 'next';
+import Link from 'next/link';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
-  title: 'Blog - Choice Insurance Agency',
-  description: 'Read the latest news, tips, and insights on insurance from Choice Insurance Agency.',
+  title: 'Insurance Blog | Choice Insurance Agency',
+  description: 'Stay informed with the latest insurance insights, tips, and industry updates from Choice Insurance Agency. Expert advice on Medicare, life insurance, health insurance, and more.',
+  keywords: 'insurance blog, Medicare, life insurance, health insurance, insurance tips, Choice Insurance',
 };
-
-// Placeholder data for blog posts
-const blogPosts = [
-  {
-    slug: "understanding-medicare-part-d",
-    title: "Understanding Medicare Part D: Prescription Drug Coverage",
-    date: "May 10, 2025",
-    excerpt: "Medicare Part D can be confusing. This post breaks down what it covers, how to enroll, and tips for choosing the right plan for your prescription needs.",
-    imageUrl: "/images/blog/placeholder-1.jpg", // Replace with actual image path
-  },
-  {
-    slug: "top-5-questions-about-life-insurance",
-    title: "Top 5 Questions to Ask When Buying Life Insurance",
-    date: "May 3, 2025",
-    excerpt: "Buying life insurance is a big decision. We cover the most important questions you should ask your agent to ensure you get the best policy for your family.",
-    imageUrl: "/images/blog/placeholder-2.jpg", // Replace with actual image path
-  },
-  {
-    slug: "navigating-open-enrollment",
-    title: "Navigating Health Insurance Open Enrollment: A Simple Guide",
-    date: "April 25, 2025",
-    excerpt: "Open enrollment season is here! Learn how to prepare, compare plans, and make the most of this period to secure your health coverage for the upcoming year.",
-    imageUrl: "/images/blog/placeholder-3.jpg", // Replace with actual image path
-  },
-];
 
 export default function BlogPage() {
   return (
-    <div className="bg-brand-white text-brand-black">
-      {/* Page Header */}
-      <section className="py-12 bg-brand-teal-blue/20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-brand-deep-forest-green font-poppins">Our Blog</h1>
-          <p className="text-lg text-brand-black/80 mt-4 max-w-2xl mx-auto">
-            Stay informed with the latest news, tips, and insights on health, life, and Medicare insurance from the experts at Choice Insurance Agency.
+    <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-bold text-gray-900 mb-4">Insurance Insights Blog</h1>
+        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          Stay informed with the latest insurance news, tips, and expert advice from Choice Insurance Agency
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* May 2025 Blog Post */}
+        <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
+          <div className="relative h-48 w-full">
+            <Image 
+              src="/images/blog/health-insurance-changes-2025.jpg" 
+              alt="Doctor explaining healthcare policy changes to patient" 
+              fill
+              className="object-cover"
+            />
+          </div>
+          <div className="p-6">
+            <p className="text-sm text-gray-500 mb-2">May 7, 2025</p>
+            <h2 className="text-xl font-bold mb-2 text-gray-900">Key Health Insurance Changes to Watch for in 2025</h2>
+            <p className="text-gray-600 mb-4">
+              Explore major health insurance developments in 2025 including telehealth expansion, preventive care benefits, prescription drug reforms, and mental health coverage improvements.
+            </p>
+            <Link 
+              href="/blog/posts/may-2025-health-insurance-changes" 
+              className="text-brand-warm-beige-coral hover:text-brand-warm-beige-coral/80 font-semibold inline-flex items-center"
+            >
+              Read More
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+
+        {/* April 2025 Blog Post */}
+        <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
+          <div className="relative h-48 w-full">
+            <Image 
+              src="/images/blog/family-life-insurance-2025.jpg" 
+              alt="Family discussing life insurance options" 
+              fill
+              className="object-cover"
+            />
+          </div>
+          <div className="p-6">
+            <p className="text-sm text-gray-500 mb-2">April 3, 2025</p>
+            <h2 className="text-xl font-bold mb-2 text-gray-900">Understanding Life Insurance Options in 2025: A Complete Guide</h2>
+            <p className="text-gray-600 mb-4">
+              Explore life insurance options for 2025 including term vs. whole life, policy riders, and how to choose the right coverage for your family's financial security.
+            </p>
+            <Link 
+              href="/blog/posts/april-2025-understanding-life-insurance" 
+              className="text-brand-warm-beige-coral hover:text-brand-warm-beige-coral/80 font-semibold inline-flex items-center"
+            >
+              Read More
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+
+        {/* March 2025 Blog Post */}
+        <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
+          <div className="relative h-48 w-full">
+            <Image 
+              src="/images/blog/medicare-comparison-2025.jpg" 
+              alt="Medicare Advantage vs Medicare Supplement comparison" 
+              fill
+              className="object-cover"
+            />
+          </div>
+          <div className="p-6">
+            <p className="text-sm text-gray-500 mb-2">March 5, 2025</p>
+            <h2 className="text-xl font-bold mb-2 text-gray-900">Medicare Advantage vs. Medicare Supplement: Which is Right for You in 2025?</h2>
+            <p className="text-gray-600 mb-4">
+              Compare Medicare Advantage and Medicare Supplement plans for 2025. Learn about costs, provider networks, prescription coverage, and which option might be best for your healthcare needs.
+            </p>
+            <Link 
+              href="/blog/posts/march-2025-medicare-advantage-vs-supplement" 
+              className="text-brand-warm-beige-coral hover:text-brand-warm-beige-coral/80 font-semibold inline-flex items-center"
+            >
+              Read More
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-16 text-center">
+        <h2 className="text-2xl font-bold text-gray-900 mb-6">Subscribe to Our Insurance Newsletter</h2>
+        <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+          Stay updated with the latest insurance trends, tips, and exclusive offers delivered straight to your inbox.
+        </p>
+        <div className="max-w-md mx-auto">
+          <div className="flex flex-col sm:flex-row gap-2">
+            <input
+              type="email"
+              placeholder="Your email address"
+              className="flex-grow px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-warm-beige-coral"
+            />
+            <button className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-white font-semibold py-2 px-6 rounded-md">
+              Subscribe
+            </button>
+          </div>
+          <p className="text-xs text-gray-500 mt-2">
+            We respect your privacy. Unsubscribe at any time.
           </p>
         </div>
-      </section>
+      </div>
 
-      {/* Blog Posts Grid */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          {blogPosts.length > 0 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {blogPosts.map((post) => (
-                <Link key={post.slug} href={`/blog/${post.slug}`} className="block group">
-                  <div className="bg-brand-white rounded-lg shadow-lg overflow-hidden h-full flex flex-col border border-brand-teal-blue/30 hover:shadow-xl transition-shadow duration-300">
-                    {/* Placeholder for image - In a real app, you would use Next/Image */}
-                    <div className="w-full h-48 bg-brand-teal-blue/30 flex items-center justify-center text-brand-deep-forest-green">
-                      {/* <img src={post.imageUrl} alt={post.title} className="w-full h-full object-cover" /> */}
-                      <span>Blog Post Image</span> {/* Placeholder text */}
-                    </div>
-                    <div className="p-6 flex flex-col flex-grow">
-                      <h2 className="text-2xl font-bold mb-2 text-brand-deep-forest-green font-poppins group-hover:text-brand-teal-blue transition-colors duration-300">{post.title}</h2>
-                      <p className="text-sm text-brand-black/70 mb-1">{post.date}</p>
-                      <p className="text-brand-black/80 mb-4 flex-grow">{post.excerpt}</p>
-                      <span className="mt-auto text-brand-warm-beige-coral font-semibold group-hover:underline">
-                        Read More &rarr;
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-12">
-              <h2 className="text-2xl font-bold text-brand-deep-forest-green mb-4">Coming Soon!</h2>
-              <p className="text-lg text-brand-black/80">
-                We are working on bringing you insightful articles. Please check back later.
-              </p>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* CTA Section (Optional, can be similar to other pages) */}
-      <section className="py-16 bg-brand-deep-forest-green text-brand-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6 font-poppins">Have Questions or Need Insurance Advice?</h2>
-          <p className="text-lg text-brand-white/90 mb-8 max-w-2xl mx-auto">
-            Our experienced agents are ready to help you find the best coverage solutions tailored to your needs.
+      <div className="mt-16 bg-gray-50 rounded-lg p-8">
+        <div className="text-center mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">Have Insurance Questions?</h2>
+          <p className="text-gray-600">
+            Our insurance experts are ready to provide personalized guidance for your specific needs.
           </p>
+        </div>
+        <div className="text-center">
           <Link 
-            href="/contact#book-a-call" 
-            className="inline-block bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black font-semibold py-3 px-8 rounded-lg text-lg transition duration-300 ease-in-out transform hover:scale-105"
+            href="https://calendly.com/choiceinsuranceagency/30-minute-meeting" 
+            className="inline-block bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-white font-semibold py-3 px-8 rounded-md"
           >
             Book a Free Consultation
           </Link>
         </div>
-      </section>
+      </div>
     </div>
   );
 }
-

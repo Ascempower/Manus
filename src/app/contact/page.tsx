@@ -7,6 +7,10 @@ import ContactForm from "@/components/ContactForm";
 export const metadata: Metadata = {
   title: 'Contact Us - Choice Insurance Agency',
   description: 'Get in touch with Choice Insurance Agency for expert advice on Medicare, life, and health insurance. Book a consultation or request a quote today.',
+  keywords: 'insurance contact, insurance consultation, insurance quote, Choice Insurance Agency contact, insurance agency phone number, insurance agency email',
+  alternates: {
+    canonical: 'https://choiceins.netlify.app/contact',
+  },
 };
 
 export default function ContactPage() {
@@ -81,8 +85,8 @@ export default function ContactPage() {
             Schedule a free, no-obligation consultation with one of our expert insurance advisors at your convenience. We can discuss your needs and help you find the perfect plan.
           </p>
           <Button size="lg" asChild className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black font-semibold">
-            {/* Ensure this link is correct and working as intended */}
-            <a href="https://calendly.com/choiceinsureyourchoices/consultation" target="_blank" rel="noopener noreferrer">Book Your Free Consultation Now</a>
+            {/* Updated to the correct Calendly link */}
+            <a href="https://calendly.com/choiceinsuranceagency/30-minute-meeting" target="_blank" rel="noopener noreferrer">Book Your Free Consultation Now</a>
           </Button>
           <p className="text-sm text-brand-white/70 mt-4">(You will be redirected to our scheduling partner)</p>
         </div>
@@ -90,4 +94,3 @@ export default function ContactPage() {
     </div>
   );
 }
-
