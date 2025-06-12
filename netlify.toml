@@ -1,4 +1,4 @@
-[build]
+[[build]
   command = "pnpm install --no-frozen-lockfile && npm run build"
   publish = ".next"
 
@@ -10,7 +10,12 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# For Next.js on Netlify, you typically do NOT need a catch-all redirect to index.html.
+# The plugin handles routing for you.
+# If you are using static export (next export), then the redirect may be needed,
+# but for SSR/ISR, remove the following block:
+
+# [[redirects]]
+#   from = "/*"
+#   to = "/index.html"
+#   status = 200
