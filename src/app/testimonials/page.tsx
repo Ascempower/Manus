@@ -1,19 +1,19 @@
-<<<<<<< HEAD
+ HEAD
 ""
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
+import TestimonialsCarousel from './TestimonialsCarousel';
 =======
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import TestimonialsCarousel from './TestimonialsCarousel';
->>>>>>> origin/accessibility-improvements
+ origin/accessibility-improvements
 
 export const metadata: Metadata = {
   title: 'Client Testimonials - Choice Insurance Agency',
-  description: 'Read what our clients say about their experience with Choice Insurance Agency. We are committed to providing excellent service and tailored insurance solutions.',
-<<<<<<< HEAD
+  description: 'Read what our clients say about their experience with Choice Insurance Agency. We are committed to providing excellent service and tailored insurance solutions.', HEAD
 };
 
 const testimonials = [
@@ -91,7 +91,7 @@ export default function TestimonialsPage() {
     }
   ];
 
->>>>>>> origin/accessibility-improvements
+ origin/accessibility-improvements
   return (
     <div className="bg-brand-white text-brand-black">
       {/* Page Header */}
@@ -104,7 +104,7 @@ export default function TestimonialsPage() {
         </div>
       </section>
 
-<<<<<<< HEAD
+ HEAD
       {/* Testimonials Grid */}
       <section className="py-16">
         <div className="container mx-auto px-4">
@@ -129,7 +129,7 @@ export default function TestimonialsPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <TestimonialsCarousel testimonials={testimonials} />
->>>>>>> origin/accessibility-improvements
+ origin/accessibility-improvements
         </div>
       </section>
 
@@ -138,11 +138,11 @@ export default function TestimonialsPage() {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6 font-poppins">Share Your Experience or Get in Touch!</h2>
           <p className="text-lg text-brand-white/90 mb-8 max-w-2xl mx-auto">
-<<<<<<< HEAD
+HEAD
             We value your feedback and are always here to help. If you have a story to share or need assistance with your insurance needs, please don’t hesitate to reach out.
 =======
             We value your feedback and are always here to help. If you have a story to share or need assistance with your insurance needs, please don't hesitate to reach out.
->>>>>>> origin/accessibility-improvements
+origin/accessibility-improvements
           </p>
           <Button size="lg" asChild className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black font-semibold">
             <Link href="/contact">Contact Us Today</Link>
@@ -152,7 +152,7 @@ export default function TestimonialsPage() {
     </div>
   );
 }
-<<<<<<< HEAD
+ HEAD
 
 =======
->>>>>>> origin/accessibility-improvements
+ origin/accessibility-improvements
