@@ -1,6 +1,3 @@
-Merge branch 'origin/accessibility-improvements' into main
-Resolved merge conflicts in next.config.js and pnpm-lock.yaml
-
 /** @type {import("next").NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -15,4 +12,4 @@ const nextConfig = {
   // any other configurations can go here
 };
 
-module.exports = nextConfig;
+export default nextConfig;

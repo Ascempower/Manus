@@ -1,20 +1,3 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/page": "app/page.js",
-  "/about/page": "app/about/page.js",
-  "/faq/page": "app/faq/page.js",
-  "/blog/page": "app/blog/page.js",
-  "/contact/page": "app/contact/page.js",
-  "/privacy-policy/page": "app/privacy-policy/page.js",
-  "/accessibility-statement/page": "app/accessibility-statement/page.js",
-  "/services/health-insurance/page": "app/services/health-insurance/page.js",
-  "/services/annuities/page": "app/services/annuities/page.js",
-  "/services/hospital-indemnity/page": "app/services/hospital-indemnity/page.js",
-  "/services/medicare-supplement/page": "app/services/medicare-supplement/page.js",
-  "/services/page": "app/services/page.js",
-  "/services/life-insurance/page": "app/services/life-insurance/page.js",
-  "/testimonials/page": "app/testimonials/page.js",
-  "/services/cancer-illness/page": "app/services/cancer-illness/page.js",
-  "/terms-of-service/page": "app/terms-of-service/page.js",
-  "/services/final-expense/page": "app/services/final-expense/page.js"
+  "/page": "app/page.js"
 }
