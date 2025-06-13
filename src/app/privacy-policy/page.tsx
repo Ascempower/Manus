@@ -99,7 +99,7 @@ export default function PrivacyPolicyPage() {
       </p>
       <ul className="list-disc pl-6 space-y-2">
         <li>By email: <a href="mailto:info@choiceinsurancehub.com" className="text-blue-600 hover:underline">info@choiceinsurancehub.com</a></li>
-        <li>By phone number: (877) 204-9648</li>
+        <li>By phone number: (877) 414-2319</li>
         <li>Through our <Link href="/contact" className="text-blue-600 hover:underline">Contact Page</Link></li>
       </ul>
     </div>

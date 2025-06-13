@@ -12,14 +12,14 @@ export function generateStaticParams() {
 }
 
 // Generate metadata for each blog post
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const { slug } = params;
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
   
   // Define metadata based on slug
   if (slug === 'march-2025-medicare-advantage-vs-supplement') {
     return {
       title: 'Medicare Advantage vs. Medicare Supplement: Which is Right for You in 2025? | Choice Insurance',
-      description: 'Compare Medicare Advantage and Medicare Supplement plans for 2025. Expert analysis of costs, provider networks, and coverage options from Choice Insurance Agency.',
+      description: 'Compare Medicare Advantage and Medicare Supplement plans for 2025. Expert analysis of costs, provider networks, and coverage options from Choice Insurance Hub.',
       keywords: 'Medicare Advantage, Medicare Supplement, Medigap, Medicare comparison, Medicare 2025, Choice Insurance, Medicare options',
       alternates: {
         canonical: `https://insureyourchoices.com/blog/posts/${slug}`
@@ -49,8 +49,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   
   // Default metadata if slug doesn't match
   return {
-    title: 'Insurance Blog | Choice Insurance Agency',
-    description: 'Expert insurance insights and advice from Choice Insurance Agency specialists.',
+    title: 'Insurance Blog | Choice Insurance Hub',
+    description: 'Expert insurance insights and advice from Choice Insurance Hub specialists.',
     alternates: {
       canonical: `https://insureyourchoices.com/blog/posts/${slug}`
     }
@@ -58,9 +58,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 // Define the page component
-export default function BlogPost({ params }: { params: { slug: string } }) {
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
   // Access params.slug directly as a string
-  const { slug } = params;
+  const { slug } = await params;
   
   // Content for March 2025 Medicare post
   if (slug === 'march-2025-medicare-advantage-vs-supplement') {
@@ -98,13 +98,13 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
             <h2>Understanding the Basics</h2>
             
             <p>
-              At Choice Insurance Agency, we help you navigate these complex options to find the right coverage for your needs.
+              At Choice Insurance Hub, we help you navigate these complex options to find the right coverage for your needs.
             </p>
             
             <div className="bg-gray-100 p-6 rounded-lg my-8">
               <h3 className="text-xl font-bold mb-4">Need Help Deciding?</h3>
               <p className="mb-4">
-                Our Medicare specialists at Choice Insurance Agency can help you navigate your options and find the plan that best meets your needs and budget.
+                Our Medicare specialists at Choice Insurance Hub can help you navigate your options and find the plan that best meets your needs and budget.
               </p>
               <Link 
                 href="/contact" 

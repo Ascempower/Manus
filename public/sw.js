@@ -1,4 +1,4 @@
-// Service Worker for Choice Insurance Agency
+// Service Worker for Choice Insurance Hub
 const CACHE_NAME = 'choice-insurance-cache-v1';
 const urlsToCache = [
   '/',

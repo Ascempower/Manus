@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/button";
 import TestimonialsCarousel from './TestimonialsCarousel';
 
 export const metadata: Metadata = {
-  title: 'Client Testimonials - Choice Insurance Agency',
-  description: 'Read what our clients say about their experience with Choice Insurance Agency. We are committed to providing excellent service and tailored insurance solutions.',
-  keywords: 'insurance testimonials, client reviews, Choice Insurance Agency reviews, insurance agency feedback, Medicare testimonials, life insurance testimonials',
+  title: 'Client Testimonials - Choice Insurance Hub',
+  description: 'Read what our clients say about their experience with Choice Insurance Hub. We are committed to providing excellent service and tailored insurance solutions.',
+  keywords: 'insurance testimonials, client reviews, Choice Insurance Hub reviews, insurance agency feedback, Medicare testimonials, life insurance testimonials',
   alternates: {
     canonical: 'https://choiceins.netlify.app/testimonials',
   },
@@ -53,7 +53,7 @@ export default function TestimonialsPage() {
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-brand-deep-forest-green font-poppins">What Our Clients Say</h1>
           <p className="text-lg text-brand-black/80 mt-4 max-w-3xl mx-auto">
-            At Choice Insurance Agency, client satisfaction is our top priority. We are proud to have helped numerous individuals and families secure the right insurance coverage for their needs. Read some of their experiences below.
+            At Choice Insurance Hub, client satisfaction is our top priority. We are proud to have helped numerous individuals and families secure the right insurance coverage for their needs. Read some of their experiences below.
           </p>
         </div>
       </section>

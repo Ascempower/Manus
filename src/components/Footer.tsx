@@ -59,10 +59,10 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-bold text-brand-white mb-4 font-poppins">Contact Information</h3>
             <address className="not-italic space-y-2 text-sm text-brand-white/80">
-              <p>Choice Insurance Agency</p>
+              <p>Choice Insurance Hub</p>
               <p>200 E 3rd<br />Alton IL 62002</p>
-              <p>Phone: <a href="tel:8772049648" className="hover:text-brand-teal-blue">(877) 204-9648</a></p>
-              <p>Email: <a href="mailto:a.campbell@insureyourchoices.com" className="hover:text-brand-teal-blue">a.campbell@insureyourchoices.com</a></p>
+              <p>Phone: <a href="tel:8774142319" className="hover:text-brand-teal-blue">(877) 414-2319</a></p>
+              <p>Email: <a href="mailto:info@choiceinsurancehub.com" className="hover:text-brand-teal-blue">info@choiceinsurancehub.com</a></p>
             </address>
           </div>
         </div>

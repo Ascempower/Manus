@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service - Choice Insurance Agency',
-  description: 'Read the Terms of Service for using the Choice Insurance Agency website and services.',
+  title: 'Terms of Service - Choice Insurance Hub',
+  description: 'Read the Terms of Service for using the Choice Insurance Hub website and services.',
 };
 
 export default function TermsOfServicePage() {
@@ -16,7 +16,7 @@ export default function TermsOfServicePage() {
       <p className="text-center text-gray-600 mb-8">Last Updated: {lastUpdated}</p>
 
       <p>
-        Welcome to Choice Insurance Agency! These Terms of Service ("Terms", "Terms of Service") govern your use of our website https://www.insureyourchoices.com (the "Service") operated by Choice Insurance Agency ("us", "we", or "our").
+        Welcome to Choice Insurance Hub! These Terms of Service ("Terms", "Terms of Service") govern your use of our website https://www.insureyourchoices.com (the "Service") operated by Choice Insurance Hub ("us", "we", or "our").
       </p>
       <p>
         Please read these Terms of Service carefully before using our Service. Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users, and others who access or use the Service.
@@ -27,7 +27,7 @@ export default function TermsOfServicePage() {
 
       <h2 className="text-2xl font-semibold mt-8 mb-4 text-gray-800">Use of Our Service</h2>
       <p>
-        Choice Insurance Agency provides information about insurance products and services. The information provided on this Service is for general informational purposes only and does not constitute professional financial or insurance advice. You should consult with a qualified professional before making any decisions based on the information provided on this Service.
+        Choice Insurance Hub provides information about insurance products and services. The information provided on this Service is for general informational purposes only and does not constitute professional financial or insurance advice. You should consult with a qualified professional before making any decisions based on the information provided on this Service.
       </p>
       <p>
         You agree not to use the Service:
@@ -90,7 +90,7 @@ export default function TermsOfServicePage() {
       </p>
       <ul className="list-disc pl-6 space-y-2">
         <li>By email: <a href="mailto:info@choiceinsurancehub.com" className="text-blue-600 hover:underline">info@choiceinsurancehub.com</a></li>
-        <li>By phone number: (877) 204-9648</li>
+        <li>By phone number: (877) 414-2319</li>
         <li>Through our <Link href="/contact" className="text-blue-600 hover:underline">Contact Page</Link></li>
       </ul>
     </div>
