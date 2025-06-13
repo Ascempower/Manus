@@ -7,8 +7,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>{children}</body>
 =======
 export const metadata: Metadata = {
-  title: "Choice Insurance Agency - Health, Life & Medicare - Choice Insurance", // Added keyword
-  description: "Your trusted partner for Medicare, Life & Health insurance with Choice Insurance in IL, GA, TX, AL, OH, KY, MS, SC. Personalized plans and expert guidance.", // Added keyword
+  title: "Choice Insurance Agency - Expert Health, Life & Medicare Insurance Solutions",
+  description: "Your trusted partner for Medicare, Life & Health insurance with Choice Insurance in IL, GA, TX, AL, OH, KY, MS, SC. Personalized plans and expert guidance for all your insurance needs.",
+  keywords: "Choice Insurance, Medicare, Life Insurance, Health Insurance, Insurance Agency, Medicare Supplement, Medicare Advantage, Final Expense, Annuities",
+  authors: [{ name: "Choice Insurance Agency" }],
+  creator: "Choice Insurance Agency",
+  publisher: "Choice Insurance Agency",
+  formatDetection: {
+    email: true,
+    address: true,
+    telephone: true,
+  },
   icons: {
     icon: '/images/favicon.png',
     apple: '/icons/apple-touch-icon.png',

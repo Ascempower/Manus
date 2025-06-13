@@ -4,12 +4,21 @@ import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
+<<<<<<< HEAD
   title: 'Our Insurance Services - Choice Insurance Agency',
   description: 'Explore comprehensive insurance solutions including Medicare, life insurance, health coverage, and more from Choice Insurance Agency.',
   keywords: 'insurance services, Medicare Supplement, Hospital Indemnity, Cancer Insurance, Life Insurance, Final Expense, Annuities, Health Insurance, Choice Insurance Agency',
   alternates: {
     canonical: 'https://choiceins.netlify.app/services',
   },
+=======
+  title: 'Insurance Services | Choice Insurance Agency - Medicare, Life & Health',
+  description: 'Explore comprehensive insurance solutions from Choice Insurance Agency including Medicare Supplement, Life Insurance, Health Coverage, Final Expense, and more. Expert guidance for IL, GA, TX, AL, OH, KY, MS, SC residents.',
+  keywords: 'Choice Insurance services, Medicare Supplement, Life Insurance, Health Insurance, Final Expense, Cancer Insurance, Annuities, Hospital Indemnity, insurance solutions',
+  alternates: {
+    canonical: "https://insureyourchoices.com/services"
+  }
+>>>>>>> origin/fix-dynamic-route-types
 };
 
 const services = [
