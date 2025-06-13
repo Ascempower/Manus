@@ -20,7 +20,7 @@ export default function ContactForm() {
     const formData = new FormData(event.currentTarget);
     
     try {
-      const response = await fetch("https://formspree.io/f/info@insureyourchoices.com", {
+      const response = await fetch("https://formspree.io/f/info@choiceinsurancehub.com", {
         method: "POST",
         body: formData,
         headers: {
@@ -51,7 +51,7 @@ export default function ContactForm() {
       
       {submitError && (
         <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
-          There was an error sending your message. Please try again or contact us directly at info@insureyourchoices.com.
+          There was an error sending your message. Please try again or contact us directly at info@choiceinsurancehub.com.
         </div>
       )}
       

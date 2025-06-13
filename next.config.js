@@ -10,6 +10,9 @@ const nextConfig = {
   // Ensure output is configured for static export
   output: 'export',
   // any other configurations can go here
+
+  // Output setting removed to enable API routes and SSR
+ origin/netlify-build-fix
 };
 
 export default nextConfig;
