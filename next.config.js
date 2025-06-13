@@ -12,7 +12,6 @@ const nextConfig = {
   // any other configurations can go here
 
   // Output setting removed to enable API routes and SSR
- origin/netlify-build-fix
 };
 
 export default nextConfig;
