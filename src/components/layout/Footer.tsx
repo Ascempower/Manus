@@ -1,29 +1,47 @@
 import Link from "next/link";
 import { Facebook, Instagram } from "lucide-react";
 
-export default function Footer() {
+export default function Footer({ className = "" }) {
   const currentYear = new Date().getFullYear();
-  const disclaimerText = "Not affiliated with or endorsed by any government agency. This is a solicitation for insurance. By contacting us by one of the methods above you are agreeing to discuss the insurance products listed. We do not offer every plan available in your area. Currently, we represent 10 organizations, which offer 72 products in your area. Please contact Medicare.gov, 1-800-MEDICARE, or your local State Health Insurance Program to get information on all your options.";
+  const disclaimerText =
+    "Not affiliated with or endorsed by any government agency. This is a solicitation for insurance. By contacting us by one of the methods above you are agreeing to discuss the insurance products listed. We do not offer every plan available in your area. Currently, we represent 10 organizations, which offer 72 products in your area. Please contact Medicare.gov, 1-800-MEDICARE, or your local State Health Insurance Program to get information on all your options.";
 
   return (
-    <footer className="bg-brand-deep-forest-green text-brand-white py-12">
+    <footer className={`bg-brand-black text-brand-white py-12 ${className}`}>
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-8">
+        {/* Main footer grid */}
+        <div className="grid md:grid-cols-4 gap-8 mb-12">
           {/* Logo and About */}
           <div>
             <Link href="/" className="mb-4 inline-block">
-              <img src="/assets/logos/main-logo-orange.png" alt="Choice Insurance Agency Logo" style={{ width: '150px', height: 'auto' }} />
+              <img
+                src="/assets/logos/main-logo-orange.png"
+                alt="Choice Insurance Agency Logo"
+                style={{ width: "150px", height: "auto" }}
+              />
             </Link>
             <p className="text-sm mb-4 text-brand-white/80">
               Your trusted partner for health, life, and Medicare insurance solutions. Helping you make informed choices for a secure future.
             </p>
             {/* Social Media Icons */}
             <div className="flex space-x-4">
-              <Link href="https://www.facebook.com/profile.php?id=100093359186285" target="_blank" rel="noopener noreferrer" className="text-brand-teal-blue-dark hover:text-brand-white" aria-label="Visit our Facebook page">
+              <Link
+                href="https://www.facebook.com/profile.php?id=100093359186285"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand-teal-blue-dark hover:text-brand-white"
+                aria-label="Visit our Facebook page"
+              >
                 <Facebook size={24} aria-hidden="true" />
                 <span className="sr-only">Facebook</span>
               </Link>
-              <Link href="https://www.instagram.com/choice2day/" target="_blank" rel="noopener noreferrer" className="text-brand-teal-blue-dark hover:text-brand-white" aria-label="Visit our Instagram page">
+              <Link
+                href="https://www.instagram.com/choice2day/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand-teal-blue-dark hover:text-brand-white"
+                aria-label="Visit our Instagram page"
+              >
                 <Instagram size={24} aria-hidden="true" />
                 <span className="sr-only">Instagram</span>
               </Link>
@@ -34,12 +52,36 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-bold text-brand-white mb-4 font-poppins">Quick Links</h3>
             <ul className="space-y-2">
-              <li><Link href="/" className="text-brand-white/80 hover:text-brand-teal-blue-dark">Home</Link></li>
-              <li><Link href="/about" className="text-brand-white/80 hover:text-brand-teal-blue-dark">About Us</Link></li>
-              <li><Link href="/services" className="text-brand-white/80 hover:text-brand-teal-blue-dark">Services</Link></li>
-              <li><Link href="/blog" className="text-brand-white/80 hover:text-brand-teal-blue-dark">Blog</Link></li>
-              <li><Link href="/faq" className="text-brand-white/80 hover:text-brand-teal-blue-dark">FAQ</Link></li>
-              <li><Link href="/contact" className="text-brand-white/80 hover:text-brand-teal-blue-dark">Contact Us</Link></li>
+              <li>
+                <Link href="/" className="text-brand-white/80 hover:text-brand-teal-blue-dark">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="text-brand-white/80 hover:text-brand-teal-blue-dark">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="text-brand-white/80 hover:text-brand-teal-blue-dark">
+                  Services
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog" className="text-brand-white/80 hover:text-brand-teal-blue-dark">
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link href="/faq" className="text-brand-white/80 hover:text-brand-teal-blue-dark">
+                  FAQ
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-brand-white/80 hover:text-brand-teal-blue-dark">
+                  Contact Us
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -47,11 +89,31 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-bold text-brand-white mb-4 font-poppins">Our Services</h3>
             <ul className="space-y-2">
-              <li><Link href="/services/medicare-supplement" className="text-brand-white/80 hover:text-brand-teal-blue-dark">Medicare Supplement</Link></li>
-              <li><Link href="/services/life-insurance" className="text-brand-white/80 hover:text-brand-teal-blue-dark">Life Insurance</Link></li>
-              <li><Link href="/services/health-insurance" className="text-brand-white/80 hover:text-brand-teal-blue-dark">Health Insurance</Link></li>
-              <li><Link href="/services/final-expense" className="text-brand-white/80 hover:text-brand-teal-blue-dark">Final Expense</Link></li>
-              <li><Link href="/services/annuities" className="text-brand-white/80 hover:text-brand-teal-blue-dark">Annuities</Link></li>
+              <li>
+                <Link href="/services/medicare-supplement" className="text-brand-white/80 hover:text-brand-teal-blue-dark">
+                  Medicare Supplement
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/life-insurance" className="text-brand-white/80 hover:text-brand-teal-blue-dark">
+                  Life Insurance
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/health-insurance" className="text-brand-white/80 hover:text-brand-teal-blue-dark">
+                  Health Insurance
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/final-expense" className="text-brand-white/80 hover:text-brand-teal-blue-dark">
+                  Final Expense
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/annuities" className="text-brand-white/80 hover:text-brand-teal-blue-dark">
+                  Annuities
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -60,9 +122,23 @@ export default function Footer() {
             <h3 className="text-lg font-bold text-brand-white mb-4 font-poppins">Contact Information</h3>
             <address className="not-italic space-y-2 text-sm text-brand-white/80">
               <p>Choice Insurance Hub</p>
-              <p>200 E 3rd<br />Alton IL 62002</p>
-              <p>Phone: <a href="tel:8774142319" className="hover:text-brand-teal-blue">(877) 414-2319</a></p>
-              <p>Email: <a href="mailto:info@choiceinsurancehub.com" className="hover:text-brand-teal-blue">info@choiceinsurancehub.com</a></p>
+              <p>
+                200 E 3rd
+                <br />
+                Alton IL 62002
+              </p>
+              <p>
+                Phone:{" "}
+                <a href="tel:8774142319" className="hover:text-brand-teal-blue">
+                  (877) 414-2319
+                </a>
+              </p>
+              <p>
+                Email:{" "}
+                <a href="mailto:info@choiceinsurancehub.com" className="hover:text-brand-teal-blue">
+                  info@choiceinsurancehub.com
+                </a>
+              </p>
             </address>
           </div>
         </div>
@@ -73,17 +149,21 @@ export default function Footer() {
             &copy; {currentYear} Choice Insurance Agency. All rights reserved.
           </p>
           <div className="space-x-4 text-sm">
-            <Link href="/privacy-policy" className="text-brand-white/80 hover:text-brand-teal-blue-dark">Privacy Policy</Link>
-            <Link href="/terms-of-service" className="text-brand-white/80 hover:text-brand-teal-blue-dark">Terms of Service</Link>
-            <Link href="/accessibility-statement" className="text-brand-white/80 hover:text-brand-teal-blue-dark">Accessibility</Link>
+            <Link href="/privacy-policy" className="text-brand-white/80 hover:text-brand-teal-blue-dark">
+              Privacy Policy
+            </Link>
+            <Link href="/terms-of-service" className="text-brand-white/80 hover:text-brand-teal-blue-dark">
+              Terms of Service
+            </Link>
+            <Link href="/accessibility-statement" className="text-brand-white/80 hover:text-brand-teal-blue-dark">
+              Accessibility
+            </Link>
           </div>
         </div>
 
         {/* Disclaimer */}
         <div className="border-t border-brand-teal-blue/50 pt-8 mt-8 text-center">
-          <p className="text-xs text-brand-white/70">
-            {disclaimerText}
-          </p>
+          <p className="text-xs text-brand-white/70">{disclaimerText}</p>
         </div>
       </div>
     </footer>
