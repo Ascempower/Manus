@@ -14,7 +14,7 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import React from "react";
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib/utils";
 import { SERVICES, EXTERNAL_LINKS } from "@/constants/services";
 import { MAIN_NAVIGATION } from "@/constants/navigation";
 

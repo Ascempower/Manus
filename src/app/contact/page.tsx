@@ -1,8 +1,7 @@
-""
 import type { Metadata } from 'next';
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, CalendarDays } from 'lucide-react';
-import ContactForm from "@/components/ContactForm";
+import ContactForm from "@/components/forms/ContactForm";
 
 export const metadata: Metadata = {
   title: 'Contact Us - Choice Insurance Hub',
