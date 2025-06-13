@@ -43,8 +43,10 @@
   /* Choice Insurance Brand Colors */
   --color-brand-white: #FFFFFF;
   --color-brand-teal-blue: #A7C9CA;
+  --color-brand-teal-blue-dark: #8BB5B7;
   --color-brand-deep-forest-green: #42615A;
   --color-brand-warm-beige-coral: #DD8B66;
+  --color-brand-warm-beige-coral-dark: #C77A52;
   --color-brand-black: #000000;
 }
 
@@ -160,6 +162,10 @@
     background-color: var(--color-brand-teal-blue);
   }
   
+  .bg-brand-teal-blue-dark {
+    background-color: var(--color-brand-teal-blue-dark);
+  }
+  
   .bg-brand-deep-forest-green {
     background-color: var(--color-brand-deep-forest-green);
   }
@@ -168,12 +174,20 @@
     background-color: var(--color-brand-warm-beige-coral);
   }
   
+  .bg-brand-warm-beige-coral-dark {
+    background-color: var(--color-brand-warm-beige-coral-dark);
+  }
+  
   .bg-brand-black {
     background-color: var(--color-brand-black);
   }
   
   .hover\:bg-brand-warm-beige-coral\/80:hover {
     background-color: rgb(221 139 102 / 0.8);
+  }
+  
+  .hover\:bg-brand-warm-beige-coral-dark:hover {
+    background-color: var(--color-brand-warm-beige-coral-dark);
   }
   
   .disclaimer-large {

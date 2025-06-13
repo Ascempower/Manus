@@ -47,8 +47,10 @@ export default {
         brand: {
           white: "#FFFFFF",
           "teal-blue": "#A7C9CA",
+          "teal-blue-dark": "#8BB5B7",
           "deep-forest-green": "#42615A",
           "warm-beige-coral": "#DD8B66",
+          "warm-beige-coral-dark": "#C77A52",
           black: "#000000",
         },
       },
