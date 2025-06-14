@@ -2,9 +2,9 @@ name: Next.js CI/CD
 
 on:
   push:
-    branches: [ "choice-insurance-website" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "choice-insurance-website" ]
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -27,6 +27,14 @@ jobs:
       uses: pnpm/action-setup@v4
       with:
         version: 10.12.1
+
+    - name: Set up pnpm store cache
+      uses: actions/cache@v4
+      with:
+        path: ~/.pnpm-store
+        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-store-
 
     - name: Install dependencies
       run: pnpm install --frozen-lockfile
