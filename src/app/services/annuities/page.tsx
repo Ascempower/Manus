@@ -3,38 +3,48 @@ import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: 'Annuities for Retirement Income - Choice Insurance Agency',
+  title: 'Annuities for Retirement Income - Choice Insurance',
   description: 'Secure your retirement with a reliable income stream through fixed and indexed annuities. Choice Insurance Agency can help you plan.',
 };
 
 export default function AnnuitiesPage() {
   return (
-    <div className="container mx-auto py-12 px-4">
-      <nav aria-label="Breadcrumb" className="mb-8 text-sm text-gray-600">
-        <ol className="list-none p-0 inline-flex">
-          <li className="flex items-center">
-            <Link href="/" className="hover:text-blue-700">Home</Link>
-            <span className="mx-2">/</span>
-          </li>
-          <li className="flex items-center">
-            <Link href="/services" className="hover:text-blue-700">Services</Link>
-            <span className="mx-2">/</span>
-          </li>
-          <li className="text-gray-500">Annuities</li>
-        </ol>
-      </nav>
-
-      <h1 className="text-4xl font-bold text-center mb-10 text-blue-700">Annuities: Secure Your Retirement Income</h1>
-
-      <section className="mb-12">
-        <h2 className="text-3xl font-semibold mb-4 text-gray-800">What is an Annuity?</h2>
-        <p className="text-lg text-gray-700 leading-relaxed mb-4">
-          An annuity is a long-term investment product issued by an insurance company, designed to help protect you from outliving your money. You make a lump-sum payment or a series of payments, and in return, the insurer agrees to make periodic payments to you, either immediately or at some point in the future. Annuities can provide a reliable stream of income during retirement, supplementing other sources like Social Security and pensions.
-        </p>
-        <p className="text-lg text-gray-700 leading-relaxed">
-          There are several types of annuities, including fixed, variable, and indexed annuities, each with different features, risk levels, and potential returns. Understanding these differences is key to choosing an annuity that aligns with your retirement goals.
-        </p>
+    <div className="bg-brand-white text-brand-black">
+      {/* Page Header */}
+      <section className="py-12 bg-brand-teal-blue/20">
+        <div className="container mx-auto px-4">
+          <nav aria-label="Breadcrumb" className="mb-6 text-sm text-brand-black/70 font-poppins">
+            <ol className="list-none p-0 inline-flex">
+              <li className="flex items-center">
+                <Link href="/" className="hover:text-brand-teal-blue">Home</Link>
+                <span className="mx-2">/</span>
+              </li>
+              <li className="flex items-center">
+                <Link href="/services" className="hover:text-brand-teal-blue">Services</Link>
+                <span className="mx-2">/</span>
+              </li>
+              <li className="text-brand-deep-forest-green">Annuities</li>
+            </ol>
+          </nav>
+          <h1 className="text-4xl md:text-5xl font-bold text-brand-deep-forest-green font-poppins text-center">Annuities: Secure Your Retirement Income</h1>
+        </div>
       </section>
+
+      {/* Main Content */}
+      <section className="py-16">
+        <div className="container mx-auto px-4 max-w-4xl">
+
+        <section className="mb-12">
+          <h2 className="text-3xl font-bold mb-6 text-brand-deep-forest-green font-poppins">What is an Annuity?</h2>
+          <div className="space-y-4 text-lg text-brand-black/80 leading-relaxed font-poppins">
+            <p>
+              An annuity is a long-term investment product issued by an insurance company, designed to help protect you from outliving your money. You make a lump-sum payment or a series of payments, and in return, the insurer agrees to make periodic payments to you, either immediately or at some point in the future. Annuities can provide a reliable stream of income during retirement, supplementing other sources like Social Security and pensions.
+            </p>
+            <p>
+              There are several types of annuities, including fixed, variable, and indexed annuities, each with different features, risk levels, and potential returns. Understanding these differences is key to choosing an annuity that aligns with your retirement goals.
+            </p>
+          </div>
+        </section>
 
       <section className="mb-12 bg-gray-100 p-8 rounded-lg">
         <h2 className="text-3xl font-semibold mb-4 text-gray-800">Types of Annuities We Can Discuss</h2>
@@ -88,6 +98,9 @@ export default function AnnuitiesPage() {
         <Button size="lg" asChild className="bg-orange-500 hover:bg-orange-600 text-white">
           <Link href="/contact#book-a-call">Discuss Annuity Options</Link>
         </Button>
+      </section>
+
+        </div>
       </section>
     </div>
   );

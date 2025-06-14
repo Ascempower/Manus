@@ -59,15 +59,18 @@ export default function Header() {
                             </Link>
                           </NavigationMenuLink>
                           
-                          {/* First 2 services - Smaller */}
+                          {/* First 2 services - Matching second column style */}
                           {FOOTER_LINKS.services.slice(0, 2).map((service) => (
                             <NavigationMenuLink key={service.href} asChild>
                               <Link
                                 href={service.href}
-                                className="group block select-none rounded-lg p-2 leading-none no-underline outline-none transition-all duration-200 hover:bg-brand-deep-forest-green hover:text-brand-white focus:bg-brand-deep-forest-green focus:text-brand-white border border-transparent hover:border-brand-deep-forest-green hover:shadow-md transform hover:scale-[1.02]"
+                                className="group block select-none rounded-lg p-3 leading-none no-underline outline-none transition-all duration-200 hover:bg-brand-deep-forest-green hover:text-brand-white focus:bg-brand-deep-forest-green focus:text-brand-white border border-transparent hover:border-brand-deep-forest-green hover:shadow-md transform hover:scale-[1.02]"
                               >
-                                <div className="text-xs font-medium leading-none text-brand-black group-hover:text-brand-white transition-colors duration-200">
+                                <div className="text-sm font-medium leading-none text-brand-black group-hover:text-brand-white transition-colors duration-200">
                                   {service.label}
+                                </div>
+                                <div className="text-xs text-brand-black/70 mt-1 group-hover:text-brand-white/80 transition-colors duration-200">
+                                  Learn more about {service.label.toLowerCase()}
                                 </div>
                               </Link>
                             </NavigationMenuLink>

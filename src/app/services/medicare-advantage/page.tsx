@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Medicare Advantage Plans - Choice Insurance Agency',
+  title: 'Medicare Advantage Plans - Choice Insurance',
   description: 'Learn about Medicare Advantage Plans (Part C) offered by Choice Insurance Agency. All-in-one alternatives to Original Medicare with additional benefits.',
 };
 

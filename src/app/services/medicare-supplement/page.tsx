@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: 'Medicare Supplement (Medigap) Plans - Choice Insurance Agency',
+  title: 'Medicare Supplement (Medigap) Plans - Choice Insurance',
   description: 'Learn about Medicare Supplement (Medigap) plans and how they cover out-of-pocket costs not paid by Original Medicare. Choice Insurance Agency offers expert guidance.',
   keywords: 'Medicare Supplement, Medigap, Medicare Plan G, Medicare Plan N, Medicare coverage gaps, Medicare deductibles, Medicare copayments, Medicare insurance, senior health insurance',
   alternates: {

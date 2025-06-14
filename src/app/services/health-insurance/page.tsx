@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: 'Health Insurance Plans - Choice Insurance Agency',
+  title: 'Health Insurance Plans - Choice Insurance',
   description: 'Find the right individual or family health insurance plan with expert guidance from Choice Insurance Agency. Serving IL, GA, TX, and more.',
 };
 
