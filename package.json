@@ -73,6 +73,7 @@
     "@vitejs/plugin-react": "^4.5.2",
     "autoprefixer": "10.4.20",
     "beasties": "^0.3.4",
+    "critters": "^0.0.24",
     "eslint": "^9.28.0",
     "eslint-config-next": "^15.3.3",
     "eslint-plugin-next": "^0.0.0",
