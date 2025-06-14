@@ -1,3 +1,5 @@
+import React from "react";
+
 export const metadata = {
   title: "Choice Insurance Agency - Home | Expert Health, Life & Medicare Insurance",
   description: "Choice Insurance provides personalized Medicare, Life & Health insurance solutions in IL, GA, TX, AL, OH, KY, MS, SC. Get expert guidance and affordable coverage tailored to your needs.",
