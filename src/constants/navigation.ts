@@ -1,11 +1,11 @@
 export const MAIN_NAVIGATION = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About Us" },
+  { href: "/", label: "Home", hasDropdown: false },
+  { href: "/about", label: "About Us", hasDropdown: false },
   { href: "/services", label: "Services", hasDropdown: true },
-  { href: "/testimonials", label: "Testimonials" },
-  { href: "/faq", label: "FAQ" },
-  { href: "/contact", label: "Contact Us" },
-  { href: "/blog", label: "Blog" },
+  { href: "/testimonials", label: "Testimonials", hasDropdown: false },
+  { href: "/faq", label: "FAQ", hasDropdown: false },
+  { href: "/contact", label: "Contact Us", hasDropdown: false },
+  { href: "/blog", label: "Blog", hasDropdown: false },
 ] as const;
 
 export const FOOTER_LINKS = {
