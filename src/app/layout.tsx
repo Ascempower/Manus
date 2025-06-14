@@ -2,6 +2,7 @@ import React from "react";
 import type { Metadata, Viewport } from 'next';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import { GoogleAnalytics, CookieConsent } from '@/components/analytics';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -140,13 +141,24 @@ export default function RootLayout({
         {/* DNS prefetch for non-critical resources - loaded after page load */}
         <link rel="dns-prefetch" href="//assets.calendly.com" />
         <link rel="dns-prefetch" href="//calendly.com" />
+        <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="//www.google-analytics.com" />
       </head>
       <body className="flex flex-col min-h-screen">
+        {/* Google Analytics & GTM */}
+        <GoogleAnalytics 
+          gtmId={process.env.NEXT_PUBLIC_GTM_ID}
+          ga4Id={process.env.NEXT_PUBLIC_GA4_ID}
+        />
+        
         <Header />
         <main className="flex-grow">
           {children}
         </main>
         <Footer />
+        
+        {/* Cookie Consent Banner */}
+        <CookieConsent />
         {/* Load scripts after page load to prevent blocking */}
         <script
           dangerouslySetInnerHTML={{

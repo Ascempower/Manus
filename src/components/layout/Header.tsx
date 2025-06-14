@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Menu } from 'lucide-react';
 import { MAIN_NAVIGATION, FOOTER_LINKS } from '@/constants/navigation';
 import { Button } from '@/components/ui/button';
+import { trackInsuranceEvents } from '@/lib/analytics';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -126,12 +127,22 @@ export default function Header() {
 
         <div className="flex items-center gap-x-2">
           <Button asChild className="hidden md:flex bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black text-sm md:text-base">
-            <a href="https://www.planenroll.com/?purl=kOW7ufSy" target="_blank" rel="noopener noreferrer">
+            <a 
+              href="https://www.planenroll.com/?purl=kOW7ufSy" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              onClick={() => trackInsuranceEvents.externalLinkClicked('planenroll')}
+            >
               Quote Now
             </a>
           </Button>
           <Button asChild className="hidden md:flex bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black text-sm md:text-base">
-            <a href="https://calendly.com/choiceinsuranceagency/30-minute-meeting" target="_blank" rel="noopener noreferrer">
+            <a 
+              href="https://calendly.com/choiceinsuranceagency/30-minute-meeting" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              onClick={() => trackInsuranceEvents.consultationBooked('header')}
+            >
               Book a Free Consultation
             </a>
           </Button>
@@ -174,12 +185,22 @@ export default function Header() {
                 ))}
                 <div className="mt-4 space-y-2">
                   <Button asChild className="w-full bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black">
-                    <a href="https://www.planenroll.com/?purl=kOW7ufSy" target="_blank" rel="noopener noreferrer">
+                    <a 
+                      href="https://www.planenroll.com/?purl=kOW7ufSy" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      onClick={() => trackInsuranceEvents.externalLinkClicked('planenroll_mobile')}
+                    >
                       Quote Now
                     </a>
                   </Button>
                   <Button asChild className="w-full bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black">
-                    <a href="https://calendly.com/choiceinsuranceagency/30-minute-meeting" target="_blank" rel="noopener noreferrer">
+                    <a 
+                      href="https://calendly.com/choiceinsuranceagency/30-minute-meeting" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      onClick={() => trackInsuranceEvents.consultationBooked('mobile_menu')}
+                    >
                       Book a Free Consultation
                     </a>
                   </Button>
