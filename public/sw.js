@@ -1,5 +1,13 @@
 // Service Worker for Choice Insurance Hub
 const CACHE_NAME = 'choice-insurance-cache-v1';
+
+// Handle messages from the main thread
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.command === 'skipWaiting') {
+    self.skipWaiting();
+  }
+});
+
 const urlsToCache = [
   '/',
   '/about',
@@ -37,10 +45,11 @@ self.addEventListener('activate', (event) => {
           }
         })
       );
+    }).then(() => {
+      // Ensure service worker takes control of all clients immediately
+      return self.clients.claim();
     })
   );
-  // Ensure service worker takes control of all clients
-  self.clients.claim();
 });
 
 // Fetch event - serve from cache, fall back to network

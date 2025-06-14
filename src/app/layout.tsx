@@ -50,8 +50,6 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
         {/* Calendly badge widget */}
         <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
-        {/* Calendly badge widget */}
-        <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
       </head>
       <body className="flex flex-col min-h-screen">
         <Header />
@@ -61,34 +59,31 @@ export default function RootLayout({
         <Footer />
         {/* Calendly badge widget scripts */}
         <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-        {/* Calendly badge widget scripts */}
-        <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              if ('serviceWorker' in navigator) {
+              window.addEventListener('load', function() {
                 // Service Worker registration
-                window.addEventListener('load', function() {
-                // Service Worker registration
-                  navigator.serviceWorker.register('/sw.js').then(
+                if ('serviceWorker' in navigator) {
+                  navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                  }).then(
                     function(registration) {
                       console.log('Service Worker registration successful with scope: ', registration.scope);
+                      // Force the service worker to take control immediately
+                      if (registration.waiting) {
+                        registration.waiting.postMessage({command: 'skipWaiting'});
+                      }
                     },
-                }
-                
-                // Calendly badge widget initialization
-                if (typeof Calendly !== 'undefined') {
-                  Calendly.initBadgeWidget({ 
-                    url: 'https://calendly.com/choiceinsurancehub', 
-               }
-              });       text: 'Schedule time with me', 
-                     color: '#42615a', 
-                    textColor: '#dd8b66', 
-                    branding: true 
-                      function(err) {
+                    function(err) {
                       console.log('Service Worker registration failed: ', err);
                     }
                   );
+                  
+                  // Listen for service worker updates
+                  navigator.serviceWorker.addEventListener('controllerchange', function() {
+                    console.log('Service Worker controller changed');
+                  });
                 }
                 
                 // Calendly badge widget initialization
