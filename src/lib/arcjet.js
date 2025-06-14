@@ -1,5 +1,5 @@
 // Protect against bots, PII exposure, form abuse & common attacks
-import arcjet, { shield, detectBot, sensitiveInfo, signupProtection } from "@arcjet/node";
+import arcjet, { shield, detectBot, sensitiveInfo, signupProtection } from "@arcjet/next";
 
 const aj = arcjet({
   // ARCJET_KEY automatically set by the Netlify integration

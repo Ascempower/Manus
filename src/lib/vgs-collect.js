@@ -76,8 +76,9 @@ const initQuoteForm = (vgsForm, fieldCSS) => {
     css: fieldCSS
   });
   
-  // Handle form submission
-  document.getElementById('insurance-quote-form')?.addEventListener('submit', (e) => {
+  // Handle form submission (client-side only)
+  if (typeof window !== 'undefined') {
+    document.getElementById('insurance-quote-form')?.addEventListener('submit', (e) => {
     e.preventDefault();
     
     vgsForm.submit('/submit-quote', {
@@ -100,64 +101,10 @@ const initQuoteForm = (vgsForm, fieldCSS) => {
         showErrorMessage('There was an error submitting your request. Please try again.');
       }
     });
-  });
+  }
 };
 
-// Initialize secure payment form fields
-const initPaymentForm = (vgsForm, fieldCSS) => {
-  if (!vgsForm) return;
-  
-  // Credit card fields
-  vgsForm.field('#card-number', {
-    type: 'card-number',
-    name: 'card_number',
-    placeholder: 'Card Number',
-    validations: ['required', 'validCardNumber'],
-    css: fieldCSS
-  });
-  
-  vgsForm.field('#card-expiry', {
-    type: 'card-expiration-date',
-    name: 'card_expiry',
-    placeholder: 'MM/YY',
-    validations: ['required'],
-    css: fieldCSS
-  });
-  
-  vgsForm.field('#card-cvc', {
-    type: 'card-security-code',
-    name: 'card_cvc',
-    placeholder: 'CVC',
-    validations: ['required'],
-    css: fieldCSS
-  });
-  
-  // Handle form submission
-  document.getElementById('payment-form')?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    vgsForm.submit('/process-payment', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      data: {
-        // Additional non-sensitive data
-        payment_amount: document.getElementById('payment-amount')?.value,
-        policy_number: document.getElementById('policy-number')?.value
-      }
-    }, 
-    (status, response) => {
-      if (status >= 200 && status < 300) {
-        // Success handling
-        showSuccessMessage('Your payment has been processed securely.');
-      } else {
-        // Error handling
-        showErrorMessage('There was an error processing your payment. Please try again.');
-      }
-    });
-  });
-};
+// Note: Payment form functionality removed as no credit card information is collected on this site
 
 // Helper functions
 const showSuccessMessage = (message) => {
@@ -182,24 +129,22 @@ const showErrorMessage = (message) => {
   }, 5000);
 };
 
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-  // Load VGS Collect script dynamically
-  const script = document.createElement('script');
-  script.src = 'https://js.verygoodvault.com/vgs-collect/2.14.0/vgs-collect.js';
-  script.onload = () => {
-    const { vgsForm, fieldCSS } = initVGSCollect();
-    
-    // Initialize forms based on page content
-    if (document.getElementById('insurance-quote-form')) {
-      initQuoteForm(vgsForm, fieldCSS);
-    }
-    
-    if (document.getElementById('payment-form')) {
-      initPaymentForm(vgsForm, fieldCSS);
-    }
-  };
-  document.head.appendChild(script);
-});
+// Initialize when DOM is loaded (client-side only)
+if (typeof window !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', () => {
+    // Load VGS Collect script dynamically
+    const script = document.createElement('script');
+    script.src = 'https://js.verygoodvault.com/vgs-collect/2.14.0/vgs-collect.js';
+    script.onload = () => {
+      const { vgsForm, fieldCSS } = initVGSCollect();
+      
+      // Initialize forms based on page content
+      if (document.getElementById('insurance-quote-form')) {
+        initQuoteForm(vgsForm, fieldCSS);
+      }
+    };
+    document.head.appendChild(script);
+  });
+}
 
-export { initVGSCollect, initQuoteForm, initPaymentForm };
+export { initVGSCollect, initQuoteForm };

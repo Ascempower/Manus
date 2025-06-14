@@ -7,7 +7,7 @@ export default function Footer({ className = "" }: { className?: string }) {
     "Not affiliated with or endorsed by any government agency. This is a solicitation for insurance. By contacting us by one of the methods above you are agreeing to discuss the insurance products listed. We do not offer every plan available in your area. Currently, we represent 10 organizations, which offer 72 products in your area. Please contact Medicare.gov, 1-800-MEDICARE, or your local State Health Insurance Program to get information on all your options.";
 
   return (
-    <footer className={`bg-brand-black text-brand-white py-12 ${className}`}>
+    <footer className={`bg-brand-deep-forest-green text-brand-white py-12 ${className}`}>
       <div className="container mx-auto px-4">
         {/* Main footer grid */}
         <div className="grid md:grid-cols-4 gap-8 mb-12">
@@ -53,32 +53,32 @@ export default function Footer({ className = "" }: { className?: string }) {
             <h3 className="text-lg font-bold text-brand-white mb-4 font-poppins">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="text-brand-white/80 hover:text-brand-teal-blue-dark">
+                <Link href="/" className="text-brand-white/80 hover:text-brand-teal-blue transition-colors">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-brand-white/80 hover:text-brand-teal-blue-dark">
+                <Link href="/about" className="text-brand-white/80 hover:text-brand-teal-blue transition-colors">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-brand-white/80 hover:text-brand-teal-blue-dark">
+                <Link href="/services" className="text-brand-white/80 hover:text-brand-teal-blue transition-colors">
                   Services
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="text-brand-white/80 hover:text-brand-teal-blue-dark">
+                <Link href="/blog" className="text-brand-white/80 hover:text-brand-teal-blue transition-colors">
                   Blog
                 </Link>
               </li>
               <li>
-                <Link href="/faq" className="text-brand-white/80 hover:text-brand-teal-blue-dark">
+                <Link href="/faq" className="text-brand-white/80 hover:text-brand-teal-blue transition-colors">
                   FAQ
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-brand-white/80 hover:text-brand-teal-blue-dark">
+                <Link href="/contact" className="text-brand-white/80 hover:text-brand-teal-blue transition-colors">
                   Contact Us
                 </Link>
               </li>
@@ -90,27 +90,27 @@ export default function Footer({ className = "" }: { className?: string }) {
             <h3 className="text-lg font-bold text-brand-white mb-4 font-poppins">Our Services</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/services/medicare-supplement" className="text-brand-white/80 hover:text-brand-teal-blue-dark">
+                <Link href="/services/medicare-supplement" className="text-brand-white/80 hover:text-brand-teal-blue transition-colors">
                   Medicare Supplement
                 </Link>
               </li>
               <li>
-                <Link href="/services/life-insurance" className="text-brand-white/80 hover:text-brand-teal-blue-dark">
+                <Link href="/services/life-insurance" className="text-brand-white/80 hover:text-brand-teal-blue transition-colors">
                   Life Insurance
                 </Link>
               </li>
               <li>
-                <Link href="/services/health-insurance" className="text-brand-white/80 hover:text-brand-teal-blue-dark">
+                <Link href="/services/health-insurance" className="text-brand-white/80 hover:text-brand-teal-blue transition-colors">
                   Health Insurance
                 </Link>
               </li>
               <li>
-                <Link href="/services/final-expense" className="text-brand-white/80 hover:text-brand-teal-blue-dark">
+                <Link href="/services/final-expense" className="text-brand-white/80 hover:text-brand-teal-blue transition-colors">
                   Final Expense
                 </Link>
               </li>
               <li>
-                <Link href="/services/annuities" className="text-brand-white/80 hover:text-brand-teal-blue-dark">
+                <Link href="/services/annuities" className="text-brand-white/80 hover:text-brand-teal-blue transition-colors">
                   Annuities
                 </Link>
               </li>
@@ -149,13 +149,13 @@ export default function Footer({ className = "" }: { className?: string }) {
             &copy; {currentYear} Choice Insurance Agency. All rights reserved.
           </p>
           <div className="space-x-4 text-sm">
-            <Link href="/privacy-policy" className="text-brand-white/80 hover:text-brand-teal-blue-dark">
+            <Link href="/privacy-policy" className="text-brand-white/80 hover:text-brand-teal-blue transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/terms-of-service" className="text-brand-white/80 hover:text-brand-teal-blue-dark">
+            <Link href="/terms-of-service" className="text-brand-white/80 hover:text-brand-teal-blue transition-colors">
               Terms of Service
             </Link>
-            <Link href="/accessibility-statement" className="text-brand-white/80 hover:text-brand-teal-blue-dark">
+            <Link href="/accessibility-statement" className="text-brand-white/80 hover:text-brand-teal-blue transition-colors">
               Accessibility
             </Link>
           </div>

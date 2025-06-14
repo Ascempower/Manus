@@ -1,4 +1,4 @@
-name: NodeJS with Webpack
+name: Next.js CI/CD
 
 on:
   push:
@@ -21,9 +21,21 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
+        cache: 'pnpm'
 
-    - name: Build
-      run: |
-        npm install
-        npm install -D webpack-cli
-        npx webpack
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 10.12.1
+
+    - name: Install dependencies
+      run: pnpm install --frozen-lockfile
+
+    - name: Run linter
+      run: pnpm run lint
+
+    - name: Build application
+      run: pnpm run build
+
+    - name: Run tests (if available)
+      run: pnpm test --if-present
