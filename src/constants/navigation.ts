@@ -1,4 +1,10 @@
-export const MAIN_NAVIGATION = [
+type NavItem = {
+  href: string;
+  label: string;
+  hasDropdown: boolean;
+};
+
+export const MAIN_NAVIGATION: NavItem[] = [
   { href: "/", label: "Home", hasDropdown: false },
   { href: "/about", label: "About Us", hasDropdown: false },
   { href: "/services", label: "Services", hasDropdown: true },
@@ -6,17 +12,13 @@ export const MAIN_NAVIGATION = [
   { href: "/faq", label: "FAQ", hasDropdown: false },
   { href: "/contact", label: "Contact Us", hasDropdown: false },
   { href: "/blog", label: "Blog", hasDropdown: false },
-] as const;
+];
 
 export const FOOTER_LINKS = {
-  quickLinks: [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About Us" },
-    { href: "/services", label: "Services" },
-    { href: "/blog", label: "Blog" },
-    { href: "/faq", label: "FAQ" },
-    { href: "/contact", label: "Contact Us" },
-  ],
+  quickLinks: MAIN_NAVIGATION.filter(item => !item.hasDropdown).map(item => ({
+    href: item.href,
+    label: item.label,
+  })),
   services: [
     { href: "/services/medicare-supplement", label: "Medicare Supplement" },
     { href: "/services/hospital-indemnity", label: "Hospital Indemnity" },
