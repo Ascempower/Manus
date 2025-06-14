@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Facebook, Instagram } from "lucide-react";
 
-export default function Footer({ className = "" }) {
+export default function Footer({ className = "" }: { className?: string }) {
   const currentYear = new Date().getFullYear();
   const disclaimerText =
     "Not affiliated with or endorsed by any government agency. This is a solicitation for insurance. By contacting us by one of the methods above you are agreeing to discuss the insurance products listed. We do not offer every plan available in your area. Currently, we represent 10 organizations, which offer 72 products in your area. Please contact Medicare.gov, 1-800-MEDICARE, or your local State Health Insurance Program to get information on all your options.";

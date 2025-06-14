@@ -5,17 +5,15 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-brand-teal-blue/40 bg-brand-deep-forest-green text-brand-white">
       <div className="container mx-auto px-4 flex h-16 items-center justify-between">
-        <Link href="/">
-          <a className="mr-6 flex items-center">
-            <img src="/assets/logos/main-logo-orange.png" alt="Choice Insurance Agency Logo" className="max-h-10 w-auto object-contain" />
-          </a>
+        <Link href="/" className="mr-6 flex items-center">
+          <img src="/assets/logos/main-logo-orange.png" alt="Choice Insurance Agency Logo" className="max-h-10 w-auto object-contain" />
         </Link>
         <nav aria-label="Main" className="hidden lg:flex">
           <ul className="flex space-x-4">
             {MAIN_NAVIGATION.map((item) => (
               <li key={item.href}>
-                <Link href={item.href}>
-                  <a className="hover:text-brand-black">{item.label}</a>
+                <Link href={item.href} className="hover:text-brand-black">
+                  {item.label}
                 </Link>
               </li>
             ))}

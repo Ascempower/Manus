@@ -7,7 +7,6 @@ export const metadata = {
   }
 };
 
-"" // Add this line to make it a module, if not already
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";

@@ -7,11 +7,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Ensure output is configured for static export
-  output: 'export',
-  // any other configurations can go here
-
   // Output setting removed to enable API routes and SSR
+  // output: 'export', // Commented out to enable API routes and SSR
 };
 
 export default nextConfig;
