@@ -1,5 +1,26 @@
+"use client";
+
+"use client";
+
 import Link from 'next/link';
-import { MAIN_NAVIGATION } from '@/constants/navigation';
+import { Menu } from 'lucide-react';
+import { MAIN_NAVIGATION, FOOTER_LINKS } from '@/constants/navigation';
+import { Button } from '@/components/ui/button';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from '@/components/ui/navigation-menu';
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from '@/components/ui/sheet';
+import { cn } from '@/lib/utils';
 
 export default function Header() {
   return (
@@ -8,28 +29,115 @@ export default function Header() {
         <Link href="/" className="mr-6 flex items-center">
           <img src="/assets/logos/main-logo-orange.png" alt="Choice Insurance Agency Logo" className="max-h-10 w-auto object-contain" />
         </Link>
-        <nav aria-label="Main" className="hidden lg:flex">
-          <ul className="flex space-x-4">
+        
+        <NavigationMenu className="hidden lg:flex">
+          <NavigationMenuList>
             {MAIN_NAVIGATION.map((item) => (
-              <li key={item.href}>
-                <Link href={item.href} className="hover:text-brand-black">
-                  {item.label}
-                </Link>
-              </li>
+              <NavigationMenuItem key={item.href}>
+                {item.hasDropdown ? (
+                  <>
+                    <NavigationMenuTrigger className={cn(
+                      navigationMenuTriggerStyle(),
+                      "bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue hover:text-brand-black"
+                    )}>
+                      {item.label}
+                    </NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <div className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                        {FOOTER_LINKS.services.map((service) => (
+                          <NavigationMenuLink key={service.href} asChild>
+                            <Link
+                              href={service.href}
+                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-zinc-100 hover:text-zinc-900 focus:bg-zinc-100 focus:text-zinc-900"
+                            >
+                              <div className="text-sm font-medium leading-none">{service.label}</div>
+                            </Link>
+                          </NavigationMenuLink>
+                        ))}
+                      </div>
+                    </NavigationMenuContent>
+                  </>
+                ) : (
+                  <NavigationMenuLink asChild>
+                    <Link
+                      href={item.href}
+                      className={cn(
+                        navigationMenuTriggerStyle(),
+                        "bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue hover:text-brand-black"
+                      )}
+                    >
+                      {item.label}
+                    </Link>
+                  </NavigationMenuLink>
+                )}
+              </NavigationMenuItem>
             ))}
-          </ul>
-        </nav>
+          </NavigationMenuList>
+        </NavigationMenu>
+
         <div className="flex items-center gap-x-2">
-          <a href="https://www.planenroll.com/?purl=kOW7ufSy" target="_blank" rel="noopener noreferrer" className="hidden md:flex bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black px-4 py-2 rounded-md">
-            Quote Now
-          </a>
-          <a href="https://calendly.com/choiceinsuranceagency/30-minute-meeting" target="_blank" rel="noopener noreferrer" className="hidden md:flex bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black px-4 py-2 rounded-md">
-            Book a Free Consultation
-          </a>
-          <button className="md:hidden bg-brand-deep-forest-green hover:bg-brand-teal-blue text-brand-white p-2 rounded-md">
-            <span className="sr-only">Toggle navigation menu</span>
-            {/* Icon for mobile menu */}
-          </button>
+          <Button asChild className="hidden md:flex bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black text-sm md:text-base">
+            <a href="https://www.planenroll.com/?purl=kOW7ufSy" target="_blank" rel="noopener noreferrer">
+              Quote Now
+            </a>
+          </Button>
+          <Button asChild className="hidden md:flex bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black text-sm md:text-base">
+            <a href="https://calendly.com/choiceinsuranceagency/30-minute-meeting" target="_blank" rel="noopener noreferrer">
+              Book a Free Consultation
+            </a>
+          </Button>
+          
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button
+                variant="outline"
+                size="icon"
+                className="md:hidden shrink-0 bg-brand-deep-forest-green hover:bg-brand-teal-blue text-brand-white border-brand-teal-blue"
+              >
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Toggle navigation menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+              <nav className="flex flex-col gap-4">
+                {MAIN_NAVIGATION.map((item) => (
+                  <div key={item.href}>
+                    <Link
+                      href={item.href}
+                      className="block px-2 py-1 text-lg font-semibold"
+                    >
+                      {item.label}
+                    </Link>
+                    {item.hasDropdown && (
+                      <div className="ml-4 mt-2 space-y-2">
+                        {FOOTER_LINKS.services.map((service) => (
+                          <Link
+                            key={service.href}
+                            href={service.href}
+                            className="block px-2 py-1 text-sm text-muted-foreground hover:text-foreground"
+                          >
+                            {service.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+                <div className="mt-4 space-y-2">
+                  <Button asChild className="w-full bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black">
+                    <a href="https://www.planenroll.com/?purl=kOW7ufSy" target="_blank" rel="noopener noreferrer">
+                      Quote Now
+                    </a>
+                  </Button>
+                  <Button asChild className="w-full bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black">
+                    <a href="https://calendly.com/choiceinsuranceagency/30-minute-meeting" target="_blank" rel="noopener noreferrer">
+                      Book a Free Consultation
+                    </a>
+                  </Button>
+                </div>
+              </nav>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </header>
