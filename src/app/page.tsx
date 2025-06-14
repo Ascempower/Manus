@@ -15,12 +15,12 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="py-20 md:py-32 bg-brand-teal-blue text-brand-white">
+      <section className="py-20 md:py-32 bg-brand-teal-blue text-brand-deep-forest-green">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 font-poppins">
             Choice Insurance: Your Trusted Partner for Health, Life & Medicare Insurance
           </h1>
-          <p className="text-lg md:text-xl mb-10 max-w-3xl mx-auto text-brand-white/90">
+          <p className="text-lg md:text-xl mb-10 max-w-3xl mx-auto text-brand-deep-forest-green/90">
             Choice Insurance provides personalized plans and expert guidance for residents of Illinois, Alabama, Georgia, Ohio, Kentucky, Mississippi, South Carolina, and Texas.
           </p>
           <Button size="lg" asChild className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral-dark text-brand-black font-semibold">
