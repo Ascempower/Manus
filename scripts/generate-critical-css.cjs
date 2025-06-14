@@ -8,8 +8,6 @@
 const fs = require('fs');
 const path = require('path');
 
-const __dirname = path.dirname(__filename);
-
 const criticalCSS = `
 /* Critical CSS for above-the-fold content - Auto-generated */
 /* This CSS is inlined in layout.tsx to prevent render blocking */
