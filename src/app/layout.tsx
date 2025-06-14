@@ -118,11 +118,7 @@ export default function RootLayout({
           rel="preload" 
           href="https://assets.calendly.com/assets/external/widget.css" 
           as="style" 
-          onLoad={(e) => {
-            const target = e.target as HTMLLinkElement;
-            target.onload = null;
-            target.rel = 'stylesheet';
-          }} 
+          id="calendly-css-preload"
         />
         <noscript><link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" /></noscript>
       </head>
@@ -138,6 +134,19 @@ export default function RootLayout({
             __html: `
               // Load non-critical scripts after page load
               window.addEventListener('load', function() {
+                // Convert preloaded CSS to stylesheet
+                var calendlyCssPreload = document.getElementById('calendly-css-preload');
+                if (calendlyCssPreload) {
+                  calendlyCssPreload.onload = function() {
+                    calendlyCssPreload.onload = null;
+                    calendlyCssPreload.rel = 'stylesheet';
+                  };
+                  // Trigger the load if it hasn't already
+                  if (calendlyCssPreload.rel === 'preload') {
+                    calendlyCssPreload.rel = 'stylesheet';
+                  }
+                }
+                
                 // Load Calendly script dynamically
                 var calendlyScript = document.createElement('script');
                 calendlyScript.src = 'https://assets.calendly.com/assets/external/widget.js';
