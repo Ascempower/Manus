@@ -41,14 +41,19 @@ export default function Header() {
                       {item.label}
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
-                      <div className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                      <div className="grid w-[400px] gap-2 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white shadow-lg border border-gray-200 rounded-lg">
                         {FOOTER_LINKS.services.map((service) => (
                           <NavigationMenuLink key={service.href} asChild>
                             <Link
                               href={service.href}
-                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-zinc-100 hover:text-zinc-900 focus:bg-zinc-100 focus:text-zinc-900"
+                              className="group block select-none rounded-lg p-3 leading-none no-underline outline-none transition-all duration-200 hover:bg-brand-teal-blue/30 hover:text-brand-deep-forest-green focus:bg-brand-teal-blue/30 focus:text-brand-deep-forest-green border border-transparent hover:border-brand-teal-blue hover:shadow-md transform hover:scale-[1.02]"
                             >
-                              <div className="text-sm font-medium leading-none">{service.label}</div>
+                              <div className="text-sm font-medium leading-none text-brand-black group-hover:text-brand-deep-forest-green transition-colors duration-200">
+                                {service.label}
+                              </div>
+                              <div className="text-xs text-gray-500 mt-1 group-hover:text-brand-deep-forest-green/80 transition-colors duration-200">
+                                Learn more about {service.label.toLowerCase()}
+                              </div>
                             </Link>
                           </NavigationMenuLink>
                         ))}
