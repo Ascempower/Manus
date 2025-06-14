@@ -4,7 +4,6 @@ import type { Metadata } from 'next';
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, CalendarDays } from 'lucide-react';
 import ContactForm from "@/components/forms/ContactForm";
-import Header from "@/components/layout/Header"; // Import the Header component
 
 export const metadata: Metadata = {
   title: 'Contact Us - Choice Insurance Hub',
@@ -18,7 +17,6 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <div className="bg-brand-white text-brand-black">
-      <Header /> {/* Use the Header component */}
       {/* Page Header */}
       <section className="py-12 bg-brand-teal-blue/20">
         <div className="container mx-auto px-4 text-center">

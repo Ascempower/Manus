@@ -15,7 +15,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="py-20 md:py-32 bg-gradient-to-br from-brand-deep-forest-green to-brand-teal-blue-dark text-brand-white">
+      <section className="py-20 md:py-32 bg-brand-teal-blue text-brand-white">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 font-poppins">
             Choice Insurance: Your Trusted Partner for Health, Life & Medicare Insurance
