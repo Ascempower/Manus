@@ -50,6 +50,8 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
         {/* Calendly badge widget */}
         <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+        {/* Calendly badge widget */}
+        <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
       </head>
       <body className="flex flex-col min-h-screen">
         <Header />
@@ -59,17 +61,31 @@ export default function RootLayout({
         <Footer />
         {/* Calendly badge widget scripts */}
         <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+        {/* Calendly badge widget scripts */}
+        <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              window.addEventListener('load', function() {
+              if ('serviceWorker' in navigator) {
                 // Service Worker registration
-                if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                // Service Worker registration
                   navigator.serviceWorker.register('/sw.js').then(
                     function(registration) {
                       console.log('Service Worker registration successful with scope: ', registration.scope);
                     },
-                    function(err) {
+                }
+                
+                // Calendly badge widget initialization
+                if (typeof Calendly !== 'undefined') {
+                  Calendly.initBadgeWidget({ 
+                    url: 'https://calendly.com/choiceinsurancehub', 
+               }
+              });       text: 'Schedule time with me', 
+                     color: '#42615a', 
+                    textColor: '#dd8b66', 
+                    branding: true 
+                      function(err) {
                       console.log('Service Worker registration failed: ', err);
                     }
                   );
