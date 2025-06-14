@@ -42,21 +42,56 @@ export default function Header() {
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
                       <div className="grid w-[400px] gap-2 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-brand-teal-blue shadow-lg border border-brand-teal-blue-dark rounded-lg">
-                        {FOOTER_LINKS.services.map((service) => (
-                          <NavigationMenuLink key={service.href} asChild>
+                        {/* First Column */}
+                        <div className="flex flex-col gap-2">
+                          {/* All Services - Forest Green, takes most space */}
+                          <NavigationMenuLink asChild>
                             <Link
-                              href={service.href}
-                              className="group block select-none rounded-lg p-3 leading-none no-underline outline-none transition-all duration-200 hover:bg-brand-deep-forest-green hover:text-brand-white focus:bg-brand-deep-forest-green focus:text-brand-white border border-transparent hover:border-brand-deep-forest-green hover:shadow-md transform hover:scale-[1.02]"
+                              href="/services"
+                              className="group block select-none rounded-lg p-6 leading-none no-underline outline-none transition-all duration-200 bg-brand-deep-forest-green text-brand-white hover:bg-brand-deep-forest-green/90 focus:bg-brand-deep-forest-green/90 border border-brand-deep-forest-green hover:shadow-lg transform hover:scale-[1.02] flex-1"
                             >
-                              <div className="text-sm font-medium leading-none text-brand-black group-hover:text-brand-white transition-colors duration-200">
-                                {service.label}
+                              <div className="text-lg font-bold leading-none text-brand-white transition-colors duration-200">
+                                All Services
                               </div>
-                              <div className="text-xs text-brand-black/70 mt-1 group-hover:text-brand-white/80 transition-colors duration-200">
-                                Learn more about {service.label.toLowerCase()}
+                              <div className="text-sm text-brand-white/90 mt-2 transition-colors duration-200">
+                                Explore our comprehensive range of insurance solutions
                               </div>
                             </Link>
                           </NavigationMenuLink>
-                        ))}
+                          
+                          {/* First 2 services - Smaller */}
+                          {FOOTER_LINKS.services.slice(0, 2).map((service) => (
+                            <NavigationMenuLink key={service.href} asChild>
+                              <Link
+                                href={service.href}
+                                className="group block select-none rounded-lg p-2 leading-none no-underline outline-none transition-all duration-200 hover:bg-brand-deep-forest-green hover:text-brand-white focus:bg-brand-deep-forest-green focus:text-brand-white border border-transparent hover:border-brand-deep-forest-green hover:shadow-md transform hover:scale-[1.02]"
+                              >
+                                <div className="text-xs font-medium leading-none text-brand-black group-hover:text-brand-white transition-colors duration-200">
+                                  {service.label}
+                                </div>
+                              </Link>
+                            </NavigationMenuLink>
+                          ))}
+                        </div>
+                        
+                        {/* Second Column - Remaining services */}
+                        <div className="flex flex-col gap-2">
+                          {FOOTER_LINKS.services.slice(2).map((service) => (
+                            <NavigationMenuLink key={service.href} asChild>
+                              <Link
+                                href={service.href}
+                                className="group block select-none rounded-lg p-3 leading-none no-underline outline-none transition-all duration-200 hover:bg-brand-deep-forest-green hover:text-brand-white focus:bg-brand-deep-forest-green focus:text-brand-white border border-transparent hover:border-brand-deep-forest-green hover:shadow-md transform hover:scale-[1.02]"
+                              >
+                                <div className="text-sm font-medium leading-none text-brand-black group-hover:text-brand-white transition-colors duration-200">
+                                  {service.label}
+                                </div>
+                                <div className="text-xs text-brand-black/70 mt-1 group-hover:text-brand-white/80 transition-colors duration-200">
+                                  Learn more about {service.label.toLowerCase()}
+                                </div>
+                              </Link>
+                            </NavigationMenuLink>
+                          ))}
+                        </div>
                       </div>
                     </NavigationMenuContent>
                   </>
