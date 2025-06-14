@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy - Choice Insurance Agency',
-  description: 'Read the Privacy Policy for Choice Insurance Agency to understand how we collect, use, and protect your personal information.',
+  title: 'Privacy Policy - Choice Insurance Agency | HIPAA Compliant | HIPAA Compliant',
+  description: 'Choice Insurance Agency\'s HIPAA-compliant privacy policy detailing how we protect your personal and health information in accordance with federal regulations.',
 };
 
 export default function PrivacyPolicyPage() {

@@ -1,0 +1,1 @@
+export { default as HIPAANotice } from './HIPAANotice';export { default as HIPAANotice } from './HIPAANotice';

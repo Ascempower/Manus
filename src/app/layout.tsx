@@ -3,6 +3,8 @@ import type { Metadata, Viewport } from 'next';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { GoogleAnalytics, CookieConsent } from '@/components/analytics';
+import HIPAANotice from '@/components/compliance/HIPAANotice';
+import HIPAANotice from '@/components/compliance/HIPAANotice';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -157,7 +159,13 @@ export default function RootLayout({
         </main>
         <Footer />
         
-        {/* Cookie Consent Banner */}
+        {/* HIPAA Compliance Notice (shows first) */}
+        <HIPAANotice />
+        
+        {/* HIPAA Compliance Notice (shows first) */}
+        <HIPAANotice />
+        
+        {/* Cookie Consent Banner (shows after HIPAA notice) (shows after HIPAA notice) */}
         <CookieConsent />
         {/* Load scripts after page load to prevent blocking */}
         <script
