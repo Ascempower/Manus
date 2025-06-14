@@ -1,7 +1,7 @@
-/* Critical CSS for above-the-fold content */
-/* This CSS will be inlined to prevent render blocking */
+/* Critical CSS for above-the-fold content - Auto-generated */
+/* This CSS is inlined in layout.tsx to prevent render blocking */
 
-/* Font face declarations */
+/* Font face declarations with font-display: swap */
 @font-face {
   font-family: 'Poppins';
   font-style: normal;
@@ -41,7 +41,7 @@
 }
 
 /* Critical base styles */
-* {
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
@@ -53,13 +53,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Critical layout styles using logical properties */
+/* Critical layout styles */
 .flex { display: flex; }
 .flex-col { flex-direction: column; }
 .min-h-screen { min-block-size: 100vh; }
 .flex-grow { flex-grow: 1; }
 
-/* Critical header styles using logical properties */
+/* Critical header styles */
 header {
   position: sticky;
   inset-block-start: 0;
@@ -70,9 +70,9 @@ header {
   color: var(--color-brand-white);
 }
 
-/* Critical hero section styles using logical properties */
+/* Critical hero section styles */
 .hero-section {
-  padding-block: 5rem 8rem;
+  padding: 5rem 0 8rem;
   background-color: var(--color-brand-teal-blue);
   color: var(--color-brand-deep-forest-green);
   text-align: center;
@@ -94,13 +94,12 @@ header {
   color: rgba(66, 97, 90, 0.9);
 }
 
-/* Critical button styles using logical properties */
+/* Critical button styles */
 .btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding-block: 0.75rem;
-  padding-inline: 1.5rem;
+  padding: 0.75rem 1.5rem;
   font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
@@ -114,11 +113,13 @@ header {
   background-color: var(--color-brand-warm-beige-coral-dark);
 }
 
-/* Container styles using logical properties */
+/* Container styles */
 .container {
   inline-size: 100%;
-  margin-inline: auto;
-  padding-inline: 1rem;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+  padding-inline-start: 1rem;
+  padding-inline-end: 1rem;
 }
 
 /* Responsive styles */
@@ -132,15 +133,18 @@ header {
   }
   
   .hero-section {
-    padding-block: 8rem;
+    padding: 8rem 0;
   }
 }
 
-/* Hide non-critical content initially */
-.non-critical {
-  visibility: hidden;
+/* Prevent layout shift */
+.loading-placeholder {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
 }
 
-.critical-loaded .non-critical {
-  visibility: visible;
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
