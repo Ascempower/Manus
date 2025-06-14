@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 export const metadata = {
   title: "HIPAA Notice of Privacy Practices | Choice Insurance Agency",

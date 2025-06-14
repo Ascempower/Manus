@@ -2,14 +2,13 @@
   "name": "choice-insurance-website",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "npx next dev --turbopack",
     "build": "pnpm run generate-critical && npx next build",
     "start": "npx next start",
     "lint": "npx next lint",
     "export": "npx next build && npx next export",
-    "generate-critical": "node scripts/generate-critical-css.js",
+    "generate-critical": "node scripts/generate-critical-css.cjs",
     "analyze": "ANALYZE=true pnpm run build"
   },
   "dependencies": {
