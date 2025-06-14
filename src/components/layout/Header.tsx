@@ -36,22 +36,22 @@ export default function Header() {
                   <>
                     <NavigationMenuTrigger className={cn(
                       navigationMenuTriggerStyle(),
-                      "bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue hover:text-brand-black"
+                      "bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue hover:text-brand-black data-[state=open]:bg-brand-teal-blue data-[state=open]:text-brand-black"
                     )}>
                       {item.label}
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
-                      <div className="grid w-[400px] gap-2 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white shadow-lg border border-gray-200 rounded-lg">
+                      <div className="grid w-[400px] gap-2 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-brand-teal-blue shadow-lg border border-brand-teal-blue-dark rounded-lg">
                         {FOOTER_LINKS.services.map((service) => (
                           <NavigationMenuLink key={service.href} asChild>
                             <Link
                               href={service.href}
-                              className="group block select-none rounded-lg p-3 leading-none no-underline outline-none transition-all duration-200 hover:bg-brand-teal-blue/30 hover:text-brand-deep-forest-green focus:bg-brand-teal-blue/30 focus:text-brand-deep-forest-green border border-transparent hover:border-brand-teal-blue hover:shadow-md transform hover:scale-[1.02]"
+                              className="group block select-none rounded-lg p-3 leading-none no-underline outline-none transition-all duration-200 hover:bg-brand-deep-forest-green hover:text-brand-white focus:bg-brand-deep-forest-green focus:text-brand-white border border-transparent hover:border-brand-deep-forest-green hover:shadow-md transform hover:scale-[1.02]"
                             >
-                              <div className="text-sm font-medium leading-none text-brand-black group-hover:text-brand-deep-forest-green transition-colors duration-200">
+                              <div className="text-sm font-medium leading-none text-brand-black group-hover:text-brand-white transition-colors duration-200">
                                 {service.label}
                               </div>
-                              <div className="text-xs text-gray-500 mt-1 group-hover:text-brand-deep-forest-green/80 transition-colors duration-200">
+                              <div className="text-xs text-brand-black/70 mt-1 group-hover:text-brand-white/80 transition-colors duration-200">
                                 Learn more about {service.label.toLowerCase()}
                               </div>
                             </Link>
@@ -66,7 +66,7 @@ export default function Header() {
                       href={item.href}
                       className={cn(
                         navigationMenuTriggerStyle(),
-                        "bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue hover:text-brand-black"
+                        "bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue hover:text-brand-black focus:bg-brand-teal-blue focus:text-brand-black"
                       )}
                     >
                       {item.label}
@@ -107,7 +107,7 @@ export default function Header() {
                   <div key={item.href}>
                     <Link
                       href={item.href}
-                      className="block px-2 py-1 text-lg font-semibold"
+                      className="block px-2 py-1 text-lg font-semibold hover:text-brand-teal-blue transition-colors"
                     >
                       {item.label}
                     </Link>
@@ -117,7 +117,7 @@ export default function Header() {
                           <Link
                             key={service.href}
                             href={service.href}
-                            className="block px-2 py-1 text-sm text-muted-foreground hover:text-foreground"
+                            className="block px-2 py-1 text-sm text-muted-foreground hover:text-brand-teal-blue transition-colors"
                           >
                             {service.label}
                           </Link>
