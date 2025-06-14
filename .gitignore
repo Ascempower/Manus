@@ -1,0 +1,11 @@
+node_modules/
+.next/
+dist/
+.DS_Store
+out/
+
+# Environment variables
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local

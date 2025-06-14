@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy - Choice Insurance Agency',
-  description: 'Read the Privacy Policy for Choice Insurance Agency to understand how we collect, use, and protect your personal information.',
+  title: 'Privacy Policy - Choice Insurance Agency | HIPAA Compliant | HIPAA Compliant',
+  description: 'Choice Insurance Agency\'s HIPAA-compliant privacy policy detailing how we protect your personal and health information in accordance with federal regulations.',
 };
 
 export default function PrivacyPolicyPage() {
@@ -98,11 +98,10 @@ export default function PrivacyPolicyPage() {
         If you have any questions about this Privacy Policy, please contact us:
       </p>
       <ul className="list-disc pl-6 space-y-2">
-        <li>By email: <a href="mailto:a.campbell@insureyourchoices.com" className="text-blue-600 hover:underline">a.campbell@insureyourchoices.com</a></li>
-        <li>By phone number: (877) 204-9648</li>
+        <li>By email: <a href="mailto:info@choiceinsurancehub.com" className="text-blue-600 hover:underline">info@choiceinsurancehub.com</a></li>
+        <li>By phone number: (877) 414-2319</li>
         <li>Through our <Link href="/contact" className="text-blue-600 hover:underline">Contact Page</Link></li>
       </ul>
     </div>
   );
 }
-
