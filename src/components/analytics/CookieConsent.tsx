@@ -15,10 +15,7 @@ export default function CookieConsent() {
     const hipaaNotice = localStorage.getItem('hipaa-notice-seen');
     
     // Only show cookie consent if HIPAA notice has been handled
-    const hipaaNotice = localStorage.getItem('hipaa-notice-seen');
-    
-    // Only show cookie consent if HIPAA notice has been handled
-    if (!consent && hipaaNotice && hipaaNotice) {
+    if (!consent && hipaaNotice) {
       // Delay showing consent banner to not interfere with page load
       setTimeout(() => {
         setShowConsent(true);
@@ -71,8 +68,7 @@ export default function CookieConsent() {
               </h3>
               <p className="text-sm text-brand-black/80 mb-4">
                 We use essential cookies for website functionality. Optional analytics cookies 
-                helpe maintaining HIPAA compliance. No personal 
-                health information is ever collected urrtransmitted while maintaining HIPAA compliance. No personal 
+                help us improve our services while maintaining HIPAA compliance. No personal 
                 health information is ever collected or transmitted.
               </p>
               <div className="flex gap-2 flex-col sm:flex-row">

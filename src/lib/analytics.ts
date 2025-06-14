@@ -21,13 +21,8 @@ export const trackEvent = (
     return;
   }
 
-  const eventData =// Check HIPAA consent before tracking
-  if (!hasHIPAAConsent()) {
-    return;
-  }
-
   const eventData = {
-  event_category: category,
+    event_category: category,
     event_label: label,
     value: value,
   };
@@ -42,9 +37,6 @@ export const trackEvent = (
   const sanitizedData = sanitizeForHIPAA(eventData);
 
   if (typeof window !== 'undefined' && window.gtag) {
-    // Remove query parameters and fragments that might contain PHI
-    const cleanUrl = url.split('?')[0].split('#')[0];
-    
     window.gtag('event', action, sanitizedData);
   }
 };
@@ -62,7 +54,6 @@ export const trackPageView = (url: string, title?: string) => {
     window.gtag('config', process.env.NEXT_PUBLIC_GA4_ID, {
       page_title: title || document.title,
       page_location: cleanUrl, // Only send clean URL without parameters
-      send_page_view: cleanUrl, // Only send clean URL without parameters
       send_page_view: true,
     });
   }
@@ -83,17 +74,16 @@ export const trackConversion = (conversionId: string, value?: number) => {
 export const trackInsuranceEvents = {
   // Quote requests (no personal information)
   quoteRequest: (insuranceType: string) => {
-    // Only track the type of insurance, { 
-      service_type: never personal details
+    // Only track the type of insurance, never personal details
     trackHIPAACompliantEvent('quote_request', 'insurance', { 
       insurance_type: insuranceType,
       timestamp: new Date().toISOString()
     });
   },
 
-  // Consultation bookings (method only, no personal info) (form type only, no form data)
+  // Consultation bookings (method only, no personal info)
   consultationBooked: (method: string = 'calendly') => {
-    trackHIPAACompliantHIPAACompliantEvent('consultation_booked', 'engagement', { 
+    trackHIPAACompliantEvent('consultation_booked', 'engagement', { 
       booking_method: method 
     });
   },
