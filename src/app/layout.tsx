@@ -90,7 +90,7 @@ export default function RootLayout({
                 if (typeof Calendly !== 'undefined') {
                   Calendly.initBadgeWidget({ 
                     url: 'https://calendly.com/choiceinsurancehub', 
-                    text: 'Schedule Consultation', 
+                    text: 'Schedule Call', 
                     color: '#42615A', 
                     textColor: '#DD8B66', 
                     branding: false 
