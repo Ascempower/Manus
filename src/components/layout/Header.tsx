@@ -1,7 +1,5 @@
 "use client";
 
-"use client";
-
 import Link from 'next/link';
 import { Menu } from 'lucide-react';
 import { MAIN_NAVIGATION, FOOTER_LINKS } from '@/constants/navigation';
