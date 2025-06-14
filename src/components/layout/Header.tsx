@@ -1,6 +1,7 @@
 "use client";
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu } from 'lucide-react';
 import { MAIN_NAVIGATION, FOOTER_LINKS } from '@/constants/navigation';
 import { Button } from '@/components/ui/button';
@@ -25,7 +26,14 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-brand-teal-blue/40 bg-brand-deep-forest-green text-brand-white">
       <div className="container mx-auto px-4 flex h-16 items-center justify-between">
         <Link href="/" className="mr-6 flex items-center">
-          <img src="/assets/logos/main-logo-orange.png" alt="Choice Insurance Agency Logo" className="max-h-10 w-auto object-contain" />
+          <Image 
+            src="/assets/logos/main-logo-orange.png" 
+            alt="Choice Insurance Agency Logo" 
+            width={120}
+            height={40}
+            className="max-h-10 w-auto object-contain"
+            priority
+          />
         </Link>
         
         <NavigationMenu className="hidden lg:flex">

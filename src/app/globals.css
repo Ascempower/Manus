@@ -1,5 +1,4 @@
-/* Fonts are preloaded in layout.tsx, fallback import for additional weights */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+/* Fonts are inlined in layout.tsx for critical performance */
 
 @tailwind base;
 @tailwind components;

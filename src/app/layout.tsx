@@ -82,16 +82,47 @@ export default function RootLayout({
             :root {
               --color-brand-white: #FFFFFF;
               --color-brand-teal-blue: #A7C9CA;
+              --color-brand-teal-blue-dark: #8BB5B7;
               --color-brand-deep-forest-green: #42615A;
               --color-brand-warm-beige-coral: #DD8B66;
               --color-brand-warm-beige-coral-dark: #C77A52;
               --color-brand-black: #000000;
             }
-            body { font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif; }
+            /* Critical layout styles */
+            body { 
+              font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif; 
+              margin: 0;
+              padding: 0;
+            }
             .flex { display: flex; }
             .flex-col { flex-direction: column; }
             .min-h-screen { min-block-size: 100vh; }
             .flex-grow { flex-grow: 1; }
+            .container { max-width: 1200px; margin: 0 auto; }
+            .px-4 { padding-left: 1rem; padding-right: 1rem; }
+            .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+            .text-center { text-align: center; }
+            .font-bold { font-weight: 700; }
+            .text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+            .mb-6 { margin-bottom: 1.5rem; }
+            .mb-10 { margin-bottom: 2.5rem; }
+            .bg-gradient-to-br { background-image: linear-gradient(to bottom right, var(--tw-gradient-stops)); }
+            .from-brand-teal-blue { --tw-gradient-from: var(--color-brand-teal-blue); --tw-gradient-to: rgb(167 201 202 / 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+            .to-brand-white { --tw-gradient-to: var(--color-brand-white); }
+            .text-brand-deep-forest-green { color: var(--color-brand-deep-forest-green); }
+            .bg-brand-deep-forest-green { background-color: var(--color-brand-deep-forest-green); }
+            .text-brand-white { color: var(--color-brand-white); }
+            .sticky { position: sticky; }
+            .top-0 { top: 0; }
+            .z-50 { z-index: 50; }
+            .w-full { width: 100%; }
+            .h-16 { height: 4rem; }
+            .items-center { align-items: center; }
+            .justify-between { justify-content: space-between; }
+            @media (min-width: 768px) {
+              .md\\:text-6xl { font-size: 3.75rem; line-height: 1; }
+              .md\\:py-32 { padding-top: 8rem; padding-bottom: 8rem; }
+            }
           `
         }} />
         
@@ -103,24 +134,12 @@ export default function RootLayout({
         {/* Preload critical images */}
         <link rel="preload" href="/assets/logos/main-logo-orange.png" as="image" />
         
-        {/* DNS prefetch for external resources */}
-        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
-        <link rel="dns-prefetch" href="//assets.calendly.com" />
-        <link rel="dns-prefetch" href="//calendly.com" />
-        
-        {/* Preconnect to external domains */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        {/* Preconnect to critical external domains only */}
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         
-        {/* Load non-critical CSS asynchronously */}
-        <link 
-          rel="preload" 
-          href="https://assets.calendly.com/assets/external/widget.css" 
-          as="style" 
-          id="calendly-css-preload"
-        />
-        <noscript><link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" /></noscript>
+        {/* DNS prefetch for non-critical resources - loaded after page load */}
+        <link rel="dns-prefetch" href="//assets.calendly.com" />
+        <link rel="dns-prefetch" href="//calendly.com" />
       </head>
       <body className="flex flex-col min-h-screen">
         <Header />
@@ -132,62 +151,78 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              // Load non-critical scripts after page load
-              window.addEventListener('load', function() {
-                // Convert preloaded CSS to stylesheet
-                var calendlyCssPreload = document.getElementById('calendly-css-preload');
-                if (calendlyCssPreload) {
-                  calendlyCssPreload.onload = function() {
-                    calendlyCssPreload.onload = null;
-                    calendlyCssPreload.rel = 'stylesheet';
+              // Optimize third-party loading with intersection observer and user interaction
+              (function() {
+                var thirdPartyLoaded = false;
+                
+                function loadThirdPartyResources() {
+                  if (thirdPartyLoaded) return;
+                  thirdPartyLoaded = true;
+                  
+                  // Load Calendly CSS
+                  var calendlyCSS = document.createElement('link');
+                  calendlyCSS.rel = 'stylesheet';
+                  calendlyCSS.href = 'https://assets.calendly.com/assets/external/widget.css';
+                  document.head.appendChild(calendlyCSS);
+                  
+                  // Load Calendly script
+                  var calendlyScript = document.createElement('script');
+                  calendlyScript.src = 'https://assets.calendly.com/assets/external/widget.js';
+                  calendlyScript.async = true;
+                  calendlyScript.onload = function() {
+                    if (typeof Calendly !== 'undefined') {
+                      Calendly.initBadgeWidget({ 
+                        url: 'https://calendly.com/choiceinsurancehub', 
+                        text: 'Schedule Call', 
+                        color: '#42615A', 
+                        textColor: '#DD8B66', 
+                        branding: false 
+                      }); 
+                    }
                   };
-                  // Trigger the load if it hasn't already
-                  if (calendlyCssPreload.rel === 'preload') {
-                    calendlyCssPreload.rel = 'stylesheet';
-                  }
+                  document.head.appendChild(calendlyScript);
                 }
                 
-                // Load Calendly script dynamically
-                var calendlyScript = document.createElement('script');
-                calendlyScript.src = 'https://assets.calendly.com/assets/external/widget.js';
-                calendlyScript.async = true;
-                calendlyScript.onload = function() {
-                  // Initialize Calendly widget after script loads
-                  if (typeof Calendly !== 'undefined') {
-                    Calendly.initBadgeWidget({ 
-                      url: 'https://calendly.com/choiceinsurancehub', 
-                      text: 'Schedule Call', 
-                      color: '#42615A', 
-                      textColor: '#DD8B66', 
-                      branding: false 
-                    }); 
-                  }
-                };
-                document.head.appendChild(calendlyScript);
+                // Load on user interaction (more performant than window load)
+                var events = ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart'];
+                var loaded = false;
                 
-                // Service Worker registration (non-blocking)
+                function triggerLoad() {
+                  if (loaded) return;
+                  loaded = true;
+                  
+                  events.forEach(function(event) {
+                    document.removeEventListener(event, triggerLoad, true);
+                  });
+                  
+                  loadThirdPartyResources();
+                }
+                
+                events.forEach(function(event) {
+                  document.addEventListener(event, triggerLoad, true);
+                });
+                
+                // Fallback: load after 3 seconds if no user interaction
+                setTimeout(triggerLoad, 3000);
+                
+                // Service Worker registration (non-blocking, delayed)
                 setTimeout(function() {
                   if ('serviceWorker' in navigator) {
                     navigator.serviceWorker.register('/sw.js', {
                       scope: '/'
                     }).then(
                       function(registration) {
-                        console.log('Service Worker registration successful with scope: ', registration.scope);
                         if (registration.waiting) {
                           registration.waiting.postMessage({command: 'skipWaiting'});
                         }
                       },
                       function(err) {
-                        console.log('Service Worker registration failed: ', err);
+                        // Silent fail for SW registration
                       }
                     );
-                    
-                    navigator.serviceWorker.addEventListener('controllerchange', function() {
-                      console.log('Service Worker controller changed');
-                    });
                   }
-                }, 1000);
-              });
+                }, 2000);
+              })();
             `,
           }}
         />
