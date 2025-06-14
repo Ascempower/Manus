@@ -5,10 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "npm run generate-critical && next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "next build && next export"
+    "export": "next build && next export",
+    "generate-critical": "node scripts/generate-critical-css.js",
+    "analyze": "ANALYZE=true npm run build"
   },
   "dependencies": {
     "@arcjet/inspect": "^1.0.0-beta.8",

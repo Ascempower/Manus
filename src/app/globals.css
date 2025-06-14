@@ -1,3 +1,4 @@
+/* Fonts are preloaded in layout.tsx, fallback import for additional weights */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
@@ -97,6 +98,7 @@
     font-family: 'Poppins', sans-serif;
   }
   
+  /* Brand Color Utilities */
   .text-brand-white {
     color: var(--color-brand-white);
   }
@@ -152,6 +154,82 @@
   .hover\:bg-brand-warm-beige-coral-dark:hover {
     background-color: var(--color-brand-warm-beige-coral-dark);
   }
+  
+  /* CSS Logical Properties Utilities */
+  
+  /* Size utilities using logical properties */
+  .inline-size-full { inline-size: 100%; }
+  .inline-size-auto { inline-size: auto; }
+  .block-size-full { block-size: 100%; }
+  .block-size-auto { block-size: auto; }
+  .min-inline-size-0 { min-inline-size: 0; }
+  .min-block-size-screen { min-block-size: 100vh; }
+  .max-inline-size-full { max-inline-size: 100%; }
+  .max-inline-size-prose { max-inline-size: 65ch; }
+  .max-inline-size-48 { max-inline-size: 48rem; }
+  
+  /* Margin utilities using logical properties */
+  .margin-inline-auto { margin-inline: auto; }
+  .margin-block-auto { margin-block: auto; }
+  .margin-inline-start-auto { margin-inline-start: auto; }
+  .margin-inline-end-auto { margin-inline-end: auto; }
+  .margin-block-start-auto { margin-block-start: auto; }
+  .margin-block-end-auto { margin-block-end: auto; }
+  
+  .margin-inline-0 { margin-inline: 0; }
+  .margin-block-0 { margin-block: 0; }
+  .margin-inline-1 { margin-inline: 0.25rem; }
+  .margin-block-1 { margin-block: 0.25rem; }
+  .margin-inline-2 { margin-inline: 0.5rem; }
+  .margin-block-2 { margin-block: 0.5rem; }
+  .margin-inline-4 { margin-inline: 1rem; }
+  .margin-block-4 { margin-block: 1rem; }
+  .margin-inline-6 { margin-inline: 1.5rem; }
+  .margin-block-6 { margin-block: 1.5rem; }
+  .margin-inline-8 { margin-inline: 2rem; }
+  .margin-block-8 { margin-block: 2rem; }
+  
+  .margin-block-end-4 { margin-block-end: 1rem; }
+  .margin-block-end-6 { margin-block-end: 1.5rem; }
+  .margin-block-end-8 { margin-block-end: 2rem; }
+  .margin-block-end-10 { margin-block-end: 2.5rem; }
+  
+  /* Padding utilities using logical properties */
+  .padding-inline-0 { padding-inline: 0; }
+  .padding-block-0 { padding-block: 0; }
+  .padding-inline-1 { padding-inline: 0.25rem; }
+  .padding-block-1 { padding-block: 0.25rem; }
+  .padding-inline-2 { padding-inline: 0.5rem; }
+  .padding-block-2 { padding-block: 0.5rem; }
+  .padding-inline-4 { padding-inline: 1rem; }
+  .padding-block-4 { padding-block: 1rem; }
+  .padding-inline-6 { padding-inline: 1.5rem; }
+  .padding-block-6 { padding-block: 1.5rem; }
+  .padding-inline-8 { padding-inline: 2rem; }
+  .padding-block-8 { padding-block: 2rem; }
+  
+  .padding-block-12 { padding-block: 3rem; }
+  .padding-block-16 { padding-block: 4rem; }
+  .padding-block-20 { padding-block: 5rem; }
+  .padding-block-32 { padding-block: 8rem; }
+  
+  /* Border utilities using logical properties */
+  .border-inline-start { border-inline-start: 1px solid; }
+  .border-inline-end { border-inline-end: 1px solid; }
+  .border-block-start { border-block-start: 1px solid; }
+  .border-block-end { border-block-end: 1px solid; }
+  
+  /* Position utilities using logical properties */
+  .inset-inline-0 { inset-inline: 0; }
+  .inset-block-0 { inset-block: 0; }
+  .inset-inline-start-0 { inset-inline-start: 0; }
+  .inset-inline-end-0 { inset-inline-end: 0; }
+  .inset-block-start-0 { inset-block-start: 0; }
+  .inset-block-end-0 { inset-block-end: 0; }
+  
+  /* Text alignment using logical properties */
+  .text-start { text-align: start; }
+  .text-end { text-align: end; }
   
   .disclaimer-large {
     font-size: 18px;
