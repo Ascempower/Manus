@@ -48,6 +48,8 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Choice Insurance" />
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+        {/* Calendly badge widget */}
+        <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
       </head>
       <body className="flex flex-col min-h-screen">
         <Header />
@@ -55,11 +57,14 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        {/* Calendly badge widget scripts */}
+        <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              if ('serviceWorker' in navigator) {
-                window.addEventListener('load', function() {
+              window.addEventListener('load', function() {
+                // Service Worker registration
+                if ('serviceWorker' in navigator) {
                   navigator.serviceWorker.register('/sw.js').then(
                     function(registration) {
                       console.log('Service Worker registration successful with scope: ', registration.scope);
@@ -68,8 +73,19 @@ export default function RootLayout({
                       console.log('Service Worker registration failed: ', err);
                     }
                   );
-                });
-              }
+                }
+                
+                // Calendly badge widget initialization
+                if (typeof Calendly !== 'undefined') {
+                  Calendly.initBadgeWidget({ 
+                    url: 'https://calendly.com/choiceinsurancehub', 
+                    text: 'Schedule time with me', 
+                    color: '#42615a', 
+                    textColor: '#dd8b66', 
+                    branding: true 
+                  }); 
+                }
+              });
             `,
           }}
         />
