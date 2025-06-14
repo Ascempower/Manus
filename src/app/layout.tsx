@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   // Note: Using 'width' here instead of 'inline-size' because the HTML meta viewport
   // tag doesn't support CSS logical properties - it generates: <meta name="viewport" content="width=device-width">
-  inlineSize: 'device-width',
+  width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
   themeColor: '#42615A',
