@@ -10,8 +10,8 @@ import {
 } from "@/components/ui/accordion";
 
 export const metadata: Metadata = {
-  title: 'Frequently Asked Questions - Choice Insurance Agency',
-  description: 'Find answers to common questions about insurance, our services, and how Choice Insurance Agency can help you.',
+  title: 'Frequently Asked Questions - Choice Insurance Hub',
+  description: 'Find answers to common questions about insurance, our services, and how Choice Insurance Hub can help you.',
   keywords: 'insurance FAQ, Medicare questions, life insurance questions, insurance agency FAQ, insurance consultation, independent insurance agency, insurance policy review',
   alternates: {
     canonical: 'https://choiceins.netlify.app/faq',
@@ -24,7 +24,7 @@ const faqData = [
     questions: [
       {
         question: "What is an independent insurance agency?",
-        answer: "An independent insurance agency, like Choice Insurance Agency, represents multiple insurance companies rather than just one. This allows us to offer you a wider variety of coverage options and price points, ensuring you find the plan that best suits your needs and budget."
+        answer: "An independent insurance agency, like Choice Insurance Hub, represents multiple insurance companies rather than just one. This allows us to offer you a wider variety of coverage options and price points, ensuring you find the plan that best suits your needs and budget."
       },
       {
         question: "Why should I use an insurance agent instead of buying directly?",
@@ -71,7 +71,7 @@ const faqData = [
     questions: [
       {
         question: "What states do you serve?",
-        answer: "Choice Insurance Agency services residents of Illinois and the following states: Alabama, Georgia, Ohio, Kentucky, Mississippi, South Carolina, and Texas."
+        answer: "Choice Insurance Hub services residents of Illinois and the following states: Alabama, Georgia, Ohio, Kentucky, Mississippi, South Carolina, and Texas."
       },
       {
         question: "Is there a cost for your consultation services?",

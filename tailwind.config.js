@@ -61,18 +61,18 @@ export default {
       keyframes: {
         "accordion-down": {
           from: {
-            height: "0",
+            "block-size": "0",
           },
           to: {
-            height: "var(--radix-accordion-content-height)",
+            "block-size": "var(--radix-accordion-content-height)",
           },
         },
         "accordion-up": {
           from: {
-            height: "var(--radix-accordion-content-height)",
+            "block-size": "var(--radix-accordion-content-height)",
           },
           to: {
-            height: "0",
+            "block-size": "0",
           },
         },
       },

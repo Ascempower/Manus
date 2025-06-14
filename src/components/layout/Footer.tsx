@@ -17,7 +17,7 @@ export default function Footer({ className = "" }: { className?: string }) {
               <img
                 src="/assets/logos/main-logo-orange.png"
                 alt="Choice Insurance Agency Logo"
-                style={{ width: "150px", height: "auto" }}
+                className="w-[150px] h-auto"
               />
             </Link>
             <p className="text-sm mb-4 text-brand-white/80">
@@ -128,9 +128,15 @@ export default function Footer({ className = "" }: { className?: string }) {
                 Alton IL 62002
               </p>
               <p>
-                Phone:{" "}
+                Toll:{" "}
                 <a href="tel:8774142319" className="hover:text-brand-teal-blue">
                   (877) 414-2319
+                </a>
+              </p>
+              <p>
+                Local:{" "}
+                <a href="tel:6182785927" className="hover:text-brand-teal-blue">
+                  (618) 278-5927
                 </a>
               </p>
               <p>
@@ -146,7 +152,7 @@ export default function Footer({ className = "" }: { className?: string }) {
         {/* Copyright and Legal Links */}
         <div className="border-t border-brand-teal-blue/50 pt-8 text-center md:flex md:justify-between items-center">
           <p className="text-sm mb-4 md:mb-0 text-brand-white/80">
-            &copy; {currentYear} Choice Insurance Agency. All rights reserved.
+            &copy; {currentYear} Choice Insurance Hub. All rights reserved.
           </p>
           <div className="space-x-4 text-sm">
             <Link href="/privacy-policy" className="text-brand-white/80 hover:text-brand-teal-blue transition-colors">
@@ -163,7 +169,7 @@ export default function Footer({ className = "" }: { className?: string }) {
 
         {/* Disclaimer */}
         <div className="border-t border-brand-teal-blue/50 pt-8 mt-8 text-center">
-          <p className="text-xs text-brand-white/70">{disclaimerText}</p>
+          <p className="text-lg text-brand-white/70">{disclaimerText}</p>
         </div>
       </div>
     </footer>

@@ -48,7 +48,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Choice Insurance" />
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
-        {/* Calendly badge widget */}
+        {/* Calendly floating widget */}
         <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
       </head>
       <body className="flex flex-col min-h-screen">
@@ -57,7 +57,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        {/* Calendly badge widget scripts */}
+        {/* Calendly floating widget scripts */}
         <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
         <script
           dangerouslySetInnerHTML={{
@@ -86,14 +86,14 @@ export default function RootLayout({
                   });
                 }
                 
-                // Calendly badge widget initialization
+                // Calendly floating widget initialization
                 if (typeof Calendly !== 'undefined') {
                   Calendly.initBadgeWidget({ 
                     url: 'https://calendly.com/choiceinsurancehub', 
-                    text: 'Schedule time with me', 
-                    color: '#42615a', 
-                    textColor: '#dd8b66', 
-                    branding: true 
+                    text: 'Schedule Consultation', 
+                    color: '#42615A', 
+                    textColor: '#DD8B66', 
+                    branding: false 
                   }); 
                 }
               });
