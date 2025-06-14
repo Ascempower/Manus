@@ -1,6 +1,4 @@
-// HIPAAHIPAA-Compliant Analytics and GTM utilities
-
-import { hasHIPAAConsent, sanitizeForHIPAA, validateNoPHI, trackHIPAACompliantEvent } from './hipaa-compliance';
+// HIPAA-Compliant Analytics and GTM utilities
 
 import { hasHIPAAConsent, sanitizeForHIPAA, validateNoPHI, trackHIPAACompliantEvent } from './hipaa-compliance';
 
