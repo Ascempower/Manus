@@ -1,0 +1,237 @@
+/* Fonts are inlined in layout.tsx for critical performance */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+  
+  /* Choice Insurance Brand Colors */
+  --color-brand-white: #FFFFFF;
+  --color-brand-teal-blue: #A7C9CA;
+  --color-brand-teal-blue-dark: #8BB5B7;
+  --color-brand-deep-forest-green: #42615A;
+  --color-brand-warm-beige-coral: #DD8B66;
+  --color-brand-warm-beige-coral-dark: #C77A52;
+  --color-brand-black: #000000;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+@layer utilities {
+  .font-poppins {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Brand Color Utilities */
+  .text-brand-white {
+    color: var(--color-brand-white);
+  }
+  
+  .text-brand-teal-blue {
+    color: var(--color-brand-teal-blue);
+  }
+  
+  .text-brand-deep-forest-green {
+    color: var(--color-brand-deep-forest-green);
+  }
+  
+  .text-brand-warm-beige-coral {
+    color: var(--color-brand-warm-beige-coral);
+  }
+  
+  .text-brand-black {
+    color: var(--color-brand-black);
+  }
+  
+  .bg-brand-white {
+    background-color: var(--color-brand-white);
+  }
+  
+  .bg-brand-teal-blue {
+    background-color: var(--color-brand-teal-blue);
+  }
+  
+  .bg-brand-teal-blue-dark {
+    background-color: var(--color-brand-teal-blue-dark);
+  }
+  
+  .bg-brand-deep-forest-green {
+    background-color: var(--color-brand-deep-forest-green);
+  }
+  
+  .bg-brand-warm-beige-coral {
+    background-color: var(--color-brand-warm-beige-coral);
+  }
+  
+  .bg-brand-warm-beige-coral-dark {
+    background-color: var(--color-brand-warm-beige-coral-dark);
+  }
+  
+  .bg-brand-black {
+    background-color: var(--color-brand-black);
+  }
+  
+  .hover\:bg-brand-warm-beige-coral\/80:hover {
+    background-color: rgb(221 139 102 / 0.8);
+  }
+  
+  .hover\:bg-brand-warm-beige-coral-dark:hover {
+    background-color: var(--color-brand-warm-beige-coral-dark);
+  }
+  
+  /* CSS Logical Properties Utilities */
+  
+  /* Size utilities using logical properties */
+  .inline-size-full { inline-size: 100%; }
+  .inline-size-auto { inline-size: auto; }
+  .block-size-full { block-size: 100%; }
+  .block-size-auto { block-size: auto; }
+  .min-inline-size-0 { min-inline-size: 0; }
+  .min-block-size-screen { min-block-size: 100vh; }
+  .max-inline-size-full { max-inline-size: 100%; }
+  .max-inline-size-prose { max-inline-size: 65ch; }
+  .max-inline-size-48 { max-inline-size: 48rem; }
+  
+  /* Margin utilities using logical properties */
+  .margin-inline-auto { margin-inline: auto; }
+  .margin-block-auto { margin-block: auto; }
+  .margin-inline-start-auto { margin-inline-start: auto; }
+  .margin-inline-end-auto { margin-inline-end: auto; }
+  .margin-block-start-auto { margin-block-start: auto; }
+  .margin-block-end-auto { margin-block-end: auto; }
+  
+  .margin-inline-0 { margin-inline: 0; }
+  .margin-block-0 { margin-block: 0; }
+  .margin-inline-1 { margin-inline: 0.25rem; }
+  .margin-block-1 { margin-block: 0.25rem; }
+  .margin-inline-2 { margin-inline: 0.5rem; }
+  .margin-block-2 { margin-block: 0.5rem; }
+  .margin-inline-4 { margin-inline: 1rem; }
+  .margin-block-4 { margin-block: 1rem; }
+  .margin-inline-6 { margin-inline: 1.5rem; }
+  .margin-block-6 { margin-block: 1.5rem; }
+  .margin-inline-8 { margin-inline: 2rem; }
+  .margin-block-8 { margin-block: 2rem; }
+  
+  .margin-block-end-4 { margin-block-end: 1rem; }
+  .margin-block-end-6 { margin-block-end: 1.5rem; }
+  .margin-block-end-8 { margin-block-end: 2rem; }
+  .margin-block-end-10 { margin-block-end: 2.5rem; }
+  
+  /* Padding utilities using logical properties */
+  .padding-inline-0 { padding-inline: 0; }
+  .padding-block-0 { padding-block: 0; }
+  .padding-inline-1 { padding-inline: 0.25rem; }
+  .padding-block-1 { padding-block: 0.25rem; }
+  .padding-inline-2 { padding-inline: 0.5rem; }
+  .padding-block-2 { padding-block: 0.5rem; }
+  .padding-inline-4 { padding-inline: 1rem; }
+  .padding-block-4 { padding-block: 1rem; }
+  .padding-inline-6 { padding-inline: 1.5rem; }
+  .padding-block-6 { padding-block: 1.5rem; }
+  .padding-inline-8 { padding-inline: 2rem; }
+  .padding-block-8 { padding-block: 2rem; }
+  
+  .padding-block-12 { padding-block: 3rem; }
+  .padding-block-16 { padding-block: 4rem; }
+  .padding-block-20 { padding-block: 5rem; }
+  .padding-block-32 { padding-block: 8rem; }
+  
+  /* Border utilities using logical properties */
+  .border-inline-start { border-inline-start: 1px solid; }
+  .border-inline-end { border-inline-end: 1px solid; }
+  .border-block-start { border-block-start: 1px solid; }
+  .border-block-end { border-block-end: 1px solid; }
+  
+  /* Position utilities using logical properties */
+  .inset-inline-0 { inset-inline: 0; }
+  .inset-block-0 { inset-block: 0; }
+  .inset-inline-start-0 { inset-inline-start: 0; }
+  .inset-inline-end-0 { inset-inline-end: 0; }
+  .inset-block-start-0 { inset-block-start: 0; }
+  .inset-block-end-0 { inset-block-end: 0; }
+  
+  /* Text alignment using logical properties */
+  .text-start { text-align: start; }
+  .text-end { text-align: end; }
+  
+  .disclaimer-large {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+}
