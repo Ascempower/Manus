@@ -77,7 +77,7 @@ export const protectRoute = async (req, res, next) => {
     
     // Request is allowed
     next();
-  } catch (__error) {
+  } catch {
     // Arcjet protection error - allowing request to proceed
     // Allow the request to proceed if Arcjet fails
     next();
