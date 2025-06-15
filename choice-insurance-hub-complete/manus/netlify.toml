@@ -1,0 +1,24 @@
+[build]
+base = "."
+command = "pnpm install && pnpm run build"
+publish = ".next"
+
+[build.environment]
+NODE_VERSION = "22.13.0"
+
+[functions]
+directory = "netlify/functions"
+
+[[plugins]]
+package = "@netlify/plugin-nextjs"
+
+[[plugins]]
+package = "netlify-plugin-bundle-env"
+  [plugins.inputs]
+  directories = ["netlify/functions"]
+  include = [
+    "NEXT_PUBLIC_API_URL",
+    "NEXT_PUBLIC_FIREBASE_KEY",
+    "NEXT_PUBLIC_SENTRY_DSN"
+  ]
+  mask = true
