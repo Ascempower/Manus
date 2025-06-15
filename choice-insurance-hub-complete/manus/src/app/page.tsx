@@ -13,7 +13,6 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle, Users, ShieldCheck, MessageSquare } from "lucide-react";
-import { trackInsuranceEvents } from "@/lib/analytics";
 export default function HomePage() {
   return (
     <>
@@ -30,7 +29,6 @@ export default function HomePage() {
             size="lg" 
             asChild 
             className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral-dark text-brand-black font-semibold"
-            onClick={() => trackInsuranceEvents.consultationBooked('hero_cta')}
           >
             <Link href="/contact#book-a-call">Book a Free Consultation</Link>
           </Button>

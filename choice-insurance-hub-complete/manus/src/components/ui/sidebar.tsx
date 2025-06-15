@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { VariantProps, cva } from "class-variance-authority"
 import { PanelLeft } from "lucide-react"
@@ -560,7 +560,7 @@ const SidebarMenuButton = React.forwardRef<
         data-sidebar="menu-button"
         data-size={size}
         data-active={isActive}
-        className={cn(sidebarMenuButtonVariants({ variant, size }), className)}
+        className={cn(sidebarMenuButtonVariants({ variant: variant as "default" | "outline", size: size as "default" | "sm" | "lg" }), className)}
         {...props}
       />
     )
