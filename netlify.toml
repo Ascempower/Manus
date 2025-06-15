@@ -1,6 +1,6 @@
 [build]
 base = "."
-command = "pnpm install --frozen-lockfile && pnpm run build"
+command = "pnpm install --frozen-lockfile && pnpm run print-versions && pnpm run build"
 publish = ".next"
 
 [build.environment]

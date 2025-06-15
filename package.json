@@ -12,7 +12,8 @@
     "lint": "npx next lint",
     "export": "npx next build && npx next export",
     "generate-critical": "node scripts/generate-critical-css.cjs",
-    "analyze": "ANALYZE=true pnpm run build"
+    "analyze": "ANALYZE=true pnpm run build",
+    "print-versions": "node -p \"'React: ' + require('react/package.json').version + ', Node: ' + process.version\""
   },
   "dependencies": {
     "@arcjet/inspect": "^1.0.0-beta.8",
