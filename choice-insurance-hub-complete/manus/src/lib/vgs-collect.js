@@ -17,7 +17,7 @@ const initVGSCollect = () => {
   const vgsForm = VGSCollect.create(
     vaultId,
     'sandbox', // Change to 'live' in production
-    (state) => {
+    (__state) => {
       // VGS Collect state updated
     }
   ).setRouteId(routeId);
@@ -94,7 +94,7 @@ const initQuoteForm = (vgsForm, fieldCSS) => {
           coverage_amount: document.getElementById('coverage-amount')?.value
         }
       }, 
-      (status, response) => {
+      (status, __response) => {
         if (status >= 200 && status < 300) {
           // Success handling
           showSuccessMessage('Your quote request has been submitted securely.');

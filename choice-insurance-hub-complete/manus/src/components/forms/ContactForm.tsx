@@ -34,7 +34,7 @@ export default function ContactForm() {
       } else {
         setSubmitError(true);
       }
-    } catch (error) {
+    } catch (__error) {
       setSubmitError(true);
     } finally {
       setIsSubmitting(false);

@@ -11,6 +11,7 @@ export default tseslint.config(
   ...tseslint.configs.recommended,
   
   {
+    files: ['**/*.{ts,tsx}'], // Only apply type-checking to TypeScript files
     languageOptions: {
       parserOptions: {
         project: ['./tsconfig.json', './tsconfig.node.json'],
@@ -45,6 +46,8 @@ export default tseslint.config(
       'eqeqeq': ['error', 'always'],
       'curly': ['error', 'all'],
       'react/no-unescaped-entities': 'off',
+      'react/prop-types': 'off', // We use TypeScript for prop validation
+      'react/no-unknown-property': ['error', { ignore: ['cmdk-input-wrapper'] }],
       
       // TypeScript specific rules (less strict initially)
       '@typescript-eslint/no-unused-vars': ['error', { 

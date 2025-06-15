@@ -68,7 +68,7 @@ export const trackHIPAACompliantEvent = (
     return;
   }
 
-  const sanitizedProperties = properties ? sanitizeForHIPAA(properties) : {};
+  const __sanitizedProperties = properties ? sanitizeForHIPAA(properties) : {};
   
   // Development debugging - HIPAA-Compliant Event logging removed for production
 

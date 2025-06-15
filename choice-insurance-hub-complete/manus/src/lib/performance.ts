@@ -8,8 +8,8 @@ export function measureWebVitals() {
   // Core Web Vitals measurement
   const observer = new PerformanceObserver((list) => {
     for (const entry of list.getEntries()) {
-      const metricName = entry.name;
-      const value = Math.round(entry.startTime + entry.duration);
+      const __metricName = entry.name;
+      const __value = Math.round(entry.startTime + entry.duration);
       
       // Development performance logging removed for production
       
