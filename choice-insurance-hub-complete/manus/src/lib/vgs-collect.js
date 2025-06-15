@@ -4,12 +4,12 @@
 
 // Initialize VGS Collect with environment variables that will be set in Netlify
 const initVGSCollect = () => {
-  // These environment variables will be set by the VGS plugin
-  const vaultId = process.env.VGS_VAULT_ID;
+  // Use the specific vault ID provided
+  const vaultId = "tnt5wkuialz";
   const routeId = process.env.VGS_ROUTE_ID;
   
-  if (!vaultId || !routeId) {
-    // VGS environment variables not set. Form security is not active.
+  if (!vaultId) {
+    // VGS vault ID not available. Form security is not active.
     return null;
   }
   
@@ -17,10 +17,16 @@ const initVGSCollect = () => {
   const vgsForm = VGSCollect.create(
     vaultId,
     'sandbox', // Change to 'live' in production
-    (__state) => {
+    (state) => {
       // VGS Collect state updated
+      console.log('VGS Collect state:', state);
     }
-  ).setRouteId(routeId);
+  );
+  
+  // Set route ID if available
+  if (routeId) {
+    vgsForm.setRouteId(routeId);
+  }
   
   // Common CSS for form fields
   const fieldCSS = {
@@ -137,7 +143,9 @@ if (typeof window !== 'undefined') {
   document.addEventListener('DOMContentLoaded', () => {
     // Load VGS Collect script dynamically
     const script = document.createElement('script');
-    script.src = 'https://js.verygoodvault.com/vgs-collect/2.14.0/vgs-collect.js';
+    script.src = 'https://js.verygoodvault.com/vgs-collect/3.0.1/vgs-collect.js';
+    script.integrity = 'sha384-sMGU8J1IBBOc6NzxRI7zK7JZgQUX40I+UApjJiQSLyVGJN5n1PdIcX+ZeKakY5uU';
+    script.crossOrigin = 'anonymous';
     script.onload = () => {
       const { vgsForm, fieldCSS } = initVGSCollect();
       
