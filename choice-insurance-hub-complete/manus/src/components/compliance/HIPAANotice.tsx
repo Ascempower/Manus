@@ -3,7 +3,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Shield, Lock, Eye, X as _X as _X } from 'lucide-react';
+import { Shield, Lock, Eye, X as _X } from 'lucide-react';
 import { hasHIPAAConsent, setHIPAAConsent, clearSensitiveData } from '@/lib/hipaa-compliance';
 
 export default function HIPAANotice() {
