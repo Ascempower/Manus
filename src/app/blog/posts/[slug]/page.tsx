@@ -235,35 +235,6 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     </div>
   );
 }
-  ),
-  ol: ({ children }: { children: React.ReactNode }) => (
-    <ol className="list-decimal list-inside mb-4 space-y-2 text-lg text-gray-700">{children}</ol>
-  ),
-  li: ({ children }: { children: React.ReactNode }) => (
-    <li className="mb-1">{children}</li>
-  ),
-  blockquote: ({ children }: { children: React.ReactNode }) => (
-    <blockquote className="border-l-4 border-brand-warm-beige-coral pl-4 my-6 italic text-gray-600 bg-gray-50 py-2">
-      {children}
-    </blockquote>
-  ),
-  a: ({ href, children }: { href?: string; children: React.ReactNode }) => (
-    <a 
-      href={href} 
-      className="text-brand-warm-beige-coral hover:text-brand-warm-beige-coral/80 underline"
-      target={href?.startsWith('http') ? '_blank' : undefined}
-      rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
-    >
-      {children}
-    </a>
-  ),
-  strong: ({ children }: { children: React.ReactNode }) => (
-    <strong className="font-bold text-gray-900">{children}</strong>
-  ),
-  em: ({ children }: { children: React.ReactNode }) => (
-    <em className="italic">{children}</em>
-  ),
-  code: ({ children }: { children: React.ReactNode }) => (
     <code className="bg-gray-100 px-2 py-1 rounded text-sm font-mono">{children}</code>
   ),
   pre: ({ children }: { children: React.ReactNode }) => (
