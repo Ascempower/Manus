@@ -7,6 +7,12 @@ import { notFound } from 'next/navigation';
 import { getAllBlogSlugs, getBlogPost } from '@/lib/blog-server';
 import { formatDate } from '@/lib/blog-utils';
 
+// Define the PageProps type for this dynamic route
+type PageProps = {
+  params: { slug: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
+};
+
 // Generate static params for all blog posts
 export function generateStaticParams() {
   const slugs = getAllBlogSlugs();
@@ -14,7 +20,7 @@ export function generateStaticParams() {
 }
 
 // Generate metadata for each blog post
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = params;
   const post = getBlogPost(slug);
   
@@ -116,7 +122,7 @@ const MarkdownComponents = {
 };
 
 // Define the page component
-export default async function BlogPost({ params }: { params: { slug: string } }) {
+export default async function BlogPost({ params }: PageProps) {
   const { slug } = params;
   const post = getBlogPost(slug);
   
