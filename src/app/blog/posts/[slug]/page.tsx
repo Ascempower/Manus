@@ -1,241 +1,139 @@
-import { Metadata } from 'next';
+import React from 'react';
+import ReactMarkdown from 'react-markdown';
 import Link from 'next/link';
 import Image from 'next/image';
+import React from 'react';
+import ReactMarkdown from 'react-markdown';
+import Link from 'next/link';
+import Image from 'next/image';
+import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import { getAllBlogSlugs, getBlogPost, formatDate } from '@/lib/blog';
 
 // Generate static params for all blog posts
 export function generateStaticParams() {
-  return [
-    { slug: 'march-2025-medicare-advantage-vs-supplement' },
-    { slug: 'april-2025-understanding-life-insurance' },
-    { slug: 'may-2025-health-insurance-changes' }
-  ];
+  const slugs = getAllBlogSlugs();
+  return slugs.map(slug => ({ slug }));
 }
 
 // Generate metadata for each blog post
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
+  const post = getBlogPost(slug);
   
-  // Define metadata based on slug
-  if (slug === 'march-2025-medicare-advantage-vs-supplement') {
+  if (!post) {
     return {
-      title: 'Medicare Advantage vs. Medicare Supplement: Which is Right for You in 2025? | Choice Insurance',
-      description: 'Compare Medicare Advantage and Medicare Supplement plans for 2025. Expert analysis of costs, provider networks, and coverage options from Choice Insurance Hub.',
-      keywords: 'Medicare Advantage, Medicare Supplement, Medigap, Medicare comparison, Medicare 2025, Choice Insurance, Medicare options',
-      alternates: {
-        canonical: `https://insureyourchoices.com/blog/posts/${slug}`
-      }
-    };
-  } 
-  else if (slug === 'april-2025-understanding-life-insurance') {
-    return {
-      title: 'Understanding Life Insurance Options: A Spring 2025 Guide | Choice Insurance',
-      description: 'Comprehensive guide to life insurance options in 2025 including term vs. whole life, policy riders, and choosing the right coverage for your family from Choice Insurance.',
-      keywords: 'life insurance, term life, whole life, life insurance riders, family protection, life insurance guide, Choice Insurance, life insurance 2025',
-      alternates: {
-        canonical: `https://insureyourchoices.com/blog/posts/${slug}`
-      }
-    };
-  } 
-  else if (slug === 'may-2025-health-insurance-changes') {
-    return {
-      title: 'Key Health Insurance Changes to Watch for in 2025 | Choice Insurance',
-      description: 'Stay informed about major health insurance developments in 2025 including telehealth expansion, preventive care benefits, and coverage improvements from Choice Insurance experts.',
-      keywords: 'health insurance changes, health insurance 2025, telehealth, preventive care, health coverage, insurance reforms, Choice Insurance, healthcare updates',
-      alternates: {
-        canonical: `https://insureyourchoices.com/blog/posts/${slug}`
-      }
+      title: 'Post Not Found | Choice Insurance Hub',
+      description: 'The blog post you are looking for could not be found.',
     };
   }
   
-  // Default metadata if slug doesn't match
+  const { frontmatter } = post;
+  
   return {
-    title: 'Insurance Blog | Choice Insurance Hub',
-    description: 'Expert insurance insights and advice from Choice Insurance Hub specialists.',
+    title: `${frontmatter.title} | Choice Insurance Hub`,
+    description: frontmatter.description || 'Expert insurance insights and advice from Choice Insurance Hub specialists.',
+    keywords: frontmatter.tags ? frontmatter.tags.join(', ') : undefined,
+    authors: frontmatter.author ? [{ name: frontmatter.author }] : undefined,
+    publishedTime: frontmatter.date,
+    category: frontmatter.category,
     alternates: {
       canonical: `https://insureyourchoices.com/blog/posts/${slug}`
-    }
+    },
+    openGraph: {
+      title: frontmatter.title,
+      description: frontmatter.description,
+      type: 'article',
+      publishedTime: frontmatter.date,
+      authors: frontmatter.author ? [frontmatter.author] : undefined,
+      images: frontmatter.image ? [
+        {
+          url: frontmatter.image,
+          alt: frontmatter.title,
+        }
+      ] : undefined,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: frontmatter.title,
+      description: frontmatter.description,
+      images: frontmatter.image ? [frontmatter.image] : undefined,
+    },
   };
 }
 
+// Custom components for ReactMarkdown
+const MarkdownComponents = {
+  h1: ({ children }: { children: React.ReactNode }) => (
+    <h1 className="text-4xl font-bold text-gray-900 mt-8 mb-4 first:mt-0">{children}</h1>
+  ),
+  h2: ({ children }: { children: React.ReactNode }) => (
+    <h2 className="text-3xl font-bold text-gray-800 mt-8 mb-4">{children}</h2>
+  ),
+  h3: ({ children }: { children: React.ReactNode }) => (
+    <h3 className="text-2xl font-bold text-gray-800 mt-6 mb-3">{children}</h3>
+  ),
+  h4: ({ children }: { children: React.ReactNode }) => (
+    <h4 className="text-xl font-bold text-gray-800 mt-6 mb-3">{children}</h4>
+  ),
+  p: ({ children }: { children: React.ReactNode }) => (
+    <p className="text-lg text-gray-700 mb-4 leading-relaxed">{children}</p>
+  ),
+  ul: ({ children }: { children: React.ReactNode }) => (
+    <ul className="list-disc list-inside mb-4 space-y-2 text-lg text-gray-700">{children}</ul>
+  ),
+  ol: ({ children }: { children: React.ReactNode }) => (
+    <ol className="list-decimal list-inside mb-4 space-y-2 text-lg text-gray-700">{children}</ol>
+  ),
+  li: ({ children }: { children: React.ReactNode }) => (
+    <li className="mb-1">{children}</li>
+  ),
+  blockquote: ({ children }: { children: React.ReactNode }) => (
+    <blockquote className="border-l-4 border-brand-warm-beige-coral pl-4 my-6 italic text-gray-600 bg-gray-50 py-2">
+      {children}
+    </blockquote>
+  ),
+  a: ({ href, children }: { href?: string; children: React.ReactNode }) => (
+    <a 
+      href={href} 
+      className="text-brand-warm-beige-coral hover:text-brand-warm-beige-coral/80 underline"
+      target={href?.startsWith('http') ? '_blank' : undefined}
+      rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
+    >
+      {children}
+    </a>
+  ),
+  strong: ({ children }: { children: React.ReactNode }) => (
+    <strong className="font-bold text-gray-900">{children}</strong>
+  ),
+  em: ({ children }: { children: React.ReactNode }) => (
+    <em className="italic">{children}</em>
+  ),
+  code: ({ children }: { children: React.ReactNode }) => (
+    <code className="bg-gray-100 px-2 py-1 rounded text-sm font-mono">{children}</code>
+  ),
+  pre: ({ children }: { children: React.ReactNode }) => (
+    <pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto mb-4">
+      <code className="text-sm font-mono">{children}</code>
+    </pre>
+  ),
+};
+
 // Define the page component
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
-  // Access params.slug directly as a string
   const { slug } = await params;
+  const post = getBlogPost(slug);
   
-  // Content for March 2025 Medicare post
-  if (slug === 'march-2025-medicare-advantage-vs-supplement') {
-    return (
-      <div className="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <div className="mb-10">
-          <Link href="/blog" className="text-brand-warm-beige-coral hover:text-brand-warm-beige-coral/80 inline-flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd" />
-            </svg>
-            Back to Blog
-          </Link>
-        </div>
-        
-        <article>
-          <div className="mb-6">
-            <p className="text-gray-500">March 5, 2025</p>
-            <h1 className="text-4xl font-bold text-gray-900 mt-2">Medicare Advantage vs. Medicare Supplement: Which is Right for You in 2025?</h1>
-          </div>
-          
-          <div className="relative w-full h-96 mb-8">
-            <Image 
-              src="/images/blog/medicare-comparison-2025.jpg" 
-              alt="Medicare Advantage vs Medicare Supplement comparison chart" 
-              fill
-              className="object-cover rounded-lg"
-            />
-          </div>
-          
-          <div className="prose prose-lg max-w-none">
-            <p>
-              As we move through 2025, Medicare beneficiaries face important decisions about their healthcare coverage. Two popular options—Medicare Advantage (Part C) and Medicare Supplement (Medigap)—offer different approaches to extending Original Medicare coverage.
-            </p>
-            
-            <h2>Understanding the Basics</h2>
-            
-            <p>
-              At Choice Insurance Hub, we help you navigate these complex options to find the right coverage for your needs.
-            </p>
-            
-            <div className="bg-gray-100 p-6 rounded-lg my-8">
-              <h3 className="text-xl font-bold mb-4">Need Help Deciding?</h3>
-              <p className="mb-4">
-                Our Medicare specialists at Choice Insurance Hub can help you navigate your options and find the plan that best meets your needs and budget.
-              </p>
-              <Link 
-                href="/contact" 
-                className="inline-block bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-white font-semibold py-2 px-6 rounded-md"
-              >
-                Contact Us
-              </Link>
-            </div>
-          </div>
-        </article>
-      </div>
-    );
+  // If post doesn't exist, show 404
+  if (!post) {
+    notFound();
   }
   
-  // Content for April 2025 Life Insurance post
-  else if (slug === 'april-2025-understanding-life-insurance') {
-    return (
-      <div className="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <div className="mb-10">
-          <Link href="/blog" className="text-brand-warm-beige-coral hover:text-brand-warm-beige-coral/80 inline-flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd" />
-            </svg>
-            Back to Blog
-          </Link>
-        </div>
-        
-        <article>
-          <div className="mb-6">
-            <p className="text-gray-500">April 3, 2025</p>
-            <h1 className="text-4xl font-bold text-gray-900 mt-2">Understanding Life Insurance Options: A Spring 2025 Guide for Families</h1>
-          </div>
-          
-          <div className="relative w-full h-96 mb-8">
-            <Image 
-              src="/images/blog/family-life-insurance-2025.jpg" 
-              alt="Family discussing life insurance options" 
-              fill
-              className="object-cover rounded-lg"
-            />
-          </div>
-          
-          <div className="prose prose-lg max-w-none">
-            <p>
-              As we move into spring 2025, many families are reassessing their financial protection strategies. Life insurance remains one of the most important financial tools for ensuring your loved ones' security.
-            </p>
-            
-            <h2>Understanding the Main Types of Life Insurance in 2025</h2>
-            
-            <p>
-              At Choice Insurance Hub, we help you navigate these complex options to find the right coverage for your needs.
-            </p>
-            
-            <div className="bg-gray-100 p-6 rounded-lg my-8">
-              <h3 className="text-xl font-bold mb-4">Need Help Deciding?</h3>
-              <p className="mb-4">
-                Our life insurance specialists at Choice Insurance Hub can help you navigate your options and find the plan that best meets your needs and budget.
-              </p>
-              <Link 
-                href="/contact" 
-                className="inline-block bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-white font-semibold py-2 px-6 rounded-md"
-              >
-                Contact Us
-              </Link>
-            </div>
-          </div>
-        </article>
-      </div>
-    );
-  }
-  
-  // Content for May 2025 Health Insurance post
-  else if (slug === 'may-2025-health-insurance-changes') {
-    return (
-      <div className="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <div className="mb-10">
-          <Link href="/blog" className="text-brand-warm-beige-coral hover:text-brand-warm-beige-coral/80 inline-flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd" />
-            </svg>
-            Back to Blog
-          </Link>
-        </div>
-        
-        <article>
-          <div className="mb-6">
-            <p className="text-gray-500">May 10, 2025</p>
-            <h1 className="text-4xl font-bold text-gray-900 mt-2">Key Health Insurance Changes to Watch for in 2025</h1>
-          </div>
-          
-          <div className="relative w-full h-96 mb-8">
-            <Image 
-              src="/images/blog/health-insurance-changes-2025.jpg" 
-              alt="Person reviewing health insurance documents" 
-              fill
-              className="object-cover rounded-lg"
-            />
-          </div>
-          
-          <div className="prose prose-lg max-w-none">
-            <p>
-              As we move through 2025, several important changes to health insurance are taking effect that could impact your coverage and costs.
-            </p>
-            
-            <h2>Key Health Insurance Trends in 2025</h2>
-            
-            <p>
-              At Choice Insurance Hub, we help you navigate these complex options to find the right coverage for your needs.
-            </p>
-            
-            <div className="bg-gray-100 p-6 rounded-lg my-8">
-              <h3 className="text-xl font-bold mb-4">Need Help Understanding Your Options?</h3>
-              <p className="mb-4">
-                Our health insurance specialists at Choice Insurance Hub can help you navigate your options and find the plan that best meets your needs and budget.
-              </p>
-              <Link 
-                href="/contact" 
-                className="inline-block bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-white font-semibold py-2 px-6 rounded-md"
-              >
-                Contact Us
-              </Link>
-            </div>
-          </div>
-        </article>
-      </div>
-    );
-  }
-  
-  // Default content if slug doesn't match any known posts
+  const { frontmatter, content } = post;
+
   return (
     <div className="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+      {/* Back to Blog Link */}
       <div className="mb-10">
         <Link href="/blog" className="text-brand-warm-beige-coral hover:text-brand-warm-beige-coral/80 inline-flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
@@ -245,16 +143,328 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         </Link>
       </div>
       
-      <div className="text-center py-12">
-        <h1 className="text-3xl font-bold text-gray-900">Post Not Found</h1>
-        <p className="mt-4 text-lg text-gray-600">The blog post you're looking for doesn't exist or has been moved.</p>
-        <Link 
-          href="/blog" 
-          className="mt-8 inline-block bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-white font-semibold py-2 px-6 rounded-md"
-        >
-          View All Blog Posts
+      <article>
+        {/* Article Header */}
+        <div className="mb-8">
+          {frontmatter.date && (
+            <p className="text-gray-500 mb-2">{formatDate(frontmatter.date)}</p>
+          )}
+          {frontmatter.category && (
+            <span className="inline-block bg-brand-teal-blue text-brand-black px-3 py-1 rounded-full text-sm font-medium mb-4">
+              {frontmatter.category}
+            </span>
+          )}
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">{frontmatter.title}</h1>
+          {frontmatter.description && (
+            <p className="text-xl text-gray-600 leading-relaxed">{frontmatter.description}</p>
+          )}
+        </div>
+        
+        {/* Featured Image */}
+        {frontmatter.image && (
+          <div className="relative w-full h-96 mb-8">
+            <Image 
+              src={frontmatter.image} 
+              alt={frontmatter.title || 'Blog post image'} 
+              fill
+              className="object-cover rounded-lg"
+            />
+          </div>
+        )}
+        
+        {/* Article Content */}
+        <div className="prose prose-lg max-w-none">
+          <ReactMarkdown components={MarkdownComponents}>
+            {content}
+          </ReactMarkdown>
+        </div>
+        
+        {/* Article Footer */}
+        <div className="mt-12 pt-8 border-t border-gray-200">
+          <div className="flex flex-wrap gap-4 items-center justify-between">
+            {/* Author and Date */}
+            <div className="flex items-center space-x-4">
+              {frontmatter.author && (
+                <p className="text-gray-600">
+                  By <span className="font-medium text-gray-900">{frontmatter.author}</span>
+                </p>
+              )}
+              {frontmatter.date && (
+                <p className="text-gray-500">
+                  Published {formatDate(frontmatter.date)}
+                </p>
+              )}
+            </div>
+            
+            {/* Tags */}
+            {frontmatter.tags && frontmatter.tags.length > 0 && (
+              <div className="flex flex-wrap gap-2">
+                {frontmatter.tags.map((tag: string) => (
+                  <span 
+                    key={tag}
+                    className="inline-block bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+        
+        {/* Call to Action */}
+        <div className="bg-brand-teal-blue/10 p-8 rounded-lg my-12">
+          <h3 className="text-2xl font-bold mb-4 text-gray-900">Need Expert Insurance Guidance?</h3>
+          <p className="text-lg text-gray-700 mb-6">
+            Our licensed insurance specialists at Choice Insurance Hub are here to help you navigate your options and find the coverage that best meets your needs and budget.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Link 
+              href="/contact" 
+              className="inline-block bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-white font-semibold py-3 px-6 rounded-md text-center transition-colors"
+            >
+              Get Free Consultation
+            </Link>
+            <Link 
+              href="https://calendly.com/choiceinsuranceagency/30-minute-meeting" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-brand-deep-forest-green hover:bg-brand-deep-forest-green/80 text-white font-semibold py-3 px-6 rounded-md text-center transition-colors"
+            >
+              Schedule Appointment
+            </Link>
+          </div>
+        </div>
+      </article{ Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import { getAllBlogSlugs, getBlogPost, formatDate } from '@/lib/blog';
+
+// Generate static params for all blog posts
+export function generateStaticParams() {
+  const slugs = getAllBlogSlugs();
+  return slugs.map(slug => ({ slug }));
+}
+
+// Generate metadata for each blog post
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getBlogPost(slug);
+  
+  if (!post) {
+    return {
+      title: 'Post Not Found | Choice Insurance Hub',
+      description: 'The blog post you are looking for could not be found.',
+    };
+  }
+  
+  const { frontmatter } = post;
+  
+  return {
+    title: `${frontmatter.title} | Choice Insurance Hub`,
+    description: frontmatter.description || 'Expert insurance insights and advice from Choice Insurance Hub specialists.',
+    keywords: frontmatter.tags ? frontmatter.tags.join(', ') : undefined,
+    authors: frontmatter.author ? [{ name: frontmatter.author }] : undefined,
+    publishedTime: frontmatter.date,
+    category: frontmatter.category,
+    alternates: {
+      canonical: `https://insureyourchoices.com/blog/posts/${slug}`
+    },
+    openGraph: {
+      title: frontmatter.title,
+      description: frontmatter.description,
+      type: 'article',
+      publishedTime: frontmatter.date,
+      authors: frontmatter.author ? [frontmatter.author] : undefined,
+      images: frontmatter.image ? [
+        {
+          url: frontmatter.image,
+          alt: frontmatter.title,
+        }
+      ] : undefined,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: frontmatter.title,
+      description: frontmatter.description,
+      images: frontmatter.image ? [frontmatter.image] : undefined,
+    },
+  };
+}
+
+// Custom components for ReactMarkdown
+const MarkdownComponents = {
+  h1: ({ children }: { children: React.ReactNode }) => (
+    <h1 className="text-4xl font-bold text-gray-900 mt-8 mb-4 first:mt-0">{children}</h1>
+  ),
+  h2: ({ children }: { children: React.ReactNode }) => (
+    <h2 className="text-3xl font-bold text-gray-800 mt-8 mb-4">{children}</h2>
+  ),
+  h3: ({ children }: { children: React.ReactNode }) => (
+    <h3 className="text-2xl font-bold text-gray-800 mt-6 mb-3">{children}</h3>
+  ),
+  h4: ({ children }: { children: React.ReactNode }) => (
+    <h4 className="text-xl font-bold text-gray-800 mt-6 mb-3">{children}</h4>
+  ),
+  p: ({ children }: { children: React.ReactNode }) => (
+    <p className="text-lg text-gray-700 mb-4 leading-relaxed">{children}</p>
+  ),
+  ul: ({ children }: { children: React.ReactNode }) => (
+    <ul className="list-disc list-inside mb-4 space-y-2 text-lg text-gray-700">{children}</ul>
+  ),
+  ol: ({ children }: { children: React.ReactNode }) => (
+    <ol className="list-decimal list-inside mb-4 space-y-2 text-lg text-gray-700">{children}</ol>
+  ),
+  li: ({ children }: { children: React.ReactNode }) => (
+    <li className="mb-1">{children}</li>
+  ),
+  blockquote: ({ children }: { children: React.ReactNode }) => (
+    <blockquote className="border-l-4 border-brand-warm-beige-coral pl-4 my-6 italic text-gray-600 bg-gray-50 py-2">
+      {children}
+    </blockquote>
+  ),
+  a: ({ href, children }: { href?: string; children: React.ReactNode }) => (
+    <a 
+      href={href} 
+      className="text-brand-warm-beige-coral hover:text-brand-warm-beige-coral/80 underline"
+      target={href?.startsWith('http') ? '_blank' : undefined}
+      rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
+    >
+      {children}
+    </a>
+  ),
+  strong: ({ children }: { children: React.ReactNode }) => (
+    <strong className="font-bold text-gray-900">{children}</strong>
+  ),
+  em: ({ children }: { children: React.ReactNode }) => (
+    <em className="italic">{children}</em>
+  ),
+  code: ({ children }: { children: React.ReactNode }) => (
+    <code className="bg-gray-100 px-2 py-1 rounded text-sm font-mono">{children}</code>
+  ),
+  pre: ({ children }: { children: React.ReactNode }) => (
+    <pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto mb-4">
+      <code className="text-sm font-mono">{children}</code>
+    </pre>
+  ),
+};
+
+// Define the page component
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = getBlogPost(slug);
+  
+  // If post doesn't exist, show 404
+  if (!post) {
+    notFound();
+  }
+  
+  const { frontmatter, content } = post;
+
+  return (
+    <div className="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+      {/* Back to Blog Link */}
+      <div className="mb-10">
+        <Link href="/blog" className="text-brand-warm-beige-coral hover:text-brand-warm-beige-coral/80 inline-flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+            <path fillRule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd" />
+          </svg>
+          Back to Blog
         </Link>
       </div>
+      
+      <article>
+        {/* Article Header */}
+        <div className="mb-8">
+          {frontmatter.date && (
+            <p className="text-gray-500 mb-2">{formatDate(frontmatter.date)}</p>
+          )}
+          {frontmatter.category && (
+            <span className="inline-block bg-brand-teal-blue text-brand-black px-3 py-1 rounded-full text-sm font-medium mb-4">
+              {frontmatter.category}
+            </span>
+          )}
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">{frontmatter.title}</h1>
+          {frontmatter.description && (
+            <p className="text-xl text-gray-600 leading-relaxed">{frontmatter.description}</p>
+          )}
+        </div>
+        
+        {/* Featured Image */}
+        {frontmatter.image && (
+          <div className="relative w-full h-96 mb-8">
+            <Image 
+              src={frontmatter.image} 
+              alt={frontmatter.title || 'Blog post image'} 
+              fill
+              className="object-cover rounded-lg"
+            />
+          </div>
+        )}
+        
+        {/* Article Content */}
+        <div className="prose prose-lg max-w-none">
+          <ReactMarkdown components={MarkdownComponents}>
+            {content}
+          </ReactMarkdown>
+        </div>
+        
+        {/* Article Footer */}
+        <div className="mt-12 pt-8 border-t border-gray-200">
+          <div className="flex flex-wrap gap-4 items-center justify-between">
+            {/* Author and Date */}
+            <div className="flex items-center space-x-4">
+              {frontmatter.author && (
+                <p className="text-gray-600">
+                  By <span className="font-medium text-gray-900">{frontmatter.author}</span>
+                </p>
+              )}
+              {frontmatter.date && (
+                <p className="text-gray-500">
+                  Published {formatDate(frontmatter.date)}
+                </p>
+              )}
+            </div>
+            
+            {/* Tags */}
+            {frontmatter.tags && frontmatter.tags.length > 0 && (
+              <div className="flex flex-wrap gap-2">
+                {frontmatter.tags.map((tag: string) => (
+                  <span 
+                    key={tag}
+                    className="inline-block bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+        
+        {/* Call to Action */}
+        <div className="bg-brand-teal-blue/10 p-8 rounded-lg my-12">
+          <h3 className="text-2xl font-bold mb-4 text-gray-900">Need Expert Insurance Guidance?</h3>
+          <p className="text-lg text-gray-700 mb-6">
+            Our licensed insurance specialists at Choice Insurance Hub are here to help you navigate your options and find the coverage that best meets your needs and budget.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Link 
+              href="/contact" 
+              className="inline-block bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-white font-semibold py-3 px-6 rounded-md text-center transition-colors"
+            >
+              Get Free Consultation
+            </Link>
+            <Link 
+              href="https://calendly.com/choiceinsuranceagency/30-minute-meeting" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-brand-deep-forest-green hover:bg-brand-deep-forest-green/80 text-white font-semibold py-3 px-6 rounded-md text-center transition-colors"
+            >
+              Schedule Appointment
+            </Link>
+          </div>
+        </div>
+      </article>
     </div>
   );
 }

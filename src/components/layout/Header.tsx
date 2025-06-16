@@ -49,8 +49,8 @@ export default function Header() {
                     )}>
                       {item.label}
                     </NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      <div className="grid w-[400px] gap-2 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-brand-teal-blue shadow-lg border border-brand-teal-blue-dark rounded-lg">
+                    <NavigationMenuContent className="z-50">
+                      <div className="grid w-[400px] gap-2 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-brand-teal-blue shadow-lg border border-brand-teal-blue-dark rounded-lg z-50">
                         {/* First Column */}
                         <div className="flex flex-col gap-2">
                           {/* All Services - Forest Green, takes most space */}
