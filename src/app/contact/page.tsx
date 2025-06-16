@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: 'Get in touch with Choice Insurance Hub for expert advice on Medicare, life, and health insurance. Book a consultation or request a quote today.',
   keywords: 'insurance contact, insurance consultation, insurance quote, Choice Insurance Hub contact, insurance agency phone number, insurance agency email',
   alternates: {
-    canonical: 'https://choiceins.netlify.app/contact',
+    canonical: 'https://choiceinsurancehub.com/contact',
   },
 };
 

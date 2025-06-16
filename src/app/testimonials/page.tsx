@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Read what our clients say about their experience with Choice Insurance Hub. We are committed to providing excellent service and tailored insurance solutions.',
   keywords: 'insurance testimonials, client reviews, Choice Insurance Hub reviews, insurance agency feedback, Medicare testimonials, life insurance testimonials',
   alternates: {
-    canonical: 'https://choiceins.netlify.app/testimonials',
+    canonical: 'https://choiceinsurancehub.com/testimonials',
   },
 };
 

@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: frontmatter.title,
       description: frontmatter.description || 'Expert insurance insights and advice from Choice Insurance Hub specialists.',
       type: "article",
-      url: `https://insureyourchoices.com/blog/posts/${slug}`,
+      url: `https://choiceinsurancehub.com/blog/posts/${slug}`,
       publishedTime: frontmatter.date,
       authors: frontmatter.author ? [frontmatter.author] : undefined,
       // Images will be included if frontmatter.image exists

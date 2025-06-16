@@ -5,6 +5,9 @@ import { Button } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: 'Health Insurance Plans - Choice Insurance',
   description: 'Find the right individual or family health insurance plan with expert guidance from Choice Insurance Hub. Serving IL, GA, TX, and more.',
+  alternates: {
+    canonical: 'https://choiceinsurancehub.com/services/health-insurance',
+  },
 };
 
 export default function HealthInsurancePage() {

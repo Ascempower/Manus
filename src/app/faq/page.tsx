@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description: 'Find answers to common questions about insurance, our services, and how Choice Insurance Hub can help you.',
   keywords: 'insurance FAQ, Medicare questions, life insurance questions, insurance agency FAQ, insurance consultation, independent insurance agency, insurance policy review',
   alternates: {
-    canonical: 'https://choiceins.netlify.app/faq',
+    canonical: 'https://choiceinsurancehub.com/faq',
   },
 };
 

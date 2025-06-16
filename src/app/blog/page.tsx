@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: 'Stay informed with the latest insurance insights, tips, and industry updates from Choice Insurance Hub. Expert advice on Medicare, life insurance, health insurance, and more.',
   keywords: 'insurance blog, Medicare, life insurance, health insurance, insurance tips, Choice Insurance, insurance advice, insurance updates, insurance industry news',
   alternates: {
-    canonical: "https://insureyourchoices.com/blog"
+    canonical: "https://choiceinsurancehub.com/blog"
   }
 };
 

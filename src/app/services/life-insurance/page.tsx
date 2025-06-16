@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: 'Protect your loved ones with tailored life insurance solutions including term life, whole life, and final expense plans from Choice Insurance Hub.',
   keywords: 'life insurance, term life insurance, whole life insurance, final expense insurance, burial insurance, family protection, life insurance quotes, affordable life insurance, life insurance policy',
   alternates: {
-    canonical: 'https://choiceins.netlify.app/services/life-insurance',
+    canonical: 'https://choiceinsurancehub.com/services/life-insurance',
   },
 };
 

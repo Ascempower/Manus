@@ -4,6 +4,9 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Medicare Advantage Plans - Choice Insurance',
   description: 'Learn about Medicare Advantage Plans (Part C) offered by Choice Insurance Hub. All-in-one alternatives to Original Medicare with additional benefits.',
+  alternates: {
+    canonical: 'https://choiceinsurancehub.com/services/medicare-advantage',
+  },
 };
 
 export default function MedicareAdvantagePage() {

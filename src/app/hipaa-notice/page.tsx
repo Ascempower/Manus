@@ -4,7 +4,7 @@ export const metadata = {
   title: "HIPAA Notice of Privacy Practices | Choice Insurance Hub",
   description: "Choice Insurance Hub's HIPAA Notice of Privacy Practices explaining how we protect your health information and your rights under HIPAA.",
   alternates: {
-    canonical: "https://insureyourchoices.com/hipaa-notice"
+    canonical: "https://choiceinsurancehub.com/hipaa-notice"
   }
 };
 
@@ -228,7 +228,7 @@ export default function HIPAANoticePage() {
                   </p>
                   <div className="flex items-center gap-2">
                     <Mail className="h-4 w-4 text-brand-deep-forest-green" />
-                    <span className="text-brand-black/80">privacy@insureyourchoices.com</span>
+                    <span className="text-brand-black/80">privacy@choiceinsurancehub.com</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Phone className="h-4 w-4 text-brand-deep-forest-green" />

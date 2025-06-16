@@ -5,7 +5,7 @@ export const metadata = {
   description: "Choice Insurance provides personalized Medicare, Life & Health insurance solutions in IL, GA, TX, AL, OH, KY, MS, SC. Get expert guidance and affordable coverage tailored to your needs.",
   keywords: "Choice Insurance, insurance agency, Medicare plans, life insurance, health insurance, insurance solutions, affordable insurance, insurance consultation",
   alternates: {
-    canonical: "https://insureyourchoices.com"
+    canonical: "https://choiceinsurancehub.com"
   }
 };
 

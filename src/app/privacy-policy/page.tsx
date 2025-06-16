@@ -16,7 +16,7 @@ export default function PrivacyPolicyPage() {
       <p className="text-center text-gray-600 mb-8">Last Updated: {lastUpdated}</p>
 
       <p>
-        Choice Insurance Hub ("us", "we", or "our") operates the https://www.insureyourchoices.com website (hereinafter referred to as the "Service"). This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data.
+        Choice Insurance Hub ("us", "we", or "our") operates the https://www.choiceinsurancehub.com website (hereinafter referred to as the "Service"). This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data.
       </p>
 
       <h2 className="text-2xl font-semibold mt-8 mb-4 text-gray-800">Information Collection and Use</h2>

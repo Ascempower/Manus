@@ -5,6 +5,9 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Terms of Service - Choice Insurance Hub',
   description: 'Read the Terms of Service for using the Choice Insurance Hub website and services.',
+  alternates: {
+    canonical: 'https://choiceinsurancehub.com/terms-of-service',
+  },
 };
 
 export default function TermsOfServicePage() {
@@ -16,7 +19,7 @@ export default function TermsOfServicePage() {
       <p className="text-center text-gray-600 mb-8">Last Updated: {lastUpdated}</p>
 
       <p>
-        Welcome to Choice Insurance Hub! These Terms of Service ("Terms", "Terms of Service") govern your use of our website https://www.insureyourchoices.com (the "Service") operated by Choice Insurance Hub ("us", "we", or "our").
+        Welcome to Choice Insurance Hub! These Terms of Service ("Terms", "Terms of Service") govern your use of our website https://www.choiceinsurancehub.com (the "Service") operated by Choice Insurance Hub ("us", "we", or "our").
       </p>
       <p>
         Please read these Terms of Service carefully before using our Service. Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users, and others who access or use the Service.

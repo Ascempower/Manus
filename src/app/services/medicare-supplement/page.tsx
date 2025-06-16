@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: 'Learn about Medicare Supplement (Medigap) plans and how they cover out-of-pocket costs not paid by Original Medicare. Choice Insurance Hub offers expert guidance.',
   keywords: 'Medicare Supplement, Medigap, Medicare Plan G, Medicare Plan N, Medicare coverage gaps, Medicare deductibles, Medicare copayments, Medicare insurance, senior health insurance',
   alternates: {
-    canonical: 'https://choiceins.netlify.app/services/medicare-supplement',
+    canonical: 'https://choiceinsurancehub.com/services/medicare-supplement',
   },
 };
 

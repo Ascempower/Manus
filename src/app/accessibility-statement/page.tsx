@@ -21,7 +21,7 @@ export default function AccessibilityStatementPage() {
 
       <h2 className="text-2xl font-semibold mt-8 mb-4 text-gray-800">Our Commitment</h2>
       <p>
-        We believe that everyone has the right to access information and services online, regardless of ability. We strive to make our website, https://www.insureyourchoices.com, as accessible as possible to the widest possible audience.
+        We believe that everyone has the right to access information and services online, regardless of ability. We strive to make our website, https://www.choiceinsurancehub.com, as accessible as possible to the widest possible audience.
       </p>
 
       <h2 className="text-2xl font-semibold mt-8 mb-4 text-gray-800">Measures to Support Accessibility</h2>

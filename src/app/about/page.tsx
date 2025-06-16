@@ -5,6 +5,9 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'About Us - Choice Insurance Hub',
   description: 'Learn about Choice Insurance Hub, our mission, values, and commitment to providing expert insurance guidance.',
+  alternates: {
+    canonical: 'https://choiceinsurancehub.com/about',
+  },
 };
 
 export default function AboutPage() {
