@@ -14,8 +14,8 @@ export function generateStaticParams() {
 }
 
 // Generate metadata for each blog post
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const { slug } = await params;
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const { slug } = params;
   const post = getBlogPost(slug);
   
   if (!post) {
@@ -42,7 +42,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       url: `https://choiceinsurancehub.com/blog/posts/${slug}`,
       publishedTime: frontmatter.date,
       authors: frontmatter.author ? [frontmatter.author] : undefined,
-      // Images will be included if frontmatter.image exists
       images: frontmatter.image ? [
         {
           url: frontmatter.image,
@@ -117,8 +116,8 @@ const MarkdownComponents = {
 };
 
 // Define the page component
-export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export default async function BlogPost({ params }: { params: { slug: string } }) {
+  const { slug } = params;
   const post = getBlogPost(slug);
   
   // If post doesn't exist, show 404
