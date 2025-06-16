@@ -33,16 +33,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     keywords: frontmatter.tags ? frontmatter.tags.join(', ') : undefined,
     authors: frontmatter.author ? [{ name: frontmatter.author }] : undefined,
     alternates: {
-      canonical: `https://insureyourchoices.com/blog/posts/${slug}`
+      canonical: `https://choiceinsurancehub.com/blog/posts/${slug}`
     },
     openGraph: {
       title: frontmatter.title,
-      description: frontmatter.description,
-      type: 'article',
-      article: {
-        publishedTime: frontmatter.date,
-        authors: frontmatter.author ? [frontmatter.author] : undefined,
-      },
+      description: frontmatter.description || 'Expert insurance insights and advice from Choice Insurance Hub specialists.',
+      type: "article",
+      url: `https://insureyourchoices.com/blog/posts/${slug}`,
+      publishedTime: frontmatter.date,
+      authors: frontmatter.author ? [frontmatter.author] : undefined,
+      // Images will be included if frontmatter.image exists
       images: frontmatter.image ? [
         {
           url: frontmatter.image,
