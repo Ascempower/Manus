@@ -32,8 +32,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: frontmatter.description || 'Expert insurance insights and advice from Choice Insurance Hub specialists.',
     keywords: frontmatter.tags ? frontmatter.tags.join(', ') : undefined,
     authors: frontmatter.author ? [{ name: frontmatter.author }] : undefined,
-    publishedTime: frontmatter.date,
-    category: frontmatter.category,
     alternates: {
       canonical: `https://insureyourchoices.com/blog/posts/${slug}`
     },
@@ -41,8 +39,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: frontmatter.title,
       description: frontmatter.description,
       type: 'article',
-      publishedTime: frontmatter.date,
-      authors: frontmatter.author ? [frontmatter.author] : undefined,
+      article: {
+        publishedTime: frontmatter.date,
+        authors: frontmatter.author ? [frontmatter.author] : undefined,
+      },
       images: frontmatter.image ? [
         {
           url: frontmatter.image,
