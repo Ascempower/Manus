@@ -2,10 +2,6 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import Link from 'next/link';
 import Image from 'next/image';
-import React from 'react';
-import ReactMarkdown from 'react-markdown';
-import Link from 'next/link';
-import Image from 'next/image';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getAllBlogSlugs, getBlogPost, formatDate } from '@/lib/blog';
@@ -235,47 +231,10 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             </Link>
           </div>
         </div>
-      </article{ Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { getAllBlogSlugs, getBlogPost, formatDate } from '@/lib/blog';
-
-// Generate static params for all blog posts
-export function generateStaticParams() {
-  const slugs = getAllBlogSlugs();
-  return slugs.map(slug => ({ slug }));
+      </article>
+    </div>
+  );
 }
-
-// Generate metadata for each blog post
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const { slug } = await params;
-  const post = getBlogPost(slug);
-  
-  if (!post) {
-    return {
-      title: 'Post Not Found | Choice Insurance Hub',
-      description: 'The blog post you are looking for could not be found.',
-    };
-  }
-  
-  const { frontmatter } = post;
-  
-  return {
-    title: `${frontmatter.title} | Choice Insurance Hub`,
-    description: frontmatter.description || 'Expert insurance insights and advice from Choice Insurance Hub specialists.',
-    keywords: frontmatter.tags ? frontmatter.tags.join(', ') : undefined,
-    authors: frontmatter.author ? [{ name: frontmatter.author }] : undefined,
-    publishedTime: frontmatter.date,
-    category: frontmatter.category,
-    alternates: {
-      canonical: `https://insureyourchoices.com/blog/posts/${slug}`
-    },
-    openGraph: {
-      title: frontmatter.title,
-      description: frontmatter.description,
-      type: 'article',
-      publishedTime: frontmatter.date,
-      authors: frontmatter.author ? [frontmatter.author] : undefined,
-      images: frontmatter.image ? [
         {
           url: frontmatter.image,
           alt: frontmatter.title,

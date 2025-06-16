@@ -3,7 +3,6 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getAllBlogPosts, formatDate, generateExcerpt } from '@/lib/blog';
-import { getAllBlogPosts, formatDate, generateExcerpt } from '@/lib/blog';
 
 export const metadata: Metadata = {
   title: 'Insurance Blog | Choice Insurance Hub - Expert Insurance Insights',
