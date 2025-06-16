@@ -16,8 +16,6 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   const posts = getAllBlogPosts();
 
-  const posts = getAllBlogPosts();
-
   return (
     <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-12">
@@ -140,83 +138,7 @@ export default function BlogPage() {
           <Link 
             href="https://calendly.com/choiceinsuranceagency/30-minute-meeting" 
             className="inline-block bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-white font-semibold py-3 px-8 rounded-md"
-          >posts.map((post) => (
-          <div key={post.slug} className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
-            {/* Featured Image */}
-            {post.frontmatter.image && (
-              <div className="relative h-48 w-full">
-                <Image 
-                  src={post.frontmatter.image} 
-                  alt={post.frontmatter.title || 'Blog post image'} 
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            )}
-            
-            <div className="p-6">
-              {/* Date and Category */}
-              <div className="flex items-center justify-between mb-2">
-                {post.frontmatter.date && (
-                  <p className="text-sm text-gray-500">{formatDate(post.frontmatter.date)}</p>
-                )}
-                {post.frontmatter.category && (
-                  <span className="inline-block bg-brand-teal-blue text-brand-black px-2 py-1 rounded-full text-xs font-medium">
-                    {post.frontmatter.category}
-                  </span>
-                )}
-              </div>
-              
-              {/* Title */}
-              <h2 className="text-xl font-bold mb-2 text-gray-900 line-clamp-2">
-                {post.frontmatter.title}
-              </h2>
-              
-              {/* Description or Excerpt */}
-              <p className="text-gray-600 mb-4 line-clamp-3">
-                {post.frontmatter.description || generateExcerpt(post.content)}
-              </p>
-              
-              {/* Tags */}
-              {post.frontmatter.tags && post.frontmatter.tags.length > 0 && (
-                <div className="flex flex-wrap gap-1 mb-4">
-                  {post.frontmatter.tags.slice(0, 3).map((tag: string) => (
-                    <span 
-                      key={tag}
-                      className="inline-block bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                  {post.frontmatter.tags.length > 3 && (
-                    <span className="inline-block text-gray-500 text-xs px-2 py-1">
-                      +{post.frontmatter.tags.length - 3} more
-                    </span>
-                  )}
-                </div>
-              )}
-              
-              {/* Read More Link */}
-              <Link 
-                href={`/blog/posts/${post.slug}`} 
-                className="text-brand-warm-beige-coral hover:text-brand-warm-beige-coral/80 font-semibold inline-flex items-center"
-              >
-                Read More
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
-              </Link>
-            </div>
-          </div>
-        ))}
-        
-        {/* Show message if no posts found */}
-        {posts.length === 0 && (
-          <div className="col-span-full text-center py-12">
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">No Blog Posts Found</h3>
-            <p className="text-gray-600">Check back soon for new insurance insights and expert advice.</p>
-          </div>
-        )}
+          >
             Book a Free Consultation
           </Link>
         </div>

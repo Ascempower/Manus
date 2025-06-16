@@ -235,40 +235,6 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     </div>
   );
 }
-        {
-          url: frontmatter.image,
-          alt: frontmatter.title,
-        }
-      ] : undefined,
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: frontmatter.title,
-      description: frontmatter.description,
-      images: frontmatter.image ? [frontmatter.image] : undefined,
-    },
-  };
-}
-
-// Custom components for ReactMarkdown
-const MarkdownComponents = {
-  h1: ({ children }: { children: React.ReactNode }) => (
-    <h1 className="text-4xl font-bold text-gray-900 mt-8 mb-4 first:mt-0">{children}</h1>
-  ),
-  h2: ({ children }: { children: React.ReactNode }) => (
-    <h2 className="text-3xl font-bold text-gray-800 mt-8 mb-4">{children}</h2>
-  ),
-  h3: ({ children }: { children: React.ReactNode }) => (
-    <h3 className="text-2xl font-bold text-gray-800 mt-6 mb-3">{children}</h3>
-  ),
-  h4: ({ children }: { children: React.ReactNode }) => (
-    <h4 className="text-xl font-bold text-gray-800 mt-6 mb-3">{children}</h4>
-  ),
-  p: ({ children }: { children: React.ReactNode }) => (
-    <p className="text-lg text-gray-700 mb-4 leading-relaxed">{children}</p>
-  ),
-  ul: ({ children }: { children: React.ReactNode }) => (
-    <ul className="list-disc list-inside mb-4 space-y-2 text-lg text-gray-700">{children}</ul>
   ),
   ol: ({ children }: { children: React.ReactNode }) => (
     <ol className="list-decimal list-inside mb-4 space-y-2 text-lg text-gray-700">{children}</ol>
