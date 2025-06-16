@@ -235,38 +235,6 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     </div>
   );
 }
-    <code className="bg-gray-100 px-2 py-1 rounded text-sm font-mono">{children}</code>
-  ),
-  pre: ({ children }: { children: React.ReactNode }) => (
-    <pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto mb-4">
-      <code className="text-sm font-mono">{children}</code>
-    </pre>
-  ),
-};
-
-// Define the page component
-export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const post = getBlogPost(slug);
-  
-  // If post doesn't exist, show 404
-  if (!post) {
-    notFound();
-  }
-  
-  const { frontmatter, content } = post;
-
-  return (
-    <div className="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-      {/* Back to Blog Link */}
-      <div className="mb-10">
-        <Link href="/blog" className="text-brand-warm-beige-coral hover:text-brand-warm-beige-coral/80 inline-flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-            <path fillRule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd" />
-          </svg>
-          Back to Blog
-        </Link>
-      </div>
       
       <article>
         {/* Article Header */}
