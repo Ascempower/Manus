@@ -1,10 +1,10 @@
 "use client";
 
 import dynamic from 'next/dynamic';
-import React from 'react';
+import { ComponentType } from 'react';
 
 // Type definitions for better JSX compatibility
-type LazyComponent<P = {}> = React.ComponentType<P>;
+type LazyComponent<P = {}> = ComponentType<P>;
 
 // Lazy load heavy UI components
 export const LazyAccordion: LazyComponent = dynamic(
