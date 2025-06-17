@@ -1,11 +1,12 @@
 "use client";
 
-import { lazy, Suspense } from 'react';
+import React from 'react';
+import dynamic from 'next/dynamic';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 
 // Lazy load analytics components
-const GoogleAnalytics = lazy(() => import('./GoogleAnalytics'));
-const CookieConsent = lazy(() => import('./CookieConsent'));
+const GoogleAnalytics = dynamic(() => import('./GoogleAnalytics'), { ssr: false });
+const CookieConsent = dynamic(() => import('./CookieConsent'), { ssr: false });
 
 interface LazyAnalyticsProps {
   gtmId?: string;
@@ -22,10 +23,10 @@ export default function LazyAnalytics({ gtmId, ga4Id }: LazyAnalyticsProps) {
   return (
     <div ref={elementRef}>
       {isIntersecting && (
-        <Suspense fallback={null}>
+        <>
           <GoogleAnalytics gtmId={gtmId} ga4Id={ga4Id} />
           <CookieConsent />
-        </Suspense>
+        </>
       )}
     </div>
   );
