@@ -26,9 +26,16 @@ CHANGELOG.md
 LICENSE
 
 # Config files that should maintain specific formatting
-*.json
+package.json
+package-lock.json
+pnpm-lock.yaml
 *.yml
 *.yaml
 
-# Markdown files (optional - remove if you want to format them)
-*.md
+# Allow formatting of other JSON files
+!tsconfig.json
+!.eslintrc.json
+!.prettierrc.json
+
+# Allow formatting of markdown files
+# *.md (commented out to allow formatting)
