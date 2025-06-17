@@ -10,10 +10,6 @@ import CustomBreadcrumb from '@/components/navigation/CustomBreadcrumb';
 import ContentLinks from '@/components/content/ContentLinks';
 import InternalLink from '@/components/ui/InternalLink';
 import { processMarkdownLinks } from '@/lib/markdown-links';
-import CustomBreadcrumb from '@/components/navigation/CustomBreadcrumb';
-import ContentLinks from '@/components/content/ContentLinks';
-import InternalLink from '@/components/ui/InternalLink';
-import { processMarkdownLinks } from '@/lib/markdown-links';
 
 // No need for a custom PageProps type, we'll use inline typing
 

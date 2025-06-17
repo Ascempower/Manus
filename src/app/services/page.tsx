@@ -1,9 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
-import CustomBreadcrumb from '@/components/navigation/CustomBreadcrumb';
-import RelatedLinks from '@/components/ui/RelatedLinks';
-import { getServiceLinks, getRelatedLinks } from '@/lib/internal-links';
+import { BookConsultationButton } from '@/components/ui/CTAButton';
 import CustomBreadcrumb from '@/components/navigation/CustomBreadcrumb';
 import RelatedLinks from '@/components/ui/RelatedLinks';
 import { getServiceLinks, getRelatedLinks } from '@/lib/internal-links';
@@ -72,21 +70,8 @@ const services = [
 export default function ServicesPage() {
   const relatedLinks = getRelatedLinks(['insurance', 'coverage', 'protection'], '/services');
   
-  const relatedLinks = getRelatedLinks(['insurance', 'coverage', 'protection'], '/services');
-  
   return (
     <div className="bg-brand-white text-brand-black">
-      {/* Breadcrumbs */}
-      <section className="py-4 bg-brand-white border-b border-brand-teal-blue/20">
-        <div className="container mx-auto px-4">
-          <CustomBreadcrumb 
-            items={[
-              { label: 'Insurance Services' }
-            ]}
-          />
-        </div>
-      </section>
-
       {/* Breadcrumbs */}
       <section className="py-4 bg-brand-white border-b border-brand-teal-blue/20">
         <div className="container mx-auto px-4">
@@ -156,9 +141,10 @@ export default function ServicesPage() {
           <p className="text-lg text-brand-white/90 mb-8 max-w-2xl mx-auto">
             Choosing the right insurance can be complex. Let our experts help you navigate your options and find the perfect plan tailored to your unique situation and budget.
           </p>
-          <Button size="lg" asChild className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black font-semibold">
-            <Link href="/contact#book-a-call">Book a Free Consultation</Link>
-          </Button>
+          <BookConsultationButton 
+            size="lg"
+            trackingContext="services_page"
+          />
         </div>
       </section>
     </div>

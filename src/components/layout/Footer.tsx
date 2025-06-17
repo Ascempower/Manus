@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Facebook, Instagram } from "lucide-react";
-import InternalNavigation from '@/components/navigation/InternalNavigation';
-import InternalNavigation from '@/components/navigation/InternalNavigation';
+import { CompactSitemap } from '@/components/navigation/Sitemap';
 
 export default function Footer({ className = "" }: { className?: string }) {
   const currentYear = new Date().getFullYear();
@@ -51,8 +50,7 @@ export default function Footer({ className = "" }: { className?: string }) {
           </div>
 
           {/* Internal Navigation Links */}
-          <InternalNavigation variant="footer" /Internal Navigation Links */}
-          <InternalNavigation variant="footer" />
+          <CompactSitemap />
 
           {/* Contact Info */}
           <div>
