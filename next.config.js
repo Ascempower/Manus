@@ -20,21 +20,8 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
     optimizePackageImports: [
-      
       'lucide-react', 
-      
       '@radix-ui/react-icons',
-      '@radix-ui/react-dialog',
-      '@radix-ui/react-accordion',
-      '@radix-ui/react-alert-dialog',
-      'class-variance-authority',
-      'clsx',
-      'tailwind-merge'
-    ],
-    webpackBuildWorker: true,
-    parallelServerCompiles: true,
-    parallelServerBuildTraces: true,
-    // Enable modern bundling optimizations,
       '@radix-ui/react-dialog',
       '@radix-ui/react-accordion',
       '@radix-ui/react-alert-dialog',
@@ -53,50 +40,6 @@ const nextConfig = {
           as: '*.js',
         },
       },
-    },
-  },
-  
-  // Webpack optimizations
-  webpack: (config, { dev, isServer }) => {
-    // Optimize bundle splitting
-    if (!dev && !isServer) {
-      config.optimization.splitChunks = {
-        chunks: 'all',
-        minSize: 20000,
-        maxSize: 244000,
-        cacheGroups: {
-          // Separate vendor chunks for better caching
-          react: {
-            test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
-            name: 'react',
-            chunks: 'all',
-            priority: 20,
-          },
-          radix: {
-            test: /[\\/]node_modules[\\/]@radix-ui[\\/]/,
-            name: 'radix',
-            chunks: 'all',
-            priority: 10,
-            priority: 15,
-          },
-          lucide: {
-            test: /[\\/]node_modules[\\/]lucide-react[\\/]/,
-            name: 'lucide',
-            chunks: 'all',
-            priority: 5,
-            priority: 15,
-          },
-    turbo: {
-      rules: {
-        '*.svg': {
-          loaders: ['@svgr/webpack'],
-          as: '*.js',
-        },
-      },
-
-    // Tree shaking optimizations
-    config.optimization.usedExports = true;
-    config.optimization.sideEffects = false;
     },
   },
   
