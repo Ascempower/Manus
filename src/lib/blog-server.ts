@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { generateExcerpt } from './blog-utils';
 
 export interface BlogPost {
   slug: string;
@@ -233,47 +234,4 @@ export function getRelatedBlogPosts(currentSlug: string, limit: number = 3): Blo
   return relatedPosts;
 }
 
-// Utility functions that don't use fs (can be shared)
-export function formatDate(dateString: string): string {
-  try {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-  } catch (error) {
-    console.error('Error formatting date:', error);
-    return dateString;
-  }
-}
-
-export function generateExcerpt(content: string, maxLength: number = 160): string {
-  // Remove markdown syntax and get plain text
-  const plainText = content
-    .replace(/#{1,6}\s+/g, '') // Remove headers
-    .replace(/\*\*(.*?)\*\*/g, '$1') // Remove bold
-    .replace(/\*(.*?)\*/g, '$1') // Remove italic
-    .replace(/\[(.*?)\]\(.*?\)/g, '$1') // Remove links, keep text
-    .replace(/```[\s\S]*?```/g, '') // Remove code blocks
-    .replace(/`(.*?)`/g, '$1') // Remove inline code
-    .replace(/^\s*[-*+]\s+/gm, '') // Remove list markers
-    .replace(/^\s*\d+\.\s+/gm, '') // Remove numbered list markers
-    .replace(/\n\s*\n/g, ' ') // Replace multiple newlines with space
-    .replace(/\s+/g, ' ') // Replace multiple spaces with single space
-    .trim();
-
-  if (plainText.length <= maxLength) {
-    return plainText;
-  }
-
-  // Find the last complete word within the limit
-  const truncated = plainText.substring(0, maxLength);
-  const lastSpaceIndex = truncated.lastIndexOf(' ');
-  
-  if (lastSpaceIndex > 0) {
-    return truncated.substring(0, lastSpaceIndex) + '...';
-  }
-  
-  return truncated + '...';
-}
+// Note: formatDate and generateExcerpt are now exported from blog-utils.ts to avoid duplication
