@@ -7,11 +7,7 @@ import { notFound } from 'next/navigation';
 import { getAllBlogSlugs, getBlogPost } from '@/lib/blog-server';
 import { formatDate } from '@/lib/blog-utils';
 
-// Define the PageProps type for this dynamic route
-type PageProps = {
-  params: { slug: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
-};
+// No need for a custom PageProps type, we'll use inline typing
 
 // Generate static params for all blog posts
 export function generateStaticParams() {
@@ -20,7 +16,7 @@ export function generateStaticParams() {
 }
 
 // Generate metadata for each blog post
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const { slug } = params;
   const post = getBlogPost(slug);
   
@@ -122,7 +118,7 @@ const MarkdownComponents = {
 };
 
 // Define the page component
-export default async function BlogPost({ params }: PageProps) {
+export default function BlogPost({ params }: { params: { slug: string } }) {
   const { slug } = params;
   const post = getBlogPost(slug);
   
