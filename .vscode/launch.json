@@ -7,14 +7,63 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "Next.js Development Server",
+            "program": "${workspaceFolder}/node_modules/.bin/next",
+            "args": ["dev", "--turbopack"],
+            "cwd": "${workspaceFolder}",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\src\\lib\\blog-server.ts",
-            "outFiles": [
-                "${workspaceFolder}/**/*.js"
-            ]
+            "env": {
+                "NODE_ENV": "development"
+            },
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Next.js Build",
+            "program": "${workspaceFolder}/node_modules/.bin/next",
+            "args": ["build"],
+            "cwd": "${workspaceFolder}",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Next.js Production Server",
+            "program": "${workspaceFolder}/node_modules/.bin/next",
+            "args": ["start"],
+            "cwd": "${workspaceFolder}",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "env": {
+                "NODE_ENV": "production"
+            },
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug Blog Server Functions",
+            "program": "${workspaceFolder}/node_modules/.bin/tsx",
+            "args": ["${workspaceFolder}/src/lib/blog-server.ts"],
+            "cwd": "${workspaceFolder}",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "env": {
+                "NODE_ENV": "development"
+            }
         }
     ]
 }
