@@ -8,8 +8,8 @@
             "type": "node",
             "request": "launch",
             "name": "Next.js Development Server",
-            "program": "${workspaceFolder}/node_modules/.bin/next",
-            "args": ["dev", "--turbopack"],
+            "runtimeExecutable": "pnpm",
+            "runtimeArgs": ["run", "dev"],
             "cwd": "${workspaceFolder}",
             "skipFiles": [
                 "<node_internals>/**"
@@ -24,8 +24,8 @@
             "type": "node",
             "request": "launch",
             "name": "Next.js Build",
-            "program": "${workspaceFolder}/node_modules/.bin/next",
-            "args": ["build"],
+            "runtimeExecutable": "pnpm",
+            "runtimeArgs": ["run", "build"],
             "cwd": "${workspaceFolder}",
             "skipFiles": [
                 "<node_internals>/**"
@@ -37,8 +37,8 @@
             "type": "node",
             "request": "launch",
             "name": "Next.js Production Server",
-            "program": "${workspaceFolder}/node_modules/.bin/next",
-            "args": ["start"],
+            "runtimeExecutable": "pnpm",
+            "runtimeArgs": ["run", "start"],
             "cwd": "${workspaceFolder}",
             "skipFiles": [
                 "<node_internals>/**"
@@ -52,18 +52,28 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Debug Blog Server Functions",
-            "program": "${workspaceFolder}/node_modules/.bin/tsx",
-            "args": ["${workspaceFolder}/src/lib/blog-server.ts"],
+            "name": "TypeScript Check",
+            "runtimeExecutable": "npx",
+            "runtimeArgs": ["tsc", "--noEmit"],
             "cwd": "${workspaceFolder}",
             "skipFiles": [
                 "<node_internals>/**"
             ],
             "console": "integratedTerminal",
-            "internalConsoleOptions": "neverOpen",
-            "env": {
-                "NODE_ENV": "development"
-            }
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "ESLint Check",
+            "runtimeExecutable": "pnpm",
+            "runtimeArgs": ["run", "lint"],
+            "cwd": "${workspaceFolder}",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
         }
     ]
 }
