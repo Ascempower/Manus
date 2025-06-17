@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
-import TestimonialsCarousel from './TestimonialsCarousel';
+import { LazyCarousel } from '@/lib/dynamic-imports';
 
 export const metadata: Metadata = {
   title: 'Client Testimonials - Choice Insurance Hub',
@@ -61,7 +61,7 @@ export default function TestimonialsPage() {
       {/* Testimonials Carousel */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <TestimonialsCarousel testimonials={testimonials} />
+          <LazyCarousel testimonials={testimonials} />
         </div>
       </section>
 

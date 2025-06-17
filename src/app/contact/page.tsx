@@ -3,7 +3,7 @@
 import type { Metadata } from 'next';
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, CalendarDays } from 'lucide-react';
-import ContactForm from "@/components/forms/ContactForm";
+import { LazyContactForm } from '@/lib/dynamic-imports';
 
 export const metadata: Metadata = {
   title: 'Contact Us - Choice Insurance Hub',
@@ -72,7 +72,7 @@ export default function ContactPage() {
             {/* Contact Form Section */}
             <div className="bg-brand-teal-blue/10 p-8 rounded-lg shadow-md" id="get-a-quote">
               <h2 className="text-2xl md:text-3xl font-bold text-brand-deep-forest-green font-poppins mb-6">Send Us a Message</h2>
-              <ContactForm />
+              <LazyContactForm />
             </div>
           </div>
         </div>

@@ -2,8 +2,8 @@ import React from "react";
 import type { Metadata, Viewport } from 'next';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import { GoogleAnalytics, CookieConsent } from '@/components/analytics';
-import HIPAANotice from '@/components/compliance/HIPAANotice';
+import LazyAnalytics from '@/components/analytics/LazyAnalytics';
+import LazyCompliance from '@/components/compliance/LazyCompliance';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -84,7 +84,15 @@ export default function RootLayout({
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
+          media="print"
+          onLoad="this.media='all'"
         />
+        <noscript>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+          />
+        </noscript>
         <link rel="icon" href="/icons/favicon.ico" sizes="any" />
         <link rel="icon" href="/icons/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
@@ -110,22 +118,18 @@ export default function RootLayout({
           <Footer />
         </div>
         
-        {/* HIPAA Notice - Shows first */}
-        <HIPAANotice />
+        {/* Lazy-loaded compliance and analytics */}
+        <LazyCompliance />
+        <LazyAnalytics />
         
-        {/* Cookie Consent - Shows after HIPAA notice */}
-        <CookieConsent />
-        
-        {/* Analytics */}
-        <GoogleAnalytics />
-        
-        {/* Service Worker Registration */}
+        {/* Deferred Service Worker Registration */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
                 if ('serviceWorker' in navigator) {
-                  window.addEventListener('load', function() {
+                  // Defer SW registration until after page load
+                  setTimeout(function() {
                     navigator.serviceWorker.register('/sw.js').then(
                       function(registration) {
                         console.log('SW registered: ', registration);
@@ -134,7 +138,7 @@ export default function RootLayout({
                         // Silent fail for SW registration
                       }
                     );
-                  });
+                  }, 2000);
                 }
               })();
             `,

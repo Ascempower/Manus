@@ -39,7 +39,7 @@ export default function GoogleAnalytics({ gtmId, ga4Id }: GoogleAnalyticsProps) 
         <>
           <Script
             id="gtm-script"
-            strategy="afterInteractive"
+            strategy="lazyOnload"
           >
             {`
                 // HIPAA-compliant GTM configuration
@@ -71,7 +71,7 @@ export default function GoogleAnalytics({ gtmId, ga4Id }: GoogleAnalyticsProps) 
         <>
           <Script
             id="ga4-loader"
-            strategy="afterInteractive"
+            strategy="lazyOnload"
           >
             {`
                 // Load GA4 script
@@ -85,7 +85,7 @@ export default function GoogleAnalytics({ gtmId, ga4Id }: GoogleAnalyticsProps) 
           </Script>
           <Script
             id="ga4-script"
-            strategy="afterInteractive"
+            strategy="lazyOnload"
           >
             {`
                 window.dataLayer = window.dataLayer || [];
