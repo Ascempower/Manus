@@ -58,7 +58,7 @@ export default function TestimonialsPage() {
         </div>
       </section>
 
-      {/* Testimonials Carousel */}
+      {/* LazyCarousel */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <LazyCarousel testimonials={testimonials} />

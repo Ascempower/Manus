@@ -2,7 +2,7 @@ import React from "react";
 import type { Metadata, Viewport } from 'next';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import LazyAnalytics from '@/components/analytics/LazyAnalytics';
+import LazyAnalytics from '@/components/analytics/LazyAnalytics/LazyAnalytics';
 import LazyCompliance from '@/components/compliance/LazyCompliance';
 import './globals.css';
 
@@ -86,7 +86,15 @@ export default function RootLayout({
           rel="stylesheet"
           media="print"
           onLoad="this.media='all'"
+          media="print"
+          onLoad="this.media='all'"
         />
+        <noscript>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+          />
+        </noscript>
         <noscript>
           <link
             href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
@@ -120,6 +128,8 @@ export default function RootLayout({
         
         {/* Lazy-loaded compliance and analytics */}
         <LazyCompliance />
+        <LazyLazy-loaded compliance and analytics */}
+        <LazyCompliance />
         <LazyAnalytics />
         
         {/* Deferred Service Worker Registration */}
@@ -129,7 +139,7 @@ export default function RootLayout({
               (function() {
                 if ('serviceWorker' in navigator) {
                   // Defer SW registration until after page load
-                  setTimeout(function() {
+             , 2000     setTimeout(function() {
                     navigator.serviceWorker.register('/sw.js').then(
                       function(registration) {
                         console.log('SW registered: ', registration);
