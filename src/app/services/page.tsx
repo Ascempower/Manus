@@ -1,6 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
+import CustomBreadcrumb from '@/components/navigation/CustomBreadcrumb';
+import RelatedLinks from '@/components/ui/RelatedLinks';
+import { getServiceLinks, getRelatedLinks } from '@/lib/internal-links';
+import CustomBreadcrumb from '@/components/navigation/CustomBreadcrumb';
+import RelatedLinks from '@/components/ui/RelatedLinks';
+import { getServiceLinks, getRelatedLinks } from '@/lib/internal-links';
 
 export const metadata: Metadata = {
   title: 'Insurance Services | Choice Insurance Hub - Medicare, Life & Health',
@@ -64,8 +70,34 @@ const services = [
 ];
 
 export default function ServicesPage() {
+  const relatedLinks = getRelatedLinks(['insurance', 'coverage', 'protection'], '/services');
+  
+  const relatedLinks = getRelatedLinks(['insurance', 'coverage', 'protection'], '/services');
+  
   return (
     <div className="bg-brand-white text-brand-black">
+      {/* Breadcrumbs */}
+      <section className="py-4 bg-brand-white border-b border-brand-teal-blue/20">
+        <div className="container mx-auto px-4">
+          <CustomBreadcrumb 
+            items={[
+              { label: 'Insurance Services' }
+            ]}
+          />
+        </div>
+      </section>
+
+      {/* Breadcrumbs */}
+      <section className="py-4 bg-brand-white border-b border-brand-teal-blue/20">
+        <div className="container mx-auto px-4">
+          <CustomBreadcrumb 
+            items={[
+              { label: 'Insurance Services' }
+            ]}
+          />
+        </div>
+      </section>
+
       {/* Page Header */}
       <section className="py-12 bg-brand-teal-blue/20">
         <div className="container mx-auto px-4 text-center">
@@ -90,6 +122,30 @@ export default function ServicesPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Related Links Section */}
+      <section className="py-16 bg-brand-white">
+        <div className="container mx-auto px-4">
+          <RelatedLinks
+            links={relatedLinks}
+            title="Explore More"
+            variant="grid"
+            showDescriptions={true}
+          />
+        </div>
+      </section>
+
+      {/* Related Links Section */}
+      <section className="py-16 bg-brand-white">
+        <div className="container mx-auto px-4">
+          <RelatedLinks
+            links={relatedLinks}
+            title="Explore More"
+            variant="grid"
+            showDescriptions={true}
+          />
         </div>
       </section>
 

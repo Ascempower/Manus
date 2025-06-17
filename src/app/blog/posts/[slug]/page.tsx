@@ -6,6 +6,14 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getAllBlogSlugs, getBlogPost } from '@/lib/blog-server';
 import { formatDate } from '@/lib/blog-utils';
+import CustomBreadcrumb from '@/components/navigation/CustomBreadcrumb';
+import ContentLinks from '@/components/content/ContentLinks';
+import InternalLink from '@/components/ui/InternalLink';
+import { processMarkdownLinks } from '@/lib/markdown-links';
+import CustomBreadcrumb from '@/components/navigation/CustomBreadcrumb';
+import ContentLinks from '@/components/content/ContentLinks';
+import InternalLink from '@/components/ui/InternalLink';
+import { processMarkdownLinks } from '@/lib/markdown-links';
 
 // No need for a custom PageProps type, we'll use inline typing
 
@@ -87,19 +95,19 @@ const MarkdownComponents = {
     <li className="mb-1">{children}</li>
   ),
   blockquote: ({ children }: { children: React.ReactNode }) => (
-    <blockquote className="border-l-4 border-brand-warm-beige-coral pl-4 my-6 italic text-gray-600 bg-gray-50 py-2">
+    <blockquote className="border-l-4 border-brand-deep-forest-green pl-4 my-6 italic text-gray-600 bg-gray-50 py-2">
       {children}
     </blockquote>
   ),
   a: ({ href, children }: { href?: string; children: React.ReactNode }) => (
-    <a 
-      href={href} 
-      className="text-brand-warm-beige-coral hover:text-brand-warm-beige-coral/80 underline"
-      target={href?.startsWith('http') ? '_blank' : undefined}
-      rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
+    <InternalLink 
+      href={href || '#'} 
+      className="text-brand-deep-forest-green hover:text-brand-teal-blue font-medium"
+      external={href?.startsWith('http') || href?.startsWith('mailto:') || href?.startsWith('tel:')}
+      showIcon={href?.startsWith('http')}
     >
       {children}
-    </a>
+    </InternalLink>
   ),
   strong: ({ children }: { children: React.ReactNode }) => (
     <strong className="font-bold text-gray-900">{children}</strong>

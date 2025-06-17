@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { Facebook, Instagram } from "lucide-react";
+import InternalNavigation from '@/components/navigation/InternalNavigation';
+import InternalNavigation from '@/components/navigation/InternalNavigation';
 
 export default function Footer({ className = "" }: { className?: string }) {
   const currentYear = new Date().getFullYear();
@@ -48,74 +50,9 @@ export default function Footer({ className = "" }: { className?: string }) {
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-bold text-brand-white mb-4 font-poppins">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/" className="text-brand-white/80 hover:text-brand-teal-blue transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="text-brand-white/80 hover:text-brand-teal-blue transition-colors">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="text-brand-white/80 hover:text-brand-teal-blue transition-colors">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link href="/blog" className="text-brand-white/80 hover:text-brand-teal-blue transition-colors">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="/faq" className="text-brand-white/80 hover:text-brand-teal-blue transition-colors">
-                  FAQ
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-brand-white/80 hover:text-brand-teal-blue transition-colors">
-                  Contact Us
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Our Services */}
-          <div>
-            <h3 className="text-lg font-bold text-brand-white mb-4 font-poppins">Our Services</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/services/medicare-supplement" className="text-brand-white/80 hover:text-brand-teal-blue transition-colors">
-                  Medicare Supplement
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/life-insurance" className="text-brand-white/80 hover:text-brand-teal-blue transition-colors">
-                  Life Insurance
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/health-insurance" className="text-brand-white/80 hover:text-brand-teal-blue transition-colors">
-                  Health Insurance
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/final-expense" className="text-brand-white/80 hover:text-brand-teal-blue transition-colors">
-                  Final Expense
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/annuities" className="text-brand-white/80 hover:text-brand-teal-blue transition-colors">
-                  Annuities
-                </Link>
-              </li>
-            </ul>
-          </div>
+          {/* Internal Navigation Links */}
+          <InternalNavigation variant="footer" /Internal Navigation Links */}
+          <InternalNavigation variant="footer" />
 
           {/* Contact Info */}
           <div>
