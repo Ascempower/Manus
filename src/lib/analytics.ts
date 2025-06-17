@@ -123,14 +123,6 @@ export const trackInsuranceEvents = {
       context: context || 'unknown'
     });
   },
-
-  // Internal link clicks (navigation tracking)
-  internalLinkClicked: (linkKey: string, context?: string) => {
-    trackHIPAACompliantEvent('internal_link_click', 'navigation', { 
-      link_key: linkKey,
-      context: context || 'unknown'
-    });
-  },
 };
 
 // GTM Data Layer push
