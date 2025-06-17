@@ -16,8 +16,8 @@ export function generateStaticParams() {
 }
 
 // Generate metadata for each blog post
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const { slug } = params;
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> | { slug: string } }): Promise<Metadata> {
+  const { slug } = 'then' in params ? await params : params;
   const post = getBlogPost(slug);
   
   if (!post) {
@@ -118,8 +118,8 @@ const MarkdownComponents = {
 };
 
 // Define the page component
-export default function BlogPost({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> | { slug: string } }) {
+  const { slug } = 'then' in params ? await params : params;
   const post = getBlogPost(slug);
   
   // If post doesn't exist, show 404
