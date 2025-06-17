@@ -1,10 +1,10 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
+import CustomBreadcrumb from '@/components/navigation/CustomBreadcrumb';
 import { Button } from "@/components/ui/button";
 import { BookConsultationButton } from '@/components/ui/CTAButton';
-import CustomBreadcrumb from '@/components/navigation/CustomBreadcrumb';
 import RelatedLinks from '@/components/ui/RelatedLinks';
-import { getServiceLinks, getRelatedLinks } from '@/lib/internal-links';
+import { getRelatedLinks } from '@/lib/internal-links';
+import type { Metadata } from 'next';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Insurance Services | Choice Insurance Hub - Medicare, Life & Health',

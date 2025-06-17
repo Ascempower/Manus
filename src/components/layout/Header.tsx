@@ -1,25 +1,25 @@
 "use client";
 
-import Link from 'next/link';
-import Image from 'next/image';
-import { Menu } from 'lucide-react';
-import { MAIN_NAVIGATION, FOOTER_LINKS } from '@/constants/navigation';
 import { Button } from '@/components/ui/button';
-import { trackInsuranceEvents } from '@/lib/analytics';
+import { FOOTER_LINKS, MAIN_NAVIGATION } from '@/constants/navigation';
+import { Menu } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+// import { trackInsuranceEvents } from '@/lib/analytics';
 import { BookConsultationButton, GetQuoteButton } from '@/components/ui/CTAButton';
 import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
+    NavigationMenu,
+    NavigationMenuContent,
+    NavigationMenuItem,
+    NavigationMenuLink,
+    NavigationMenuList,
+    NavigationMenuTrigger,
+    navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
 import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
+    Sheet,
+    SheetContent,
+    SheetTrigger,
 } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 

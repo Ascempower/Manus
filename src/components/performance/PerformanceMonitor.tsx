@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 export default function PerformanceMonitor() {
   useEffect(() => {
@@ -37,11 +37,11 @@ export default function PerformanceMonitor() {
     // Observe different performance metrics
     try {
       observer.observe({ entryTypes: ['navigation', 'largest-contentful-paint', 'first-input', 'layout-shift'] });
-    } catch (e) {
+    } catch {
       // Fallback for browsers that don't support all entry types
       try {
         observer.observe({ entryTypes: ['navigation'] });
-      } catch (e) {
+      } catch {
         console.log('Performance Observer not supported');
       }
     }
@@ -65,7 +65,7 @@ export default function PerformanceMonitor() {
 
     try {
       resourceObserver.observe({ entryTypes: ['resource'] });
-    } catch (e) {
+    } catch {
       console.log('Resource Performance Observer not supported');
     }
 

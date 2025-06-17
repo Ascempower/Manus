@@ -1,15 +1,15 @@
-import React from 'react';
-import ReactMarkdown from 'react-markdown';
-import Link from 'next/link';
-import Image from 'next/image';
-import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 import { getAllBlogSlugs, getBlogPost } from '@/lib/blog-server';
 import { formatDate } from '@/lib/blog-utils';
-import CustomBreadcrumb from '@/components/navigation/CustomBreadcrumb';
-import ContentLinks from '@/components/content/ContentLinks';
+import { Metadata } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import React from 'react';
+import ReactMarkdown from 'react-markdown';
+// import CustomBreadcrumb from '@/components/navigation/CustomBreadcrumb';
+// import ContentLinks from '@/components/content/ContentLinks';
 import InternalLink from '@/components/ui/InternalLink';
-import { processMarkdownLinks } from '@/lib/markdown-links';
+// import { processMarkdownLinks } from '@/lib/markdown-links';
 
 // No need for a custom PageProps type, we'll use inline typing
 

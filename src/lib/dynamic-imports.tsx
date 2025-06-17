@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 import { ComponentType } from 'react';
 
 // Type definitions for better JSX compatibility
-type LazyComponent<P = {}> = ComponentType<P>;
+type LazyComponent<P = Record<string, unknown>> = ComponentType<P>;
 
 // Lazy load heavy UI components
 export const LazyAccordion: LazyComponent = dynamic(
@@ -23,13 +23,13 @@ export const LazyDialog: LazyComponent = dynamic(
   }
 ) as LazyComponent;
 
-export const LazyCarousel: LazyComponent<any> = dynamic(
+export const LazyCarousel: LazyComponent<Record<string, unknown>> = dynamic(
   () => import('@/app/testimonials/TestimonialsCarousel'), 
   {
     loading: () => <div className="animate-pulse h-64 bg-gray-200 rounded" />,
     ssr: false,
   }
-) as LazyComponent<any>;
+) as LazyComponent<Record<string, unknown>>;
 
 export const LazyContactForm: LazyComponent = dynamic(
   () => import('@/components/forms/ContactForm'), 
@@ -40,12 +40,12 @@ export const LazyContactForm: LazyComponent = dynamic(
 ) as LazyComponent;
 
 // Lazy load analytics components
-export const LazyGoogleAnalytics: LazyComponent<any> = dynamic(
+export const LazyGoogleAnalytics: LazyComponent<Record<string, unknown>> = dynamic(
   () => import('@/components/analytics/GoogleAnalytics'), 
   {
     ssr: false,
   }
-) as LazyComponent<any>;
+) as LazyComponent<Record<string, unknown>>;
 
 export const LazyCookieConsent: LazyComponent = dynamic(
   () => import('@/components/analytics/CookieConsent'), 
@@ -82,7 +82,7 @@ export const LazyPerformanceMonitor: LazyComponent = dynamic(
 //   ssr: false,
 // });
 
-export default {
+const dynamicComponents = {
   LazyAccordion,
   LazyDialog,
   LazyCarousel,
@@ -94,3 +94,5 @@ export default {
   // LazyChart,
   // LazyMap,
 };
+
+export default dynamicComponents;

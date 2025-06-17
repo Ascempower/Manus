@@ -1,10 +1,10 @@
 "use client";
 
-import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Shield, Lock, Eye, X as _X } from 'lucide-react';
-import { hasHIPAAConsent, setHIPAAConsent, clearSensitiveData } from '@/lib/hipaa-compliance';
+import { setHIPAAConsent } from '@/lib/hipaa-compliance';
+import { Eye, Lock, Shield } from 'lucide-react';
+import React from 'react';
 
 export default function HIPAANotice() {
   const [showNotice, setShowNotice] = React.useState(false);
@@ -12,7 +12,6 @@ export default function HIPAANotice() {
 
   React.useEffect(() => {
     // Check if user has already seen the HIPAA notice
-    const __hasConsent = hasHIPAAConsent();
     const hasSeenNotice = localStorage.getItem('hipaa-notice-seen');
     
     if (!hasSeenNotice) {
@@ -38,12 +37,13 @@ export default function HIPAANotice() {
     setShowNotice(false);
   };
 
-  const __handleDecline = () => {
-    localStorage.setItem('hipaa-notice-seen', 'true');
-    setHIPAAConsent(false);
-    clearSensitiveData();
-    setShowNotice(false);
-  };
+  // Decline handler available if needed
+  // const handleDecline = () => {
+  //   localStorage.setItem('hipaa-notice-seen', 'true');
+  //   setHIPAAConsent(false);
+  //   clearSensitiveData();
+  //   setShowNotice(false);
+  // };
 
   if (!isLoaded || !showNotice) {
     return null;
