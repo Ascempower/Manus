@@ -1,14 +1,29 @@
 import React from 'react';
 
 import type { Metadata, Viewport } from 'next';
+import { Inter, Poppins } from 'next/font/google';
 
-import FontLoader from '@/components/FontLoader';
 import LazyAnalytics from '@/components/analytics/LazyAnalytics';
 import LazyCompliance from '@/components/compliance/LazyCompliance';
 import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
 
 import './globals.css';
+
+// Configure fonts
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-poppins',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'Choice Insurance Hub - Expert Health, Life & Medicare Insurance Solutions',
@@ -81,9 +96,8 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className={`scroll-smooth ${inter.variable} ${poppins.variable}`}>
       <head>
-        <FontLoader />
         <link rel="icon" href="/icons/favicon.ico" sizes="any" />
         <link rel="icon" href="/icons/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
@@ -92,7 +106,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{
             __html: `
               /* Critical CSS - Inlined for performance */
-              html { font-family: Inter, system-ui, sans-serif; }
+              html { font-family: var(--font-inter), system-ui, sans-serif; }
               body { margin: 0; background: #ffffff; color: #1a365d; }
               .loading { opacity: 0; transition: opacity 0.3s ease; }
               .loaded { opacity: 1; }

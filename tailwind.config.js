@@ -55,8 +55,9 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['Poppins', 'sans-serif'], // Set Poppins as default sans-serif
-        poppins: ['Poppins', 'sans-serif'], // Specific Poppins utility
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        inter: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        poppins: ['var(--font-poppins)', 'sans-serif'],
       },
       keyframes: {
         'accordion-down': {

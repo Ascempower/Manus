@@ -134,7 +134,7 @@ export default async function BlogPost({ params }: PageProps) {
     if (!post) {
       notFound();
     }
-  } catch (error) {
+  } catch {
     notFound();
   }
 
