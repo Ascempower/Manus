@@ -20,23 +20,27 @@ export const trackEvent = (action: string, category: string, label?: string, val
     return;
   }
 
-  const eventData = {
-    event_category: category,
-    event_label: label,
-    value: value,
-  };
+  try {
+    const eventData = {
+      event_category: category,
+      event_label: label,
+      value: value,
+    };
 
-  // Validate no PHI is being transmitted
-  if (!validateNoPHI(eventData)) {
-    // Potential PHI detected in analytics event. Event blocked for HIPAA compliance.
-    return;
-  }
+    // Validate no PHI is being transmitted
+    if (!validateNoPHI(eventData)) {
+      // Potential PHI detected in analytics event. Event blocked for HIPAA compliance.
+      return;
+    }
 
-  // Sanitize data before transmission
-  const sanitizedData = sanitizeForHIPAA(eventData);
+    // Sanitize data before transmission
+    const sanitizedData = sanitizeForHIPAA(eventData);
 
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', action, sanitizedData);
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', action, sanitizedData);
+    }
+  } catch (error) {
+    console.error('Error tracking event:', error);
   }
 };
 
@@ -46,26 +50,38 @@ export const trackPageView = (url: string, title?: string) => {
     return;
   }
 
-  if (typeof window !== 'undefined' && window.gtag) {
-    // Remove query parameters and fragments that might contain PHI
-    const cleanUrl = url.split('?')[0].split('#')[0];
+  if (typeof window !== 'undefined' && window.gtag && process.env.NEXT_PUBLIC_GA4_ID) {
+    try {
+      // Remove query parameters and fragments that might contain PHI
+      const cleanUrl = url.split('?')[0].split('#')[0];
 
-    window.gtag('config', process.env.NEXT_PUBLIC_GA4_ID, {
-      page_title: title || document.title,
-      page_location: cleanUrl, // Only send clean URL without parameters
-      send_page_view: true,
-    });
+      window.gtag('config', process.env.NEXT_PUBLIC_GA4_ID, {
+        page_title: title || document.title || '',
+        page_location: cleanUrl, // Only send clean URL without parameters
+        send_page_view: true,
+      });
+    } catch (error) {
+      console.error('Error tracking page view:', error);
+    }
   }
 };
 
 // HIPAA-Compliant Track conversions (for insurance quotes, consultations, etc.)
 export const trackConversion = (conversionId: string, value?: number) => {
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', 'conversion', {
-      send_to: conversionId,
-      value: value,
-      currency: 'USD',
-    });
+  if (!hasHIPAAConsent()) {
+    return;
+  }
+
+  try {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'conversion', {
+        send_to: conversionId,
+        value: value,
+        currency: 'USD',
+      });
+    }
+  } catch (error) {
+    console.error('Error tracking conversion:', error);
   }
 };
 
@@ -126,8 +142,19 @@ export const trackInsuranceEvents = {
 
 // GTM Data Layer push
 export const pushToDataLayer = (data: Record<string, any>) => {
-  if (typeof window !== 'undefined' && window.dataLayer) {
-    window.dataLayer.push(data);
+  if (!hasHIPAAConsent()) {
+    return;
+  }
+
+  try {
+    // Sanitize data before pushing to data layer
+    const sanitizedData = sanitizeForHIPAA(data);
+
+    if (typeof window !== 'undefined' && window.dataLayer) {
+      window.dataLayer.push(sanitizedData);
+    }
+  } catch (error) {
+    console.error('Error pushing to data layer:', error);
   }
 };
 
@@ -142,11 +169,27 @@ export const trackInsuranceProduct = (
     quantity?: number;
   }
 ) => {
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', action, {
-      currency: 'USD',
-      value: productData.price || 0,
-      items: [productData],
-    });
+  if (!hasHIPAAConsent()) {
+    return;
+  }
+
+  try {
+    // Validate no PHI in product data
+    if (!validateNoPHI(productData)) {
+      return;
+    }
+
+    // Sanitize product data
+    const sanitizedProductData = sanitizeForHIPAA(productData) as typeof productData;
+
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', action, {
+        currency: 'USD',
+        value: sanitizedProductData.price || 0,
+        items: [sanitizedProductData],
+      });
+    }
+  } catch (error) {
+    console.error('Error tracking insurance product:', error);
   }
 };

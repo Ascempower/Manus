@@ -22,6 +22,7 @@
     "generate-critical": "node scripts/generate-critical-css.cjs",
     "analyze": "ANALYZE=true pnpm run build",
     "build:optimize": "node scripts/build-optimize.js",
+    "build:safe": "node pre-build-check.js && pnpm run clean && pnpm run build:optimize",
     "test:build": "pnpm run clean && pnpm run build",
     "deploy:preview": "pnpm run test:build && echo 'Ready for preview deployment'",
     "setup": "node scripts/setup-dev.js",

@@ -12,45 +12,74 @@ export default function CookieConsent() {
   const [isLoaded, setIsLoaded] = React.useState(false);
 
   React.useEffect(() => {
-    // Check if user has already made a choice
-    const consent = localStorage.getItem('cookie-consent');
-    const hipaaNotice = localStorage.getItem('hipaa-notice-seen');
+    // Safely check localStorage
+    let consent: string | null = null;
+    let hipaaNotice: string | null = null;
+
+    try {
+      // Check if user has already made a choice
+      consent = localStorage.getItem('cookie-consent');
+      hipaaNotice = localStorage.getItem('hipaa-notice-seen');
+    } catch (e) {
+      // Handle localStorage errors (e.g., in private browsing)
+      console.error('LocalStorage access error:', e);
+    }
 
     // Only show cookie consent if HIPAA notice has been handled
     if (!consent && hipaaNotice) {
       // Delay showing consent banner to not interfere with page load
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         setShowConsent(true);
         setIsLoaded(true);
       }, 2000);
+
+      return () => clearTimeout(timer);
     } else {
       setIsLoaded(true);
     }
   }, []);
 
   const handleAccept = () => {
-    localStorage.setItem('cookie-consent', 'accepted');
+    try {
+      localStorage.setItem('cookie-consent', 'accepted');
+    } catch (e) {
+      console.error('Could not save cookie consent:', e);
+    }
+
     setShowConsent(false);
 
     // Enable analytics tracking
     if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('consent', 'update', {
-        analytics_storage: 'granted',
-        ad_storage: 'denied', // Keep ads denied for privacy
-      });
+      try {
+        window.gtag('consent', 'update', {
+          analytics_storage: 'granted',
+          ad_storage: 'denied', // Keep ads denied for privacy
+        });
+      } catch (e) {
+        console.error('GTM consent update error:', e);
+      }
     }
   };
 
   const handleDecline = () => {
-    localStorage.setItem('cookie-consent', 'declined');
+    try {
+      localStorage.setItem('cookie-consent', 'declined');
+    } catch (e) {
+      console.error('Could not save cookie consent:', e);
+    }
+
     setShowConsent(false);
 
     // Disable analytics tracking
     if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('consent', 'update', {
-        analytics_storage: 'denied',
-        ad_storage: 'denied',
-      });
+      try {
+        window.gtag('consent', 'update', {
+          analytics_storage: 'denied',
+          ad_storage: 'denied',
+        });
+      } catch (e) {
+        console.error('GTM consent update error:', e);
+      }
     }
   };
 

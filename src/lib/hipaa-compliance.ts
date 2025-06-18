@@ -34,8 +34,17 @@ export const isPotentialPHIPage = (pathname: string): boolean => {
 
 // Sanitize data before any external transmission
 export const sanitizeForHIPAA = (data: unknown): unknown => {
-  if (typeof data !== 'object' || data === null) {
+  if (data === null || data === undefined) {
     return data;
+  }
+
+  if (typeof data !== 'object') {
+    return data;
+  }
+
+  // Handle arrays
+  if (Array.isArray(data)) {
+    return data.map(item => sanitizeForHIPAA(item));
   }
 
   const sensitiveFields = [
@@ -62,11 +71,21 @@ export const sanitizeForHIPAA = (data: unknown): unknown => {
     'name',
   ];
 
-  const sanitized = { ...data };
+  const sanitized = { ...data } as Record<string, unknown>;
 
-  sensitiveFields.forEach(field => {
-    if (sanitized[field]) {
-      delete sanitized[field];
+  // Check each field for sensitive data
+  Object.keys(sanitized).forEach(key => {
+    const lowerKey = key.toLowerCase();
+
+    // Remove sensitive fields
+    if (sensitiveFields.some(field => lowerKey.includes(field))) {
+      delete sanitized[key];
+      return;
+    }
+
+    // Recursively sanitize nested objects
+    if (typeof sanitized[key] === 'object' && sanitized[key] !== null) {
+      sanitized[key] = sanitizeForHIPAA(sanitized[key]);
     }
   });
 
@@ -93,25 +112,36 @@ export const trackHIPAACompliantEvent = (
 
 // Check if user has given explicit consent for data processing
 export const hasHIPAAConsent = (): boolean => {
-  if (typeof window === 'undefined') {
+  if (typeof window === 'undefined' || typeof localStorage === 'undefined') {
     return false;
   }
 
-  const consent = localStorage.getItem('hipaa-consent');
-  return consent === 'granted';
+  try {
+    const consent = localStorage.getItem('hipaa-consent');
+    return consent === 'granted';
+  } catch (e) {
+    // In case of localStorage access errors (e.g., in private browsing)
+    console.error('LocalStorage access error:', e);
+    return false;
+  }
 };
 
 // Set HIPAA consent
 export const setHIPAAConsent = (granted: boolean) => {
-  if (typeof window === 'undefined') {
+  if (typeof window === 'undefined' || typeof localStorage === 'undefined') {
     return;
   }
 
-  localStorage.setItem('hipaa-consent', granted ? 'granted' : 'denied');
+  try {
+    localStorage.setItem('hipaa-consent', granted ? 'granted' : 'denied');
 
-  // Update configuration based on consent
-  HIPAA_CONFIG.enableAnalytics = granted;
-  HIPAA_CONFIG.enableCookies = granted;
+    // Update configuration based on consent
+    HIPAA_CONFIG.enableAnalytics = granted;
+    HIPAA_CONFIG.enableCookies = granted;
+  } catch (e) {
+    // Handle localStorage errors
+    console.error('Could not save HIPAA consent preferences:', e);
+  }
 };
 
 // Clear all potentially sensitive data

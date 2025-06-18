@@ -71,10 +71,14 @@ export function createScriptPreloadLink(src: string): string {
 }
 
 export function deferScript(callback: () => void, delay: number = 0): void {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
   if (delay > 0) {
     setTimeout(callback, delay);
   } else {
-    if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+    if ('requestIdleCallback' in window) {
       window.requestIdleCallback(callback);
     } else {
       setTimeout(callback, 0);
@@ -86,38 +90,74 @@ export function loadOnInteraction(
   callback: () => void,
   events: string[] = ['click', 'scroll', 'keydown']
 ): void {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
   const loadScript = () => {
-    callback();
-    events.forEach(event => {
-      window.removeEventListener(event, loadScript);
-    });
+    try {
+      callback();
+      events.forEach(event => {
+        window.removeEventListener(event, loadScript);
+      });
+    } catch (error) {
+      console.error('Error in loadOnInteraction callback:', error);
+    }
   };
 
-  events.forEach(event => {
-    window.addEventListener(event, loadScript, { once: true, passive: true });
-  });
+  try {
+    events.forEach(event => {
+      window.addEventListener(event, loadScript, { once: true, passive: true });
+    });
+  } catch (error) {
+    console.error('Error adding event listeners:', error);
+    // Fallback to immediate execution
+    setTimeout(callback, 3000);
+  }
 }
 
 export function isScriptLoaded(src: string): boolean {
-  return Array.from(document.scripts).some(script => script.src === src);
+  if (typeof document === 'undefined') {
+    return false;
+  }
+
+  try {
+    return Array.from(document.scripts).some(script => script.src === src);
+  } catch (error) {
+    console.error('Error checking if script is loaded:', error);
+    return false;
+  }
 }
 
 export function loadScript(src: string, options: Partial<ScriptConfig> = {}): Promise<void> {
   return new Promise((resolve, reject) => {
-    if (isScriptLoaded(src)) {
-      resolve();
+    if (typeof document === 'undefined') {
+      reject(new Error('Document not available'));
       return;
     }
 
-    const script = document.createElement('script');
-    script.src = src;
-    script.async = options.async ?? true;
-    script.defer = options.defer ?? false;
+    try {
+      if (isScriptLoaded(src)) {
+        resolve();
+        return;
+      }
 
-    script.onload = () => resolve();
-    script.onerror = () => reject(new Error(`Failed to load script: ${src}`));
+      const script = document.createElement('script');
+      script.src = src;
+      script.async = options.async ?? true;
+      script.defer = options.defer ?? false;
 
-    document.head.appendChild(script);
+      script.onload = () => resolve();
+      script.onerror = event => {
+        console.error(`Failed to load script: ${src}`, event);
+        reject(new Error(`Failed to load script: ${src}`));
+      };
+
+      document.head.appendChild(script);
+    } catch (error) {
+      console.error('Error loading script:', error);
+      reject(error);
+    }
   });
 }
 

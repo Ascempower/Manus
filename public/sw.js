@@ -62,45 +62,69 @@ self.addEventListener('fetch', event => {
   }
 
   event.respondWith(
-    caches.match(event.request).then(response => {
-      // Cache hit - return response
-      if (response) {
-        return response;
-      }
-
-      // Clone the request because it's a one-time use stream
-      const fetchRequest = event.request.clone();
-
-      return fetch(fetchRequest)
-        .then(response => {
-          // Check if valid response
-          if (!response || response.status !== 200 || response.type !== 'basic') {
-            return response;
-          }
-
-          // Clone the response because it's a one-time use stream
-          const responseToCache = response.clone();
-
-          caches.open(CACHE_NAME).then(cache => {
-            // Don't cache API calls or external resources
-            if (
-              event.request.url.includes('/api/') ||
-              !event.request.url.includes(self.location.origin)
-            ) {
-              return;
-            }
-            cache.put(event.request, responseToCache);
-          });
-
+    caches
+      .match(event.request)
+      .then(response => {
+        // Cache hit - return response
+        if (response) {
           return response;
-        })
-        .catch(() => {
-          // If network fails and it's a document request, return offline page
-          if (event.request.headers.get('accept').includes('text/html')) {
-            return caches.match('/');
-          }
+        }
+
+        // Clone the request because it's a one-time use stream
+        const fetchRequest = event.request.clone();
+
+        return fetch(fetchRequest)
+          .then(response => {
+            // Check if valid response
+            if (!response || response.status !== 200 || response.type !== 'basic') {
+              return response;
+            }
+
+            // Clone the response because it's a one-time use stream
+            const responseToCache = response.clone();
+
+            caches
+              .open(CACHE_NAME)
+              .then(cache => {
+                // Don't cache API calls or external resources
+                if (
+                  event.request.url.includes('/api/') ||
+                  !event.request.url.includes(self.location.origin)
+                ) {
+                  return;
+                }
+                cache.put(event.request, responseToCache);
+              })
+              .catch(err => {
+                console.error('Cache put error:', err);
+              });
+
+            return response;
+          })
+          .catch(() => {
+            // If network fails and it's a document request, return offline page
+            if (event.request.headers.get('accept')?.includes('text/html')) {
+              return caches.match('/').catch(() => {
+                // If homepage isn't cached, return a simple offline message
+                return new Response('You are offline. Please check your connection.', {
+                  headers: { 'Content-Type': 'text/html' },
+                });
+              });
+            }
+            // For non-HTML requests, return a generic error response
+            return new Response('Network error occurred', {
+              status: 503,
+              statusText: 'Service Unavailable',
+            });
+          });
+      })
+      .catch(error => {
+        console.error('Service worker fetch handler error:', error);
+        return new Response('Service worker error occurred', {
+          status: 500,
+          statusText: 'Internal Service Worker Error',
         });
-    })
+      })
   );
 });
 

@@ -13,28 +13,46 @@ export default function HIPAANotice() {
   const [isLoaded, setIsLoaded] = React.useState(false);
 
   React.useEffect(() => {
-    // Check if user has already seen the HIPAA notice
-    const hasSeenNotice = localStorage.getItem('hipaa-notice-seen');
+    // Safely check if user has already seen the HIPAA notice
+    let hasSeenNotice = null;
+
+    try {
+      hasSeenNotice = localStorage.getItem('hipaa-notice-seen');
+    } catch (e) {
+      console.error('LocalStorage access error:', e);
+    }
 
     if (!hasSeenNotice) {
       // Show notice after a brief delay to not interfere with page load
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         setShowNotice(true);
         setIsLoaded(true);
       }, 1500);
+
+      return () => clearTimeout(timer);
     } else {
       setIsLoaded(true);
     }
   }, []);
 
   const handleAcceptMinimal = () => {
-    localStorage.setItem('hipaa-notice-seen', 'true');
+    try {
+      localStorage.setItem('hipaa-notice-seen', 'true');
+    } catch (e) {
+      console.error('Could not save HIPAA notice preference:', e);
+    }
+
     setHIPAAConsent(false); // No tracking, minimal data collection
     setShowNotice(false);
   };
 
   const handleAcceptAnalytics = () => {
-    localStorage.setItem('hipaa-notice-seen', 'true');
+    try {
+      localStorage.setItem('hipaa-notice-seen', 'true');
+    } catch (e) {
+      console.error('Could not save HIPAA notice preference:', e);
+    }
+
     setHIPAAConsent(true); // Allow HIPAA-compliant analytics
     setShowNotice(false);
   };
