@@ -79,8 +79,59 @@ The project is configured for automatic deployment on Netlify:
 
 1. **Automatic Deployment**: Push to `main` branch triggers production deployment
 2. **Preview Deployments**: Pull requests create preview deployments
-3. **Build Command**: `pnpm install --frozen-lockfile && pnpm run print-versions && pnpm run build`
+3. **Build Command**:  
+   ```
+   pnpm install --frozen-lockfile && pnpm run print-versions && pnpm run build
+   ```
 4. **Publish Directory**: `.next`
+
+#### Netlify Configuration (`netlify.toml`)
+
+This project includes a `netlify.toml` file at the root to control build, environment, headers, plugins, and redirects. Key settings:
+
+- **Node Version:** 20, **PNPM Version:** 10.12.1
+- **Build Cache:** Enabled for Next.js (`NEXT_CACHE=true`)
+- **Memory Optimization:** Node options set for increased memory
+- **Asset Caching:** Long-term cache headers for static assets
+- **Security:** Strict security headers set for all routes
+- **Plugins:** Includes `@netlify/plugin-nextjs` and `netlify-plugin-bundle-env` for bundling environment variables into functions
+- **SPA Redirect:** All routes fallback to `/index.html` for client-side routing
+
+**Example snippet:**
+```toml
+[build]
+base = "."
+command = "pnpm install --frozen-lockfile && pnpm run print-versions && pnpm run build"
+publish = ".next"
+
+[build.environment]
+NODE_VERSION = "20"
+PNPM_VERSION = "10.12.1"
+NEXT_CACHE = "true"
+NODE_OPTIONS = "--max-old-space-size=4096"
+
+[functions]
+directory = "netlify/functions"
+
+[[plugins]]
+package = "@netlify/plugin-nextjs"
+
+[[plugins]]
+package = "netlify-plugin-bundle-env"
+  [plugins.inputs]
+  directories = ["netlify/functions"]
+  include = [
+    "NEXT_PUBLIC_API_URL",
+    "NEXT_PUBLIC_FIREBASE_KEY",
+    "NEXT_PUBLIC_SENTRY_DSN"
+  ]
+  mask = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+```
 
 ### Environment Variables
 
@@ -94,7 +145,11 @@ NEXT_PUBLIC_SITE_URL=your_site_url
 # Optional
 NEXT_PUBLIC_GA_ID=your_google_analytics_id
 NEXT_PUBLIC_GTM_ID=your_google_tag_manager_id
+NEXT_PUBLIC_FIREBASE_KEY=your_firebase_key
+NEXT_PUBLIC_SENTRY_DSN=your_sentry_dsn
 ```
+
+**Note:** The `netlify-plugin-bundle-env` bundles certain environment variables for use in Netlify functions. Add any variables to both your `.env.local` and the `include` list in `netlify.toml` if they are needed in serverless functions.
 
 ## 🛠️ Tech Stack
 
