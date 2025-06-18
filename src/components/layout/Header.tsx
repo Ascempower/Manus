@@ -50,8 +50,8 @@ export default function Header() {
                     >
                       {item.label}
                     </NavigationMenuTrigger>
-                    <NavigationMenuContent className="z-[100]">
-                      <div className="z-[100] grid w-[400px] gap-2 rounded-lg border border-brand-teal-blue-dark bg-white p-4 shadow-lg md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                    <NavigationMenuContent className="z-[9999]">
+                      <div className="z-[9999] grid w-[400px] gap-2 rounded-lg border border-brand-teal-blue-dark bg-white p-4 shadow-lg md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                         {/* First Column */}
                         <div className="flex flex-col gap-2">
                           {/* All Services - Forest Green, takes most space */}
