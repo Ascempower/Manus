@@ -12,7 +12,7 @@ function sendPerformanceMetric(metricName: string, value: number | object) {
         metric_name: metricName,
         value: typeof value === 'object' ? JSON.stringify(value) : value,
       });
-    } catch (e) {
+    } catch {
       // Silently fail in production
     }
   }
@@ -72,7 +72,7 @@ export default function PerformanceMonitor() {
         observer.observe({
           entryTypes: ['navigation', 'largest-contentful-paint', 'first-input', 'layout-shift'],
         });
-      } catch (error) {
+      } catch {
         // Fallback for browsers that don't support all entry types
         try {
           observer.observe({ entryTypes: ['navigation'] });
@@ -103,7 +103,7 @@ export default function PerformanceMonitor() {
       } catch {
         // Silently fail in production
       }
-    } catch (error) {
+    } catch {
       // Silently fail in production
     }
 
@@ -111,7 +111,7 @@ export default function PerformanceMonitor() {
       try {
         if (observer) observer.disconnect();
         if (resourceObserver) resourceObserver.disconnect();
-      } catch (error) {
+      } catch {
         // Silently fail in production
       }
     };

@@ -46,7 +46,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
             error_component: errorInfo.componentStack,
           });
         }
-      } catch (e) {
+      } catch {
         // Silently fail if error reporting fails
       }
     }
