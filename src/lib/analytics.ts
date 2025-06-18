@@ -8,8 +8,8 @@ import {
 
 declare global {
   interface Window {
-    gtag: (...args: any[]) => void;
-    dataLayer: any[];
+    gtag: (command: string, action: string, params?: Record<string, unknown>) => void;
+    dataLayer: Array<Record<string, unknown>>;
   }
 }
 
@@ -141,7 +141,7 @@ export const trackInsuranceEvents = {
 };
 
 // GTM Data Layer push
-export const pushToDataLayer = (data: Record<string, any>) => {
+export const pushToDataLayer = (data: Record<string, unknown>) => {
   if (!hasHIPAAConsent()) {
     return;
   }

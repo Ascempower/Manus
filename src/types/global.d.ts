@@ -4,7 +4,7 @@
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [elemName: string]: any;
+      [elemName: string]: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 
@@ -12,12 +12,12 @@ declare global {
     /**
      * Google Tag Manager function
      */
-    gtag: (...args: any[]) => void;
+    gtag: (command: string, action: string, params?: Record<string, unknown>) => void;
 
     /**
      * Google Tag Manager data layer
      */
-    dataLayer: any[];
+    dataLayer: Array<Record<string, unknown>>;
 
     /**
      * VGS Collect for secure form handling

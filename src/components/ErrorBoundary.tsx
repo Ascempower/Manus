@@ -80,14 +80,14 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
 /**
  * Wrapper component for lazy-loaded components to provide error handling
  */
-export const SafeLazyComponent = ({
+export const SafeLazyComponent = <P extends Record<string, unknown>>({
   component: Component,
   fallback,
   ...props
 }: {
-  component: React.ComponentType<any>;
+  component: React.ComponentType<P>;
   fallback?: React.ReactNode;
-  [key: string]: any;
+  [key: string]: unknown;
 }) => {
   return (
     <ErrorBoundary fallback={fallback}>

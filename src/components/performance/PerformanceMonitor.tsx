@@ -59,7 +59,13 @@ export default function PerformanceMonitor() {
           }
 
           if (entry.entryType === 'layout-shift') {
-            const clsEntry = entry as any; // Using any here for compatibility
+            // Define a proper interface for LayoutShift entries
+            interface LayoutShiftEntry extends PerformanceEntry {
+              value: number;
+              hadRecentInput?: boolean;
+            }
+
+            const clsEntry = entry as LayoutShiftEntry;
             if (clsEntry && typeof clsEntry.value === 'number') {
               sendPerformanceMetric('CLS', clsEntry.value);
             }

@@ -83,11 +83,16 @@ export function generateContentSuggestions(content: string, currentPath?: string
     }
   });
 
+  // Define a type for links with score
+  interface ScoredInternalLink extends InternalLink {
+    score: number;
+  }
+
   // Sort by score and priority
   return suggestions
     .sort((a, b) => {
-      const aScore = (a as any).score || 0;
-      const bScore = (b as any).score || 0;
+      const aScore = (a as ScoredInternalLink).score || 0;
+      const bScore = (b as ScoredInternalLink).score || 0;
       const priorityOrder = { high: 3, medium: 2, low: 1 };
 
       if (aScore !== bScore) return bScore - aScore;

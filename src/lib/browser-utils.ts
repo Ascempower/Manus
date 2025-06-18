@@ -312,10 +312,13 @@ export const safeNavigatorAccess = {
   },
 };
 
-export default {
+// Create a named object for the default export
+const browserUtils = {
   safeLocalStorage,
   safeSessionStorage,
   safeWindowAccess,
   safeDocumentAccess,
   safeNavigatorAccess,
 };
+
+export default browserUtils;

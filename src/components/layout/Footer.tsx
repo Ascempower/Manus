@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { Facebook, Instagram } from 'lucide-react';
@@ -17,10 +18,13 @@ export default function Footer({ className = '' }: { className?: string }) {
           {/* Logo and About */}
           <div>
             <Link href="/" className="mb-4 inline-block">
-              <img
+              <Image
                 src="/assets/logos/main-logo-orange.png"
                 alt="Choice Insurance Hub Logo"
+                width={150}
+                height={50}
                 className="h-auto w-[150px]"
+                priority
               />
             </Link>
             <p className="mb-4 text-sm text-brand-white/80">
