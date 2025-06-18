@@ -284,4 +284,4 @@ const internalLinksUtils = {
   getContextualLinks,
 };
 
-export default  internalLinksUtinternalLinksUtils;
+export default internalLinksUtils;
