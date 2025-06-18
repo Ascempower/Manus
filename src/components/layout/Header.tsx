@@ -5,7 +5,9 @@ import Link from 'next/link';
 
 import { Menu } from 'lucide-react';
 
+// import { trackInsuranceEvents } from '@/lib/analytics';
 import { BookConsultationButton, GetQuoteButton } from '@/components/ui/CTAButton';
+import { Button } from '@/components/ui/button';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -14,9 +16,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from '@/components/ui/CustomNavigationMenu';
-// import { trackInsuranceEvents } from '@/lib/analytics';
-import { Button } from '@/components/ui/button';
+} from '@/components/ui/navigation-menu';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { FOOTER_LINKS, MAIN_NAVIGATION } from '@/constants/navigation';
 import { cn } from '@/lib/utils';
@@ -37,15 +37,6 @@ export default function Header() {
         </Link>
 
         <NavigationMenu className="hidden lg:flex">
-          <style jsx global>{`
-            .navigation-menu-viewport {
-              background-color: white !important;
-              border-color: #e2e8f0 !important;
-              min-width: 400px !important;
-              width: auto !important;
-              overflow: visible !important;
-            }
-          `}</style>
           <NavigationMenuList>
             {MAIN_NAVIGATION.map(item => (
               <NavigationMenuItem key={item.href}>
@@ -59,11 +50,8 @@ export default function Header() {
                     >
                       {item.label}
                     </NavigationMenuTrigger>
-                    <NavigationMenuContent className="relative z-50">
-                      <div
-                        className="z-50 grid w-[400px] gap-2 rounded-lg border border-brand-teal-blue-dark bg-white p-4 shadow-lg md:w-[500px] md:grid-cols-2 lg:w-[600px]"
-                        style={{ position: 'relative', visibility: 'visible', opacity: 1 }}
-                      >
+                    <NavigationMenuContent className="z-50">
+                      <div className="z-50 grid w-[400px] gap-2 rounded-lg border border-brand-teal-blue-dark bg-brand-teal-blue p-4 shadow-lg md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                         {/* First Column */}
                         <div className="flex flex-col gap-2">
                           {/* All Services - Forest Green, takes most space */}
