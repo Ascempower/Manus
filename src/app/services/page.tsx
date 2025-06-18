@@ -1,10 +1,9 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 
 import CustomBreadcrumb from '@/components/navigation/CustomBreadcrumb';
+import ButtonLink from '@/components/ui/ButtonLink';
 import { BookConsultationButton } from '@/components/ui/CTAButton';
 import RelatedLinks from '@/components/ui/RelatedLinks';
-import { Button } from '@/components/ui/button';
 import { getRelatedLinks } from '@/lib/internal-links';
 
 export const metadata: Metadata = {
@@ -117,12 +116,12 @@ export default function ServicesPage() {
                   {service.title}
                 </h2>
                 <p className="mb-6 flex-grow text-brand-black/80">{service.excerpt}</p>
-                <Button
-                  asChild
+                <ButtonLink
+                  href={service.detailsLink}
                   className="mt-auto bg-brand-warm-beige-coral font-semibold text-brand-black hover:bg-brand-warm-beige-coral/80"
                 >
-                  <Link href={service.detailsLink}>Learn More</Link>
-                </Button>
+                  Learn More
+                </ButtonLink>
               </div>
             ))}
           </div>

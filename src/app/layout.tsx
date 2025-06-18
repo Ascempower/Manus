@@ -2,6 +2,7 @@ import React from 'react';
 
 import type { Metadata, Viewport } from 'next';
 
+import FontLoader from '@/components/FontLoader';
 import LazyAnalytics from '@/components/analytics/LazyAnalytics';
 import LazyCompliance from '@/components/compliance/LazyCompliance';
 import Footer from '@/components/layout/Footer';
@@ -82,22 +83,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet"
-          media="print"
-          onLoad={e => {
-            (e.target as HTMLLinkElement).media = 'all';
-          }}
-        />
-        <noscript>
-          <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-            rel="stylesheet"
-          />
-        </noscript>
+        <FontLoader />
         <link rel="icon" href="/icons/favicon.ico" sizes="any" />
         <link rel="icon" href="/icons/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
