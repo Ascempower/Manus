@@ -9,7 +9,6 @@ export function measureWebVitals() {
   const observer = new PerformanceObserver((list) => {
     for (const _entry of list.getEntries()) {
       // Development performance logging removed for production
-      // Metrics would be processed here: _entry.name, Math.round(_entry.startTime + _entry.duration)// Development performance logging removed for production
       // Metrics would be processed here: _entry.name, Math.round(_entry.startTime + _entry.duration)
       
       // Send to analytics in production
