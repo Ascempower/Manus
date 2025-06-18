@@ -43,6 +43,21 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+export const metadata = {
+  icons: [
+    { rel: "icon", url: "/favicon.ico" }
+  ],
+  // ...other metadata options you want
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  );
+}
+  
   openGraph: {
     title: 'Choice Insurance Hub - Expert Health, Life & Medicare Insurance Solutions',
     description:
