@@ -21,7 +21,8 @@ export interface BlogPost {
   excerpt?: string;
 }
 
-const BLOG_POSTS_PATH = path.join(process.cwd(), 'content/blog');
+// Fix the path to match the actual directory structure
+const BLOG_POSTS_PATH = path.join(process.cwd(), 'content', 'blog');
 
 // Utility function to read all blog post files
 function getBlogPostFiles(): string[] {
@@ -66,12 +67,29 @@ export function getAllBlogPosts(
     featured?: boolean;
     category?: string;
     limit?: number;
+    includeFuturePosts?: boolean; // Add option to include or exclude future posts
   } = {}
 ): BlogPost[] {
-  const { sortBy = 'date', sortOrder = 'desc', featured, category, limit } = options;
+  const {
+    sortBy = 'date',
+    sortOrder = 'desc',
+    featured,
+    category,
+    limit,
+    includeFuturePosts = false, // Default to excluding future posts
+  } = options;
 
   const files = getBlogPostFiles();
   let posts = files.map(readBlogPost).filter((post): post is BlogPost => post !== null);
+
+  // Filter out future posts unless explicitly included
+  if (!includeFuturePosts) {
+    const now = new Date();
+    posts = posts.filter(post => {
+      const postDate = new Date(post.frontmatter.date);
+      return postDate <= now;
+    });
+  }
 
   // Filter by featured status
   if (featured !== undefined) {
@@ -124,8 +142,8 @@ export function getRecentBlogPosts(limit: number = 5): BlogPost[] {
 }
 
 // Get all blog post slugs (for static generation)
-export function getAllBlogSlugs(): string[] {
-  const posts = getAllBlogPosts();
+export function getAllBlogSlugs(includeFuturePosts: boolean = false): string[] {
+  const posts = getAllBlogPosts({ includeFuturePosts });
   return posts.map(post => post.slug);
 }
 

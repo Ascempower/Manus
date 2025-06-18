@@ -8,14 +8,16 @@ import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 
 import InternalLink from '@/components/ui/InternalLink';
-import { getAllBlogSlugs, getBlogPost } from '@/lib/blog-server';
+import { getAllBlogPosts, getBlogPost } from '@/lib/blog-server';
 import { formatDate } from '@/lib/blog-utils';
 
 // No need for a custom PageProps type, we'll use inline typing
 
-// Generate static params for all blog posts
+// Generate static params for all published blog posts
 export function generateStaticParams() {
-  const slugs = getAllBlogSlugs();
+  // Get all published blog posts (excluding future posts)
+  const posts = getAllBlogPosts({ includeFuturePosts: false });
+  const slugs = posts.map(post => post.slug);
   return slugs.map(slug => ({ slug }));
 }
 
@@ -23,9 +25,9 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }): Promise<Metadata> {
-  const { slug } = await params;
+  const { slug } = params;
   const post = getBlogPost(slug);
 
   if (!post) {
@@ -128,12 +130,21 @@ const MarkdownComponents = {
 };
 
 // Define the page component
-export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const post = getBlogPost(slug);
+export default async function BlogPost({ params }: { params: { slug: string } }) {
+  const { slug } = params;
+  let post;
 
-  // If post doesn't exist, show 404
-  if (!post) {
+  try {
+    post = getBlogPost(slug);
+    console.log(`Loading blog post with slug: ${slug}`);
+
+    // If post doesn't exist, show 404
+    if (!post) {
+      console.error(`Blog post with slug ${slug} not found`);
+      notFound();
+    }
+  } catch (error) {
+    console.error(`Error loading blog post with slug ${slug}:`, error);
     notFound();
   }
 

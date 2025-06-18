@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -19,7 +17,19 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
-  const posts = getAllBlogPosts();
+  let posts = [];
+  try {
+    // Get all published blog posts (excluding future posts)
+    posts = getAllBlogPosts({
+      sortBy: 'date',
+      sortOrder: 'desc',
+      includeFuturePosts: false, // Only show published posts
+    });
+    console.log(`Found ${posts.length} published blog posts`);
+  } catch (error) {
+    console.error('Error loading blog posts:', error);
+    // Continue with empty posts array
+  }
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
