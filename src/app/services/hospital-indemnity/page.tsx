@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import { Button } from '@/components/ui/button';
+import ButtonLink from '@/components/ui/ButtonLink';
 
 export const metadata: Metadata = {
   title: 'Hospital Indemnity Plans - Choice Insurance',
@@ -168,13 +168,12 @@ export default function HospitalIndemnityPage() {
               Prepare for the unexpected. Contact Choice Insurance today for a free consultation on
               Hospital Indemnity Plans.
             </p>
-            <Button
-              size="lg"
-              asChild
+            <ButtonLink
+              href="/contact#book-a-call"
               className="bg-brand-warm-beige-coral font-semibold text-brand-black hover:bg-brand-warm-beige-coral/80"
             >
-              <Link href="/contact#book-a-call">Get a Hospital Indemnity Quote</Link>
-            </Button>
+              Get a Hospital Indemnity Quote
+            </ButtonLink>
           </section>
         </div>
       </section>
