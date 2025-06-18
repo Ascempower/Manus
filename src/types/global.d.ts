@@ -23,7 +23,11 @@ declare global {
      * VGS Collect for secure form handling
      */
     VGSCollect?: {
-      create: (vaultId: string, environment: string, callback?: Function) => any;
+      create: (
+        vaultId: string,
+        environment: string,
+        callback?: (state: unknown) => void
+      ) => unknown;
     };
 
     /**
