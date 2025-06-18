@@ -44,11 +44,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
-  icons: [
-    { rel: 'icon', url: '/favicon.ico' },
-    { rel: 'icon', url: '/icon.svg', type: 'image/svg+xml' },
-    { rel: 'apple-touch-icon', url: '/apple-touch-icon.png' },
-  ],
+  icons: {
+    icon: ['/favicon.ico', '/icon.svg'],
+    apple: '/apple-touch-icon.png',
+  },
   openGraph: {
     title: 'Choice Insurance Hub - Expert Health, Life & Medicare Insurance Solutions',
     description:
@@ -141,4 +140,3 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
-  
