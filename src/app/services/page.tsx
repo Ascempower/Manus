@@ -122,18 +122,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Related Links Section */}
-      <section className="py-16 bg-brand-white">
-        <div className="container mx-auto px-4">
-          <RelatedLinks
-            links={relatedLinks}
-            title="Explore More"
-            variant="grid"
-            showDescriptions={true}
-          />
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="py-16 bg-brand-deep-forest-green text-brand-white">
         <div className="container mx-auto px-4 text-center">
