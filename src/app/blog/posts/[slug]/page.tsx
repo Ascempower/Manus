@@ -11,7 +11,11 @@ import InternalLink from '@/components/ui/InternalLink';
 import { getAllBlogPosts, getBlogPost } from '@/lib/blog-server';
 import { formatDate } from '@/lib/blog-utils';
 
-// No need for a custom PageProps type, we'll use inline typing
+// Define the PageProps type for the blog post page
+type PageProps = {
+  params: { slug: string };
+  searchParams?: Record<string, string | string[] | undefined>;
+};
 
 // Generate static params for all published blog posts
 export function generateStaticParams() {
@@ -22,11 +26,7 @@ export function generateStaticParams() {
 }
 
 // Generate metadata for each blog post
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = params;
   const post = getBlogPost(slug);
 
@@ -130,7 +130,7 @@ const MarkdownComponents = {
 };
 
 // Define the page component
-export default async function BlogPost({ params }: { params: { slug: string } }) {
+export default async function BlogPost({ params }: PageProps): Promise<JSX.Element> {
   const { slug } = params;
   let post;
 
