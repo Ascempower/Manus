@@ -15,16 +15,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.12.1
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10.12.1
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -47,16 +47,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.12.1
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10.12.1
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -65,12 +65,17 @@ jobs:
         run: pnpm run build
         env:
           NODE_ENV: production
+          # Add any required environment variables for the build
+          NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL || 'https://choiceinsurancehub.com' }}
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: build-files
-          path: .next/
+          path: |
+            .next/
+            netlify/functions/
+            netlify.toml
           retention-days: 1
 
   deploy-preview:
@@ -83,10 +88,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Deploy to Netlify (Preview)
-        uses: netlify/actions/cli@master
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
         with:
-          args: deploy --dir=.next --functions=netlify/functions
+          name: build-files
+
+      - name: Install Netlify CLI
+        run: npm install -g netlify-cli
+
+      - name: Deploy to Netlify (Preview)
+        run: netlify deploy --dir=.next --functions=netlify/functions
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
@@ -101,10 +112,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Deploy to Netlify (Production)
-        uses: netlify/actions/cli@master
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
         with:
-          args: deploy --prod --dir=.next --functions=netlify/functions
+          name: build-files
+
+      - name: Install Netlify CLI
+        run: npm install -g netlify-cli
+
+      - name: Deploy to Netlify (Production)
+        run: netlify deploy --prod --dir=.next --functions=netlify/functions
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
