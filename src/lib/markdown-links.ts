@@ -36,7 +36,7 @@ export function processMarkdownLinks(content: string): string {
     const regex = new RegExp(pattern.replace(/\[/g, '\\[').replace(/\]/g, '\\]'), 'g');
     const linkKey = Object.keys(INTERNAL_LINKS).find(key => INTERNAL_LINKS[key].href === href);
     const linkText = linkKey ? INTERNAL_LINKS[linkKey].text : href;
-    
+
     processedContent = processedContent.replace(regex, `[${linkText}](${href})`);
   });
 
@@ -51,7 +51,7 @@ export function extractInternalLinks(content: string): InternalLink[] {
 
   while ((match = linkRegex.exec(content)) !== null) {
     const [, , href] = match;
-    
+
     // Check if it's an internal link
     const internalLink = Object.values(INTERNAL_LINKS).find(link => link.href === href);
     if (internalLink) {
@@ -71,11 +71,12 @@ export function generateContentSuggestions(content: string, currentPath?: string
   Object.values(INTERNAL_LINKS).forEach(link => {
     if (currentPath && link.href === currentPath) return;
 
-    const score = link.keywords?.reduce((acc, keyword) => {
-      const keywordWords = keyword.toLowerCase().split(/\s+/);
-      const matches = keywordWords.filter(kw => words.some(w => w.includes(kw)));
-      return acc + matches.length;
-    }, 0) || 0;
+    const score =
+      link.keywords?.reduce((acc, keyword) => {
+        const keywordWords = keyword.toLowerCase().split(/\s+/);
+        const matches = keywordWords.filter(kw => words.some(w => w.includes(kw)));
+        return acc + matches.length;
+      }, 0) || 0;
 
     if (score > 0) {
       suggestions.push({ ...link, score } as InternalLink & { score: number });
@@ -88,7 +89,7 @@ export function generateContentSuggestions(content: string, currentPath?: string
       const aScore = (a as any).score || 0;
       const bScore = (b as any).score || 0;
       const priorityOrder = { high: 3, medium: 2, low: 1 };
-      
+
       if (aScore !== bScore) return bScore - aScore;
       return priorityOrder[b.priority] - priorityOrder[a.priority];
     })
@@ -103,11 +104,11 @@ export function autoLinkContent(content: string): string {
   const autoLinkTerms: Record<string, string> = {
     'Medicare Advantage': INTERNAL_LINKS.medicare_advantage.href,
     'Medicare Supplement': INTERNAL_LINKS.medicare_supplement.href,
-    'Medigap': INTERNAL_LINKS.medicare_supplement.href,
+    Medigap: INTERNAL_LINKS.medicare_supplement.href,
     'Life Insurance': INTERNAL_LINKS.life_insurance.href,
     'Health Insurance': INTERNAL_LINKS.health_insurance.href,
     'Final Expense': INTERNAL_LINKS.final_expense.href,
-    'Annuities': INTERNAL_LINKS.annuities.href,
+    Annuities: INTERNAL_LINKS.annuities.href,
     'Hospital Indemnity': INTERNAL_LINKS.hospital_indemnity.href,
     'Cancer Insurance': INTERNAL_LINKS.cancer_illness.href,
     'Critical Illness': INTERNAL_LINKS.cancer_illness.href,

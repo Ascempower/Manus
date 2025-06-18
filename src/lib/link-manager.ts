@@ -39,7 +39,7 @@ export const CTA_LINKS = {
     external: false,
     primary: true,
   },
-  
+
   // Secondary CTAs
   learn_more_services: {
     text: 'Learn More About Our Services',
@@ -59,7 +59,7 @@ export const CTA_LINKS = {
     external: false,
     primary: false,
   },
-  
+
   // Service-specific CTAs
   medicare_quote: {
     text: 'Get Medicare Quote',
@@ -133,4 +133,4 @@ const linkManager = {
   validateInternalLinks,
 };
 
-export default linkManager; 
+export default linkManager;

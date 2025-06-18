@@ -1,9 +1,11 @@
-"use client";
+'use client';
 
-import Script from 'next/script';
 import React from 'react';
-import { hasHIPAAConsent, isPotentialPHIPage } from '@/lib/hipaa-compliance';
+
 import { usePathname } from 'next/navigation';
+import Script from 'next/script';
+
+import { hasHIPAAConsent, isPotentialPHIPage } from '@/lib/hipaa-compliance';
 
 interface GoogleAnalyticsProps {
   gtmId?: string;
@@ -18,7 +20,7 @@ export default function GoogleAnalytics({ gtmId, ga4Id }: GoogleAnalyticsProps) 
     // Check HIPAA compliance before loading any analytics
     const hasConsent = hasHIPAAConsent();
     const isPHIPage = isPotentialPHIPage(pathname);
-    
+
     // Only load analytics if we have consent and not on PHI pages
     if (hasConsent && !isPHIPage) {
       setCanLoadAnalytics(true);
@@ -37,10 +39,7 @@ export default function GoogleAnalytics({ gtmId, ga4Id }: GoogleAnalyticsProps) 
       {/* HIPAA-Compliant Google Tag Manager */}
       {gtmId && (
         <>
-          <Script
-            id="gtm-script"
-            strategy="lazyOnload"
-          >
+          <Script id="gtm-script" strategy="lazyOnload">
             {`
                 // HIPAA-compliant GTM configuration
                 (function(w,d,s,l,i){
@@ -69,10 +68,7 @@ export default function GoogleAnalytics({ gtmId, ga4Id }: GoogleAnalyticsProps) 
       {/* HIPAA-Compliant Google Analytics 4 */}
       {ga4Id && (
         <>
-          <Script
-            id="ga4-loader"
-            strategy="lazyOnload"
-          >
+          <Script id="ga4-loader" strategy="lazyOnload">
             {`
                 // Load GA4 script
                 (function() {
@@ -83,10 +79,7 @@ export default function GoogleAnalytics({ gtmId, ga4Id }: GoogleAnalyticsProps) 
                 })();
             `}
           </Script>
-          <Script
-            id="ga4-script"
-            strategy="lazyOnload"
-          >
+          <Script id="ga4-script" strategy="lazyOnload">
             {`
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
@@ -116,4 +109,3 @@ export default function GoogleAnalytics({ gtmId, ga4Id }: GoogleAnalyticsProps) 
     </>
   );
 }
-

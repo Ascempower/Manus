@@ -161,8 +161,8 @@ header {
 }
 `.trim();
 
-// Write the critical CSS to file - adjusted path for root structure
-const outputPath = path.join(__dirname, '..', 'choice-insurance-hub-complete', 'manus', 'src', 'app', 'critical.css');
+// Write the critical CSS to file
+const outputPath = path.join(__dirname, '..', 'src', 'app', 'critical.css');
 
 // Create directory if it doesn't exist
 const outputDir = path.dirname(outputPath);

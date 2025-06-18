@@ -33,6 +33,7 @@ After updating the environment variables, deploy your website. The analytics wil
 ## 📊 What's Already Configured
 
 ### ✅ Google Analytics 4 Features
+
 - **Page view tracking** - Automatic
 - **User engagement metrics** - Automatic
 - **Conversion tracking** - Ready for setup
@@ -40,6 +41,7 @@ After updating the environment variables, deploy your website. The analytics wil
 - **Performance optimized** - Scripts load after user interaction
 
 ### ✅ Insurance-Specific Event Tracking
+
 - Quote requests (`quote_request`)
 - Consultation bookings (`consultation_booked`)
 - Service page views (`service_viewed`)
@@ -48,6 +50,7 @@ After updating the environment variables, deploy your website. The analytics wil
 - External link clicks (`external_link_click`)
 
 ### ✅ Privacy & Compliance
+
 - **Cookie consent banner** - Users can accept/decline tracking
 - **GDPR compliant** - Respects user privacy choices
 - **No ad tracking** - Only analytics, no advertising cookies
@@ -58,11 +61,13 @@ After updating the environment variables, deploy your website. The analytics wil
 Once you have GTM set up, configure these recommended tags:
 
 ### 1. Enhanced Ecommerce (for insurance products)
+
 - Track insurance quote requests as conversions
 - Monitor consultation bookings
 - Measure service page engagement
 
 ### 2. Conversion Tracking
+
 - Set up goals for:
   - Quote form completions
   - Consultation bookings
@@ -70,6 +75,7 @@ Once you have GTM set up, configure these recommended tags:
   - Phone number clicks
 
 ### 3. Audience Building
+
 - Create audiences for:
   - Users interested in specific insurance types
   - Users who viewed multiple service pages
@@ -109,12 +115,14 @@ trackInsuranceEvents.externalLinkClicked('planenroll');
 ## 📈 Monitoring & Optimization
 
 ### Key Metrics to Monitor
+
 - **Page Load Speed** - Core Web Vitals
 - **Conversion Rates** - Quote requests, consultations
 - **User Engagement** - Time on site, pages per session
 - **Traffic Sources** - Organic, direct, referral traffic
 
 ### Recommended Reports
+
 1. **Acquisition Reports** - How users find your site
 2. **Engagement Reports** - What content performs best
 3. **Conversion Reports** - Which pages drive the most leads
@@ -123,12 +131,14 @@ trackInsuranceEvents.externalLinkClicked('planenroll');
 ## 🛠️ Troubleshooting
 
 ### Analytics Not Working?
+
 1. Check that environment variables are set correctly
 2. Verify GA4 and GTM IDs are valid
 3. Ensure cookie consent has been accepted
 4. Check browser console for JavaScript errors
 
 ### Events Not Tracking?
+
 1. Open browser developer tools
 2. Check the Network tab for gtag requests
 3. Use GA4's DebugView for real-time event monitoring
@@ -137,6 +147,7 @@ trackInsuranceEvents.externalLinkClicked('planenroll');
 ## 📞 Support
 
 If you need help with the analytics setup, the tracking code is located in:
+
 - `/src/components/analytics/GoogleAnalytics.tsx`
 - `/src/lib/analytics.ts`
 - `/src/components/analytics/CookieConsent.tsx`

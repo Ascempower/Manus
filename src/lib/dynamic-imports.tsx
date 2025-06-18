@@ -1,74 +1,58 @@
-"use client";
+'use client';
 
 import dynamic from 'next/dynamic';
-import { ComponentType } from 'react';
 
-// Type definitions for better JSX compatibility
-type LazyComponent<P = Record<string, unknown>> = ComponentType<P>;
+// Type definitions for better JSX compatibility (kept for future use)
+// type LazyComponent<P = any> = ComponentType<P>;
 
 // Lazy load heavy UI components
-export const LazyAccordion: LazyComponent = dynamic(
-  () => import('@/components/ui/accordion').then(mod => ({ default: mod.Accordion })), 
+export const LazyAccordion = dynamic(
+  () => import('@/components/ui/accordion').then(mod => ({ default: mod.Accordion })),
   {
-    loading: () => <div className="animate-pulse h-12 bg-gray-200 rounded" />,
+    loading: () => <div className="h-12 animate-pulse rounded bg-gray-200" />,
     ssr: false,
   }
-) as LazyComponent;
+);
 
-export const LazyDialog: LazyComponent = dynamic(
-  () => import('@/components/ui/dialog').then(mod => ({ default: mod.Dialog })), 
+export const LazyDialog = dynamic(
+  () => import('@/components/ui/dialog').then(mod => ({ default: mod.Dialog })),
   {
     loading: () => null,
     ssr: false,
   }
-) as LazyComponent;
+);
 
-export const LazyCarousel: LazyComponent<Record<string, unknown>> = dynamic(
-  () => import('@/app/testimonials/TestimonialsCarousel'), 
-  {
-    loading: () => <div className="animate-pulse h-64 bg-gray-200 rounded" />,
-    ssr: false,
-  }
-) as LazyComponent<Record<string, unknown>>;
+export const LazyCarousel = dynamic(() => import('@/app/testimonials/TestimonialsCarousel'), {
+  loading: () => <div className="h-64 animate-pulse rounded bg-gray-200" />,
+  ssr: false,
+});
 
-export const LazyContactForm: LazyComponent = dynamic(
-  () => import('@/components/forms/ContactForm'), 
-  {
-    loading: () => <div className="animate-pulse h-96 bg-gray-200 rounded" />,
-    ssr: false,
-  }
-) as LazyComponent;
+export const LazyContactForm = dynamic(() => import('@/components/forms/ContactForm'), {
+  loading: () => <div className="h-96 animate-pulse rounded bg-gray-200" />,
+  ssr: false,
+});
 
 // Lazy load analytics components
-export const LazyGoogleAnalytics: LazyComponent<Record<string, unknown>> = dynamic(
-  () => import('@/components/analytics/GoogleAnalytics'), 
-  {
-    ssr: false,
-  }
-) as LazyComponent<Record<string, unknown>>;
+export const LazyGoogleAnalytics = dynamic(() => import('@/components/analytics/GoogleAnalytics'), {
+  ssr: false,
+});
 
-export const LazyCookieConsent: LazyComponent = dynamic(
-  () => import('@/components/analytics/CookieConsent'), 
-  {
-    ssr: false,
-  }
-) as LazyComponent;
+export const LazyCookieConsent = dynamic(() => import('@/components/analytics/CookieConsent'), {
+  ssr: false,
+});
 
 // Lazy load compliance components
-export const LazyHIPAANotice: LazyComponent = dynamic(
-  () => import('@/components/compliance/HIPAANotice'), 
-  {
-    ssr: false,
-  }
-) as LazyComponent;
+export const LazyHIPAANotice = dynamic(() => import('@/components/compliance/HIPAANotice'), {
+  ssr: false,
+});
 
 // Performance monitoring
-export const LazyPerformanceMonitor: LazyComponent = dynamic(
-  () => import('@/components/performance/PerformanceMonitor'), 
+export const LazyPerformanceMonitor = dynamic(
+  () => import('@/components/performance/PerformanceMonitor'),
   {
     ssr: false,
   }
-) as LazyComponent;
+);
 
 // Chart components (if you add any)
 // export const LazyChart = dynamic(() => import('@/components/ui/chart'), {

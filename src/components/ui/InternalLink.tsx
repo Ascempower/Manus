@@ -1,6 +1,8 @@
 import Link from 'next/link';
-import { cn } from '@/lib/utils';
+
 import { ExternalLink } from 'lucide-react';
+
+import { cn } from '@/lib/utils';
 
 interface InternalLinkProps {
   href: string;
@@ -22,8 +24,9 @@ export default function InternalLink({
   'aria-label': ariaLabel,
 }: InternalLinkProps) {
   // Check if it's an external link
-  const isExternal = external || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:');
-  
+  const isExternal =
+    external || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:');
+
   const linkClasses = cn(
     'text-brand-deep-forest-green hover:text-brand-teal-blue transition-colors duration-200',
     'underline decoration-brand-teal-blue/30 hover:decoration-brand-teal-blue',
@@ -48,12 +51,7 @@ export default function InternalLink({
   }
 
   return (
-    <Link
-      href={href}
-      className={linkClasses}
-      title={title}
-      aria-label={ariaLabel}
-    >
+    <Link href={href} className={linkClasses} title={title} aria-label={ariaLabel}>
       {children}
     </Link>
   );

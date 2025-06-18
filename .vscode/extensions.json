@@ -9,7 +9,5 @@
     "christian-kohler.path-intellisense",
     "ms-vscode.vscode-typescript-next"
   ],
-  "unwantedRecommendations": [
-    "ms-vscode.vscode-typescript"
-  ]
+  "unwantedRecommendations": ["ms-vscode.vscode-typescript"]
 }

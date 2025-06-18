@@ -1,18 +1,23 @@
-import React from "react";
+import React from 'react';
+
 import type { Metadata, Viewport } from 'next';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
+
 import LazyAnalytics from '@/components/analytics/LazyAnalytics';
 import LazyCompliance from '@/components/compliance/LazyCompliance';
+import Footer from '@/components/layout/Footer';
+import Header from '@/components/layout/Header';
+
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: "Choice Insurance Hub - Expert Health, Life & Medicare Insurance Solutions",
-  description: "Your trusted partner for Medicare, Life & Health insurance with Choice Insurance in IL, GA, TX, AL, OH, KY, MS, SC. Personalized plans and expert guidance for all your insurance needs.",
-  keywords: "Choice Insurance, Medicare, Life Insurance, Health Insurance, Insurance Agency, Medicare Supplement, Medicare Advantage, Final Expense, Annuities",
-  authors: [{ name: "Choice Insurance Hub" }],
-  creator: "Choice Insurance Hub",
-  publisher: "Choice Insurance Hub",
+  title: 'Choice Insurance Hub - Expert Health, Life & Medicare Insurance Solutions',
+  description:
+    'Your trusted partner for Medicare, Life & Health insurance with Choice Insurance in IL, GA, TX, AL, OH, KY, MS, SC. Personalized plans and expert guidance for all your insurance needs.',
+  keywords:
+    'Choice Insurance, Medicare, Life Insurance, Health Insurance, Insurance Agency, Medicare Supplement, Medicare Advantage, Final Expense, Annuities',
+  authors: [{ name: 'Choice Insurance Hub' }],
+  creator: 'Choice Insurance Hub',
+  publisher: 'Choice Insurance Hub',
   formatDetection: {
     email: true,
     address: true,
@@ -23,8 +28,9 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: "Choice Insurance Hub - Expert Health, Life & Medicare Insurance Solutions",
-    description: "Your trusted partner for Medicare, Life & Health insurance with Choice Insurance in IL, GA, TX, AL, OH, KY, MS, SC. Personalized plans and expert guidance for all your insurance needs.",
+    title: 'Choice Insurance Hub - Expert Health, Life & Medicare Insurance Solutions',
+    description:
+      'Your trusted partner for Medicare, Life & Health insurance with Choice Insurance in IL, GA, TX, AL, OH, KY, MS, SC. Personalized plans and expert guidance for all your insurance needs.',
     url: 'https://choiceinsurancehub.com',
     siteName: 'Choice Insurance Hub',
     images: [
@@ -40,8 +46,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Choice Insurance Hub - Expert Health, Life & Medicare Insurance Solutions",
-    description: "Your trusted partner for Medicare, Life & Health insurance with Choice Insurance in IL, GA, TX, AL, OH, KY, MS, SC. Personalized plans and expert guidance for all your insurance needs.",
+    title: 'Choice Insurance Hub - Expert Health, Life & Medicare Insurance Solutions',
+    description:
+      'Your trusted partner for Medicare, Life & Health insurance with Choice Insurance in IL, GA, TX, AL, OH, KY, MS, SC. Personalized plans and expert guidance for all your insurance needs.',
     images: ['/images/og-image.jpg'],
   },
   robots: {
@@ -71,11 +78,7 @@ export const viewport: Viewport = {
   ],
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="scroll-smooth">
       <head>
@@ -85,7 +88,9 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
           media="print"
-          onLoad={(e) => { (e.target as HTMLLinkElement).media = 'all'; }}
+          onLoad={e => {
+            (e.target as HTMLLinkElement).media = 'all';
+          }}
         />
         <noscript>
           <link
@@ -110,18 +115,16 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen bg-brand-white text-brand-black antialiased">
-        <div className="flex flex-col min-h-screen">
+        <div className="flex min-h-screen flex-col">
           <Header />
-          <main className="flex-1">
-            {children}
-          </main>
+          <main className="flex-1">{children}</main>
           <Footer />
         </div>
-        
+
         {/* Lazy-loaded compliance and analytics */}
         <LazyCompliance />
         <LazyAnalytics />
-        
+
         {/* Deferred Service Worker Registration */}
         <script
           dangerouslySetInnerHTML={{

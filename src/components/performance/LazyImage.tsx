@@ -1,7 +1,8 @@
-"use client";
+'use client';
+
+import React from 'react';
 
 import Image from 'next/image';
-import React from 'react';
 
 interface LazyImageProps {
   src: string;
@@ -22,7 +23,7 @@ export default function LazyImage({
   className = '',
   priority = false,
   placeholder = 'empty',
-  blurDataURL
+  blurDataURL,
 }: LazyImageProps) {
   const [isLoaded, setIsLoaded] = React.useState(false);
 
@@ -33,9 +34,7 @@ export default function LazyImage({
         alt={alt}
         width={width}
         height={height}
-        className={`transition-opacity duration-300 ${
-          isLoaded ? 'opacity-100' : 'opacity-0'
-        }`}
+        className={`transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
         priority={priority}
         placeholder={placeholder}
         blurDataURL={blurDataURL}
@@ -43,10 +42,7 @@ export default function LazyImage({
         loading={priority ? 'eager' : 'lazy'}
       />
       {!isLoaded && (
-        <div 
-          className="absolute inset-0 bg-gray-200 animate-pulse"
-          style={{ width, height }}
-        />
+        <div className="absolute inset-0 animate-pulse bg-gray-200" style={{ width, height }} />
       )}
     </div>
   );

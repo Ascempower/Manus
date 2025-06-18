@@ -1,7 +1,9 @@
-"use client";
+'use client';
 
 import React from 'react';
+
 import dynamic from 'next/dynamic';
+
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 
 // Lazy load analytics components

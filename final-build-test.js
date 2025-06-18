@@ -19,7 +19,7 @@ const versions = {
   '@types/react': packageJson.devDependencies?.['@types/react'],
   '@types/react-dom': packageJson.devDependencies?.['@types/react-dom'],
   typescript: packageJson.devDependencies?.typescript,
-  next: packageJson.dependencies?.next
+  next: packageJson.dependencies?.next,
 };
 
 Object.entries(versions).forEach(([pkg, version]) => {
@@ -32,11 +32,11 @@ const tsconfig = JSON.parse(fs.readFileSync('tsconfig.json', 'utf8'));
 const opts = tsconfig.compilerOptions;
 
 const requiredSettings = {
-  'jsx': opts.jsx,
-  'esModuleInterop': opts.esModuleInterop,
-  'allowSyntheticDefaultImports': opts.allowSyntheticDefaultImports,
-  'module': opts.module,
-  'moduleResolution': opts.moduleResolution
+  jsx: opts.jsx,
+  esModuleInterop: opts.esModuleInterop,
+  allowSyntheticDefaultImports: opts.allowSyntheticDefaultImports,
+  module: opts.module,
+  moduleResolution: opts.moduleResolution,
 };
 
 Object.entries(requiredSettings).forEach(([setting, value]) => {
@@ -53,7 +53,7 @@ const criticalFiles = [
   'src/components/content/ContentLinks.tsx',
   'src/components/navigation/InternalNavigation.tsx',
   'src/components/performance/PerformanceMonitor.tsx',
-  'src/hooks/useIntersectionObserver.ts'
+  'src/hooks/useIntersectionObserver.ts',
 ];
 
 let allFilesExist = true;

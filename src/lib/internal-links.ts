@@ -198,14 +198,18 @@ export function getLinksByPriority(priority: InternalLink['priority']): Internal
 }
 
 // Get related links based on keywords
-export function getRelatedLinks(keywords: string[], currentPath?: string, limit = 5): InternalLink[] {
+export function getRelatedLinks(
+  keywords: string[],
+  currentPath?: string,
+  limit = 5
+): InternalLink[] {
   const related = Object.values(INTERNAL_LINKS)
     .filter(link => {
       // Exclude current page
       if (currentPath && link.href === currentPath) return false;
-      
+
       // Check if any keywords match
-      return link.keywords?.some(keyword => 
+      return link.keywords?.some(keyword =>
         keywords.some(k => keyword.toLowerCase().includes(k.toLowerCase()))
       );
     })

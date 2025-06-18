@@ -6,16 +6,16 @@ export function measureWebVitals() {
   }
 
   // Core Web Vitals measurement
-  const observer = new PerformanceObserver((list) => {
-    for (const _entry of list.getEntries()) {
-      // Development performance logging removed for production
-      // Metrics would be processed here: _entry.name, Math.round(_entry.startTime + _entry.duration)
-      
-      // Send to analytics in production
-      if (process.env.NODE_ENV === 'production') {
-        // Replace with your analytics service
-        // gtag('event', metricName, { value });
-      }
+  const observer = new PerformanceObserver(_list => {
+    // Development performance logging removed for production
+    // In production, process entries: list.getEntries().forEach(entry => ...)
+
+    // Send to analytics in production
+    if (process.env.NODE_ENV === 'production') {
+      // Replace with your analytics service
+      // list.getEntries().forEach(entry => {
+      //   gtag('event', entry.name, { value: Math.round(entry.startTime + entry.duration) });
+      // });
     }
   });
 
@@ -29,11 +29,9 @@ export function preloadCriticalResources() {
   }
 
   // Preload critical images that will be needed soon
-  const criticalImages = [
-    '/assets/logos/main-logo-orange.png',
-  ];
+  const criticalImages = ['/assets/logos/main-logo-orange.png'];
 
-  criticalImages.forEach((src) => {
+  criticalImages.forEach(src => {
     const link = document.createElement('link');
     link.rel = 'preload';
     link.as = 'image';
@@ -57,7 +55,7 @@ export function optimizeThirdPartyLoading() {
     }
     interacted = true;
 
-    events.forEach((event) => {
+    events.forEach(event => {
       document.removeEventListener(event, loadThirdParty, true);
     });
 
@@ -65,7 +63,7 @@ export function optimizeThirdPartyLoading() {
     // Third-party resources loading after user interaction
   };
 
-  events.forEach((event) => {
+  events.forEach(event => {
     document.addEventListener(event, loadThirdParty, true);
   });
 

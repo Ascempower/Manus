@@ -1,7 +1,7 @@
 // Custom type declarations for Next.js modules
 declare module 'next/image' {
   import * as React from 'react';
-  
+
   export interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
     src: string | { src: string; height: number; width: number; blurDataURL?: string };
     alt: string;
@@ -57,22 +57,70 @@ declare module 'next' {
     authors?: Array<{ name: string; url?: string }> | { name: string; url?: string } | any;
     generator?: string;
     keywords?: string | string[];
-    referrer?: 'no-referrer' | 'origin' | 'no-referrer-when-downgrade' | 'origin-when-cross-origin' | 'same-origin' | 'strict-origin' | 'strict-origin-when-cross-origin' | 'unsafe-url';
+    referrer?:
+      | 'no-referrer'
+      | 'origin'
+      | 'no-referrer-when-downgrade'
+      | 'origin-when-cross-origin'
+      | 'same-origin'
+      | 'strict-origin'
+      | 'strict-origin-when-cross-origin'
+      | 'unsafe-url';
     themeColor?: string | { media: string; color: string }[];
     colorScheme?: 'normal' | 'light' | 'dark' | 'light dark';
-    viewport?: string | { width?: string | number; height?: string | number; initialScale?: number; minimumScale?: number; maximumScale?: number; userScalable?: boolean; viewportFit?: 'auto' | 'cover' | 'contain'; };
-    robots?: string | { index?: boolean; follow?: boolean; nocache?: boolean; googleBot?: string | { index?: boolean; follow?: boolean; noimageindex?: boolean; 'max-video-preview'?: number | string; 'max-image-preview'?: 'none' | 'standard' | 'large'; 'max-snippet'?: number; }; };
-    icons?: string | string[] | { icon?: string | string[]; shortcut?: string | string[]; apple?: string | string[]; other?: { rel: string; url: string; sizes?: string; type?: string; }[]; };
+    viewport?:
+      | string
+      | {
+          width?: string | number;
+          height?: string | number;
+          initialScale?: number;
+          minimumScale?: number;
+          maximumScale?: number;
+          userScalable?: boolean;
+          viewportFit?: 'auto' | 'cover' | 'contain';
+        };
+    robots?:
+      | string
+      | {
+          index?: boolean;
+          follow?: boolean;
+          nocache?: boolean;
+          googleBot?:
+            | string
+            | {
+                index?: boolean;
+                follow?: boolean;
+                noimageindex?: boolean;
+                'max-video-preview'?: number | string;
+                'max-image-preview'?: 'none' | 'standard' | 'large';
+                'max-snippet'?: number;
+              };
+        };
+    icons?:
+      | string
+      | string[]
+      | {
+          icon?: string | string[];
+          shortcut?: string | string[];
+          apple?: string | string[];
+          other?: { rel: string; url: string; sizes?: string; type?: string }[];
+        };
     openGraph?: {
       type?: string;
       url?: string;
       title?: string;
       description?: string;
       siteName?: string;
-      images?: string | string[] | { url: string; alt?: string; width?: string | number; height?: string | number; }[];
+      images?:
+        | string
+        | string[]
+        | { url: string; alt?: string; width?: string | number; height?: string | number }[];
       locale?: string;
-      audio?: string | string[] | { url: string; type?: string; }[];
-      videos?: string | string[] | { url: string; type?: string; width?: string | number; height?: string | number; }[];
+      audio?: string | string[] | { url: string; type?: string }[];
+      videos?:
+        | string
+        | string[]
+        | { url: string; type?: string; width?: string | number; height?: string | number }[];
       publishedTime?: string;
       modifiedTime?: string;
       expirationTime?: string;
@@ -86,22 +134,24 @@ declare module 'next' {
       creator?: string;
       title?: string;
       description?: string;
-      image?: string | { url: string; alt?: string; };
-      images?: string | string[] | { url: string; alt?: string; }[];
+      image?: string | { url: string; alt?: string };
+      images?: string | string[] | { url: string; alt?: string }[];
     };
     verification?: {
       google?: string | string[];
       yahoo?: string | string[];
       yandex?: string | string[];
       me?: string | string[];
-      other?: { name: string; content: string; }[];
+      other?: { name: string; content: string }[];
     };
-    appleWebApp?: boolean | {
-      capable?: boolean;
-      title?: string;
-      startupImage?: string | string[] | { url: string; media?: string; }[];
-      statusBarStyle?: 'default' | 'black' | 'black-translucent';
-    };
+    appleWebApp?:
+      | boolean
+      | {
+          capable?: boolean;
+          title?: string;
+          startupImage?: string | string[] | { url: string; media?: string }[];
+          statusBarStyle?: 'default' | 'black' | 'black-translucent';
+        };
     formatDetection?: {
       telephone?: boolean;
       date?: boolean;
@@ -114,9 +164,9 @@ declare module 'next' {
       appArgument?: string;
     };
     appLinks?: {
-      ios?: { url: string; app_store_id?: string; app_name?: string; }[];
-      android?: { package: string; url: string; app_name?: string; }[];
-      web?: { url: string; should_fallback?: boolean; }[];
+      ios?: { url: string; app_store_id?: string; app_name?: string }[];
+      android?: { package: string; url: string; app_name?: string }[];
+      web?: { url: string; should_fallback?: boolean }[];
     };
     archives?: string | string[];
     assets?: string | string[];
@@ -133,7 +183,7 @@ declare module 'next' {
     publisher?: string;
     publishedTime?: string;
     metadataBase?: URL;
-    other?: { [name: string]: string; };
+    other?: { [name: string]: string };
   }
 
   export interface Viewport {
@@ -162,7 +212,9 @@ declare module 'next' {
     defaultLocale?: string;
   }
 
-  export interface GetStaticPathsResult<P extends Record<string, string | string[]> = Record<string, string | string[]>> {
+  export interface GetStaticPathsResult<
+    P extends Record<string, string | string[]> = Record<string, string | string[]>,
+  > {
     paths: Array<{ params: P; locale?: string }>;
     fallback: boolean | 'blocking';
   }
@@ -179,12 +231,8 @@ declare module 'next' {
 
   export function getStaticProps<
     P extends Record<string, any> = Record<string, any>,
-    Q extends Record<string, string | string[]> = Record<string, string | string[]>
-  >(
-    context: GetStaticPropsContext & { params: Q }
-  ): Promise<GetStaticPropsResult<P>>;
+    Q extends Record<string, string | string[]> = Record<string, string | string[]>,
+  >(context: GetStaticPropsContext & { params: Q }): Promise<GetStaticPropsResult<P>>;
 
-  export function getStaticPaths(
-    context?: GetStaticPathsContext
-  ): Promise<GetStaticPathsResult>;
+  export function getStaticPaths(context?: GetStaticPathsContext): Promise<GetStaticPathsResult>;
 }

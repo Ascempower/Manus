@@ -1,12 +1,12 @@
 /** @type {import("next").NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  
+
   // Performance optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
-  
+
   // Enable static image imports for Next.js Image component
   images: {
     unoptimized: true,
@@ -15,19 +15,19 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 31536000, // 1 year
   },
-  
+
   // Experimental features for better performance
   experimental: {
     optimizeCss: true,
     optimizePackageImports: [
-      'lucide-react', 
+      'lucide-react',
       '@radix-ui/react-icons',
       '@radix-ui/react-dialog',
       '@radix-ui/react-accordion',
       '@radix-ui/react-alert-dialog',
       'class-variance-authority',
       'clsx',
-      'tailwind-merge'
+      'tailwind-merge',
     ],
     webpackBuildWorker: true,
     parallelServerCompiles: true,
@@ -42,7 +42,7 @@ const nextConfig = {
       },
     },
   },
-  
+
   // Webpack optimizations
   webpack: (config, { dev, isServer }) => {
     // Optimize bundle splitting
@@ -91,10 +91,10 @@ const nextConfig = {
     // Tree shaking optimizations
     config.optimization.usedExports = true;
     config.optimization.sideEffects = false;
-    
+
     return config;
   },
-  
+
   // Headers for better caching
   async headers() {
     return [
@@ -103,12 +103,12 @@ const nextConfig = {
         headers: [
           {
             key: 'X-DNS-Prefetch-Control',
-            value: 'on'
+            value: 'on',
           },
           {
             key: 'X-Frame-Options',
-            value: 'DENY'
-          }
+            value: 'DENY',
+          },
         ],
       },
       {

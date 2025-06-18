@@ -9,30 +9,30 @@ interface ResourceHintsProps {
   }>;
 }
 
-export default function ResourceHints({ 
-  preconnect = [], 
-  dnsPrefetch = [], 
-  preload = [] 
+export default function ResourceHints({
+  preconnect = [],
+  dnsPrefetch = [],
+  preload = [],
 }: ResourceHintsProps) {
   return (
     <>
       {/* Preconnect hints for critical resources */}
-      {preconnect.map((url) => (
-        <link 
-          key={url} 
-          rel="preconnect" 
-          href={url} 
+      {preconnect.map(url => (
+        <link
+          key={url}
+          rel="preconnect"
+          href={url}
           crossOrigin={url.includes('fonts') ? 'anonymous' : undefined}
         />
       ))}
-      
+
       {/* DNS prefetch for non-critical resources */}
-      {dnsPrefetch.map((url) => (
+      {dnsPrefetch.map(url => (
         <link key={url} rel="dns-prefetch" href={url} />
       ))}
-      
+
       {/* Preload critical resources */}
-      {preload.map((resource) => (
+      {preload.map(resource => (
         <link
           key={resource.href}
           rel="preload"

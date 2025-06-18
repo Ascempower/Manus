@@ -1,9 +1,2 @@
-declare module 'react' {
-  import * as React from 'react';
-  export = React;
-}
-
-declare module 'react-dom' {
-  import * as ReactDOM from 'react-dom';
-  export = ReactDOM;
-}
+// React types are handled by @types/react and @types/react-dom
+// This file is kept for any custom React-related type extensions

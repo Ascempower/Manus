@@ -42,20 +42,22 @@ function runCommand(command, description, optional = false) {
 
 function checkPrerequisites() {
   log(`${colors.cyan}🔍 Checking prerequisites...${colors.reset}`);
-  
+
   // Check Node.js version
   const nodeVersion = process.version;
   const requiredNodeVersion = '20';
   const currentMajor = parseInt(nodeVersion.slice(1).split('.')[0]);
-  
+
   if (currentMajor < parseInt(requiredNodeVersion)) {
-    log(`${colors.red}❌ Node.js ${requiredNodeVersion}+ required, found ${nodeVersion}${colors.reset}`);
+    log(
+      `${colors.red}❌ Node.js ${requiredNodeVersion}+ required, found ${nodeVersion}${colors.reset}`
+    );
     log(`${colors.yellow}Please install Node.js ${requiredNodeVersion} or higher${colors.reset}`);
     return false;
   }
-  
+
   log(`${colors.green}✅ Node.js ${nodeVersion}${colors.reset}`);
-  
+
   // Check for pnpm
   try {
     const pnpmVersion = execSync('pnpm --version', { encoding: 'utf8' }).trim();
@@ -65,18 +67,18 @@ function checkPrerequisites() {
     log(`${colors.yellow}Install pnpm: npm install -g pnpm${colors.reset}`);
     return false;
   }
-  
+
   return true;
 }
 
 function setupEnvironment() {
   log(`${colors.cyan}🔧 Setting up environment...${colors.reset}`);
-  
+
   // Check if .env.local exists
   if (!fs.existsSync('.env.local')) {
     log(`${colors.yellow}⚠️  .env.local not found${colors.reset}`);
     log(`${colors.blue}Creating .env.local template...${colors.reset}`);
-    
+
     const envTemplate = `# Local Environment Variables
 # Copy this file to .env.local and fill in your values
 
@@ -99,7 +101,7 @@ NEXT_PUBLIC_SITE_URL=http://localhost:3000
 # NEXT_PUBLIC_FIREBASE_KEY=
 # NEXT_PUBLIC_SENTRY_DSN=
 `;
-    
+
     fs.writeFileSync('.env.local', envTemplate);
     log(`${colors.green}✅ Created .env.local template${colors.reset}`);
     log(`${colors.yellow}Please edit .env.local with your actual values${colors.reset}`);
@@ -110,10 +112,10 @@ NEXT_PUBLIC_SITE_URL=http://localhost:3000
 
 function installDependencies() {
   log(`${colors.cyan}📦 Installing dependencies...${colors.reset}`);
-  
+
   // Install dependencies
   runCommand('pnpm install', 'Installing packages');
-  
+
   // Run initial setup tasks
   runCommand('pnpm run lint:fix', 'Running initial lint fix', true);
   runCommand('pnpm run format', 'Formatting code', true);
@@ -121,10 +123,10 @@ function installDependencies() {
 
 function runInitialChecks() {
   log(`${colors.cyan}🧪 Running initial checks...${colors.reset}`);
-  
+
   // Type check
   runCommand('pnpm run type-check', 'Type checking', true);
-  
+
   // Test build
   runCommand('pnpm run build', 'Testing build process');
 }
@@ -147,25 +149,24 @@ function showNextSteps() {
 
 async function main() {
   log(`${colors.bright}🚀 Setting up development environment${colors.reset}`);
-  
+
   try {
     // Check prerequisites
     if (!checkPrerequisites()) {
       process.exit(1);
     }
-    
+
     // Setup environment
     setupEnvironment();
-    
+
     // Install dependencies
     installDependencies();
-    
+
     // Run initial checks
     runInitialChecks();
-    
+
     // Show next steps
     showNextSteps();
-    
   } catch (error) {
     log(`${colors.red}Setup failed: ${error.message}${colors.reset}`);
     process.exit(1);

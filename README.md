@@ -14,6 +14,7 @@ A modern, high-performance insurance website built with Next.js, TypeScript, and
 ### Setup
 
 1. **Clone and setup the project:**
+
    ```bash
    git clone <repository-url>
    cd choice-insurance-website
@@ -21,6 +22,7 @@ A modern, high-performance insurance website built with Next.js, TypeScript, and
    ```
 
 2. **Start development server:**
+
    ```bash
    pnpm run dev
    ```
@@ -31,16 +33,19 @@ A modern, high-performance insurance website built with Next.js, TypeScript, and
 ## 📋 Available Scripts
 
 ### Development
+
 - `pnpm run dev` - Start development server with Turbopack
 - `pnpm run setup` - Initial project setup for new developers
 
 ### Building & Testing
+
 - `pnpm run build` - Standard production build
 - `pnpm run build:optimize` - Optimized build with pre/post checks
 - `pnpm run test:build` - Clean build for testing
 - `pnpm run start` - Start production server locally
 
 ### Code Quality
+
 - `pnpm run lint` - Run ESLint
 - `pnpm run lint:fix` - Fix ESLint issues automatically
 - `pnpm run format` - Format code with Prettier
@@ -48,6 +53,7 @@ A modern, high-performance insurance website built with Next.js, TypeScript, and
 - `pnpm run type-check` - TypeScript type checking
 
 ### Maintenance
+
 - `pnpm run clean` - Remove build artifacts
 - `pnpm run clean:all` - Remove build artifacts and node_modules
 - `pnpm run analyze` - Analyze bundle size
@@ -55,6 +61,7 @@ A modern, high-performance insurance website built with Next.js, TypeScript, and
 ## 🏗️ Build & Deploy Process
 
 ### Local Development Build
+
 ```bash
 # Quick build
 pnpm run build
@@ -153,6 +160,7 @@ NEXT_PUBLIC_GTM_ID=your_google_tag_manager_id
 ## 📞 Support
 
 For questions or issues, please:
+
 1. Check the existing issues
 2. Create a new issue with detailed information
 3. Contact the development team

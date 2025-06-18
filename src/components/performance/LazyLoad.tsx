@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React from 'react';
 
@@ -9,11 +9,11 @@ interface LazyLoadProps {
   className?: string;
 }
 
-export default function LazyLoad({ 
-  children, 
-  threshold = 0.1, 
+export default function LazyLoad({
+  children,
+  threshold = 0.1,
   rootMargin = '50px',
-  className = ''
+  className = '',
 }: LazyLoadProps) {
   const [isVisible, setIsVisible] = React.useState(false);
   const ref = React.useRef<HTMLDivElement>(null);

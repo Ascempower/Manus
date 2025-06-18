@@ -1,10 +1,11 @@
-"use client";
+'use client';
 
 import React, { useEffect, useState } from 'react';
-import { autoLinkContent, generateContentSuggestions } from '@/lib/markdown-links';
-import { type InternalLink } from '@/lib/internal-links';
-import RelatedLinks from '@/components/ui/RelatedLinks';
+
 import InternalLinkComponent from '@/components/ui/InternalLink';
+import RelatedLinks from '@/components/ui/RelatedLinks';
+import { type InternalLink } from '@/lib/internal-links';
+import { autoLinkContent, generateContentSuggestions } from '@/lib/markdown-links';
 
 interface ContentLinksProps {
   content: string;
@@ -48,29 +49,25 @@ export default function ContentLinks({
     while ((match = linkRegex.exec(text)) !== null) {
       const [fullMatch, linkText, href] = match;
       const beforeLink = text.slice(lastIndex, match.index);
-      
+
       if (beforeLink) {
         parts.push(beforeLink);
       }
-      
+
       parts.push(
-        <InternalLinkComponent
-          key={match.index}
-          href={href}
-          className="font-medium"
-        >
+        <InternalLinkComponent key={match.index} href={href} className="font-medium">
           {linkText}
         </InternalLinkComponent>
       );
-      
+
       lastIndex = match.index + fullMatch.length;
     }
-    
+
     // Add remaining text
     if (lastIndex < text.length) {
       parts.push(text.slice(lastIndex));
     }
-    
+
     return parts;
   };
 
@@ -82,7 +79,7 @@ export default function ContentLinks({
           {renderContentWithLinks(processedContent)}
         </div>
       )}
-      
+
       {/* Related content suggestions */}
       {showSuggestions && suggestions.length > 0 && (
         <div className="mt-8">
@@ -106,7 +103,7 @@ export function useContentLinks(content: string, currentPath?: string) {
   useEffect(() => {
     const linkedContent = autoLinkContent(content);
     const contentSuggestions = generateContentSuggestions(content, currentPath);
-    
+
     setProcessedContent(linkedContent);
     setSuggestions(contentSuggestions);
   }, [content, currentPath]);

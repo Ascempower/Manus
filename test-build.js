@@ -13,7 +13,8 @@ console.log('🔍 Testing build fixes...\n');
 console.log('1. Checking markdown-links.ts for duplicates...');
 const markdownLinksContent = fs.readFileSync('src/lib/markdown-links.ts', 'utf8');
 const exportDefaultCount = (markdownLinksContent.match(/export default/g) || []).length;
-const markdownLinkPatternsCount = (markdownLinksContent.match(/MARKDOWN_LINK_PATTERNS/g) || []).length;
+const markdownLinkPatternsCount = (markdownLinksContent.match(/MARKDOWN_LINK_PATTERNS/g) || [])
+  .length;
 
 if (exportDefaultCount === 1) {
   console.log('   ✅ Single export default found');
@@ -21,7 +22,8 @@ if (exportDefaultCount === 1) {
   console.log(`   ❌ Multiple export defaults found: ${exportDefaultCount}`);
 }
 
-if (markdownLinkPatternsCount <= 3) { // Declaration, usage, export
+if (markdownLinkPatternsCount <= 3) {
+  // Declaration, usage, export
   console.log('   ✅ No duplicate MARKDOWN_LINK_PATTERNS');
 } else {
   console.log(`   ❌ Possible duplicate MARKDOWN_LINK_PATTERNS: ${markdownLinkPatternsCount}`);
@@ -45,17 +47,17 @@ const filesToCheck = [
   'src/components/content/ContentLinks.tsx',
   'src/components/navigation/InternalNavigation.tsx',
   'src/components/performance/PerformanceMonitor.tsx',
-  'src/hooks/useIntersectionObserver.ts'
+  'src/hooks/useIntersectionObserver.ts',
 ];
 
 let reactImportIssues = 0;
 filesToCheck.forEach(file => {
   if (fs.existsSync(file)) {
     const content = fs.readFileSync(file, 'utf8');
-    const hasReactImport = content.includes('from \'react\'') || content.includes('from "react"');
+    const hasReactImport = content.includes("from 'react'") || content.includes('from "react"');
     const hasUseEffect = content.includes('useEffect');
     const hasUseState = content.includes('useState');
-    
+
     if ((hasUseEffect || hasUseState) && !hasReactImport) {
       console.log(`   ❌ ${file}: Uses React hooks but missing React import`);
       reactImportIssues++;
@@ -86,7 +88,12 @@ console.log(`   Analytics method: ${hasInternalLinkClicked ? '✅' : '❌'}`);
 console.log(`   React imports: ${reactImportIssues === 0 ? '✅' : '❌'}`);
 console.log(`   React dependencies: ${hasReact && hasReactDom ? '✅' : '❌'}`);
 
-const allGood = exportDefaultCount === 1 && hasInternalLinkClicked && reactImportIssues === 0 && hasReact && hasReactDom;
+const allGood =
+  exportDefaultCount === 1 &&
+  hasInternalLinkClicked &&
+  reactImportIssues === 0 &&
+  hasReact &&
+  hasReactDom;
 
 if (allGood) {
   console.log('\n🎉 All fixes look good! Build should work now.');

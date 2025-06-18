@@ -1,18 +1,21 @@
-"use client";
+'use client';
 
 import { useState } from 'react';
+
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+
 import { ChevronDown, Menu, X } from 'lucide-react';
+
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger,
   DropdownMenuSeparator,
+  DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { getServiceLinks, getMainNavLinks, type InternalLink } from '@/lib/internal-links';
+import { type InternalLink, getMainNavLinks, getServiceLinks } from '@/lib/internal-links';
 import { cn } from '@/lib/utils';
 
 interface InternalNavigationProps {
@@ -20,9 +23,9 @@ interface InternalNavigationProps {
   variant?: 'header' | 'sidebar' | 'footer';
 }
 
-export default function InternalNavigation({ 
-  className = '', 
-  variant = 'header' 
+export default function InternalNavigation({
+  className = '',
+  variant = 'header',
 }: InternalNavigationProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
@@ -38,11 +41,11 @@ export default function InternalNavigation({
     <Link
       href={link.href}
       className={cn(
-        'transition-colors duration-200 font-medium',
+        'font-medium transition-colors duration-200',
         isActivePath(link.href)
           ? 'text-brand-deep-forest-green'
           : 'text-brand-black hover:text-brand-deep-forest-green',
-        mobile && 'block py-2 px-4 text-lg'
+        mobile && 'block px-4 py-2 text-lg'
       )}
       onClick={() => mobile && setMobileMenuOpen(false)}
     >
@@ -53,15 +56,15 @@ export default function InternalNavigation({
   const ServiceDropdown = ({ mobile = false }: { mobile?: boolean }) => {
     if (mobile) {
       return (
-        <div className="border-t border-brand-teal-blue/20 pt-4 mt-4">
+        <div className="mt-4 border-t border-brand-teal-blue/20 pt-4">
           <h3 className="px-4 py-2 font-semibold text-brand-deep-forest-green">
             Insurance Services
           </h3>
-          {serviceLinks.map((link) => (
+          {serviceLinks.map(link => (
             <Link
               key={link.href}
               href={link.href}
-              className="block py-2 px-6 text-brand-black hover:text-brand-deep-forest-green hover:bg-brand-teal-blue/10 transition-colors duration-200"
+              className="block px-6 py-2 text-brand-black transition-colors duration-200 hover:bg-brand-teal-blue/10 hover:text-brand-deep-forest-green"
               onClick={() => setMobileMenuOpen(false)}
             >
               {link.text}
@@ -94,14 +97,12 @@ export default function InternalNavigation({
             </Link>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
-          {serviceLinks.map((link) => (
+          {serviceLinks.map(link => (
             <DropdownMenuItem key={link.href} asChild>
               <Link href={link.href} className="flex flex-col items-start">
                 <span className="font-medium">{link.text}</span>
                 {link.description && (
-                  <span className="text-xs text-brand-black/60 mt-1">
-                    {link.description}
-                  </span>
+                  <span className="mt-1 text-xs text-brand-black/60">{link.description}</span>
                 )}
               </Link>
             </DropdownMenuItem>
@@ -113,32 +114,34 @@ export default function InternalNavigation({
 
   if (variant === 'footer') {
     return (
-      <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 ${className}`}>
+      <div className={`grid grid-cols-1 gap-8 md:grid-cols-3 ${className}`}>
         {/* Main Pages */}
         <div>
-          <h3 className="font-semibold text-brand-white mb-4">Company</h3>
+          <h3 className="mb-4 font-semibold text-brand-white">Company</h3>
           <div className="space-y-2">
-            {mainNavLinks.filter(link => link.href !== '/services').map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="block text-brand-white/80 hover:text-brand-white transition-colors duration-200"
-              >
-                {link.text}
-              </Link>
-            ))}
+            {mainNavLinks
+              .filter(link => link.href !== '/services')
+              .map(link => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="block text-brand-white/80 transition-colors duration-200 hover:text-brand-white"
+                >
+                  {link.text}
+                </Link>
+              ))}
           </div>
         </div>
 
         {/* Services */}
         <div>
-          <h3 className="font-semibold text-brand-white mb-4">Insurance Services</h3>
+          <h3 className="mb-4 font-semibold text-brand-white">Insurance Services</h3>
           <div className="space-y-2">
-            {serviceLinks.slice(0, 6).map((link) => (
+            {serviceLinks.slice(0, 6).map(link => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="block text-brand-white/80 hover:text-brand-white transition-colors duration-200"
+                className="block text-brand-white/80 transition-colors duration-200 hover:text-brand-white"
               >
                 {link.text}
               </Link>
@@ -148,20 +151,20 @@ export default function InternalNavigation({
 
         {/* Additional Services */}
         <div>
-          <h3 className="font-semibold text-brand-white mb-4">Additional Services</h3>
+          <h3 className="mb-4 font-semibold text-brand-white">Additional Services</h3>
           <div className="space-y-2">
-            {serviceLinks.slice(6).map((link) => (
+            {serviceLinks.slice(6).map(link => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="block text-brand-white/80 hover:text-brand-white transition-colors duration-200"
+                className="block text-brand-white/80 transition-colors duration-200 hover:text-brand-white"
               >
                 {link.text}
               </Link>
             ))}
             <Link
               href="/contact"
-              className="block text-brand-white/80 hover:text-brand-white transition-colors duration-200"
+              className="block text-brand-white/80 transition-colors duration-200 hover:text-brand-white"
             >
               Get a Quote
             </Link>
@@ -174,8 +177,8 @@ export default function InternalNavigation({
   return (
     <nav className={className}>
       {/* Desktop Navigation */}
-      <div className="hidden md:flex items-center space-x-8">
-        {mainNavLinks.map((link) => {
+      <div className="hidden items-center space-x-8 md:flex">
+        {mainNavLinks.map(link => {
           if (link.href === '/services') {
             return <ServiceDropdown key={link.href} />;
           }
@@ -191,19 +194,17 @@ export default function InternalNavigation({
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="p-2"
         >
-          {mobileMenuOpen ? (
-            <X className="h-6 w-6" />
-          ) : (
-            <Menu className="h-6 w-6" />
-          )}
+          {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </Button>
 
         {mobileMenuOpen && (
-          <div className="absolute top-full left-0 right-0 bg-brand-white border-t border-brand-teal-blue/20 shadow-lg z-50">
+          <div className="absolute left-0 right-0 top-full z-50 border-t border-brand-teal-blue/20 bg-brand-white shadow-lg">
             <div className="container mx-auto px-4 py-4">
-              {mainNavLinks.filter(link => link.href !== '/services').map((link) => (
-                <NavLink key={link.href} link={link} mobile />
-              ))}
+              {mainNavLinks
+                .filter(link => link.href !== '/services')
+                .map(link => (
+                  <NavLink key={link.href} link={link} mobile />
+                ))}
               <ServiceDropdown mobile />
             </div>
           </div>

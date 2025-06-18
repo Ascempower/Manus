@@ -17,14 +17,20 @@ try {
   // Remove node_modules and lock files
   if (fs.existsSync('node_modules')) {
     console.log('   Removing node_modules...');
-    execSync('powershell -Command "Remove-Item -Recurse -Force node_modules -ErrorAction SilentlyContinue"', { stdio: 'inherit' });
+    execSync(
+      'powershell -Command "Remove-Item -Recurse -Force node_modules -ErrorAction SilentlyContinue"',
+      { stdio: 'inherit' }
+    );
   }
-  
+
   if (fs.existsSync('pnpm-lock.yaml')) {
     console.log('   Removing pnpm-lock.yaml...');
-    execSync('powershell -Command "Remove-Item -Force pnpm-lock.yaml -ErrorAction SilentlyContinue"', { stdio: 'inherit' });
+    execSync(
+      'powershell -Command "Remove-Item -Force pnpm-lock.yaml -ErrorAction SilentlyContinue"',
+      { stdio: 'inherit' }
+    );
   }
-  
+
   console.log('   ✅ Cleanup complete');
 } catch (error) {
   console.log('   ⚠️  Cleanup had issues, continuing...');
@@ -37,31 +43,31 @@ const tsconfig = JSON.parse(fs.readFileSync('tsconfig.json', 'utf8'));
 // Ensure optimal settings for React
 tsconfig.compilerOptions = {
   ...tsconfig.compilerOptions,
-  "target": "ES2020",
-  "lib": ["dom", "dom.iterable", "ES2020"],
-  "allowJs": true,
-  "skipLibCheck": true,
-  "strict": false,
-  "noEmit": true,
-  "esModuleInterop": true,
-  "allowSyntheticDefaultImports": true,
-  "module": "esnext",
-  "moduleResolution": "bundler",
-  "resolveJsonModule": true,
-  "isolatedModules": true,
-  "jsx": "preserve",
-  "incremental": true,
-  "forceConsistentCasingInFileNames": true,
-  "noImplicitAny": false,
-  "baseUrl": ".",
-  "paths": {
-    "@/*": ["./src/*"]
+  target: 'ES2020',
+  lib: ['dom', 'dom.iterable', 'ES2020'],
+  allowJs: true,
+  skipLibCheck: true,
+  strict: false,
+  noEmit: true,
+  esModuleInterop: true,
+  allowSyntheticDefaultImports: true,
+  module: 'esnext',
+  moduleResolution: 'bundler',
+  resolveJsonModule: true,
+  isolatedModules: true,
+  jsx: 'preserve',
+  incremental: true,
+  forceConsistentCasingInFileNames: true,
+  noImplicitAny: false,
+  baseUrl: '.',
+  paths: {
+    '@/*': ['./src/*'],
   },
-  "plugins": [
+  plugins: [
     {
-      "name": "next"
-    }
-  ]
+      name: 'next',
+    },
+  ],
 };
 
 fs.writeFileSync('tsconfig.json', JSON.stringify(tsconfig, null, 2));
@@ -169,14 +175,14 @@ const packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 
 // Ensure we have the right versions
 const requiredDeps = {
-  "react": "^18.3.1",
-  "react-dom": "^18.3.1"
+  react: '^18.3.1',
+  'react-dom': '^18.3.1',
 };
 
 const requiredDevDeps = {
-  "@types/react": "^18.3.23",
-  "@types/react-dom": "^18.3.7",
-  "typescript": "~5.6.3"
+  '@types/react': '^18.3.23',
+  '@types/react-dom': '^18.3.7',
+  typescript: '~5.6.3',
 };
 
 let updated = false;

@@ -1,10 +1,12 @@
-import { Home } from 'lucide-react';
 import Link from 'next/link';
+
+import { Home } from 'lucide-react';
+
 import {
   Breadcrumb,
-  BreadcrumbList,
   BreadcrumbItem,
   BreadcrumbLink,
+  BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
@@ -21,10 +23,7 @@ interface CustomBreadcrumbProps {
 }
 
 export default function CustomBreadcrumb({ items, className = '' }: CustomBreadcrumbProps) {
-  const allItems = [
-    { label: 'Home', href: '/' },
-    ...items,
-  ];
+  const allItems = [{ label: 'Home', href: '/' }, ...items];
 
   return (
     <Breadcrumb className={className}>
@@ -37,23 +36,23 @@ export default function CustomBreadcrumb({ items, className = '' }: CustomBreadc
             <div key={index} className="flex items-center">
               <BreadcrumbItem>
                 {isLast ? (
-                  <BreadcrumbPage className="text-brand-deep-forest-green font-medium">
-                    {isHome && <Home className="h-4 w-4 inline mr-1" />}
+                  <BreadcrumbPage className="font-medium text-brand-deep-forest-green">
+                    {isHome && <Home className="mr-1 inline h-4 w-4" />}
                     {item.label}
                   </BreadcrumbPage>
                 ) : (
                   <BreadcrumbLink asChild>
-                    <Link 
-                      href={item.href || '/'} 
-                      className="hover:text-brand-deep-forest-green transition-colors duration-200"
+                    <Link
+                      href={item.href || '/'}
+                      className="transition-colors duration-200 hover:text-brand-deep-forest-green"
                     >
-                      {isHome && <Home className="h-4 w-4 inline mr-1" />}
+                      {isHome && <Home className="mr-1 inline h-4 w-4" />}
                       {item.label}
                     </Link>
                   </BreadcrumbLink>
                 )}
               </BreadcrumbItem>
-              
+
               {!isLast && <BreadcrumbSeparator />}
             </div>
           );
@@ -69,13 +68,13 @@ export function generateBreadcrumbs(pathname: string): BreadcrumbItemData[] {
   const breadcrumbs: BreadcrumbItemData[] = [];
 
   let currentPath = '';
-  
+
   segments.forEach((segment, index) => {
     currentPath += `/${segment}`;
-    
+
     // Find matching internal link
     const matchingLink = Object.values(INTERNAL_LINKS).find(link => link.href === currentPath);
-    
+
     if (matchingLink) {
       breadcrumbs.push({
         label: matchingLink.text,
@@ -87,7 +86,7 @@ export function generateBreadcrumbs(pathname: string): BreadcrumbItemData[] {
         .split('-')
         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
         .join(' ');
-      
+
       breadcrumbs.push({
         label,
         href: index === segments.length - 1 ? undefined : currentPath,

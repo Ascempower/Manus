@@ -1,28 +1,31 @@
-import Link from "next/link";
-import { Facebook, Instagram } from "lucide-react";
+import Link from 'next/link';
+
+import { Facebook, Instagram } from 'lucide-react';
+
 import { CompactSitemap } from '@/components/navigation/Sitemap';
 
-export default function Footer({ className = "" }: { className?: string }) {
+export default function Footer({ className = '' }: { className?: string }) {
   const currentYear = new Date().getFullYear();
   const disclaimerText =
-    "Not affiliated with or endorsed by any government agency. This is a solicitation for insurance. By contacting us by one of the methods above you are agreeing to discuss the insurance products listed. We do not offer every plan available in your area. Currently, we represent 10 organizations, which offer 72 products in your area. Please contact Medicare.gov, 1-800-MEDICARE, or your local State Health Insurance Program to get information on all your options.";
+    'Not affiliated with or endorsed by any government agency. This is a solicitation for insurance. By contacting us by one of the methods above you are agreeing to discuss the insurance products listed. We do not offer every plan available in your area. Currently, we represent 10 organizations, which offer 72 products in your area. Please contact Medicare.gov, 1-800-MEDICARE, or your local State Health Insurance Program to get information on all your options.';
 
   return (
-    <footer className={`bg-brand-deep-forest-green text-brand-white py-12 ${className}`}>
+    <footer className={`bg-brand-deep-forest-green py-12 text-brand-white ${className}`}>
       <div className="container mx-auto px-4">
         {/* Main footer grid */}
-        <div className="grid md:grid-cols-4 gap-8 mb-12">
+        <div className="mb-12 grid gap-8 md:grid-cols-4">
           {/* Logo and About */}
           <div>
             <Link href="/" className="mb-4 inline-block">
               <img
                 src="/assets/logos/main-logo-orange.png"
                 alt="Choice Insurance Hub Logo"
-                className="w-[150px] h-auto"
+                className="h-auto w-[150px]"
               />
             </Link>
-            <p className="text-sm mb-4 text-brand-white/80">
-              Your trusted partner for health, life, and Medicare insurance solutions. Helping you make informed choices for a secure future.
+            <p className="mb-4 text-sm text-brand-white/80">
+              Your trusted partner for health, life, and Medicare insurance solutions. Helping you
+              make informed choices for a secure future.
             </p>
             {/* Social Media Icons */}
             <div className="flex space-x-4">
@@ -54,8 +57,10 @@ export default function Footer({ className = "" }: { className?: string }) {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-bold text-brand-white mb-4 font-poppins">Contact Information</h3>
-            <address className="not-italic space-y-2 text-sm text-brand-white/80">
+            <h3 className="mb-4 font-poppins text-lg font-bold text-brand-white">
+              Contact Information
+            </h3>
+            <address className="space-y-2 text-sm not-italic text-brand-white/80">
               <p>Choice Insurance Hub</p>
               <p>
                 200 E 3rd
@@ -63,19 +68,19 @@ export default function Footer({ className = "" }: { className?: string }) {
                 Alton IL 62002
               </p>
               <p>
-                Toll:{" "}
+                Toll:{' '}
                 <a href="tel:8774142319" className="hover:text-brand-teal-blue">
                   (877) 414-2319
                 </a>
               </p>
               <p>
-                Local:{" "}
+                Local:{' '}
                 <a href="tel:6182785927" className="hover:text-brand-teal-blue">
                   (618) 278-5927
                 </a>
               </p>
               <p>
-                Email:{" "}
+                Email:{' '}
                 <a href="mailto:info@choiceinsurancehub.com" className="hover:text-brand-teal-blue">
                   info@choiceinsurancehub.com
                 </a>
@@ -85,25 +90,34 @@ export default function Footer({ className = "" }: { className?: string }) {
         </div>
 
         {/* Copyright and Legal Links */}
-        <div className="border-t border-brand-teal-blue/50 pt-8 text-center md:flex md:justify-between items-center">
-          <p className="text-sm mb-4 md:mb-0 text-brand-white/80">
+        <div className="items-center border-t border-brand-teal-blue/50 pt-8 text-center md:flex md:justify-between">
+          <p className="mb-4 text-sm text-brand-white/80 md:mb-0">
             &copy; {currentYear} Choice Insurance Hub. All rights reserved.
           </p>
           <div className="space-x-4 text-sm">
-            <Link href="/privacy-policy" className="text-brand-white/80 hover:text-brand-teal-blue transition-colors">
+            <Link
+              href="/privacy-policy"
+              className="text-brand-white/80 transition-colors hover:text-brand-teal-blue"
+            >
               Privacy Policy
             </Link>
-            <Link href="/terms-of-service" className="text-brand-white/80 hover:text-brand-teal-blue transition-colors">
+            <Link
+              href="/terms-of-service"
+              className="text-brand-white/80 transition-colors hover:text-brand-teal-blue"
+            >
               Terms of Service
             </Link>
-            <Link href="/accessibility-statement" className="text-brand-white/80 hover:text-brand-teal-blue transition-colors">
+            <Link
+              href="/accessibility-statement"
+              className="text-brand-white/80 transition-colors hover:text-brand-teal-blue"
+            >
               Accessibility
             </Link>
           </div>
         </div>
 
         {/* Disclaimer */}
-        <div className="border-t border-brand-teal-blue/50 pt-8 mt-8 text-center">
+        <div className="mt-8 border-t border-brand-teal-blue/50 pt-8 text-center">
           <p className="text-lg text-brand-white/70">{disclaimerText}</p>
         </div>
       </div>

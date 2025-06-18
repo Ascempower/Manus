@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useEffect } from 'react';
 
@@ -8,13 +8,14 @@ export default function PerformanceMonitor() {
     if (process.env.NODE_ENV !== 'production') return;
 
     // Monitor Core Web Vitals
-    const observer = new PerformanceObserver((list) => {
-      list.getEntries().forEach((entry) => {
+    const observer = new PerformanceObserver(list => {
+      list.getEntries().forEach(entry => {
         // Log performance metrics (you can send to analytics)
         if (entry.entryType === 'navigation') {
           const navEntry = entry as PerformanceNavigationTiming;
           console.log('Navigation timing:', {
-            domContentLoaded: navEntry.domContentLoadedEventEnd - navEntry.domContentLoadedEventStart,
+            domContentLoaded:
+              navEntry.domContentLoadedEventEnd - navEntry.domContentLoadedEventStart,
             loadComplete: navEntry.loadEventEnd - navEntry.loadEventStart,
             firstPaint: navEntry.responseEnd - navEntry.requestStart,
           });
@@ -36,7 +37,9 @@ export default function PerformanceMonitor() {
 
     // Observe different performance metrics
     try {
-      observer.observe({ entryTypes: ['navigation', 'largest-contentful-paint', 'first-input', 'layout-shift'] });
+      observer.observe({
+        entryTypes: ['navigation', 'largest-contentful-paint', 'first-input', 'layout-shift'],
+      });
     } catch {
       // Fallback for browsers that don't support all entry types
       try {
@@ -47,8 +50,8 @@ export default function PerformanceMonitor() {
     }
 
     // Monitor resource loading
-    const resourceObserver = new PerformanceObserver((list) => {
-      list.getEntries().forEach((entry) => {
+    const resourceObserver = new PerformanceObserver(list => {
+      list.getEntries().forEach(entry => {
         if (entry.entryType === 'resource') {
           const resourceEntry = entry as PerformanceResourceTiming;
           // Log slow resources

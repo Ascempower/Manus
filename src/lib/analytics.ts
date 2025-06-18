@@ -1,6 +1,10 @@
 // HIPAA-Compliant Analytics and GTM utilities
-
-import { hasHIPAAConsent, sanitizeForHIPAA, validateNoPHI, trackHIPAACompliantEvent } from './hipaa-compliance';
+import {
+  hasHIPAAConsent,
+  sanitizeForHIPAA,
+  trackHIPAACompliantEvent,
+  validateNoPHI,
+} from './hipaa-compliance';
 
 declare global {
   interface Window {
@@ -10,12 +14,7 @@ declare global {
 }
 
 // HIPAA-Compliant Event Tracking
-export const trackEvent = (
-  action: string,
-  category: string,
-  label?: string,
-  value?: number
-) => {
+export const trackEvent = (action: string, category: string, label?: string, value?: number) => {
   // Check HIPAA consent before tracking
   if (!hasHIPAAConsent()) {
     return;
@@ -50,7 +49,7 @@ export const trackPageView = (url: string, title?: string) => {
   if (typeof window !== 'undefined' && window.gtag) {
     // Remove query parameters and fragments that might contain PHI
     const cleanUrl = url.split('?')[0].split('#')[0];
-    
+
     window.gtag('config', process.env.NEXT_PUBLIC_GA4_ID, {
       page_title: title || document.title,
       page_location: cleanUrl, // Only send clean URL without parameters
@@ -75,52 +74,52 @@ export const trackInsuranceEvents = {
   // Quote requests (no personal information)
   quoteRequest: (insuranceType: string) => {
     // Only track the type of insurance, never personal details
-    trackHIPAACompliantEvent('quote_request', 'insurance', { 
+    trackHIPAACompliantEvent('quote_request', 'insurance', {
       insurance_type: insuranceType,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     });
   },
 
   // Consultation bookings (method only, no personal info)
   consultationBooked: (method: string = 'calendly') => {
-    trackHIPAACompliantEvent('consultation_booked', 'engagement', { 
-      booking_method: method 
+    trackHIPAACompliantEvent('consultation_booked', 'engagement', {
+      booking_method: method,
     });
   },
 
   // Service page views (general interest tracking)
   serviceViewed: (serviceType: string) => {
-    trackHIPAACompliantEvent('service_viewed', 'insurance', { 
-      service_type: serviceType 
+    trackHIPAACompliantEvent('service_viewed', 'insurance', {
+      service_type: serviceType,
     });
   },
 
   // Contact form submissions (form type only, no form data)
   contactSubmitted: (formType: string = 'contact') => {
-    trackHIPAACompliantEvent('form_submit', 'contact', { 
-      form_type: formType 
+    trackHIPAACompliantEvent('form_submit', 'contact', {
+      form_type: formType,
     });
   },
 
   // Phone number clicks (interaction only)
   phoneClicked: () => {
-    trackHIPAACompliantEvent('phone_click', 'contact', { 
-      interaction_type: 'phone_click' 
+    trackHIPAACompliantEvent('phone_click', 'contact', {
+      interaction_type: 'phone_click',
     });
   },
 
   // External link clicks (destination only, no referrer data)
   externalLinkClicked: (destination: string) => {
-    trackHIPAACompliantEvent('external_link_click', 'navigation', { 
-      destination: destination 
+    trackHIPAACompliantEvent('external_link_click', 'navigation', {
+      destination: destination,
     });
   },
 
   // Internal link clicks (navigation tracking)
   internalLinkClicked: (linkKey: string, context?: string) => {
-    trackHIPAACompliantEvent('internal_link_click', 'navigation', { 
+    trackHIPAACompliantEvent('internal_link_click', 'navigation', {
       link_key: linkKey,
-      context: context || 'unknown'
+      context: context || 'unknown',
     });
   },
 };

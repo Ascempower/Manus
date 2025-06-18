@@ -1,7 +1,9 @@
 import Link from 'next/link';
+
+import { FileText, Home, Scale, Shield } from 'lucide-react';
+
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { getServiceLinks, getMainNavLinks, getLinksByCategory } from '@/lib/internal-links';
-import { Home, FileText, Shield, Scale } from 'lucide-react';
+import { getLinksByCategory, getMainNavLinks, getServiceLinks } from '@/lib/internal-links';
 
 export default function Sitemap() {
   const serviceLinks = getServiceLinks();
@@ -9,7 +11,7 @@ export default function Sitemap() {
   const legalLinks = getLinksByCategory('legal');
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
       {/* Main Pages */}
       <Card>
         <CardHeader>
@@ -20,14 +22,17 @@ export default function Sitemap() {
         </CardHeader>
         <CardContent>
           <div className="space-y-2">
-            <Link href="/" className="block text-brand-black hover:text-brand-deep-forest-green transition-colors">
+            <Link
+              href="/"
+              className="block text-brand-black transition-colors hover:text-brand-deep-forest-green"
+            >
               Home
             </Link>
-            {mainNavLinks.map((link) => (
+            {mainNavLinks.map(link => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="block text-brand-black hover:text-brand-deep-forest-green transition-colors"
+                className="block text-brand-black transition-colors hover:text-brand-deep-forest-green"
               >
                 {link.text}
               </Link>
@@ -46,11 +51,11 @@ export default function Sitemap() {
         </CardHeader>
         <CardContent>
           <div className="space-y-2">
-            {serviceLinks.map((link) => (
+            {serviceLinks.map(link => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="block text-brand-black hover:text-brand-deep-forest-green transition-colors text-sm"
+                className="block text-sm text-brand-black transition-colors hover:text-brand-deep-forest-green"
                 title={link.description}
               >
                 {link.text}
@@ -70,19 +75,34 @@ export default function Sitemap() {
         </CardHeader>
         <CardContent>
           <div className="space-y-2">
-            <Link href="/blog" className="block text-brand-black hover:text-brand-deep-forest-green transition-colors">
+            <Link
+              href="/blog"
+              className="block text-brand-black transition-colors hover:text-brand-deep-forest-green"
+            >
               Insurance Blog
             </Link>
-            <Link href="/blog/posts/may-2025-health-insurance-changes" className="block text-brand-black hover:text-brand-deep-forest-green transition-colors text-sm">
+            <Link
+              href="/blog/posts/may-2025-health-insurance-changes"
+              className="block text-sm text-brand-black transition-colors hover:text-brand-deep-forest-green"
+            >
               Health Insurance Changes 2025
             </Link>
-            <Link href="/blog/posts/april-2025-understanding-life-insurance" className="block text-brand-black hover:text-brand-deep-forest-green transition-colors text-sm">
+            <Link
+              href="/blog/posts/april-2025-understanding-life-insurance"
+              className="block text-sm text-brand-black transition-colors hover:text-brand-deep-forest-green"
+            >
               Understanding Life Insurance
             </Link>
-            <Link href="/blog/posts/march-2025-medicare-advantage-vs-supplement" className="block text-brand-black hover:text-brand-deep-forest-green transition-colors text-sm">
+            <Link
+              href="/blog/posts/march-2025-medicare-advantage-vs-supplement"
+              className="block text-sm text-brand-black transition-colors hover:text-brand-deep-forest-green"
+            >
               Medicare Advantage vs Supplement
             </Link>
-            <Link href="/faq" className="block text-brand-black hover:text-brand-deep-forest-green transition-colors">
+            <Link
+              href="/faq"
+              className="block text-brand-black transition-colors hover:text-brand-deep-forest-green"
+            >
               Frequently Asked Questions
             </Link>
           </div>
@@ -99,11 +119,11 @@ export default function Sitemap() {
         </CardHeader>
         <CardContent>
           <div className="space-y-2">
-            {legalLinks.map((link) => (
+            {legalLinks.map(link => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="block text-brand-black hover:text-brand-deep-forest-green transition-colors text-sm"
+                className="block text-sm text-brand-black transition-colors hover:text-brand-deep-forest-green"
               >
                 {link.text}
               </Link>
@@ -121,38 +141,46 @@ export function CompactSitemap() {
   const mainNavLinks = getMainNavLinks();
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+    <div className="grid grid-cols-2 gap-8 md:grid-cols-3">
       {/* Main Pages */}
       <div>
-        <h3 className="font-semibold text-brand-white mb-4">Company</h3>
+        <h3 className="mb-4 font-semibold text-brand-white">Company</h3>
         <div className="space-y-2">
-          <Link href="/" className="block text-brand-white/80 hover:text-brand-white transition-colors text-sm">
+          <Link
+            href="/"
+            className="block text-sm text-brand-white/80 transition-colors hover:text-brand-white"
+          >
             Home
           </Link>
-          {mainNavLinks.filter(link => link.href !== '/services').map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="block text-brand-white/80 hover:text-brand-white transition-colors text-sm"
-            >
-              {link.text}
-            </Link>
-          ))}
+          {mainNavLinks
+            .filter(link => link.href !== '/services')
+            .map(link => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="block text-sm text-brand-white/80 transition-colors hover:text-brand-white"
+              >
+                {link.text}
+              </Link>
+            ))}
         </div>
       </div>
 
       {/* Top Services */}
       <div>
-        <h3 className="font-semibold text-brand-white mb-4">Insurance Services</h3>
+        <h3 className="mb-4 font-semibold text-brand-white">Insurance Services</h3>
         <div className="space-y-2">
-          <Link href="/services" className="block text-brand-white/80 hover:text-brand-white transition-colors text-sm font-medium">
+          <Link
+            href="/services"
+            className="block text-sm font-medium text-brand-white/80 transition-colors hover:text-brand-white"
+          >
             All Services
           </Link>
-          {serviceLinks.map((link) => (
+          {serviceLinks.map(link => (
             <Link
               key={link.href}
               href={link.href}
-              className="block text-brand-white/80 hover:text-brand-white transition-colors text-sm"
+              className="block text-sm text-brand-white/80 transition-colors hover:text-brand-white"
             >
               {link.text}
             </Link>
@@ -162,18 +190,30 @@ export function CompactSitemap() {
 
       {/* Resources */}
       <div>
-        <h3 className="font-semibold text-brand-white mb-4">Resources</h3>
+        <h3 className="mb-4 font-semibold text-brand-white">Resources</h3>
         <div className="space-y-2">
-          <Link href="/blog" className="block text-brand-white/80 hover:text-brand-white transition-colors text-sm">
+          <Link
+            href="/blog"
+            className="block text-sm text-brand-white/80 transition-colors hover:text-brand-white"
+          >
             Insurance Blog
           </Link>
-          <Link href="/faq" className="block text-brand-white/80 hover:text-brand-white transition-colors text-sm">
+          <Link
+            href="/faq"
+            className="block text-sm text-brand-white/80 transition-colors hover:text-brand-white"
+          >
             FAQ
           </Link>
-          <Link href="/testimonials" className="block text-brand-white/80 hover:text-brand-white transition-colors text-sm">
+          <Link
+            href="/testimonials"
+            className="block text-sm text-brand-white/80 transition-colors hover:text-brand-white"
+          >
             Testimonials
           </Link>
-          <Link href="/contact" className="block text-brand-white/80 hover:text-brand-white transition-colors text-sm">
+          <Link
+            href="/contact"
+            className="block text-sm text-brand-white/80 transition-colors hover:text-brand-white"
+          >
             Contact Us
           </Link>
         </div>

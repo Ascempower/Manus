@@ -24,28 +24,28 @@ export const optimizedScripts: Record<string, ScriptConfig> = {
     strategy: 'beforeInteractive',
     critical: true,
   },
-  
+
   // High priority scripts (load after interactive)
   analytics: {
     src: 'https://www.googletagmanager.com/gtag/js',
     strategy: 'afterInteractive',
     defer: true,
   },
-  
+
   // Medium priority scripts (lazy load)
   chatWidget: {
     src: '/scripts/chat-widget.js',
     strategy: 'lazyOnload',
     defer: true,
   },
-  
+
   // Low priority scripts (lazy load)
   socialMedia: {
     src: '/scripts/social-media.js',
     strategy: 'lazyOnload',
     defer: true,
   },
-  
+
   // Lazy scripts (load on demand)
   maps: {
     src: 'https://maps.googleapis.com/maps/api/js',
@@ -54,7 +54,9 @@ export const optimizedScripts: Record<string, ScriptConfig> = {
   },
 };
 
-export function getScriptLoadingStrategy(priority: number): 'beforeInteractive' | 'afterInteractive' | 'lazyOnload' {
+export function getScriptLoadingStrategy(
+  priority: number
+): 'beforeInteractive' | 'afterInteractive' | 'lazyOnload' {
   if (priority <= SCRIPT_PRIORITIES.CRITICAL) return 'beforeInteractive';
   if (priority <= SCRIPT_PRIORITIES.HIGH) return 'afterInteractive';
   return 'lazyOnload';
@@ -80,7 +82,10 @@ export function deferScript(callback: () => void, delay: number = 0): void {
   }
 }
 
-export function loadOnInteraction(callback: () => void, events: string[] = ['click', 'scroll', 'keydown']): void {
+export function loadOnInteraction(
+  callback: () => void,
+  events: string[] = ['click', 'scroll', 'keydown']
+): void {
   const loadScript = () => {
     callback();
     events.forEach(event => {
@@ -108,10 +113,10 @@ export function loadScript(src: string, options: Partial<ScriptConfig> = {}): Pr
     script.src = src;
     script.async = options.async ?? true;
     script.defer = options.defer ?? false;
-    
+
     script.onload = () => resolve();
     script.onerror = () => reject(new Error(`Failed to load script: ${src}`));
-    
+
     document.head.appendChild(script);
   });
 }
