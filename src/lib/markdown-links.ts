@@ -120,9 +120,7 @@ export function autoLinkContent(content: string): string {
   });
 
   return linkedContent;
-}
-
-const markdownLinksUtils = {
+}tils = {
   MARKDOWN_LINK_PATTERNS,
   processMarkdownLinks,
   extractInternalLinks,
@@ -130,6 +128,4 @@ const markdownLinksUtils = {
   autoLinkContent,
 };
 
-export default markdownLinksUtils;
-
-const markdownLinksUtils = markdownLinksUtils;
+export defauls;

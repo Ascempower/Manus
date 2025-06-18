@@ -72,14 +72,10 @@ export function deferScript(callback: () => void, delay: number = 0): void {
   if (delay > 0) {
     setTimeout(callback, delay);
   } else {
-    if (typeof window !== 'undefined' && 'if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
-      window.window) {
-      window.requestIdleCallback(callback);
+    requestIdleCallback(callback);
     } else {
       setTimeout(callback, 0);
-      }
-  }
-  }
+    }
 }
 
 export function loadOnInteraction(callback: () => void, events: string[] = ['click', 'scroll', 'keydown']): void {

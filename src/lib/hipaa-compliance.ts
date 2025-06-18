@@ -59,9 +59,9 @@ export const sanitizeForHIPAA = (data: unknown): unknown => {
 
 // HIPAA-compliant event tracking (no PHI)
 export const trackHIPAACompliantEvent = (
-  eventName: string,
-  category: string,
-  properties?: Record<string, any>
+  __eventName: string,
+  __category: string,
+  __properties?: Record<string, unknown>
 ) => {
   // Only track if analytics is explicitly enabled and no PHI is present
   if (!HIPAA_CONFIG.enableAnalytics) {
@@ -69,8 +69,7 @@ export const trackHIPAACompliantEvent = (
   }
 
   // Development debugging - HIPAA-Compliant Event logging removed for production
-  // Properties would be sanitized here: sanitizeForHIPAA(properties)
-  // Properties would be sanitized here: sanitizeForHIPAA(properties)
+  // Properties would be sanitized here: sanitizeForHIPAA(__properties)
 
   // In production, only send to HIPAA-compliant analytics if configured
   // This would need to be a HIPAA-compliant analytics service

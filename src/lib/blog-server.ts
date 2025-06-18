@@ -12,7 +12,7 @@ export interface BlogPost {
     author?: string;
     category?: string;
     tags?: string[];
-    featured?: booleunknown;
+    featured?: boolean;
     image?: string;
     [key: string]: unknown;
   };
