@@ -9,7 +9,7 @@ import { getAllBlogPosts, getBlogPost } from '@/lib/blog-server';
 // Blog post page component
 
 type PageProps = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 // Generate static params for all published blog posts
@@ -21,7 +21,7 @@ export function generateStaticParams() {
 
 // Generate metadata for each blog post
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await params;
   const post = getBlogPost(slug);
 
   if (!post) {
@@ -125,7 +125,7 @@ const MarkdownComponents = {
 
 // Define the page component
 export default async function BlogPost({ params }: PageProps) {
-  const { slug } = params;
+  const { slug } = await params;
   let post;
 
   try {
