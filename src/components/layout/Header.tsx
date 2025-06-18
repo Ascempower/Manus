@@ -36,7 +36,7 @@ export default function Header() {
           />
         </Link>
 
-        <NavigationMenu className="hidden lg:flex">
+        <NavigationMenu className="relative hidden lg:flex">
           <NavigationMenuList>
             {MAIN_NAVIGATION.map(item => (
               <NavigationMenuItem key={item.href}>
@@ -50,8 +50,8 @@ export default function Header() {
                     >
                       {item.label}
                     </NavigationMenuTrigger>
-                    <NavigationMenuContent className="z-50">
-                      <div className="z-50 grid w-[400px] gap-2 rounded-lg border border-brand-teal-blue-dark bg-brand-teal-blue p-4 shadow-lg md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                    <NavigationMenuContent className="z-[100]">
+                      <div className="z-[100] grid w-[400px] gap-2 rounded-lg border border-brand-teal-blue-dark bg-white p-4 shadow-lg md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                         {/* First Column */}
                         <div className="flex flex-col gap-2">
                           {/* All Services - Forest Green, takes most space */}
@@ -79,7 +79,7 @@ export default function Header() {
                                 <div className="text-sm font-medium leading-none text-brand-black transition-colors duration-200 group-hover:text-brand-white">
                                   {service.label}
                                 </div>
-                                <div className="mt-1 text-xs text-brand-black/70 transition-colors duration-200 group-hover:text-brand-white/80">
+                                <div className="mt-1 text-xs text-gray-600 transition-colors duration-200 group-hover:text-brand-white/80">
                                   Learn more about {service.label.toLowerCase()}
                                 </div>
                               </Link>
@@ -98,7 +98,7 @@ export default function Header() {
                                 <div className="text-sm font-medium leading-none text-brand-black transition-colors duration-200 group-hover:text-brand-white">
                                   {service.label}
                                 </div>
-                                <div className="mt-1 text-xs text-brand-black/70 transition-colors duration-200 group-hover:text-brand-white/80">
+                                <div className="mt-1 text-xs text-gray-600 transition-colors duration-200 group-hover:text-brand-white/80">
                                   Learn more about {service.label.toLowerCase()}
                                 </div>
                               </Link>
