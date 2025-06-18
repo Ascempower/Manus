@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
+import ReactMarkdown from 'react-markdown';
+
 import InternalLink from '@/components/ui/InternalLink';
 import { getAllBlogPosts, getBlogPost } from '@/lib/blog-server';
 
@@ -140,8 +142,55 @@ export default async function BlogPost({ params }: PageProps) {
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
-      {/* ...rest of your JSX remains unchanged... */}
-      {/* (You can copy-paste your markup here) */}
+      <article className="prose prose-lg max-w-none">
+        {/* Blog post header */}
+        <header className="mb-8">
+          <h1 className="mb-4 text-4xl font-bold text-gray-900">{frontmatter.title}</h1>
+          {frontmatter.description && (
+            <p className="text-xl text-gray-600">{frontmatter.description}</p>
+          )}
+          <div className="mt-4 flex items-center space-x-4 text-sm text-gray-500">
+            {frontmatter.date && (
+              <time dateTime={frontmatter.date}>
+                {new Date(frontmatter.date).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                })}
+              </time>
+            )}
+            {frontmatter.author && <span>By {frontmatter.author}</span>}
+            {frontmatter.readingTime && <span>{frontmatter.readingTime} min read</span>}
+          </div>
+          {frontmatter.tags && frontmatter.tags.length > 0 && (
+            <div className="mt-4 flex flex-wrap gap-2">
+              {frontmatter.tags.map(tag => (
+                <span
+                  key={tag}
+                  className="rounded-full bg-brand-deep-forest-green/10 px-3 py-1 text-sm text-brand-deep-forest-green"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+        </header>
+
+        {/* Blog post content */}
+        <div className="prose prose-lg max-w-none">
+          <ReactMarkdown components={MarkdownComponents}>{content}</ReactMarkdown>
+        </div>
+
+        {/* Back to blog link */}
+        <footer className="mt-12 border-t border-gray-200 pt-8">
+          <InternalLink
+            href="/blog"
+            className="inline-flex items-center text-brand-deep-forest-green hover:text-brand-teal-blue"
+          >
+            ← Back to Blog
+          </InternalLink>
+        </footer>
+      </article>
     </div>
   );
 }
