@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import { Button } from '@/components/ui/button';
+import ButtonLink from '@/components/ui/ButtonLink';
 
 export const metadata: Metadata = {
   title: 'Annuities for Retirement Income - Choice Insurance',
@@ -158,9 +158,12 @@ export default function AnnuitiesPage() {
               Explore how annuities can provide you with a reliable income stream in retirement.
               Contact us for a free consultation.
             </p>
-            <Button size="lg" asChild className="bg-orange-500 text-white hover:bg-orange-600">
-              <Link href="/contact#book-a-call">Discuss Annuity Options</Link>
-            </Button>
+            <ButtonLink
+              href="/contact#book-a-call"
+              className="bg-orange-500 text-white hover:bg-orange-600"
+            >
+              Discuss Annuity Options
+            </ButtonLink>
           </section>
         </div>
       </section>

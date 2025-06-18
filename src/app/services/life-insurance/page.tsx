@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import { Button } from '@/components/ui/button';
+import ButtonLink from '@/components/ui/ButtonLink';
 
 export const metadata: Metadata = {
   title: 'Life Insurance Plans - Choice Insurance',
@@ -176,13 +176,12 @@ export default function LifeInsurancePage() {
             Don't wait to protect the ones you love. Contact us for a complimentary life insurance
             consultation and quote.
           </p>
-          <Button
-            size="lg"
-            asChild
+          <ButtonLink
+            href="/contact#book-a-call"
             className="bg-brand-warm-beige-coral font-semibold text-brand-black hover:bg-brand-warm-beige-coral/80"
           >
-            <Link href="/contact#book-a-call">Request a Consultation</Link>
-          </Button>
+            Request a Consultation
+          </ButtonLink>
         </section>
       </div>
     </div>

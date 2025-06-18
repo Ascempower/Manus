@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import { Button } from '@/components/ui/button';
+import ButtonLink from '@/components/ui/ButtonLink';
 
 export const metadata: Metadata = {
   title: 'Health Insurance Plans - Choice Insurance',
@@ -169,13 +169,12 @@ export default function HealthInsurancePage() {
             Take the first step towards securing your health. Contact us for a personalized health
             insurance consultation and quote.
           </p>
-          <Button
-            size="lg"
-            asChild
+          <ButtonLink
+            href="/contact#book-a-call"
             className="bg-brand-warm-beige-coral font-semibold text-brand-black hover:bg-brand-warm-beige-coral/80"
           >
-            <Link href="/contact#book-a-call">Get a Free Health Insurance Quote</Link>
-          </Button>
+            Get a Free Health Insurance Quote
+          </ButtonLink>
         </section>
       </div>
     </div>
