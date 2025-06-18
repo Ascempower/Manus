@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 
 import { CalendarDays, Mail, MapPin, Phone } from 'lucide-react';
 
-import { Button } from '@/components/ui/button';
-import { LazyContactForm } from '@/lib/dynamic-imports';
+import ContactFormWrapper from '@/components/forms/ContactFormWrapper';
+import ButtonLink from '@/components/ui/ButtonLink';
 
 export const metadata: Metadata = {
   title: 'Contact Us - Choice Insurance Hub',
@@ -127,7 +127,7 @@ export default function ContactPage() {
               <h2 className="mb-6 font-poppins text-2xl font-bold text-brand-deep-forest-green md:text-3xl">
                 Send Us a Message
               </h2>
-              <LazyContactForm />
+              <ContactFormWrapper />
             </div>
           </div>
         </div>
@@ -143,20 +143,14 @@ export default function ContactPage() {
             Schedule a free, no-obligation consultation with one of our expert insurance advisors at
             your convenience. We can discuss your needs and help you find the perfect plan.
           </p>
-          <Button
-            size="lg"
-            asChild
+          <ButtonLink
+            href="https://calendly.com/choiceinsuranceagency/30-minute-meeting"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-brand-warm-beige-coral font-semibold text-brand-black hover:bg-brand-warm-beige-coral/80"
           >
-            {/* Updated to the correct Calendly link */}
-            <a
-              href="https://calendly.com/choiceinsuranceagency/30-minute-meeting"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Book Your Free Consultation Now
-            </a>
-          </Button>
+            Book Your Free Consultation Now
+          </ButtonLink>
           <p className="mt-4 text-sm text-brand-white/70">
             (You will be redirected to our scheduling partner)
           </p>
