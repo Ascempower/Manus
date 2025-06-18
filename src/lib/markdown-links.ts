@@ -50,7 +50,7 @@ export function extractInternalLinks(content: string): InternalLink[] {
   let match;
 
   while ((match = linkRegex.exec(content)) !== null) {
-    const [, text, href] = match;
+    const [, , href] = match;
     
     // Check if it's an internal link
     const internalLink = Object.values(INTERNAL_LINKS).find(link => link.href === href);
@@ -122,10 +122,14 @@ export function autoLinkContent(content: string): string {
   return linkedContent;
 }
 
-export default {
+const markdownLinksUtils = {
   MARKDOWN_LINK_PATTERNS,
   processMarkdownLinks,
   extractInternalLinks,
   generateContentSuggestions,
   autoLinkContent,
 };
+
+export default markdownLinksUtils;
+
+const markdownLinksUtils = markdownLinksUtils;

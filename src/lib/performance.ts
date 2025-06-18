@@ -8,11 +8,10 @@ export function measureWebVitals() {
   // Core Web Vitals measurement
   const observer = new PerformanceObserver((list) => {
     for (const entry of list.getEntries()) {
-      const __metricName = entry.name;
-      const __value = Math.round(entry.startTime + entry.duration);
-      
       // Development performance logging removed for production
-      
+      // Metrics would be processed here: entry.name, Math.round(entry.startTime + entry.duration)
+      // Development performance logging removed for production
+      // Metrics would be processed here: entry.name, Math.round(entry.startTime + entry.duration)
       // Send to analytics in production
       if (process.env.NODE_ENV === 'production') {
         // Replace with your analytics service

@@ -15,9 +15,9 @@ export interface BlogPost {
     image?: string;
     category?: string;
     tags?: string[];
-    featured?: boolean;
+    featured?: booleunknown;
     author?: string;
-    [key: string]: any;
+    [key: string]: unknown;
   };
   content: string;
   excerpt?: string;

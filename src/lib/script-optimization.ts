@@ -72,7 +72,13 @@ export function deferScript(callback: () => void, delay: number = 0): void {
   if (delay > 0) {
     setTimeout(callback, delay);
   } else {
-    requestIdleCallback ? requestIdleCallback(callback) : setTimeout(callback, 0);
+    if (typeof window !== 'undefined' && 'if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+      window.window) {
+      window.requestIdleCallback(callback);
+    } else {
+      setTimeout(callback, 0);
+      }
+  }
   }
 }
 

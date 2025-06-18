@@ -10,9 +10,9 @@ export interface BlogPost {
     author?: string;
     category?: string;
     tags?: string[];
-    featured?: boolean;
+    featured?: booleunknown;
     image?: string;
-    [key: string]: any;
+    [key: string]: unknown;
   };
   content: string;
   excerpt?: string;

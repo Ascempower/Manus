@@ -123,7 +123,7 @@ export function validateInternalLinks() {
   return internalPaths;
 }
 
-export default {
+const linkManager = {
   EXTERNAL_LINKS,
   INTERNAL_ANCHORS,
   CTA_LINKS,
@@ -132,3 +132,7 @@ export default {
   getInternalAnchor,
   validateInternalLinks,
 };
+
+export default linkManager;
+
+const linkManager = linkManager;

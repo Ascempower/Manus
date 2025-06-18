@@ -1,6 +1,6 @@
 import fs from 'fs';
-import path from 'path';
 import matter from 'gray-matter';
+import path from 'path';
 import { generateExcerpt } from './blog-utils';
 
 export interface BlogPost {
@@ -12,9 +12,9 @@ export interface BlogPost {
     author?: string;
     category?: string;
     tags?: string[];
-    featured?: boolean;
+    featured?: booleunknown;
     image?: string;
-    [key: string]: any;
+    [key: string]: unknown;
   };
   content: string;
   excerpt?: string;

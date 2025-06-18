@@ -273,7 +273,7 @@ export function getContextualLinks(content: string, currentPath?: string): Inter
   return getRelatedLinks(relevantKeywords, currentPath, 3);
 }
 
-export default {
+const internalLinksUtils = {
   INTERNAL_LINKS,
   getLinksByCategory,
   getLinksByPriority,
@@ -283,3 +283,7 @@ export default {
   getFooterLinks,
   getContextualLinks,
 };
+
+export default internalLinksUtils;
+
+const internalLinksUtils = internalLinksUtils;
