@@ -89,9 +89,12 @@ export const SafeLazyComponent = <P extends Record<string, unknown>>({
   fallback?: React.ReactNode;
   [key: string]: unknown;
 }) => {
+  // Cast props to P to ensure type compatibility
+  const componentProps = props as P;
+
   return (
     <ErrorBoundary fallback={fallback}>
-      <Component {...props} />
+      <Component {...componentProps} />
     </ErrorBoundary>
   );
 };

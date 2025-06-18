@@ -37,7 +37,8 @@ export const trackEvent = (action: string, category: string, label?: string, val
     const sanitizedData = sanitizeForHIPAA(eventData);
 
     if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', action, sanitizedData);
+      // Ensure sanitizedData is a valid Record<string, unknown>
+      window.gtag('event', action, sanitizedData as Record<string, unknown>);
     }
   } catch (error) {
     console.error('Error tracking event:', error);
@@ -151,7 +152,8 @@ export const pushToDataLayer = (data: Record<string, unknown>) => {
     const sanitizedData = sanitizeForHIPAA(data);
 
     if (typeof window !== 'undefined' && window.dataLayer) {
-      window.dataLayer.push(sanitizedData);
+      // Ensure sanitizedData is a valid Record<string, unknown>
+      window.dataLayer.push(sanitizedData as Record<string, unknown>);
     }
   } catch (error) {
     console.error('Error pushing to data layer:', error);

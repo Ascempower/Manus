@@ -107,12 +107,14 @@ export const safeSessionStorage = {
 export const safeWindowAccess = {
   /**
    * Safely call window.gtag
-   * @param args Arguments to pass to gtag
+   * @param command The gtag command (e.g., 'event', 'config')
+   * @param action The action to perform
+   * @param params Optional parameters
    */
-  gtag: (...args: any[]): void => {
+  gtag: (command: string, action: string, params?: Record<string, unknown>): void => {
     try {
       if (typeof window !== 'undefined' && window.gtag) {
-        window.gtag(...args);
+        window.gtag(command, action, params);
       }
     } catch (e) {
       console.error('GTM access error:', e);
