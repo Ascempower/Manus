@@ -3,13 +3,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
 import { Menu } from 'lucide-react';
 
 // import { trackInsuranceEvents } from '@/lib/analytics';
 import { BookConsultationButton, GetQuoteButton } from '@/components/ui/CTAButton';
 import { Button } from '@/components/ui/button';
 import {
-  NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
@@ -36,7 +36,7 @@ export default function Header() {
           />
         </Link>
 
-        <NavigationMenu className="relative hidden w-full justify-start lg:flex">
+        <NavigationMenuPrimitive.Root className="relative z-10 flex hidden max-w-max flex-1 items-center justify-start lg:flex">
           <NavigationMenuList>
             {MAIN_NAVIGATION.map(item => (
               <NavigationMenuItem
@@ -69,7 +69,10 @@ export default function Header() {
                     >
                       {item.label}
                     </NavigationMenuTrigger>
-                    <NavigationMenuContent className="absolute left-0 top-full z-50 mt-2 w-[600px] transition-all duration-300 ease-in-out">
+                    <NavigationMenuContent
+                      className="data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 absolute left-0 top-full z-[100] mt-1 w-[600px] origin-top-left transition-all duration-300 ease-in-out"
+                      style={{ position: 'absolute', transform: 'none' }}
+                    >
                       <div className="grid w-full grid-cols-2 gap-2 rounded-lg border border-[#8BB5B7] bg-white p-4 shadow-lg transition-all duration-200">
                         {/* First Column */}
                         <div className="flex flex-col gap-2">
@@ -143,7 +146,7 @@ export default function Header() {
               </NavigationMenuItem>
             ))}
           </NavigationMenuList>
-        </NavigationMenu>
+        </NavigationMenuPrimitive.Root>
 
         <div className="flex items-center gap-x-2">
           <GetQuoteButton
