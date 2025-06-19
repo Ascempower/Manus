@@ -40,6 +40,17 @@ try {
     console.warn('⚠️  Consider adding a 512x512 icon for better PWA support');
   }
 
+  // Check for maskable icons
+  const hasMaskableIcon = manifest.icons.some(
+    icon => icon.purpose && icon.purpose.includes('maskable')
+  );
+
+  if (!hasMaskableIcon) {
+    console.warn('⚠️  Consider adding a maskable icon for better app installation experience');
+  } else {
+    console.log('✅ Maskable icon found - app will fill device shapes properly');
+  }
+
   console.log('✅ manifest.json is valid');
 } catch (error) {
   console.error('❌ Invalid manifest.json:', error.message);
