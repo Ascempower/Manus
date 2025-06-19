@@ -135,16 +135,16 @@ export default function Sitemap() {
   );
 }
 
-// Compact sitemap for footer
+// Compact sitemap for footer - designed to fit in 2 columns of a 4-column footer grid
 export function CompactSitemap() {
-  const serviceLinks = getServiceLinks().slice(0, 6); // Show only top 6 services
+  const serviceLinks = getServiceLinks().slice(0, 5); // Show only top 5 services
   const mainNavLinks = getMainNavLinks();
 
   return (
-    <div className="grid grid-cols-2 gap-8 md:grid-cols-3">
-      {/* Main Pages */}
+    <>
+      {/* Company Links - Column 2 */}
       <div>
-        <h3 className="mb-4 font-semibold text-brand-white">Company</h3>
+        <h3 className="mb-4 font-poppins text-lg font-bold text-brand-white">Company</h3>
         <div className="space-y-2">
           <Link
             href="/"
@@ -163,12 +163,20 @@ export function CompactSitemap() {
                 {link.text}
               </Link>
             ))}
+          <Link
+            href="/blog"
+            className="block text-sm text-brand-white/80 transition-colors hover:text-brand-white"
+          >
+            Insurance Blog
+          </Link>
         </div>
       </div>
 
-      {/* Top Services */}
+      {/* Services & Resources - Column 3 */}
       <div>
-        <h3 className="mb-4 font-semibold text-brand-white">Insurance Services</h3>
+        <h3 className="mb-4 font-poppins text-lg font-bold text-brand-white">
+          Services & Resources
+        </h3>
         <div className="space-y-2">
           <Link
             href="/services"
@@ -185,19 +193,6 @@ export function CompactSitemap() {
               {link.text}
             </Link>
           ))}
-        </div>
-      </div>
-
-      {/* Resources */}
-      <div>
-        <h3 className="mb-4 font-semibold text-brand-white">Resources</h3>
-        <div className="space-y-2">
-          <Link
-            href="/blog"
-            className="block text-sm text-brand-white/80 transition-colors hover:text-brand-white"
-          >
-            Insurance Blog
-          </Link>
           <Link
             href="/faq"
             className="block text-sm text-brand-white/80 transition-colors hover:text-brand-white"
@@ -210,14 +205,8 @@ export function CompactSitemap() {
           >
             Testimonials
           </Link>
-          <Link
-            href="/contact"
-            className="block text-sm text-brand-white/80 transition-colors hover:text-brand-white"
-          >
-            Contact Us
-          </Link>
         </div>
       </div>
-    </div>
+    </>
   );
 }
