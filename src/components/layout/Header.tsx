@@ -70,10 +70,15 @@ export default function Header() {
                       {item.label}
                     </NavigationMenuTrigger>
                     <NavigationMenuContent
-                      className="data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 absolute left-0 top-full z-[100] mt-1 w-[800px] origin-top-left transition-all duration-300 ease-in-out"
-                      style={{ position: 'absolute', transform: 'none' }}
+                      className="data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 absolute left-0 top-full z-[100] mt-1 w-[800px] origin-top-left"
+                      style={{
+                        position: 'absolute',
+                        transform: 'none',
+                        width: '800px',
+                        minWidth: '800px',
+                      }}
                     >
-                      <div className="grid w-full grid-cols-2 gap-4 rounded-lg border border-[#8BB5B7] bg-white p-6 shadow-lg transition-all duration-200">
+                      <div className="grid w-full grid-cols-2 gap-4 rounded-lg border border-[#8BB5B7] bg-brand-teal-blue p-6 shadow-lg">
                         {/* First Column */}
                         <div className="flex flex-col gap-3">
                           {/* All Services - Forest Green, takes most space */}
@@ -98,10 +103,10 @@ export default function Header() {
                                 href={service.href}
                                 className="group block transform select-none rounded-lg border border-transparent p-4 leading-none no-underline outline-none transition-all duration-200 hover:scale-[1.02] hover:border-[#42615A] hover:bg-[#42615A] hover:text-white hover:shadow-md focus:bg-[#42615A] focus:text-white"
                               >
-                                <div className="text-base font-medium leading-none text-black transition-colors duration-200 group-hover:text-white">
+                                <div className="text-base font-medium leading-none text-brand-deep-forest-green transition-colors duration-200 group-hover:text-white">
                                   {service.label}
                                 </div>
-                                <div className="mt-2 text-sm text-gray-600 transition-colors duration-200 group-hover:text-white/80">
+                                <div className="mt-2 text-sm text-brand-deep-forest-green/80 transition-colors duration-200 group-hover:text-white/80">
                                   Learn more about {service.label.toLowerCase()}
                                 </div>
                               </Link>
@@ -117,10 +122,10 @@ export default function Header() {
                                 href={service.href}
                                 className="group block transform select-none rounded-lg border border-transparent p-4 leading-none no-underline outline-none transition-all duration-200 hover:scale-[1.02] hover:border-[#42615A] hover:bg-[#42615A] hover:text-white hover:shadow-md focus:bg-[#42615A] focus:text-white"
                               >
-                                <div className="text-base font-medium leading-none text-black transition-colors duration-200 group-hover:text-white">
+                                <div className="text-base font-medium leading-none text-brand-deep-forest-green transition-colors duration-200 group-hover:text-white">
                                   {service.label}
                                 </div>
-                                <div className="mt-2 text-sm text-gray-600 transition-colors duration-200 group-hover:text-white/80">
+                                <div className="mt-2 text-sm text-brand-deep-forest-green/80 transition-colors duration-200 group-hover:text-white/80">
                                   Learn more about {service.label.toLowerCase()}
                                 </div>
                               </Link>
