@@ -19,8 +19,6 @@ export default function CacheManager({
       return;
     }
 
-    let intervalId: NodeJS.Timeout;
-
     const checkForUpdates = async () => {
       try {
         const registration = await navigator.serviceWorker.ready;
@@ -59,7 +57,7 @@ export default function CacheManager({
     checkForUpdates();
 
     // Set up periodic checks
-    intervalId = setInterval(checkForUpdates, checkInterval);
+    const intervalId = setInterval(checkForUpdates, checkInterval);
 
     // Listen for service worker updates
     navigator.serviceWorker.addEventListener('controllerchange', () => {
