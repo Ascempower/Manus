@@ -14,9 +14,9 @@
   "prefer_related_applications": false,
   "icons": [
     {
-      "src": "/favicon.ico",
+      "src": "/icon-orange.png",
       "sizes": "16x16 32x32 48x48",
-      "type": "image/x-icon"
+      "type": "image/png"
     },
     {
       "src": "/icon.svg",
