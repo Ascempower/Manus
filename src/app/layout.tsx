@@ -9,6 +9,7 @@ import LazyCompliance from '@/components/compliance/LazyCompliance';
 import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
 import { LocalBusinessSchema, OrganizationSchema } from '@/components/seo/StructuredData';
+import CacheManager from '@/components/utils/CacheManager';
 
 import './globals.css';
 
@@ -134,6 +135,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Lazy-loaded compliance and analytics */}
         <LazyCompliance />
         <LazyAnalytics />
+
+        {/* Cache Management */}
+        <CacheManager checkInterval={15 * 60 * 1000} showNotifications={false} />
 
         {/* Deferred Service Worker Registration */}
         <script

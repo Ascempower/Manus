@@ -1,12 +1,32 @@
 // Service Worker for Choice Insurance Hub
-const CACHE_NAME = 'choice-insurance-cache-v2';
-const STATIC_CACHE = 'choice-insurance-static-v2';
-const DYNAMIC_CACHE = 'choice-insurance-dynamic-v2';
+// Update this version number to force cache clearing
+const CACHE_VERSION = 'v2025.6.18.2208';
+const CACHE_NAME = `choice-insurance-cache-${CACHE_VERSION}`;
+const STATIC_CACHE = `choice-insurance-static-${CACHE_VERSION}`;
+const DYNAMIC_CACHE = `choice-insurance-dynamic-${CACHE_VERSION}`;
+
+// Cache expiration times (in milliseconds)
+const CACHE_EXPIRATION = {
+  STATIC: 24 * 60 * 60 * 1000, // 24 hours
+  DYNAMIC: 60 * 60 * 1000, // 1 hour
+  API: 5 * 60 * 1000, // 5 minutes
+};
 
 // Handle messages from the main thread
 self.addEventListener('message', event => {
   if (event.data && event.data.command === 'skipWaiting') {
     self.skipWaiting();
+  }
+
+  // Handle cache clearing commands
+  if (event.data && event.data.command === 'clearCache') {
+    clearAllCaches()
+      .then(() => {
+        event.ports[0].postMessage({ success: true });
+      })
+      .catch(err => {
+        event.ports[0].postMessage({ success: false, error: err.message });
+      });
   }
 });
 
@@ -27,6 +47,56 @@ const urlsToCache = [
   '/_next/static/css/',
   '/_next/static/chunks/',
 ];
+
+// Utility functions for cache management
+async function clearAllCaches() {
+  const cacheNames = await caches.keys();
+  const deletePromises = cacheNames.map(cacheName => caches.delete(cacheName));
+  await Promise.all(deletePromises);
+  console.log('All caches cleared');
+}
+
+async function clearExpiredCache() {
+  const cache = await caches.open(DYNAMIC_CACHE);
+  const requests = await cache.keys();
+  const now = Date.now();
+
+  for (const request of requests) {
+    const response = await cache.match(request);
+    if (response) {
+      const cachedTime = response.headers.get('sw-cached-time');
+      if (cachedTime) {
+        const age = now - parseInt(cachedTime);
+        const maxAge = request.url.includes('/api/')
+          ? CACHE_EXPIRATION.API
+          : CACHE_EXPIRATION.DYNAMIC;
+
+        if (age > maxAge) {
+          await cache.delete(request);
+          console.log('Expired cache entry removed:', request.url);
+        }
+      }
+    }
+  }
+}
+
+// Check for updates and clear cache if needed
+async function checkForUpdates() {
+  try {
+    const response = await fetch('/api/version', { cache: 'no-cache' });
+    if (response.ok) {
+      const { version } = await response.json();
+      if (version !== CACHE_VERSION) {
+        console.log('New version detected, clearing cache');
+        await clearAllCaches();
+        return true;
+      }
+    }
+  } catch (error) {
+    console.log('Version check failed:', error);
+  }
+  return false;
+}
 
 // Install event - cache assets
 self.addEventListener('install', event => {
@@ -53,10 +123,11 @@ self.addEventListener('install', event => {
 self.addEventListener('activate', event => {
   console.log('Service Worker activating...');
   const cacheWhitelist = [STATIC_CACHE, DYNAMIC_CACHE];
+
   event.waitUntil(
-    caches
-      .keys()
-      .then(cacheNames => {
+    Promise.all([
+      // Clean up old caches
+      caches.keys().then(cacheNames => {
         return Promise.all(
           cacheNames.map(cacheName => {
             if (cacheWhitelist.indexOf(cacheName) === -1) {
@@ -65,12 +136,16 @@ self.addEventListener('activate', event => {
             }
           })
         );
-      })
-      .then(() => {
-        console.log('Service Worker activated');
-        // Ensure service worker takes control of all clients immediately
-        return self.clients.claim();
-      })
+      }),
+      // Clear expired cache entries
+      clearExpiredCache(),
+      // Check for updates
+      checkForUpdates(),
+    ]).then(() => {
+      console.log('Service Worker activated and caches cleaned');
+      // Ensure service worker takes control of all clients immediately
+      return self.clients.claim();
+    })
   );
 });
 
