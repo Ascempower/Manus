@@ -11,7 +11,6 @@ import Header from '@/components/layout/Header';
 import { LocalBusinessSchema, OrganizationSchema } from '@/components/seo/StructuredData';
 import CacheManager from '@/components/utils/CacheManager';
 import { ChoiceInsuranceBadge } from '@/components/widgets';
-import { ChoiceInsuranceBadge } from '@/components/widgets';
 
 import './globals.css';
 
@@ -133,9 +132,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         {/* PWA Install Prompt */}
         <PWAInstaller />
-
-        {/* Calendly Badge Widget */}
-        <ChoiceInsuranceBadge />
 
         {/* Calendly Badge Widget */}
         <ChoiceInsuranceBadge />
