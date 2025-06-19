@@ -36,13 +36,14 @@ export default function Header() {
           />
         </Link>
 
-        <NavigationMenu className="relative hidden lg:flex">
+        <NavigationMenu className="relative hidden w-full justify-start lg:flex">
           <NavigationMenuList>
             {MAIN_NAVIGATION.map(item => (
               <NavigationMenuItem
                 key={item.href}
+                className="relative"
                 onMouseEnter={e => {
-                  if (item.hasDropdown) {
+                  if (item.hasDropdown && !('ontouchstart' in window)) {
                     const button = e.currentTarget.querySelector('[data-state]');
                     if (button?.getAttribute('data-state') !== 'open') {
                       (button as HTMLElement)?.click();
@@ -50,7 +51,7 @@ export default function Header() {
                   }
                 }}
                 onMouseLeave={e => {
-                  if (item.hasDropdown) {
+                  if (item.hasDropdown && !('ontouchstart' in window)) {
                     const button = e.currentTarget.querySelector('[data-state]');
                     if (button?.getAttribute('data-state') === 'open') {
                       (button as HTMLElement)?.click();
@@ -68,8 +69,8 @@ export default function Header() {
                     >
                       {item.label}
                     </NavigationMenuTrigger>
-                    <NavigationMenuContent className="transition-all duration-300 ease-in-out">
-                      <div className="grid w-[400px] gap-2 rounded-lg border border-[#8BB5B7] bg-white p-4 shadow-lg transition-all duration-200 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                    <NavigationMenuContent className="absolute left-0 top-full z-50 mt-2 w-[600px] transition-all duration-300 ease-in-out">
+                      <div className="grid w-full grid-cols-2 gap-2 rounded-lg border border-[#8BB5B7] bg-white p-4 shadow-lg transition-all duration-200">
                         {/* First Column */}
                         <div className="flex flex-col gap-2">
                           {/* All Services - Forest Green, takes most space */}
