@@ -1,5 +1,7 @@
 // Service Worker for Choice Insurance Hub
-const CACHE_NAME = 'choice-insurance-cache-v1';
+const CACHE_NAME = 'choice-insurance-cache-v2';
+const STATIC_CACHE = 'choice-insurance-static-v2';
+const DYNAMIC_CACHE = 'choice-insurance-dynamic-v2';
 
 // Handle messages from the main thread
 self.addEventListener('message', event => {
@@ -16,16 +18,31 @@ const urlsToCache = [
   '/blog',
   '/faq',
   '/testimonials',
-  '/images/favicon.png',
+  '/favicon.ico',
+  '/icon.svg',
+  '/apple-touch-icon.png',
   '/assets/logos/main-logo-orange.png',
+  '/manifest.json',
+  // Add critical CSS and JS files
+  '/_next/static/css/',
+  '/_next/static/chunks/',
 ];
 
 // Install event - cache assets
 self.addEventListener('install', event => {
+  console.log('Service Worker installing...');
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
+    caches.open(STATIC_CACHE).then(cache => {
       console.log('Opened cache');
-      return cache.addAll(urlsToCache);
+      // Cache core files, ignore failures for optional resources
+      return Promise.allSettled(
+        urlsToCache.map(url => {
+          return cache.add(url).catch(err => {
+            console.warn(`Failed to cache ${url}:`, err);
+            return null;
+          });
+        })
+      );
     })
   );
   // Activate immediately
@@ -34,7 +51,8 @@ self.addEventListener('install', event => {
 
 // Activate event - clean up old caches
 self.addEventListener('activate', event => {
-  const cacheWhitelist = [CACHE_NAME];
+  console.log('Service Worker activating...');
+  const cacheWhitelist = [STATIC_CACHE, DYNAMIC_CACHE];
   event.waitUntil(
     caches
       .keys()
@@ -42,12 +60,14 @@ self.addEventListener('activate', event => {
         return Promise.all(
           cacheNames.map(cacheName => {
             if (cacheWhitelist.indexOf(cacheName) === -1) {
+              console.log('Deleting old cache:', cacheName);
               return caches.delete(cacheName);
             }
           })
         );
       })
       .then(() => {
+        console.log('Service Worker activated');
         // Ensure service worker takes control of all clients immediately
         return self.clients.claim();
       })
@@ -84,12 +104,14 @@ self.addEventListener('fetch', event => {
             const responseToCache = response.clone();
 
             caches
-              .open(CACHE_NAME)
+              .open(DYNAMIC_CACHE)
               .then(cache => {
                 // Don't cache API calls or external resources
                 if (
                   event.request.url.includes('/api/') ||
-                  !event.request.url.includes(self.location.origin)
+                  !event.request.url.includes(self.location.origin) ||
+                  event.request.url.includes('chrome-extension') ||
+                  event.request.url.includes('moz-extension')
                 ) {
                   return;
                 }

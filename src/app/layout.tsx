@@ -3,6 +3,7 @@ import React from 'react';
 import type { Metadata, Viewport } from 'next';
 import { Inter, Poppins } from 'next/font/google';
 
+import PWAInstaller from '@/components/PWAInstaller';
 import LazyAnalytics from '@/components/analytics/LazyAnalytics';
 import LazyCompliance from '@/components/compliance/LazyCompliance';
 import Footer from '@/components/layout/Footer';
@@ -48,6 +49,7 @@ export const metadata: Metadata = {
     icon: ['/favicon.ico', '/icon.svg'],
     apple: '/apple-touch-icon.png',
   },
+  manifest: '/manifest.json',
   openGraph: {
     title: 'Choice Insurance Hub - Expert Health, Life & Medicare Insurance Solutions',
     description:
@@ -109,6 +111,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main className="flex-1">{children}</main>
           <Footer />
         </div>
+
+        {/* PWA Install Prompt */}
+        <PWAInstaller />
 
         {/* Lazy-loaded compliance and analytics */}
         <LazyCompliance />
