@@ -25,6 +25,7 @@ const poppins = Poppins({
   display: 'swap',
 });
 
+// === METADATA (single declaration) ===
 export const metadata: Metadata = {
   title: 'Choice Insurance Hub - Expert Health, Life & Medicare Insurance Solutions',
   description:
@@ -42,6 +43,10 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://choiceinsurancehub.com'),
   alternates: {
     canonical: '/',
+  },
+  icons: {
+    icon: ['/favicon.ico', '/icon.svg'],
+    apple: '/apple-touch-icon.png',
   },
   openGraph: {
     title: 'Choice Insurance Hub - Expert Health, Life & Medicare Insurance Solutions',
@@ -83,6 +88,7 @@ export const metadata: Metadata = {
   },
 };
 
+// === VIEWPORT ===
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
@@ -97,23 +103,6 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`scroll-smooth ${inter.variable} ${poppins.variable}`}>
-      <head>
-        <link rel="icon" href="/icons/favicon.ico" sizes="any" />
-        <link rel="icon" href="/icons/icon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
-        <link rel="manifest" href="/manifest.json" />
-        <style
-          dangerouslySetInnerHTML={{
-            __html: `
-              /* Critical CSS - Inlined for performance */
-              html { font-family: var(--font-inter), system-ui, sans-serif; }
-              body { margin: 0; background: #ffffff; color: #1a365d; }
-              .loading { opacity: 0; transition: opacity 0.3s ease; }
-              .loaded { opacity: 1; }
-            `,
-          }}
-        />
-      </head>
       <body className="min-h-screen bg-brand-white text-brand-black antialiased">
         <div className="flex min-h-screen flex-col">
           <Header />
