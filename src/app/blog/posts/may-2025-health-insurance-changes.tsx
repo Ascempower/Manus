@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
-import Link from 'next/';
 import Link from 'next/link';
+
+import { BlogHeroImage, BlogInlineImage } from '@/components/blog/BlogImage';
 
 export const metadata: Metadata = {
   title: 'Key Health Insurance Changes to Watch for in 2025 | Choice Insurance Hub',
@@ -18,14 +19,12 @@ export default function HealthInsuranceBlogPost() {
       </h1>
       <p className="mb-6 text-gray-600">Published: May 7, 2025 | By Manus AI</p>
 
-      <p className="BlogHeroImage
-
-         src="/images/blog/health-insurance-changes-2025.jpg"
-          alt="Doctor explaining healthcare policy changes to patient with digital health record"
-        "
+      <BlogHeroImage
+        src="/images/blog/health-insurance-changes-2025.jpg"
+        alt="Doctor explaining healthcare policy changes to patient with digital health record"
+        title="Health Insurance Changes 2025"
+        category="health-insurance"
       />
-
-      <p classNa  />
 
       <p className="mb-6">
         As we progress through 2025, the health insurance landscape continues to undergo
@@ -134,9 +133,10 @@ export default function HealthInsuranceBlogPost() {
       </h2>
 
       <BlogInlineImage
-          src="/images/blog/preventive-care-expansion-2025.jpg"
-          alt="Healthcare provider conducting comprehensive preventive care screening with patient"
-        "
+        src="/images/blog/preventive-care-expansion-2025.jpg"
+        alt="Healthcare provider conducting comprehensive preventive care screening with patient"
+        title="Preventive Care Expansion 2025"
+        category="health-insurance"
       />
 
       <p className="mb-6">
@@ -284,10 +284,9 @@ export default function HealthInsuranceBlogPost() {
       <BlogInlineImage
         src="/images/blog/mental-health-coverage-2025.jpg"
         alt="Mental health professional providing teletherapy session to patient"
-        2025"
+        title="Mental Health Coverage Improvements 2025"
+        category="health-insurance"
       />
-
-      <p classNa  />
 
       <p className="mb-6">
         Mental health coverage has undergone a revolutionary transformation in 2025, with new
@@ -417,20 +416,19 @@ export default function HealthInsuranceBlogPost() {
         comprehensive support for consumers who need help understanding their health insurance
         options and enrolling in coverage. These programs include multilingual support, specialized
         assistance for individuals with complex health needs, and ongoing support throughout the
-        plan year.r.
+        plan year.
       </p>
 
       <h2 className="mb-4 mt-8 text-2xl font-bold">
         Technology Integration and Digital Health Innovation
       </h2>
 
-      <h2 className="mb-4       Image
+      <BlogInlineImage
         src="/images/blog/digital-health-innovation-2025.jpg"
-          alt="Patient using digital health app with wearable device for health monitoring"
-        2025"
+        alt="Patient using digital health app with wearable device for health monitoring"
+        title="Digital Health Innovation 2025"
+        category="health-insurance"
       />
-
-      <p classNa  />
 
       <p className="mb-6">
         The integration of technology into health insurance and healthcare delivery has accelerated

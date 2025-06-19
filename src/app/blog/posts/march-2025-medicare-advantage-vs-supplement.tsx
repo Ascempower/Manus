@@ -18,17 +18,14 @@ export default function MedicareBlogPost() {
       <h1 className="mb-4 text-3xl font-bold md:text-4xl">
         Medicare Advantage vs. Medicare Supplement: Which is Right for You in 2025?
       </h1>
-      <p className="p className="mb-6 text-gray-600">Published: March 5, 2025 | By Manus AI</p>
+      <p className="mb-6 text-gray-600">Published: March 5, 2025 | By Manus AI</p>
 
       <BlogHeroImage
-
-         src="/images/blog/medicare-comparison-2025.jpg"
-          alt="Medicare Advantage vs Medicare Supplement comparison showing two seniors reviewing their Medicare options"
+        src="/images/blog/medicare-comparison-2025.jpg"
+        alt="Medicare Advantage vs Medicare Supplement comparison showing two seniors reviewing their Medicare options"
         title="Medicare Advantage vs Medicare Supplement 2025"
         category="medicare"
       />
-
-      <p classNa  />
 
       <p className="mb-6">
         As we advance through 2025, Medicare beneficiaries across the United States face one of the
@@ -164,11 +161,10 @@ export default function MedicareBlogPost() {
 
       <BlogInlineImage
         src="/images/blog/medicare-comparison-2025.jpg"
-          alt="Detailed cost comparison chart showing Medicare Advantage vs Medicare Supplement expenses"
-        e"
+        alt="Detailed cost comparison chart showing Medicare Advantage vs Medicare Supplement expenses"
+        title="Medicare Cost Comparison Analysis"
+        category="medicare"
       />
-
-      <p classNa  />
 
       <p className="mb-6">
         Understanding the true cost implications of Medicare Advantage versus Medicare Supplement
@@ -354,12 +350,10 @@ export default function MedicareBlogPost() {
 
       <BlogInlineImage
         src="/images/blog/medicare-prescription-coverage.jpg"
-          alt="Pharmacist explaining prescription drug coverage options to Medicare beneficiary"
+        alt="Pharmacist explaining prescription drug coverage options to Medicare beneficiary"
         title="Medicare Prescription Drug Coverage"
         category="medicare"
       />
-
-      <p classNa  />
 
       <p className="mb-6">
         Prescription drug coverage represents another critical area of difference between Medicare
@@ -609,12 +603,11 @@ export default function MedicareBlogPost() {
       </h2>
 
       <BlogInlineImage
-        />
-
-      <p classNasrc="/images/blog/medicare-comparison-2025.jpg"
-          alt="Healthcare provider conducting health assessment with Medicare beneficiary"
-        Planning"
-          />
+        src="/images/blog/medicare-comparison-2025.jpg"
+        alt="Healthcare provider conducting health assessment with Medicare beneficiary"
+        title="Medicare Health Assessment and Planning"
+        category="medicare"
+      />
 
       <p className="mb-6">
         Your current health status, medical history, and anticipated healthcare needs should play a
