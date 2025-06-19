@@ -8,6 +8,7 @@ import LazyAnalytics from '@/components/analytics/LazyAnalytics';
 import LazyCompliance from '@/components/compliance/LazyCompliance';
 import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
+import { LocalBusinessSchema, OrganizationSchema } from '@/components/seo/StructuredData';
 
 import './globals.css';
 
@@ -85,7 +86,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'your-google-verification-code',
+    google: 'your-google-verification-code', // TODO: Replace with actual Google Search Console verification code
   },
 };
 
@@ -110,6 +111,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Choice Insurance" />
+        <OrganizationSchema />
+        <LocalBusinessSchema />
       </head>
       <body className="min-h-screen bg-brand-white text-brand-black antialiased">
         <div className="flex min-h-screen flex-col">

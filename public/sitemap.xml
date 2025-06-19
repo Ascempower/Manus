@@ -69,4 +69,38 @@
     <loc>https://choiceinsurancehub.com/services/annuities</loc>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://choiceinsurancehub.com/services/health-insurance</loc>
+    <priority>0.6</priority>
+  </url>
+  <!-- Legal Pages -->
+  <url>
+    <loc>https://choiceinsurancehub.com/privacy-policy</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://choiceinsurancehub.com/terms-of-service</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://choiceinsurancehub.com/hipaa-notice</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://choiceinsurancehub.com/accessibility-statement</loc>
+    <priority>0.3</priority>
+  </url>
+  <!-- Blog Posts -->
+  <url>
+    <loc>https://choiceinsurancehub.com/blog/posts/may-2025-health-insurance-changes</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://choiceinsurancehub.com/blog/posts/april-2025-understanding-life-insurance</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://choiceinsurancehub.com/blog/posts/march-2025-medicare-advantage-vs-supplement</loc>
+    <priority>0.5</priority>
+  </url>
 </urlset>
