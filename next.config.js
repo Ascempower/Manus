@@ -32,6 +32,8 @@ const nextConfig = {
     webpackBuildWorker: true,
     parallelServerCompiles: true,
     parallelServerBuildTraces: true,
+    // Reduce CSS preload warnings
+    cssChunking: 'strict',
   },
 
   // Turbopack configuration (stable)

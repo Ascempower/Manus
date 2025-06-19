@@ -5,6 +5,7 @@ import { CalendarDays, Mail, MapPin, Phone } from 'lucide-react';
 
 import ContactFormWrapper from '@/components/forms/ContactFormWrapper';
 import ButtonLink from '@/components/ui/ButtonLink';
+import { CalendlyInline } from '@/components/widgets/CalendlyWidget';
 
 export const metadata: Metadata = {
   title: 'Contact Us - Choice Insurance Hub',
@@ -134,26 +135,43 @@ export default function ContactPage() {
       </section>
 
       {/* Book a Call Section */}
-      <section id="book-a-call" className="bg-brand-deep-forest-green py-16 text-brand-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="mb-6 font-poppins text-3xl font-bold">
-            Ready for a Personalized Consultation?
-          </h2>
-          <p className="mx-auto mb-8 max-w-2xl text-lg text-brand-white/90">
-            Schedule a free, no-obligation consultation with one of our expert insurance advisors at
-            your convenience. We can discuss your needs and help you find the perfect plan.
-          </p>
-          <ButtonLink
-            href="https://calendly.com/choiceinsuranceagency/30-minute-meeting"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-brand-warm-beige-coral font-semibold text-brand-black hover:bg-brand-warm-beige-coral/80"
-          >
-            Book Your Free Consultation Now
-          </ButtonLink>
-          <p className="mt-4 text-sm text-brand-white/70">
-            (You will be redirected to our scheduling partner)
-          </p>
+      <section id="book-a-call" className="bg-brand-white py-16">
+        <div className="container mx-auto px-4">
+          <div className="mb-8 text-center">
+            <h2 className="mb-4 font-poppins text-3xl font-bold text-brand-deep-forest-green">
+              Book Your Free Consultation
+            </h2>
+            <p className="mx-auto max-w-2xl text-lg text-brand-black/80">
+              Schedule a free, no-obligation consultation with one of our expert insurance advisors.
+              Choose a time that works best for you.
+            </p>
+          </div>
+
+          {/* Calendly Widget */}
+          <div className="mx-auto max-w-4xl">
+            <CalendlyInline className="shadow-lg" />
+          </div>
+
+          {/* Fallback Contact Options */}
+          <div className="mt-8 text-center">
+            <p className="mb-4 text-brand-black/60">
+              Having trouble with the calendar? Contact us directly:
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <ButtonLink
+                href="tel:8774142319"
+                className="bg-brand-deep-forest-green text-brand-white hover:bg-brand-deep-forest-green/80"
+              >
+                Call (877) 414-2319
+              </ButtonLink>
+              <ButtonLink
+                href="mailto:info@choiceinsurancehub.com"
+                className="bg-brand-teal-blue text-brand-black hover:bg-brand-teal-blue/80"
+              >
+                Email Us
+              </ButtonLink>
+            </div>
+          </div>
         </div>
       </section>
     </div>
