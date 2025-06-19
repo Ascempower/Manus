@@ -1,6 +1,10 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 
+import { BlogHeroImage, BlogInlineImage } from '@/components/blog/BlogImage';
+
+import { BlogHeroImage, BlogInlineImage } from '@/components/blog/BlogImage';
+
 export const metadata: Metadata = {
   title:
     'Medicare Advantage vs. Medicare Supplement: Which is Right for You in 2025? | Choice Insurance Hub',
@@ -16,18 +20,13 @@ export default function MedicareBlogPost() {
       <h1 className="mb-4 text-3xl font-bold md:text-4xl">
         Medicare Advantage vs. Medicare Supplement: Which is Right for You in 2025?
       </h1>
-      <p className="mb-6 text-gray-600">Published: March 5, 2025 | By Manus AI</p>
+      <mb-6 text-gray-600">Published: March 5, 2025 | By Manus AI</p>
 
-      <div className="relative mb-8 h-[400px] w-full">
-        <Image
-          src="/images/blog/medicare-comparison-2025.jpg"
-          alt="Medicare Advantage vs Medicare Supplement comparison showing two seniors reviewing their Medicare options"
-          fill
-          className="rounded-lg object-cover"
-        />
-      </div>
-
-      <p className="mb-6">
+      <BlogHeroImage       src="/images/blog/medicare-comparison-2025.jpg"
+      alt="Medicare Advantage vs Medicare Supplement comparison showing two seniors reviewing their Medicare options"
+        title="Medicare Advantage vs Medicare Supplement 2025"
+        category="medicare"
+    me="mb-6">
         As we advance through 2025, Medicare beneficiaries across the United States face one of the
         most consequential healthcare decisions of their lives: choosing between Medicare Advantage
         and Medicare Supplement (Medigap) plans. This decision will fundamentally shape their
@@ -159,17 +158,14 @@ export default function MedicareBlogPost() {
         Comprehensive Cost Analysis: Understanding the True Financial Impact
       </h2>
 
-      <div className="relative my-6 h-[400px] w-full">
-        <Image
-          src="/images/blog/medicare-comparison-2025.jpg"
-          alt="Detailed cost comparison chart showing Medicare Advantage vs Medicare Supplement expenses"
-          fill
-          className="rounded-lg object-cover"
-        />
-      </div>
-
-      <p className="mb-6">
-        Understanding the true cost implications of Medicare Advantage versus Medicare Supplement
+      <BlogInlineImage
+        src="/images/blog/medicare-comparison-2025.jpg"
+      alt="Detailed cost comparison chart showing Medicare Advantage vs Medicare Supplement expenses"
+        title="Medicare Cost Comparison Analysis"
+        category="medicare"
+    me="mb-6">
+        Understanding the true cost implications of Medicare Advantage versus Medicare Supplemtitle="Medicare Cost Comparison Analysis"
+        category="medicarent
         requires a comprehensive analysis that goes beyond simple premium comparisons. The total
         cost of healthcare coverage includes not only monthly premiums but also deductibles,
         copayments, coinsurance, out-of-pocket maximums, and the potential costs of services that
@@ -344,22 +340,16 @@ export default function MedicareBlogPost() {
         management and prior authorization requirements that are common in managed care plans. This
         can result in fewer administrative barriers to care and may allow for more individualized
         treatment decisions between patients and their healthcare providers.
-      </p>
-
-      <h2 className="mb-4 mt-8 text-2xl font-bold">
+BlogInline/p>      <mt-8 text-2xl font-bold">
         Prescription Drug Coverage: Integrated vs. Standalone Approaches
       </h2>
 
-      <div className="relative my-6 h-[400px] w-full">
-        <Image
-          src="/images/blog/medicare-prescription-coverage.jpg"
-          alt="Pharmacist explaining prescription drug coverage options to Medicare beneficiary"
-          fill
-          className="rounded-lg object-cover"
-        />
-      </div>
-
-      <p className="mb-6">
+      <BlogInlineImage
+        src="/images/blog/medicare-prescription-coverage.jpg"
+      alt="Pharmacist explaining prescription drug coverage options to Medicare beneficiary"
+        title="Medicare Prescription Drug Coverageage"
+        category="medicare"
+    me="mb-6">
         Prescription drug coverage represents another critical area of difference between Medicare
         Advantage and Medicare Supplement approaches, with each offering distinct advantages and
         considerations that can significantly impact your medication costs and access to needed
@@ -606,16 +596,13 @@ export default function MedicareBlogPost() {
         Health Status and Medical Needs: Tailoring Your Choice to Your Circumstances
       </h2>
 
-      <div className="relative my-6 h-[400px] w-full">
-        <Image
-          src="/images/blog/medicare-comparison-2025.jpg"
-          alt="Healthcare provider conducting health assessment with Medicare beneficiary"
-          fill
-          className="rounded-lg object-cover"
-        />
-      </div>
-
-      <p className="mb-6">
+      <BlogInlineImage
+      src="/images/blog/medicare-comparison-2025.jpg"
+      alt="Healthcare provider conducting health assessment with Medicare beneficiary"
+        title="Medicare Health Assessment and Ptitle="Medicare Health Assessment and Planning"
+        category="medicare"
+        category="medicare"
+    me="mb-6">
         Your current health status, medical history, and anticipated healthcare needs should play a
         central role in your decision between Medicare Advantage and Medicare Supplement coverage.
         Different health profiles may benefit more from one approach than the other, and
