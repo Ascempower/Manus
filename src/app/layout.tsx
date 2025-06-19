@@ -49,7 +49,6 @@ export const metadata: Metadata = {
     icon: ['/favicon.ico', '/icon.svg'],
     apple: '/apple-touch-icon.png',
   },
-  manifest: '/manifest.json',
   openGraph: {
     title: 'Choice Insurance Hub - Expert Health, Life & Medicare Insurance Solutions',
     description:
@@ -105,6 +104,13 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`scroll-smooth ${inter.variable} ${poppins.variable}`}>
+      <head>
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#42615A" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Choice Insurance" />
+      </head>
       <body className="min-h-screen bg-brand-white text-brand-black antialiased">
         <div className="flex min-h-screen flex-col">
           <Header />
