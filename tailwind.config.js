@@ -2,6 +2,35 @@
 module.exports = {
   darkMode: ['class'],
   content: ['./src/**/*.{ts,tsx,js,jsx}'],
+  safelist: [
+    // Brand colors to ensure they're always generated
+    'bg-brand-white',
+    'bg-brand-teal-blue',
+    'bg-brand-teal-blue-dark',
+    'bg-brand-deep-forest-green',
+    'bg-brand-warm-beige-coral',
+    'bg-brand-warm-beige-coral-dark',
+    'bg-brand-black',
+    'text-brand-white',
+    'text-brand-teal-blue',
+    'text-brand-teal-blue-dark',
+    'text-brand-deep-forest-green',
+    'text-brand-warm-beige-coral',
+    'text-brand-warm-beige-coral-dark',
+    'text-brand-black',
+    'border-brand-white',
+    'border-brand-teal-blue',
+    'border-brand-teal-blue-dark',
+    'border-brand-deep-forest-green',
+    'border-brand-warm-beige-coral',
+    'border-brand-warm-beige-coral-dark',
+    'border-brand-black',
+    'hover:bg-brand-teal-blue',
+    'hover:text-brand-black',
+    'hover:text-brand-white',
+    'data-[state=open]:bg-brand-teal-blue',
+    'data-[state=open]:text-brand-black',
+  ],
   theme: {
     extend: {
       borderRadius: {

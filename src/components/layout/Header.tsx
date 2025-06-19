@@ -63,25 +63,25 @@ export default function Header() {
                     <NavigationMenuTrigger
                       className={cn(
                         navigationMenuTriggerStyle(),
-                        'bg-brand-deep-forest-green text-brand-white hover:bg-brand-teal-blue hover:text-brand-black data-[state=open]:bg-brand-teal-blue data-[state=open]:text-brand-black'
+                        'bg-[#42615A] text-white hover:bg-[#A7C9CA] hover:text-black data-[state=open]:bg-[#A7C9CA] data-[state=open]:text-black'
                       )}
                     >
                       {item.label}
                     </NavigationMenuTrigger>
                     <NavigationMenuContent className="transition-all duration-300 ease-in-out">
-                      <div className="grid w-[400px] gap-2 rounded-lg border border-brand-teal-blue-dark bg-white p-4 shadow-lg transition-all duration-200 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                      <div className="grid w-[400px] gap-2 rounded-lg border border-[#8BB5B7] bg-white p-4 shadow-lg transition-all duration-200 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                         {/* First Column */}
                         <div className="flex flex-col gap-2">
                           {/* All Services - Forest Green, takes most space */}
                           <NavigationMenuLink asChild>
                             <Link
                               href="/services"
-                              className="group block flex-1 transform select-none rounded-lg border border-brand-deep-forest-green bg-brand-deep-forest-green p-6 leading-none text-brand-white no-underline outline-none transition-all duration-200 hover:scale-[1.02] hover:bg-brand-deep-forest-green/90 hover:shadow-lg focus:bg-brand-deep-forest-green/90"
+                              className="group block flex-1 transform select-none rounded-lg border border-[#42615A] bg-[#42615A] p-6 leading-none text-white no-underline outline-none transition-all duration-200 hover:scale-[1.02] hover:bg-[#42615A]/90 hover:shadow-lg focus:bg-[#42615A]/90"
                             >
-                              <div className="text-lg font-bold leading-none text-brand-white transition-colors duration-200">
+                              <div className="text-lg font-bold leading-none text-white transition-colors duration-200">
                                 All Services
                               </div>
-                              <div className="mt-2 text-sm text-brand-white/90 transition-colors duration-200">
+                              <div className="mt-2 text-sm text-white/90 transition-colors duration-200">
                                 Explore our comprehensive range of insurance solutions
                               </div>
                             </Link>
@@ -92,12 +92,12 @@ export default function Header() {
                             <NavigationMenuLink key={service.href} asChild>
                               <Link
                                 href={service.href}
-                                className="group block transform select-none rounded-lg border border-transparent p-3 leading-none no-underline outline-none transition-all duration-200 hover:scale-[1.02] hover:border-brand-deep-forest-green hover:bg-brand-deep-forest-green hover:text-brand-white hover:shadow-md focus:bg-brand-deep-forest-green focus:text-brand-white"
+                                className="group block transform select-none rounded-lg border border-transparent p-3 leading-none no-underline outline-none transition-all duration-200 hover:scale-[1.02] hover:border-[#42615A] hover:bg-[#42615A] hover:text-white hover:shadow-md focus:bg-[#42615A] focus:text-white"
                               >
-                                <div className="text-sm font-medium leading-none text-brand-black transition-colors duration-200 group-hover:text-brand-white">
+                                <div className="text-sm font-medium leading-none text-black transition-colors duration-200 group-hover:text-white">
                                   {service.label}
                                 </div>
-                                <div className="mt-1 text-xs text-gray-600 transition-colors duration-200 group-hover:text-brand-white/80">
+                                <div className="mt-1 text-xs text-gray-600 transition-colors duration-200 group-hover:text-white/80">
                                   Learn more about {service.label.toLowerCase()}
                                 </div>
                               </Link>
@@ -111,12 +111,12 @@ export default function Header() {
                             <NavigationMenuLink key={service.href} asChild>
                               <Link
                                 href={service.href}
-                                className="group block transform select-none rounded-lg border border-transparent p-3 leading-none no-underline outline-none transition-all duration-200 hover:scale-[1.02] hover:border-brand-deep-forest-green hover:bg-brand-deep-forest-green hover:text-brand-white hover:shadow-md focus:bg-brand-deep-forest-green focus:text-brand-white"
+                                className="group block transform select-none rounded-lg border border-transparent p-3 leading-none no-underline outline-none transition-all duration-200 hover:scale-[1.02] hover:border-[#42615A] hover:bg-[#42615A] hover:text-white hover:shadow-md focus:bg-[#42615A] focus:text-white"
                               >
-                                <div className="text-sm font-medium leading-none text-brand-black transition-colors duration-200 group-hover:text-brand-white">
+                                <div className="text-sm font-medium leading-none text-black transition-colors duration-200 group-hover:text-white">
                                   {service.label}
                                 </div>
-                                <div className="mt-1 text-xs text-gray-600 transition-colors duration-200 group-hover:text-brand-white/80">
+                                <div className="mt-1 text-xs text-gray-600 transition-colors duration-200 group-hover:text-white/80">
                                   Learn more about {service.label.toLowerCase()}
                                 </div>
                               </Link>
