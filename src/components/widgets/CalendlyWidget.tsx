@@ -33,6 +33,10 @@ export default function CalendlyWidget({
   className = '',
   prefill,
 }: CalendlyWidgetProps) {
+  // Add branding parameters to URL
+  const brandedUrl = url.includes('?')
+    ? `${url}&primary_color=42615a&text_color=dd8b66&background_color=42615a&hide_gdpr_banner=1&hide_event_type_details=0`
+    : `${url}?primary_color=42615a&text_color=dd8b66&background_color=42615a&hide_gdpr_banner=1&hide_event_type_details=0`;
   const calendlyRef = React.useRef<HTMLDivElement>(null);
   const [isLoaded, setIsLoaded] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
@@ -90,7 +94,9 @@ export default function CalendlyWidget({
           .calendly-inline-widget [class*="footer"],
           .calendly-inline-widget [class*="powered-by"],
           .calendly-inline-widget [data-testid*="footer"],
-          .calendly-inline-widget [data-testid*="powered"] {
+          .calendly-inline-widget [data-testid*="powered"],
+          .calendly-inline-widget [href*="calendly.com"],
+          .calendly-inline-widget a[target="_blank"]:not([href*="choiceinsurancehub"]) {
             display: none !important;
             visibility: hidden !important;
             opacity: 0 !important;
@@ -98,21 +104,26 @@ export default function CalendlyWidget({
             overflow: hidden !important;
           }
 
-          /* Custom branding colors - Dark green background with coral accents */
-          .calendly-inline-widget {
-            --calendly-color-primary: #42615a !important;
-            --calendly-color-primary-hover: #8bb5b7 !important;
-            --calendly-color-secondary: #dd8b66 !important;
-            --calendly-color-text: #dd8b66 !important;
-            --calendly-color-background: #42615a !important;
-            --calendly-border-radius: 8px !important;
+          /* Style the main widget container */
+          .calendly-widget-container {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
           }
 
           /* Style the iframe container */
           .calendly-inline-widget iframe {
-            border-radius: 8px !important;
-            border: 2px solid #dd8b66 !important;
-            background-color: #42615a !important;
+            border-radius: 0 !important;
+            border: none !important;
+            background-color: #ffffff !important;
+            width: 100% !important;
+            height: 100% !important;
+          }
+
+          /* Ensure proper styling within iframe (if accessible) */
+          .calendly-inline-widget {
+            background-color: #ffffff !important;
+            border-radius: 0 !important;
           }
         `;
         document.head.appendChild(customStyle);
@@ -129,9 +140,9 @@ export default function CalendlyWidget({
         // Clear any existing content
         calendlyRef.current.innerHTML = '';
 
-        // Initialize Calendly widget with custom branding
+        // Initialize Calendly widget
         window.Calendly.initInlineWidget({
-          url: url,
+          url: brandedUrl,
           parentElement: calendlyRef.current,
           prefill: prefill || {},
           utm: {
@@ -139,11 +150,6 @@ export default function CalendlyWidget({
             utmSource: 'choiceinsurancehub.com',
             utmMedium: 'website',
           },
-          // Custom styling to match brand colors
-          branding: false,
-          primaryColor: '42615a', // Deep forest green
-          textColor: 'dd8b66', // Coral text
-          backgroundColor: '42615a', // Dark green background
         });
       } catch (err) {
         setError('Error initializing Calendly widget');
@@ -159,7 +165,7 @@ export default function CalendlyWidget({
         script.parentNode.removeChild(script);
       }
     };
-  }, [url, prefill]);
+  }, [brandedUrl, prefill]);
 
   if (error) {
     return (
