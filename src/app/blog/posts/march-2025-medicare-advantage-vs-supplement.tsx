@@ -3,8 +3,6 @@ import Link from 'next/link';
 
 import { BlogHeroImage, BlogInlineImage } from '@/components/blog/BlogImage';
 
-import { BlogHeroImage, BlogInlineImage } from '@/components/blog/BlogImage';
-
 export const metadata: Metadata = {
   title:
     'Medicare Advantage vs. Medicare Supplement: Which is Right for You in 2025? | Choice Insurance Hub',
