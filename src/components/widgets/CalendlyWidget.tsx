@@ -72,6 +72,50 @@ export default function CalendlyWidget({
         link.href = 'https://assets.calendly.com/assets/external/widget.css';
         link.rel = 'stylesheet';
         document.head.appendChild(link);
+
+        // Add custom CSS to hide branding and apply custom styling
+        const customStyle = document.createElement('style');
+        customStyle.textContent = `
+          /* Hide Calendly branding and install app prompts */
+          .calendly-inline-widget [data-testid="branding"],
+          .calendly-inline-widget .calendly-badge-widget,
+          .calendly-inline-widget .calendly-badge-content,
+          .calendly-inline-widget [class*="branding"],
+          .calendly-inline-widget [class*="badge"],
+          .calendly-inline-widget [data-testid="install-app"],
+          .calendly-inline-widget [aria-label*="install"],
+          .calendly-inline-widget [title*="install"],
+          .calendly-inline-widget .calendly-popup-close,
+          .calendly-inline-widget [data-testid="popup-website-embed"],
+          .calendly-inline-widget [class*="footer"],
+          .calendly-inline-widget [class*="powered-by"],
+          .calendly-inline-widget [data-testid*="footer"],
+          .calendly-inline-widget [data-testid*="powered"] {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            height: 0 !important;
+            overflow: hidden !important;
+          }
+
+          /* Custom branding colors - Dark green background with coral accents */
+          .calendly-inline-widget {
+            --calendly-color-primary: #42615a !important;
+            --calendly-color-primary-hover: #8bb5b7 !important;
+            --calendly-color-secondary: #dd8b66 !important;
+            --calendly-color-text: #dd8b66 !important;
+            --calendly-color-background: #42615a !important;
+            --calendly-border-radius: 8px !important;
+          }
+
+          /* Style the iframe container */
+          .calendly-inline-widget iframe {
+            border-radius: 8px !important;
+            border: 2px solid #dd8b66 !important;
+            background-color: #42615a !important;
+          }
+        `;
+        document.head.appendChild(customStyle);
       } catch (err) {
         setError('Error loading Calendly widget');
         console.error('Calendly loading error:', err);
@@ -85,7 +129,7 @@ export default function CalendlyWidget({
         // Clear any existing content
         calendlyRef.current.innerHTML = '';
 
-        // Initialize Calendly widget
+        // Initialize Calendly widget with custom branding
         window.Calendly.initInlineWidget({
           url: url,
           parentElement: calendlyRef.current,
@@ -95,6 +139,11 @@ export default function CalendlyWidget({
             utmSource: 'choiceinsurancehub.com',
             utmMedium: 'website',
           },
+          // Custom styling to match brand colors
+          branding: false,
+          primaryColor: '42615a', // Deep forest green
+          textColor: 'dd8b66', // Coral text
+          backgroundColor: '42615a', // Dark green background
         });
       } catch (err) {
         setError('Error initializing Calendly widget');
@@ -137,13 +186,23 @@ export default function CalendlyWidget({
 
   return (
     <div className={`calendly-widget-container ${className}`}>
+      {/* Call-to-Action Header */}
+      <div className="mb-6 rounded-t-lg bg-brand-deep-forest-green p-6 text-center">
+        <h2 className="mb-2 text-2xl font-bold text-brand-warm-beige-coral">
+          Schedule Your Free Consultation
+        </h2>
+        <p className="text-brand-warm-beige-coral/90">
+          Book a 30-minute meeting with our insurance experts to discuss your needs
+        </p>
+      </div>
+
       {!isLoaded && (
         <div
-          className="flex items-center justify-center rounded-lg bg-gray-50 text-gray-600"
+          className="flex items-center justify-center rounded-b-lg bg-brand-deep-forest-green text-brand-warm-beige-coral"
           style={{ height: `${height}px` }}
         >
           <div className="text-center">
-            <div className="mb-2 h-8 w-8 animate-spin rounded-full border-4 border-brand-teal-blue border-t-transparent"></div>
+            <div className="mb-2 h-8 w-8 animate-spin rounded-full border-4 border-brand-warm-beige-coral border-t-transparent"></div>
             <p>Loading booking calendar...</p>
           </div>
         </div>
@@ -151,7 +210,7 @@ export default function CalendlyWidget({
       <div
         ref={calendlyRef}
         style={{ minHeight: `${height}px` }}
-        className={isLoaded ? 'block' : 'hidden'}
+        className={`${isLoaded ? 'block' : 'hidden'} overflow-hidden rounded-b-lg`}
       />
     </div>
   );
@@ -160,7 +219,10 @@ export default function CalendlyWidget({
 // Inline Calendly Widget (smaller, embedded)
 export function CalendlyInline({ className = '' }: { className?: string }) {
   return (
-    <CalendlyWidget height={600} className={`rounded-lg border border-gray-200 ${className}`} />
+    <CalendlyWidget
+      height={600}
+      className={`rounded-lg border-2 border-brand-warm-beige-coral shadow-xl ${className}`}
+    />
   );
 }
 
