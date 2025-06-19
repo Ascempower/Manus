@@ -1,8 +1,6 @@
-import { Metadata } from 'nextli
-nk';
-im from{ BlogHeroImage, BlogInlineImage } from '@/components/blog/BlogImage';
-
-import { BlogHeroImage, BlogInlineImage } from '@/components/blog/BlogImage';
+import { Metadata } from 'next';
+import Link from 'next/';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Key Health Insurance Changes to Watch for in 2025 | Choice Insurance Hub',
@@ -18,15 +16,19 @@ export default function HealthInsuranceBlogPost() {
       <h1 className="mb-4 text-3xl font-bold md:text-4xl">
         Key Health Insurance Changes to Watch for in 2025
       </h1>
-      <mb-6 text-gray-600">Published: May 7, 2025 | By Manus AI</p>
+      <p className="mb-6 text-gray-600">Published: May 7, 2025 | By Manus AI</p>
 
-      <BlogHeroImage       src="/images/blog/health-insurance-changes-2025.jpg"
-      alt="Doctor explaining healthcare policy changes to patient with digital health record"
-        title="Health Insurance Changes 2025"
-        category="health-insurance"
-    me="mb-6">
-        As we progress through 2025, the health insurance landscape continues to title="Health Insurance Changes 2025"
-        category="health-insurancego
+      <p className="BlogHeroImage
+
+         src="/images/blog/health-insurance-changes-2025.jpg"
+          alt="Doctor explaining healthcare policy changes to patient with digital health record"
+        "
+      />
+
+      <p classNa  />
+
+      <p className="mb-6">
+        As we progress through 2025, the health insurance landscape continues to undergo
         transformative changes that are reshaping how Americans access, experience, and pay for
         healthcare coverage. These developments represent the culmination of years of policy
         evolution, technological advancement, and shifting consumer expectations that are
@@ -132,12 +134,12 @@ export default function HealthInsuranceBlogPost() {
       </h2>
 
       <BlogInlineImage
-      src="/images/blog/preventive-care-expansion-2025.jpg"
-      alt="Healthcare provider conducting comprehensive preventive care screening with title="Preventive Care Expansion 2025"
-        category="health-insurance"
-        title="Preventive Care Expansion 2025"
-        category="health-insurance"
-    me="mb-6">
+          src="/images/blog/preventive-care-expansion-2025.jpg"
+          alt="Healthcare provider conducting comprehensive preventive care screening with patient"
+        "
+      />
+
+      <p className="mb-6">
         The emphasis on preventive care has reached new heights in 2025, with health insurance plans
         significantly expanding their coverage of preventive services and wellness programs. This
         shift reflects a growing recognition that investing in prevention and early detection can
@@ -273,17 +275,21 @@ export default function HealthInsuranceBlogPost() {
         medications and remove brand-name drugs more quickly when cost-effective alternatives become
         available. This flexibility allows plans to provide better value to their members while
         maintaining access to necessary medications.
-BlogInline/p>      <mt-8 text-2xl font-bold">
+      </p>
+
+      <h2 className="mb-4 mt-8 text-2xl font-bold">
         Mental Health Coverage Revolution: Achieving True Parity and Access
       </h2>
 
       <BlogInlineImage
         src="/images/blog/mental-health-coverage-2025.jpg"
         alt="Mental health professional providing teletherapy session to patient"
-        title="Mental Health Coverage Improvements title="Mental Health Coverage Improvements 2025"
-        category="health-insurance"
-        category="health-insurance"
-    me="mb-6">
+        2025"
+      />
+
+      <p classNa  />
+
+      <p className="mb-6">
         Mental health coverage has undergone a revolutionary transformation in 2025, with new
         regulations, expanded access, and innovative treatment approaches that are making mental
         health care more accessible, affordable, and effective than ever before. These changes
@@ -411,20 +417,22 @@ BlogInline/p>      <mt-8 text-2xl font-bold">
         comprehensive support for consumers who need help understanding their health insurance
         options and enrolling in coverage. These programs include multilingual support, specialized
         assistance for individuals with complex health needs, and ongoing support throughout the
-  BlogInlineplan yea
+        plan year.r.
       </p>
 
-      <mt-8 text-2xl font-bold">
+      <h2 className="mb-4 mt-8 text-2xl font-bold">
         Technology Integration and Digital Health Innovation
       </h2>
 
-      <BlogInlineImage
+      <h2 className="mb-4       Image
         src="/images/blog/digital-health-innovation-2025.jpg"
-      alt="Patient using digital health app with wearable device for health monitoring"
-        title="Digital Health Innovation title="Digital Health Innovation 2025"
-        category="health-insurance"
-        category="health-insurance"
-    me="mb-6">
+          alt="Patient using digital health app with wearable device for health monitoring"
+        2025"
+      />
+
+      <p classNa  />
+
+      <p className="mb-6">
         The integration of technology into health insurance and healthcare delivery has accelerated
         dramatically in 2025, with new digital tools and platforms that are transforming how
         consumers interact with their health insurance coverage and access healthcare services.
