@@ -68,7 +68,7 @@ export default function Header() {
                     >
                       {item.label}
                     </NavigationMenuTrigger>
-                    <NavigationMenuContent>
+                    <NavigationMenuContent className="transition-all duration-300 ease-in-out">
                       <div className="grid w-[400px] gap-2 rounded-lg border border-brand-teal-blue-dark bg-white p-4 shadow-lg transition-all duration-200 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                         {/* First Column */}
                         <div className="flex flex-col gap-2">
