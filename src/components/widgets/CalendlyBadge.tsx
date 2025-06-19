@@ -10,21 +10,7 @@ interface CalendlyBadgeProps {
   branding?: boolean;
 }
 
-declare global {
-  interface Window {
-    Calendly?: {
-      initBadgeWidget: (options: {
-        url: string;
-        text: string;
-        color: string;
-        textColor: string;
-        branding: boolean;
-      }) => void;
-      closePopupWidget: () => void;
-      destroyBadgeWidget: () => void;
-    };
-  }
-}
+// Calendly types are defined in src/types/calendly.d.ts
 
 export default function CalendlyBadge({
   url = 'https://calendly.com/choiceinsurancehub/30-minute-meeting',

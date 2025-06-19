@@ -13,19 +13,7 @@ interface CalendlyWidgetProps {
   };
 }
 
-declare global {
-  interface Window {
-    Calendly?: {
-      initInlineWidget: (options: {
-        url: string;
-        parentElement: HTMLElement;
-        prefill?: Record<string, any>;
-        utm?: Record<string, string>;
-      }) => void;
-      closePopupWidget: () => void;
-    };
-  }
-}
+// Calendly types are defined in src/types/calendly.d.ts
 
 export default function CalendlyWidget({
   url = 'https://calendly.com/choiceinsurancehub/30-minute-meeting',
