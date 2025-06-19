@@ -98,7 +98,7 @@ const nextConfig = {
     return config;
   },
 
-  // Headers for better caching
+  // Headers for better caching and security
   async headers() {
     return [
       {
@@ -111,6 +111,10 @@ const nextConfig = {
           {
             key: 'X-Frame-Options',
             value: 'DENY',
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload',
           },
         ],
       },
