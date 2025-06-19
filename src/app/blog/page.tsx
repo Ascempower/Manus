@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 
+import { BlogThumbnailImage } from '@/components/blog/BlogImage';
 import { getAllBlogPosts } from '@/lib/blog-server';
 import { formatDate, generateExcerpt } from '@/lib/blog-utils';
 
@@ -50,14 +50,12 @@ export default function BlogPage() {
           >
             {/* Featured Image */}
             {post.frontmatter.image && (
-              <div className="relative h-48 w-full">
-                <Image
-                  src={post.frontmatter.image}
-                  alt={post.frontmatter.title || 'Blog post image'}
-                  fill
-                  className="object-cover"
-                />
-              </div>
+              <BlogThumbnailImage
+                src={post.frontmatter.image}
+                alt={post.frontmatter.title || 'Blog post image'}
+                title={post.frontmatter.title}
+                category={post.frontmatter.category}
+              />
             )}
 
             <div className="p-6">

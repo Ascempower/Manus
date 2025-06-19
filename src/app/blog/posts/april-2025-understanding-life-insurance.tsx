@@ -1,8 +1,7 @@
-import React from 'react';
-
 import { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
+
+import { BlogHeroImage, BlogInlineImage } from '@/components/blog/BlogImage';
 
 export const metadata: Metadata = {
   title: 'Understanding Life Insurance Options in 2025: A Complete Guide | Choice Insurance',
@@ -20,14 +19,12 @@ export default function LifeInsuranceBlogPost() {
       </h1>
       <p className="mb-6 text-gray-600">Published: April 3, 2025 | By Manus AI</p>
 
-      <div className="relative mb-8 h-[400px] w-full">
-        <Image
-          src="/images/blog/family-life-insurance-2025.jpg"
-          alt="Family discussing life insurance options with a financial advisor"
-          fill
-          className="rounded-lg object-cover"
-        />
-      </div>
+      <BlogHeroImage
+        src="/images/blog/family-life-insurance-2025.jpg"
+        alt="Family discussing life insurance options with a financial advisor"
+        title="Understanding Life Insurance Options in 2025"
+        category="life-insurance"
+      />
 
       <p className="mb-6">
         Life insurance remains one of the most critical financial tools for protecting your family's
@@ -95,14 +92,12 @@ export default function LifeInsuranceBlogPost() {
         Understanding the Fundamental Types of Life Insurance
       </h2>
 
-      <div className="relative my-6 h-[400px] w-full">
-        <Image
-          src="/images/blog/term-vs-whole-life-insurance.jpg"
-          alt="Comparison chart showing differences between term and whole life insurance policies"
-          fill
-          className="rounded-lg object-cover"
-        />
-      </div>
+      <BlogInlineImage
+        src="/images/blog/term-vs-whole-life-insurance.jpg"
+        alt="Comparison chart showing differences between term and whole life insurance policies"
+        title="Term vs Whole Life Insurance Comparison"
+        category="life-insurance"
+      />
 
       <p className="mb-6">
         The life insurance market in 2025 offers a sophisticated array of products designed to meet
@@ -309,14 +304,12 @@ export default function LifeInsuranceBlogPost() {
         Essential Policy Riders and Additional Benefits
       </h2>
 
-      <div className="relative my-6 h-[400px] w-full">
-        <Image
-          src="/images/blog/life-insurance-riders-2025.jpg"
-          alt="Infographic showing various life insurance riders and their benefits"
-          fill
-          className="rounded-lg object-cover"
-        />
-      </div>
+      <BlogInlineImage
+        src="/images/blog/life-insurance-riders-2025.jpg"
+        alt="Infographic showing various life insurance riders and their benefits"
+        title="Life Insurance Riders and Benefits"
+        category="life-insurance"
+      />
 
       <p className="mb-6">
         Modern life insurance policies in 2025 offer an extensive array of riders and additional
@@ -628,14 +621,12 @@ export default function LifeInsuranceBlogPost() {
 
       <h2 className="mb-4 mt-8 text-2xl font-bold">Business Applications of Life Insurance</h2>
 
-      <div className="relative my-6 h-[400px] w-full">
-        <Image
-          src="/images/blog/business-life-insurance-2025.jpg"
-          alt="Business owners discussing life insurance strategies for key person protection and succession planning"
-          fill
-          className="rounded-lg object-cover"
-        />
-      </div>
+      <BlogInlineImage
+        src="/images/blog/business-life-insurance-2025.jpg"
+        alt="Business owners discussing life insurance strategies for key person protection and succession planning"
+        title="Business Life Insurance Strategies"
+        category="life-insurance"
+      />
 
       <p className="mb-6">
         Life insurance plays a crucial role in business planning and risk management, providing
