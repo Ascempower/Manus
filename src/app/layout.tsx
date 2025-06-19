@@ -3,7 +3,6 @@ import React from 'react';
 import type { Metadata, Viewport } from 'next';
 import { Inter, Poppins } from 'next/font/google';
 
-import PWAInstaller from '@/components/PWAInstaller';
 import LazyAnalytics from '@/components/analytics/LazyAnalytics';
 import LazyCompliance from '@/components/compliance/LazyCompliance';
 import Footer from '@/components/layout/Footer';
@@ -117,6 +116,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Resource hints for better performance */}
         <link rel="dns-prefetch" href="//assets.calendly.com" />
         <link rel="dns-prefetch" href="//calendly.com" />
+        <link rel="dns-prefetch" href="//www.planenroll.com" />
+        <link rel="dns-prefetch" href="//www.googletagmanager.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
@@ -129,9 +130,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main className="flex-1">{children}</main>
           <Footer />
         </div>
-
-        {/* PWA Install Prompt */}
-        <PWAInstaller />
 
         {/* Calendly Badge Widget */}
         <ChoiceInsuranceBadge />
