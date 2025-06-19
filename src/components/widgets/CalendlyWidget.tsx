@@ -28,7 +28,7 @@ declare global {
 }
 
 export default function CalendlyWidget({
-  url = 'https://calendly.com/choiceinsuranceagency/30-minute-meeting',
+  url = 'https://calendly.com/choiceinsurancehub/30-minute-meeting',
   height = 700,
   className = '',
   prefill,
@@ -174,7 +174,7 @@ export default function CalendlyWidget({
         <p className="mt-2 text-sm text-red-500">
           Please{' '}
           <a
-            href="https://calendly.com/choiceinsuranceagency/30-minute-meeting"
+            href="https://calendly.com/choiceinsurancehub/30-minute-meeting"
             target="_blank"
             rel="noopener noreferrer"
             className="underline hover:no-underline"
@@ -236,7 +236,7 @@ export function CalendlyInline({ className = '' }: { className?: string }) {
 export function CalendlyPopupButton({
   children,
   className = '',
-  url = 'https://calendly.com/choiceinsuranceagency/30-minute-meeting',
+  url = 'https://calendly.com/choiceinsurancehub/30-minute-meeting',
 }: {
   children: React.ReactNode;
   className?: string;
