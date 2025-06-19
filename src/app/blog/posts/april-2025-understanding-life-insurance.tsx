@@ -305,7 +305,7 @@ export default function LifeInsuranceBlogPost() {
       </h2>
 
       <BlogInlineImage
-        src="/images/blog/life-insurance-riders-2025.jpg"
+        src="/images/blog/life-insurance-riders.jpg"
         alt="Infographic showing various life insurance riders and their benefits"
         title="Life Insurance Riders and Benefits"
         category="life-insurance"
@@ -622,7 +622,7 @@ export default function LifeInsuranceBlogPost() {
       <h2 className="mb-4 mt-8 text-2xl font-bold">Business Applications of Life Insurance</h2>
 
       <BlogInlineImage
-        src="/images/blog/business-life-insurance-2025.jpg"
+        src="/images/blog/understanding-life-insurance.jpg"
         alt="Business owners discussing life insurance strategies for key person protection and succession planning"
         title="Business Life Insurance Strategies"
         category="life-insurance"
