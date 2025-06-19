@@ -3,7 +3,12 @@
 const fs = require('fs');
 const path = require('path');
 
-console.log('🔍 Validating PWA configuration...');
+// Check if running in fast mode
+const fastMode = process.argv.includes('--fast');
+
+if (!fastMode) {
+  console.log('🔍 Validating PWA configuration...');
+}
 
 // Check manifest.json
 const manifestPath = path.join(process.cwd(), 'public', 'manifest.json');
@@ -46,12 +51,13 @@ try {
   );
 
   if (!hasMaskableIcon) {
-    console.warn('⚠️  Consider adding a maskable icon for better app installation experience');
+    if (!fastMode)
+      console.warn('⚠️  Consider adding a maskable icon for better app installation experience');
   } else {
-    console.log('✅ Maskable icon found - app will fill device shapes properly');
+    if (!fastMode) console.log('✅ Maskable icon found - app will fill device shapes properly');
   }
 
-  console.log('✅ manifest.json is valid');
+  if (!fastMode) console.log('✅ manifest.json is valid');
 } catch (error) {
   console.error('❌ Invalid manifest.json:', error.message);
   process.exit(1);
@@ -77,7 +83,7 @@ try {
     process.exit(1);
   }
 
-  console.log('✅ sw.js is valid');
+  if (!fastMode) console.log('✅ sw.js is valid');
 } catch (error) {
   console.error('❌ Error reading sw.js:', error.message);
   process.exit(1);
@@ -93,15 +99,17 @@ const faviconPath = path.join(process.cwd(), 'public', 'favicon.ico');
 const appleTouchIconPath = path.join(process.cwd(), 'public', 'apple-touch-icon.png');
 
 if (!fs.existsSync(faviconPath)) {
-  console.warn('⚠️  favicon.ico not found');
+  if (!fastMode) console.warn('⚠️  favicon.ico not found');
 }
 
 if (!fs.existsSync(appleTouchIconPath)) {
-  console.warn('⚠️  apple-touch-icon.png not found');
+  if (!fastMode) console.warn('⚠️  apple-touch-icon.png not found');
 }
 
-console.log('🎉 PWA validation completed successfully!');
-console.log('');
-console.log('📱 Your app should now be installable on supported devices');
-console.log('🔄 Service worker will cache resources for offline use');
-console.log('🚀 Deploy to HTTPS to enable full PWA features');
+if (!fastMode) {
+  console.log('🎉 PWA validation completed successfully!');
+  console.log('');
+  console.log('📱 Your app should now be installable on supported devices');
+  console.log('🔄 Service worker will cache resources for offline use');
+  console.log('🚀 Deploy to HTTPS to enable full PWA features');
+}

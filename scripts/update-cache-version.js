@@ -48,7 +48,9 @@ function updateServiceWorker() {
   );
 
   fs.writeFileSync(swPath, content);
-  log(`✅ Service worker updated to version: ${newVersion}`, colors.green);
+  if (!process.argv.includes('--fast')) {
+    log(`✅ Service worker updated to version: ${newVersion}`, colors.green);
+  }
 
   return newVersion;
 }
@@ -68,7 +70,9 @@ function updateVersionAPI() {
   content = content.replace(/const APP_VERSION = '[^']+';/, `const APP_VERSION = '${newVersion}';`);
 
   fs.writeFileSync(apiPath, content);
-  log(`✅ Version API updated to: ${newVersion}`, colors.green);
+  if (!process.argv.includes('--fast')) {
+    log(`✅ Version API updated to: ${newVersion}`, colors.green);
+  }
 }
 
 function updatePackageJson() {
@@ -87,17 +91,23 @@ function updatePackageJson() {
   packageJson.cacheVersion = newVersion;
 
   fs.writeFileSync(packagePath, JSON.stringify(packageJson, null, 2));
-  log(`✅ Package.json updated with build time`, colors.green);
+  if (!process.argv.includes('--fast')) {
+    log(`✅ Package.json updated with build time`, colors.green);
+  }
 }
 
 function main() {
-  log(`${colors.blue}🔄 Updating cache versions...${colors.reset}`);
+  const fastMode = process.argv.includes('--fast');
+
+  if (!fastMode) {
+    log(`${colors.blue}🔄 Updating cache versions...${colors.reset}`);
+  }
 
   const version = updateServiceWorker();
   updateVersionAPI();
   updatePackageJson();
 
-  if (version) {
+  if (version && !fastMode) {
     log(`${colors.green}🎉 Cache version updated to: ${version}${colors.reset}`);
     log(
       `${colors.blue}💡 This will force all users to get fresh content on next visit${colors.reset}`
