@@ -4,6 +4,21 @@
 
 A modern, high-performance insurance website built with Next.js, TypeScript, and Tailwind CSS. Optimized for speed, accessibility, and SEO.
 
+## 📋 Table of Contents
+
+- [🚀 Quick Start](#-quick-start)
+- [📋 Available Scripts](#-available-scripts)
+- [🏗️ Build & Deploy Process](#️-build--deploy-process)
+- [🛠️ Tech Stack](#️-tech-stack)
+- [🎯 Navigation Features](#-navigation-features)
+  - [Dropdown Service Menu](#dropdown-service-menu)
+- [📁 Project Structure](#-project-structure)
+- [🚀 Performance Optimizations](#-performance-optimizations)
+- [🔧 Development Workflow](#-development-workflow)
+- [📝 Code Quality](#-code-quality)
+- [🤝 Contributing](#-contributing)
+- [📞 Support](#-support)
+
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -73,13 +88,30 @@ pnpm run build:optimize
 pnpm run test:build
 ```
 
+### Prebuild Process
+
+The project includes automated quality checks before each build:
+
+```bash
+# Prebuild script runs automatically before 'pnpm run build'
+pnpm run prebuild  # Runs: lint + type-check + validate-pwa
+```
+
+**Prebuild Steps:**
+
+1. **ESLint**: Code quality and style checking
+2. **TypeScript**: Type checking for type safety
+3. **PWA Validation**: Ensures Progressive Web App configuration is valid
+
+This ensures that only high-quality, properly typed code gets deployed to production.
+
 ### Netlify Deployment
 
 The project is configured for automatic deployment on Netlify:
 
 1. **Automatic Deployment**: Push to `main` branch triggers production deployment
 2. **Preview Deployments**: Pull requests create preview deployments
-3. **Build Command**:  
+3. **Build Command**:
    ```
    pnpm install --frozen-lockfile && pnpm run print-versions && pnpm run build
    ```
@@ -98,6 +130,7 @@ This project includes a `netlify.toml` file at the root to control build, enviro
 - **SPA Redirect:** All routes fallback to `/index.html` for client-side routing
 
 **Example snippet:**
+
 ```toml
 [build]
 base = "."
@@ -160,6 +193,83 @@ NEXT_PUBLIC_SENTRY_DSN=your_sentry_dsn
 - **Package Manager**: pnpm
 - **Deployment**: Netlify
 - **CI/CD**: GitHub Actions (optional)
+
+## 🎯 Navigation Features
+
+### Dropdown Service Menu
+
+The website features a sophisticated dropdown navigation menu for the Services section with the following characteristics:
+
+#### **Design & Branding**
+
+- **Brand Colors**: Uses Choice Insurance brand colors consistently
+  - **Primary**: Deep Forest Green (`#42615A`) for main elements
+  - **Secondary**: Teal Blue (`#A7C9CA`) for hover states
+  - **Accent**: Teal Blue Dark (`#8BB5B7`) for borders
+- **Professional Styling**: Clean, modern design with subtle shadows and transitions
+
+#### **Layout & Structure**
+
+```
+[Services ▼]  ← Trigger button
+┌─────────────────────────────────────────────────────────┐
+│  [All Services - Large Button]    │  [Health Insurance] │
+│                                   │  [Life Insurance]   │
+│  [Medicare Advantage]             │  [Final Expense]    │
+│  [Medicare Supplement]            │  [Cancer/Illness]   │
+│                                   │  [Hospital Indem.]  │
+│                                   │  [Annuities]        │
+└─────────────────────────────────────────────────────────┘
+```
+
+#### **Technical Implementation**
+
+- **Framework**: Built with Radix UI NavigationMenu for accessibility
+- **Positioning**: Absolutely positioned dropdown anchored to trigger button
+- **Dimensions**: Fixed 600px width with 2-column grid layout
+- **Responsive**: Hidden on mobile/tablet (uses mobile menu instead)
+- **Touch-Friendly**: Hover events disabled on touch devices
+
+#### **User Experience Features**
+
+- **Hover Activation**: Opens on mouse enter, closes on mouse leave
+- **Keyboard Navigation**: Full keyboard accessibility support
+- **Visual Feedback**: Smooth transitions and hover effects
+- **Consistent Anchoring**: Dropdown always appears directly below trigger
+- **No Layout Shifts**: Fixed positioning prevents content jumping
+
+#### **Service Categories Included**
+
+1. **All Services** (prominent main button)
+2. **Health Insurance**
+3. **Life Insurance**
+4. **Medicare Advantage**
+5. **Medicare Supplement**
+6. **Final Expense**
+7. **Cancer/Critical Illness**
+8. **Hospital Indemnity**
+9. **Annuities**
+
+#### **Code Location**
+
+- **Component**: `src/components/layout/Header.tsx`
+- **Navigation Data**: `src/constants/navigation.ts`
+- **Styling**: Tailwind CSS with brand color utilities
+
+#### **Customization**
+
+To modify the dropdown menu:
+
+1. **Add/Remove Services**: Edit `FOOTER_LINKS.services` in `src/constants/navigation.ts`
+2. **Change Colors**: Update brand colors in `tailwind.config.js`
+3. **Adjust Layout**: Modify grid structure in `Header.tsx`
+4. **Update Dimensions**: Change `w-[600px]` class for different width
+
+#### **Browser Support**
+
+- **Modern Browsers**: Full support with all features
+- **Legacy Browsers**: Graceful degradation with basic functionality
+- **Mobile Devices**: Replaced with mobile-optimized menu
 
 ## 📁 Project Structure
 
