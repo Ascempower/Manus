@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -164,7 +162,7 @@ export default function MedicareBlogPost() {
 
       <div className="relative my-6 h-[400px] w-full">
         <Image
-          src="/images/blog/medicare-cost-comparison-2025.jpg"
+          src="/images/blog/medicare-comparison-2025.jpg"
           alt="Detailed cost comparison chart showing Medicare Advantage vs Medicare Supplement expenses"
           fill
           className="rounded-lg object-cover"
@@ -355,7 +353,7 @@ export default function MedicareBlogPost() {
 
       <div className="relative my-6 h-[400px] w-full">
         <Image
-          src="/images/blog/medicare-prescription-coverage-2025.jpg"
+          src="/images/blog/medicare-prescription-coverage.jpg"
           alt="Pharmacist explaining prescription drug coverage options to Medicare beneficiary"
           fill
           className="rounded-lg object-cover"
@@ -611,7 +609,7 @@ export default function MedicareBlogPost() {
 
       <div className="relative my-6 h-[400px] w-full">
         <Image
-          src="/images/blog/medicare-health-assessment-2025.jpg"
+          src="/images/blog/medicare-comparison-2025.jpg"
           alt="Healthcare provider conducting health assessment with Medicare beneficiary"
           fill
           className="rounded-lg object-cover"

@@ -105,7 +105,7 @@ export default function PWAInstaller() {
   }
 
   return (
-    <div className="fixed bottom-4 right-4 z-50">
+    <div className="fixed bottom-4 left-4 z-50">
       <Button
         onClick={handleInstallClick}
         className="bg-brand-deep-forest-green text-brand-white shadow-lg hover:bg-brand-teal-blue hover:text-brand-black"

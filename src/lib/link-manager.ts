@@ -1,7 +1,7 @@
 // Centralized link management for consistent routing
 
 export const EXTERNAL_LINKS = {
-  calendly: 'https://calendly.com/choiceinsuranceagency/30-minute-meeting',
+  calendly: 'https://calendly.com/choiceinsurancehub/30-minute-meeting',
   planenroll: 'https://www.planenroll.com/?purl=kOW7ufSy',
   facebook: 'https://www.facebook.com/profile.php?id=100093359186285',
   instagram: 'https://www.instagram.com/choice2day/',
