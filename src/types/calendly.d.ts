@@ -1,11 +1,18 @@
 // Calendly Widget Types
+interface CalendlyPrefillData {
+  name?: string;
+  email?: string;
+  customAnswers?: Record<string, string>;
+  [key: string]: string | number | boolean | Record<string, string> | undefined;
+}
+
 declare global {
   interface Window {
     Calendly?: {
       initInlineWidget: (options: {
         url: string;
         parentElement: HTMLElement;
-        prefill?: Record<string, string | number | boolean>;
+        prefill?: CalendlyPrefillData;
         utm?: Record<string, string>;
       }) => void;
       initBadgeWidget: (options: {
