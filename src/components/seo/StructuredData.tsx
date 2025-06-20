@@ -1,8 +1,43 @@
 'use client';
 
+interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
+interface ArticleData {
+  headline: string;
+  description: string;
+  author: string;
+  datePublished: string;
+  dateModified?: string;
+  image?: string;
+  url: string;
+}
+
+interface OrganizationData {
+  name: string;
+  description?: string;
+  url: string;
+  logo?: string;
+  address?: {
+    streetAddress: string;
+    addressLocality: string;
+    addressRegion: string;
+    postalCode: string;
+    addressCountry: string;
+  };
+  contactPoint?: {
+    telephone: string;
+    contactType: string;
+  };
+}
+
+type StructuredDataType = 'organization' | 'localBusiness' | 'article' | 'breadcrumb';
+
 interface StructuredDataProps {
-  type: 'organization' | 'localBusiness' | 'article' | 'breadcrumb';
-  data: any;
+  type: StructuredDataType;
+  data: BreadcrumbItem[] | ArticleData | OrganizationData | Record<string, unknown>;
 }
 
 export default function StructuredData({ type, data }: StructuredDataProps) {
@@ -87,7 +122,7 @@ export default function StructuredData({ type, data }: StructuredDataProps) {
         return {
           ...baseSchema,
           '@type': 'BreadcrumbList',
-          itemListElement: data.map((item: any, index: number) => ({
+          itemListElement: (data as BreadcrumbItem[]).map((item, index) => ({
             '@type': 'ListItem',
             position: index + 1,
             name: item.name,

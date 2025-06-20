@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Custom type declarations for Next.js modules
 declare module 'next/image' {
   import * as React from 'react';

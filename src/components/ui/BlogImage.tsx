@@ -172,6 +172,7 @@ export default function BlogImage({
   return (
     <div className={cn('relative overflow-hidden', className)}>
       {/* Main image */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         ref={imgRef}
         alt={finalAlt}
