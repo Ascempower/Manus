@@ -19,7 +19,7 @@ export function middleware(request: NextRequest) {
       .split(';')
       .map(part => part.trim())
       .filter(
-        part => !part.toLowerCase().startsWith('samesite=') && !part.toLowerCase() === 'secure'
+        part => !part.toLowerCase().startsWith('samesite=') && part.toLowerCase() !== 'secure'
       )
       .join('; ');
 
