@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 
-import { BlogThumbnailImage } from '@/components/blog/BlogImage';
+import { BlogThumbnailImage } from '@/components/ui/BlogImage';
 import { getAllBlogPosts } from '@/lib/blog-server';
 import { formatDate, generateExcerpt } from '@/lib/blog-utils';
 

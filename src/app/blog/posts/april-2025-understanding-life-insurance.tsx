@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 
-import { BlogHeroImage, BlogInlineImage } from '@/components/blog/BlogImage';
+import { BlogHeroImage, BlogInlineImage } from '@/components/ui/BlogImage';
 
 export const metadata: Metadata = {
   title: 'Understanding Life Insurance Options in 2025: A Complete Guide | Choice Insurance',

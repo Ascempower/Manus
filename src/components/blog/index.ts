@@ -3,8 +3,9 @@
  */
 
 export {
-  BlogHeroImage,
-  default as BlogImage,
-  BlogInlineImage,
-  BlogThumbnailImage,
-} from './BlogImage';
+    BlogHeroImage,
+    default as BlogImage,
+    BlogInlineImage,
+    BlogThumbnailImage
+} from '../ui/BlogImage';
+

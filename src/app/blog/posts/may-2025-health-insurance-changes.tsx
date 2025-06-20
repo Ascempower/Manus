@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 
-import { BlogHeroImage, BlogInlineImage } from '@/components/blog/BlogImage';
+import { BlogHeroImage, BlogInlineImage } from '@/components/ui/BlogImage';
 
 export const metadata: Metadata = {
   title: 'Key Health Insurance Changes to Watch for in 2025 | Choice Insurance Hub',
