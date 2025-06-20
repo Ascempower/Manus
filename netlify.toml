@@ -26,7 +26,6 @@ package = "netlify-plugin-bundle-env"
     "NEXT_PUBLIC_FIREBASE_KEY",
     "NEXT_PUBLIC_SENTRY_DSN"
   ]
-  mask = true
 
 # Cache static assets
 [[headers]]
