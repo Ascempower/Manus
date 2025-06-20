@@ -3,6 +3,7 @@
 import dynamic from 'next/dynamic';
 
 // Dynamically import client components to prevent SSR issues
+// Fixed: Moved all client components with hooks to this wrapper to resolve useRef SSR error
 const LazyAnalytics = dynamic(() => import('@/components/analytics/LazyAnalytics'), {
   ssr: false,
 });
