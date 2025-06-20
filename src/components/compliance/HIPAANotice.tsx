@@ -33,6 +33,9 @@ export default function HIPAANotice() {
     } else {
       setIsLoaded(true);
     }
+
+    // Return empty cleanup function for the else branch
+    return () => {};
   }, []);
 
   const handleAcceptMinimal = () => {

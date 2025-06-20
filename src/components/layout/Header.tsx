@@ -69,16 +69,8 @@ export default function Header() {
                     >
                       {item.label}
                     </NavigationMenuTrigger>
-                    <NavigationMenuContent
-                      className="data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 absolute left-0 top-full z-[100] mt-1 w-[800px] origin-top-left"
-                      style={{
-                        position: 'absolute',
-                        transform: 'none',
-                        width: '800px',
-                        minWidth: '800px',
-                      }}
-                    >
-                      <div className="grid w-full grid-cols-2 gap-4 rounded-lg border border-[#8BB5B7] bg-brand-teal-blue p-6 shadow-lg">
+                    <NavigationMenuContent className="absolute left-0 top-full z-50 mt-1 w-[800px] min-w-[800px] origin-top-left rounded-lg border border-brand-teal-blue-dark bg-brand-teal-blue shadow-lg">
+                      <div className="grid w-full grid-cols-2 gap-4 p-6">
                         {/* First Column */}
                         <div className="flex flex-col gap-3">
                           {/* All Services - Forest Green, takes most space */}
@@ -151,6 +143,8 @@ export default function Header() {
               </NavigationMenuItem>
             ))}
           </NavigationMenuList>
+          {/* This stabilizes layout positioning */}
+          <NavigationMenuPrimitive.Viewport className="absolute left-0 top-full z-40 h-[var(--radix-navigation-menu-viewport-height)] w-full origin-top overflow-hidden rounded-b-md border border-brand-teal-blue-dark bg-white shadow-lg transition-all duration-300" />
         </NavigationMenuPrimitive.Root>
 
         <div className="flex items-center gap-x-2">

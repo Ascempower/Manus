@@ -46,15 +46,18 @@ export default function TestimonialsCarousel({ testimonials }: TestimonialsCarou
 
     // Auto-play functionality
     const autoplay = setInterval(() => {
-      if (emblaApi.canScrollNext()) {
+      // Check if emblaApi is still available before using it
+      if (emblaApi && emblaApi.canScrollNext()) {
         emblaApi.scrollNext();
-      } else {
+      } else if (emblaApi) {
         emblaApi.scrollTo(0);
       }
     }, 5000); // Change slide every 5 seconds
 
     return () => {
-      emblaApi.off('select', onSelect);
+      if (emblaApi) {
+        emblaApi.off('select', onSelect);
+      }
       clearInterval(autoplay);
     };
   }, [emblaApi, onSelect]);

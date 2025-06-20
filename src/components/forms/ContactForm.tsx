@@ -21,7 +21,7 @@ export default function ContactForm() {
     const formData = new FormData(event.currentTarget);
 
     try {
-      const response = await fetch('https://formspree.io/f/info@choiceinsurancehub.com', {
+      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
         method: 'POST',
         body: formData,
         headers: {
