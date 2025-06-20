@@ -52,7 +52,7 @@ export default function CalendlyWidget({
       try {
         styleElementRef.current.parentNode.removeChild(styleElementRef.current);
         styleElementRef.current = undefined;
-      } catch (_e) {
+      } catch {
         // Ignore cleanup errors
       }
     }
@@ -221,7 +221,7 @@ export default function CalendlyWidget({
       if (window.Calendly && window.Calendly.closePopupWidget) {
         try {
           window.Calendly.closePopupWidget();
-        } catch (_e) {
+        } catch {
           // Ignore cleanup errors
         }
       }
