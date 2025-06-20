@@ -57,7 +57,7 @@ export default function BlogImage({
     onError: handleImageError,
     onLoad: handleImageLoad,
     priority,
-    sizes: sizes || '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw',
+    sizes: sizes || '(max-inline-size: 768px) 100vw, (max-inline-size: 1200px) 50vw, 33vw',
     className: cn(
       'transition-opacity duration-300',
       isLoading && 'opacity-0',
@@ -80,7 +80,7 @@ export default function BlogImage({
       {isLoading && (
         <div
           className="absolute inset-0 animate-pulse rounded bg-gray-200"
-          style={{ width: width || '100%', height: height || 'auto' }}
+          style={{ inline-size: width || '100%', block-size: height || 'auto' }}
         />
       )}
       <Image {...imageProps} width={width || 800} height={height || 400} />

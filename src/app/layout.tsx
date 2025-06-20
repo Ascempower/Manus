@@ -136,7 +136,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         {/* Lazy-loaded compliance and analytics */}
         <LazyCompliance />
-        <LazyAnalytics />
+        {/* Google Analytics 4: G-YBW50D5K3R & GTM: GTM-PWJPMPC5 - HIPAA Compliant */}
+        <LazyAnalytics
+          ga4Id={process.env.NEXT_PUBLIC_GA4_ID}
+          gtmId={process.env.NEXT_PUBLIC_GTM_ID}
+        />
 
         {/* Cache Management */}
         <CacheManager checkInterval={15 * 60 * 1000} showNotifications={false} />

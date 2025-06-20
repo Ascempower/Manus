@@ -150,21 +150,33 @@ export const clearSensitiveData = () => {
     return;
   }
 
-  // Clear localStorage except for essential items
-  const essentialKeys = ['theme', 'language'];
-  const keysToRemove: string[] = [];
+  try {
+    // Clear localStorage except for essential items
+    const essentialKeys = ['theme', 'language'];
+    const keysToRemove: string[] = [];
 
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    if (key && !essentialKeys.includes(key)) {
-      keysToRemove.push(key);
+    // Collect all keys first to avoid issues with changing localStorage during iteration
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && !essentialKeys.includes(key)) {
+        keysToRemove.push(key);
+      }
     }
+
+    // Remove keys after collecting them all
+    keysToRemove.forEach(key => {
+      try {
+        localStorage.removeItem(key);
+      } catch (e) {
+        console.error(`Failed to remove localStorage key: ${key}`, e);
+      }
+    });
+
+    // Clear sessionStorage completely
+    sessionStorage.clear();
+  } catch (e) {
+    console.error('Error clearing sensitive data:', e);
   }
-
-  keysToRemove.forEach(key => localStorage.removeItem(key));
-
-  // Clear sessionStorage completely
-  sessionStorage.clear();
 };
 
 // Validate that no PHI is being transmitted
