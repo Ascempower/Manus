@@ -92,17 +92,17 @@ export default function Header() {
                             </Link>
                           </NavigationMenuLink>
 
-                          {/* First 2 services - Matching second column style */}
+                          {/* First 2 services - Dark green buttons */}
                           {FOOTER_LINKS.services.slice(0, 2).map(service => (
                             <NavigationMenuLink key={service.href} asChild>
                               <Link
                                 href={service.href}
-                                className="group block transform select-none rounded-lg border border-transparent p-4 leading-none no-underline outline-none transition-all duration-200 hover:scale-[1.02] hover:border-[#42615A] hover:bg-[#42615A] hover:text-white hover:shadow-md focus:bg-[#42615A] focus:text-white"
+                                className="group block transform select-none rounded-lg border border-[#42615A] bg-[#42615A] p-4 leading-none text-white no-underline outline-none transition-all duration-200 hover:scale-[1.02] hover:bg-[#42615A]/90 hover:shadow-md focus:bg-[#42615A]/90"
                               >
-                                <div className="text-base font-medium leading-none text-brand-black transition-colors duration-200 group-hover:text-white">
+                                <div className="text-base font-medium leading-none text-white transition-colors duration-200">
                                   {service.label}
                                 </div>
-                                <div className="mt-2 text-sm text-brand-black/80 transition-colors duration-200 group-hover:text-white/80">
+                                <div className="mt-2 text-sm text-white/80 transition-colors duration-200">
                                   Learn more about {service.label.toLowerCase()}
                                 </div>
                               </Link>
@@ -110,18 +110,18 @@ export default function Header() {
                           ))}
                         </div>
 
-                        {/* Second Column - Remaining services */}
+                        {/* Second Column - Remaining services - Dark green buttons */}
                         <div className="flex flex-col gap-3">
                           {FOOTER_LINKS.services.slice(2).map(service => (
                             <NavigationMenuLink key={service.href} asChild>
                               <Link
                                 href={service.href}
-                                className="group block transform select-none rounded-lg border border-transparent p-4 leading-none no-underline outline-none transition-all duration-200 hover:scale-[1.02] hover:border-[#42615A] hover:bg-[#42615A] hover:text-white hover:shadow-md focus:bg-[#42615A] focus:text-white"
+                                className="group block transform select-none rounded-lg border border-[#42615A] bg-[#42615A] p-4 leading-none text-white no-underline outline-none transition-all duration-200 hover:scale-[1.02] hover:bg-[#42615A]/90 hover:shadow-md focus:bg-[#42615A]/90"
                               >
-                                <div className="text-base font-medium leading-none text-brand-black transition-colors duration-200 group-hover:text-white">
+                                <div className="text-base font-medium leading-none text-white transition-colors duration-200">
                                   {service.label}
                                 </div>
-                                <div className="mt-2 text-sm text-brand-black/80 transition-colors duration-200 group-hover:text-white/80">
+                                <div className="mt-2 text-sm text-white/80 transition-colors duration-200">
                                   Learn more about {service.label.toLowerCase()}
                                 </div>
                               </Link>
