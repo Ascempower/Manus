@@ -9,6 +9,18 @@ import {
   getCalendlyUrl,
 } from '@/constants/calendly';
 
+// Calendly event type
+interface CalendlyEvent {
+  event: string;
+  payload: {
+    event_type: string;
+    invitee: {
+      name: string;
+      email: string;
+    };
+  };
+}
+
 interface CalendlyWidgetProps {
   variant?: 'default' | 'inline';
   className?: string;
@@ -17,7 +29,7 @@ interface CalendlyWidgetProps {
     email?: string;
     customAnswers?: Record<string, string>;
   };
-  onEventScheduled?: (event: any) => void;
+  onEventScheduled?: (event: CalendlyEvent) => void;
   onError?: (error: string) => void;
 }
 
@@ -310,7 +322,7 @@ export function CalendlyInline({
   onError,
 }: { 
   className?: string;
-  onEventScheduled?: (event: any) => void;
+  onEventScheduled?: (event: CalendlyEvent) => void;
   onError?: (error: string) => void;
 }) {
   return (
@@ -331,7 +343,7 @@ export function CalendlyPopupButton({
 }: {
   children: React.ReactNode;
   className?: string;
-  onEventScheduled?: (event: any) => void;
+  onEventScheduled?: (event: CalendlyEvent) => void;
 }) {
   const [isLoading, setIsLoading] = useState(false);
   

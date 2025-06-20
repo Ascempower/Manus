@@ -5,7 +5,7 @@ import { CalendarDays, Mail, MapPin, Phone } from 'lucide-react';
 
 import ContactFormWrapper from '@/components/forms/ContactFormWrapper';
 import ButtonLink from '@/components/ui/ButtonLink';
-import { CalendlyInline } from '@/components/widgets/CalendlyWidget';
+import { CalendlyInline } from '@/components/widgets';
 
 export const metadata: Metadata = {
   title: 'Contact Us - Choice Insurance Hub',

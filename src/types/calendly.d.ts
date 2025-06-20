@@ -6,6 +6,17 @@ interface CalendlyPrefillData {
   [key: string]: string | number | boolean | Record<string, string> | undefined;
 }
 
+interface CalendlyEvent {
+  event: string;
+  payload: {
+    event_type: string;
+    invitee: {
+      name: string;
+      email: string;
+    };
+  };
+}
+
 declare global {
   interface Window {
     Calendly?: {
