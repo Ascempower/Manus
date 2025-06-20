@@ -6,7 +6,7 @@ author: 'Choice Insurance Hub'
 category: 'Medicare'
 tags: ['Medicare Advantage', 'Medicare Supplement', 'Medigap', 'Healthcare', 'Insurance Planning']
 featured: true
-image: '/images/blog/medicare-advantage-vs-supplement.jpg'
+image: '/images/blog/medicare-comparison-2025.jpg'
 ---
 
 # Medicare Advantage vs Medicare Supplement: Which is Right for You in 2025?
