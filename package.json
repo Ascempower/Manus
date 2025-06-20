@@ -25,6 +25,8 @@
     "validate-pwa": "node scripts/validate-pwa.js",
     "validate-pwa:fast": "node scripts/validate-pwa.js --fast",
     "validate-blog-images": "node scripts/validate-blog-images.js",
+    "deployment-check": "node scripts/deployment-check.js",
+    "test-image-fallbacks": "node scripts/test-image-fallbacks.js",
     "clean": "powershell -Command \"Remove-Item -Recurse -Force .next, dist, out, build, .turbo -ErrorAction SilentlyContinue\"",
     "clean:all": "pnpm run clean && powershell -Command \"Remove-Item -Recurse -Force node_modules, pnpm-lock.yaml -ErrorAction SilentlyContinue\"",
     "export": "npx next build && npx next export",
