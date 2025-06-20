@@ -37,7 +37,11 @@
     "setup": "node scripts/setup-dev.js",
     "print-versions": "node -p \"'React: ' + require('react/package.json').version + ', Node: ' + process.version\"",
     "update-cache": "node scripts/update-cache-version.js",
-    "clear-cache": "node -e \"console.log('Manual cache clearing - visit /api/version to check current version')\""
+    "clear-cache": "node -e \"console.log('Manual cache clearing - visit /api/version to check current version')\"",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:debug": "playwright test --debug"
   },
   "dependencies": {
     "@arcjet/inspect": "^1.0.0-beta.8",
@@ -96,6 +100,7 @@
     "zod": "^3.25.62"
   },
   "devDependencies": {
+    "@playwright/test": "^1.44.0",
     "@eslint/js": "^9.28.0",
     "@netlify/plugin-nextjs": "^5.11.2",
     "@stackbit/types": "^2.1.14",
