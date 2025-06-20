@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 interface CalendlyBadgeProps {
   url?: string;
@@ -19,6 +19,7 @@ export default function CalendlyBadge({
   textColor = '#dd8b66', // brand-warm-beige-coral
   branding = false, // Set to false to hide Calendly branding
 }: CalendlyBadgeProps) {
+  const [showFallback, setShowFallback] = useState(false);
   useEffect(() => {
     // Only load on client side
     if (typeof window === 'undefined') return;
@@ -182,6 +183,23 @@ export default function CalendlyBadge({
         });
 
         console.log('Calendly badge widget initialized successfully');
+
+        // Add a visible indicator that the badge should be there
+        setTimeout(() => {
+          const badge = document.querySelector('.calendly-badge-widget');
+          if (badge) {
+            console.log('Calendly badge found in DOM:', badge);
+          } else {
+            console.warn('Calendly badge not found in DOM after initialization');
+            // Show fallback button after 3 seconds if badge doesn't appear
+            setTimeout(() => {
+              const badge = document.querySelector('.calendly-badge-widget');
+              if (!badge) {
+                setShowFallback(true);
+              }
+            }, 2000);
+          }
+        }, 1000);
       } catch (error) {
         console.error('Error initializing Calendly badge widget:', error);
       }
@@ -208,6 +226,23 @@ export default function CalendlyBadge({
       }
     };
   }, [url, text, color, textColor, branding]);
+
+  // Render fallback button if Calendly badge fails to load
+  if (showFallback) {
+    return (
+      <button
+        onClick={() => window.open(url, '_blank')}
+        className="fixed bottom-5 right-5 z-[10000] rounded-full px-5 py-3 text-sm font-semibold shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2"
+        style={{
+          backgroundColor: color,
+          color: textColor,
+          animation: 'pulse 3s ease-in-out infinite',
+        }}
+      >
+        {text}
+      </button>
+    );
+  }
 
   // This component doesn't render anything visible - the badge is created by Calendly
   return null;
