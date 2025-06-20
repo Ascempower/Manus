@@ -103,6 +103,7 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^15.15.0",
+    "netlify-plugin-bundle-env": "^0.6.2",
     "postcss": "8.4.49",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.12",
@@ -113,6 +114,6 @@
     "vite": "^6.3.5"
   },
   "packageManager": "pnpm@10.12.1",
-  "buildTime": "2025-06-20T03:44:40.923Z",
-  "cacheVersion": "v2025.6.19.2244"
+  "buildTime": "2025-06-20T05:09:30.447Z",
+  "cacheVersion": "v2025.6.20.0009"
 }
