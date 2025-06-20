@@ -27,6 +27,13 @@ package = "netlify-plugin-bundle-env"
     "NEXT_PUBLIC_SENTRY_DSN"
   ]
 
+# Cache plugin for faster builds and better performance
+[[plugins]]
+package = "netlify-plugin-cache"
+  [plugins.inputs]
+  # Cache node_modules and .next for faster builds
+  paths = ["node_modules", ".next/cache", ".pnpm-store"]
+
 # Cache static assets
 [[headers]]
 for = "/static/*"
