@@ -149,9 +149,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Cookie Consent Banner */}
         <CookieConsent />
 
-        {/* Cookie Consent Banner */}
-        <CookieConsent />
-
         {/* Deferred Service Worker Registration */}
         <script
           dangerouslySetInnerHTML={{

@@ -90,11 +90,6 @@ for = "/cdp/*"
   HttpOnly'''
   Access-Control-Allow-Origin = "https://app.netlify.com"
   Access-Control-Allow-Credentials = "true"
-  # Cookie security headers to fix Chrome DevTools issues
-  Set-Cookie = '''
-  SameSite=Strict;
-  Secure;
-  HttpOnly'''
   # Content Security Policy to prevent mixed content issues
   Content-Security-Policy = '''
   default-src 'self';
