@@ -78,7 +78,7 @@ export default function CalendlyBadge({
               position: fixed !important;
               bottom: 20px !important;
               right: 20px !important;
-              z-index: 9999 !important;
+              z-index: 10000 !important;
               border-radius: 50px !important;
               box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
               transition: all 0.3s ease !important;

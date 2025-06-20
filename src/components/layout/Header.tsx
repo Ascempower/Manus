@@ -73,7 +73,7 @@ export default function Header() {
                     >
                       {item.label}
                     </NavigationMenuTrigger>
-                    <NavigationMenuContent className="absolute left-0 top-full z-[60] mt-1 w-[800px] min-w-[800px] origin-top-left rounded-lg border border-brand-teal-blue-dark bg-brand-teal-blue shadow-lg">
+                    <NavigationMenuContent className="absolute left-0 top-full z-[70] mt-1 w-[800px] min-w-[800px] origin-top-left rounded-lg border border-brand-teal-blue-dark bg-brand-teal-blue shadow-lg">
                       <div className="grid w-full grid-cols-2 gap-4 p-6">
                         {/* First Column */}
                         <div className="flex flex-col gap-3">
@@ -148,7 +148,7 @@ export default function Header() {
             ))}
           </NavigationMenuList>
           {/* This stabilizes layout positioning */}
-          <NavigationMenuPrimitive.Viewport className="absolute left-0 top-full z-[55] h-[var(--radix-navigation-menu-viewport-height)] w-full origin-top overflow-hidden rounded-b-md border border-brand-teal-blue-dark bg-white shadow-lg transition-all duration-300" />
+          <NavigationMenuPrimitive.Viewport className="absolute left-0 top-full z-[65] h-[var(--radix-navigation-menu-viewport-height)] w-full origin-top overflow-hidden rounded-b-md border border-brand-teal-blue-dark bg-white shadow-lg transition-all duration-300" />
         </NavigationMenuPrimitive.Root>
 
         <div className="flex items-center gap-x-2">
