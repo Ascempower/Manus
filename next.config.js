@@ -2,11 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
 
-  // Handle EventEmitter memory leak warnings
-  env: {
-    NODE_OPTIONS: '--max-old-space-size=4096',
-  },
-
   // Performance optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
