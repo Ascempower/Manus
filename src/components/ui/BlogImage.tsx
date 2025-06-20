@@ -52,7 +52,7 @@ export default function BlogImage({
   // Cleanup function
   const cleanup = useCallback(() => {
     if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
+      window.clearTimeout(timeoutRef.current);
     }
   }, []);
 
@@ -103,7 +103,7 @@ export default function BlogImage({
       
       if (nextSrc) {
         setRetryCount(prev => prev + 1);
-        setTimeout(() => {
+        window.setTimeout(() => {
           setCurrentSrc(nextSrc);
         }, IMAGE_LOADING_CONFIG.retryDelay);
         return;
@@ -125,7 +125,7 @@ export default function BlogImage({
     setRetryCount(0);
 
     // Set loading timeout
-    timeoutRef.current = setTimeout(() => {
+    timeoutRef.current = window.setTimeout(() => {
       handleImageError();
     }, IMAGE_LOADING_CONFIG.loadTimeout);
 

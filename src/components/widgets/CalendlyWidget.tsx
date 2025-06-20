@@ -45,7 +45,7 @@ export default function CalendlyWidget({
   // Cleanup function
   const cleanup = useCallback(() => {
     if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
+      window.clearTimeout(timeoutRef.current);
     }
     if (styleElementRef.current && styleElementRef.current.parentNode) {
       styleElementRef.current.parentNode.removeChild(styleElementRef.current);
@@ -151,14 +151,14 @@ export default function CalendlyWidget({
 
         script.onload = () => {
           if (timeoutRef.current) {
-            clearTimeout(timeoutRef.current);
+            window.clearTimeout(timeoutRef.current);
           }
           initializeWidget();
         };
 
         script.onerror = () => {
           if (timeoutRef.current) {
-            clearTimeout(timeoutRef.current);
+            window.clearTimeout(timeoutRef.current);
           }
           retryLoad();
         };
@@ -170,7 +170,7 @@ export default function CalendlyWidget({
           initializeWidget();
         } else {
           // Wait a bit and check again
-          setTimeout(() => {
+          window.setTimeout(() => {
             if (window.Calendly) {
               initializeWidget();
             } else {
