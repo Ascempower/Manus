@@ -103,17 +103,6 @@ for = "/cdp/*"
   form-action 'self';
   upgrade-insecure-requests'''
 
-# Handle Netlify analytics and deployment tracking
-[[headers]]
-for = "/cdp/*"
-  [headers.values]
-  Set-Cookie = '''
-  SameSite=None;
-  Secure;
-  HttpOnly'''
-  Access-Control-Allow-Origin = "https://app.netlify.com"
-  Access-Control-Allow-Credentials = "true"
-
 [[redirects]]
   from = "/*"
   to = "/index.html"
