@@ -1,0 +1,99 @@
+import Link from 'next/link';
+
+import { Button } from '@/components/ui/button';
+import { BookConsultationButton, GetQuoteButton } from '@/components/ui/CTAButton';
+
+export default function NotFound() {
+  return (
+    <div className="flex min-h-[60vh] flex-col items-center justify-center px-4 text-center">
+      <div className="mx-auto max-w-md">
+        {/* 404 Number */}
+        <h1 className="mb-4 text-6xl font-bold text-brand-deep-forest-green">
+          404
+        </h1>
+        
+        {/* Main Message */}
+        <h2 className="mb-4 text-2xl font-semibold text-gray-900">
+          Page Not Found
+        </h2>
+        
+        {/* Description */}
+        <p className="mb-8 text-gray-600">
+          Sorry, we couldn't find the page you're looking for. The page may have been moved, deleted, or you may have entered an incorrect URL.
+        </p>
+        
+        {/* Action Buttons */}
+        <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
+          <Button asChild variant="default" size="lg">
+            <Link href="/">
+              Return Home
+            </Link>
+          </Button>
+          
+          <Button asChild variant="outline" size="lg">
+            <Link href="/services">
+              View Services
+            </Link>
+          </Button>
+        </div>
+        
+        {/* CTA Section */}
+        <div className="mt-12 rounded-lg bg-gray-50 p-6">
+          <h3 className="mb-4 text-lg font-semibold text-gray-900">
+            Need Help Finding Insurance?
+          </h3>
+          <p className="mb-6 text-sm text-gray-600">
+            Don't let a missing page stop you from getting the coverage you need. Our experts are here to help!
+          </p>
+          
+          <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
+            <GetQuoteButton size="default" trackingContext="404_page">
+              Get Free Quote
+            </GetQuoteButton>
+            <BookConsultationButton 
+              size="default" 
+              trackingContext="404_page"
+              showIcon={false}
+            />
+          </div>
+        </div>
+        
+        {/* Helpful Links */}
+        <div className="mt-8">
+          <p className="mb-4 text-sm font-medium text-gray-700">
+            Popular Pages:
+          </p>
+          <div className="flex flex-wrap justify-center gap-2 text-sm">
+            <Link 
+              href="/services/medicare-supplement" 
+              className="text-brand-teal-blue hover:underline"
+            >
+              Medicare Supplement
+            </Link>
+            <span className="text-gray-400">•</span>
+            <Link 
+              href="/services/life-insurance" 
+              className="text-brand-teal-blue hover:underline"
+            >
+              Life Insurance
+            </Link>
+            <span className="text-gray-400">•</span>
+            <Link 
+              href="/about" 
+              className="text-brand-teal-blue hover:underline"
+            >
+              About Us
+            </Link>
+            <span className="text-gray-400">•</span>
+            <Link 
+              href="/contact" 
+              className="text-brand-teal-blue hover:underline"
+            >
+              Contact
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
