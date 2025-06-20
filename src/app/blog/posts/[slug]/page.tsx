@@ -94,7 +94,7 @@ const MarkdownComponents = {
     <ol className="mb-4 list-inside list-decimal space-y-2 text-lg text-gray-700">{children}</ol>
   ),
   li: ({ children }: { children: React.ReactNode }) => <li className="mb-1">{children}</li>,
-  blockquote: ({ children }: { children??: React.ReactNode }) => (
+  blockquote: ({ children }: { children?: React.ReactNode }) => (
     <blockquote className="my-6 border-l-4 border-brand-deep-forest-green bg-gray-50 py-2 pl-4 italic text-gray-600">
       {children}
     </blockquote>
@@ -159,19 +159,13 @@ export default async function BlogPost({ params }: PageProps) {
                 })}
               </time>
             )}
-            {frontmatter.author && (
-              <span>
-                {typeof frontmatter.readingTime === 'number' || typeof frontmatter.readingTime === 'string' 
-                  ? `${frontmatter.author}</span>}
+            {frontmatter.author && <span>By {frontmatter.author}</span>}
             {frontmatter.readingTime && (
               <span>
                 {typeof frontmatter.readingTime === 'number' || typeof frontmatter.readingTime === 'string' 
                   ? `${frontmatter.readingTime} min read` 
                   : 'Reading time available'}
-              ` 
-                  : 'Reading time available'}
               </span>
-            )
             )}
           </div>
           {frontmatter.tags && frontmatter.tags.length > 0 && (
