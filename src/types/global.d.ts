@@ -1,6 +1,25 @@
 /// <reference types="react" />
 /// <reference types="react-dom" />
 
+// Calendly Widget Types
+interface CalendlyPrefillData {
+  name?: string;
+  email?: string;
+  customAnswers?: Record<string, string>;
+  [key: string]: string | number | boolean | Record<string, string> | undefined;
+}
+
+interface CalendlyEvent {
+  event: string;
+  payload: {
+    event_type: string;
+    invitee: {
+      name: string;
+      email: string;
+    };
+  };
+}
+
 declare global {
   namespace JSX {
     interface IntrinsicElements {
@@ -39,6 +58,38 @@ declare global {
      * Cancel Idle Callback API
      */
     cancelIdleCallback: (handle: number) => void;
+
+    /**
+     * Calendly Widget API
+     */
+    Calendly?: {
+      initInlineWidget: (options: {
+        url: string;
+        parentElement: HTMLElement;
+        prefill?: CalendlyPrefillData;
+        utm?: Record<string, string>;
+      }) => void;
+      initPopupWidget: (options: {
+        url: string;
+        prefill?: CalendlyPrefillData;
+        utm?: Record<string, string>;
+      }) => void;
+      initBadgeWidget: (options: {
+        url: string;
+        text: string;
+        color: string;
+        textColor: string;
+        branding: boolean;
+      }) => void;
+      initEventListener: (options: {
+        onEventScheduled?: (event: CalendlyEvent) => void;
+        onDateAndTimeSelected?: (event: CalendlyEvent) => void;
+        onEventTypeViewed?: (event: CalendlyEvent) => void;
+        onProfilePageViewed?: (event: CalendlyEvent) => void;
+      }) => void;
+      closePopupWidget: () => void;
+      destroyBadgeWidget: () => void;
+    };
   }
 
   /**
@@ -93,4 +144,5 @@ declare global {
   }
 }
 
-export {};
+export { };
+

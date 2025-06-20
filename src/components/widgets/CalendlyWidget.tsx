@@ -9,18 +9,6 @@ import {
   getCalendlyUrl,
 } from '@/constants/calendly';
 
-// Calendly event type
-interface CalendlyEvent {
-  event: string;
-  payload: {
-    event_type: string;
-    invitee: {
-      name: string;
-      email: string;
-    };
-  };
-}
-
 interface CalendlyWidgetProps {
   variant?: 'default' | 'inline';
   className?: string;

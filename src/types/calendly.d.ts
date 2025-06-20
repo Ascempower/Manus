@@ -39,10 +39,10 @@ declare global {
         branding: boolean;
       }) => void;
       initEventListener: (options: {
-        onEventScheduled?: (event: any) => void;
-        onDateAndTimeSelected?: (event: any) => void;
-        onEventTypeViewed?: (event: any) => void;
-        onProfilePageViewed?: (event: any) => void;
+        onEventScheduled?: (event: CalendlyEvent) => void;
+        onDateAndTimeSelected?: (event: CalendlyEvent) => void;
+        onEventTypeViewed?: (event: CalendlyEvent) => void;
+        onProfilePageViewed?: (event: CalendlyEvent) => void;
       }) => void;
       closePopupWidget: () => void;
       destroyBadgeWidget: () => void;
