@@ -1,6 +1,6 @@
 // Service Worker for Choice Insurance Hub
 // Update this version number to force cache clearing
-const CACHE_VERSION = 'v2025.6.20.0131';
+const CACHE_VERSION = 'v2025.6.20.0132';
 const CACHE_NAME = `choice-insurance-cache-${CACHE_VERSION}`;
 const STATIC_CACHE = `choice-insurance-static-${CACHE_VERSION}`;
 const DYNAMIC_CACHE = `choice-insurance-dynamic-${CACHE_VERSION}`;
@@ -43,9 +43,7 @@ const urlsToCache = [
   '/apple-touch-icon.png',
   '/assets/logos/main-logo-orange.png',
   '/manifest.json',
-  // Add critical CSS and JS files
-  '/_next/static/css/',
-  '/_next/static/chunks/',
+  // Note: CSS and JS files will be cached dynamically as they're reques will be cached dynamically as they're requested
 ];
 
 // Utility functions for cache management
