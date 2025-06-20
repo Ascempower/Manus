@@ -6,8 +6,8 @@
     "node": "20.x"
   },
   "scripts": {
-    "dev": "node --max-listeners=20 --max-old-space-size=4096 ./node_modules/.bin/next dev --turbopack",
-    "build": "node --max-old-space-size=4096 ./node_modules/.bin/next build",
+    "dev": "NODE_OPTIONS='--max-listeners=20 --max-old-space-size=4096' npx next dev --turbopack",
+    "build": "NODE_OPTIONS='--max-old-space-size=4096' npx next build",
     "build:dev": "SKIP_PREBUILD=true npx next build",
     "start": "npx next start",
     "lint": "npx next lint",
@@ -116,6 +116,6 @@
     "vite": "^6.3.5"
   },
   "packageManager": "pnpm@10.12.1",
-  "buildTime": "2025-06-20T06:18:22.343Z",
-  "cacheVersion": "v2025.6.20.0118"
+  "buildTime": "2025-06-20T06:25:56.388Z",
+  "cacheVersion": "v2025.6.20.0125"
 }
