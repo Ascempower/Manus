@@ -73,7 +73,7 @@ export default function Header() {
                     >
                       {item.label}
                     </NavigationMenuTrigger>
-                    <NavigationMenuContent className="absolute left-0 top-full z-[70] mt-1 w-[800px] min-w-[800px] origin-top-left rounded-lg border border-brand-teal-blue-dark bg-brand-teal-blue shadow-lg">
+                    <NavigationMenuContent className="absolute left-0 top-full z-[70] mt-1 w-[800px] min-w-[800px] origin-top-left rounded-lg border border-brand-teal-blue-dark bg-brand-teal-blue shadow-lg data-[state=open]:bg-brand-teal-blue">
                       <div className="grid w-full grid-cols-2 gap-4 p-6">
                         {/* First Column */}
                         <div className="flex flex-col gap-3">
@@ -99,10 +99,10 @@ export default function Header() {
                                 href={service.href}
                                 className="group block transform select-none rounded-lg border border-transparent p-4 leading-none no-underline outline-none transition-all duration-200 hover:scale-[1.02] hover:border-[#42615A] hover:bg-[#42615A] hover:text-white hover:shadow-md focus:bg-[#42615A] focus:text-white"
                               >
-                                <div className="text-base font-medium leading-none text-brand-deep-forest-green transition-colors duration-200 group-hover:text-white">
+                                <div className="text-base font-medium leading-none text-brand-black transition-colors duration-200 group-hover:text-white">
                                   {service.label}
                                 </div>
-                                <div className="mt-2 text-sm text-brand-deep-forest-green/80 transition-colors duration-200 group-hover:text-white/80">
+                                <div className="mt-2 text-sm text-brand-black/80 transition-colors duration-200 group-hover:text-white/80">
                                   Learn more about {service.label.toLowerCase()}
                                 </div>
                               </Link>
@@ -118,10 +118,10 @@ export default function Header() {
                                 href={service.href}
                                 className="group block transform select-none rounded-lg border border-transparent p-4 leading-none no-underline outline-none transition-all duration-200 hover:scale-[1.02] hover:border-[#42615A] hover:bg-[#42615A] hover:text-white hover:shadow-md focus:bg-[#42615A] focus:text-white"
                               >
-                                <div className="text-base font-medium leading-none text-brand-deep-forest-green transition-colors duration-200 group-hover:text-white">
+                                <div className="text-base font-medium leading-none text-brand-black transition-colors duration-200 group-hover:text-white">
                                   {service.label}
                                 </div>
-                                <div className="mt-2 text-sm text-brand-deep-forest-green/80 transition-colors duration-200 group-hover:text-white/80">
+                                <div className="mt-2 text-sm text-brand-black/80 transition-colors duration-200 group-hover:text-white/80">
                                   Learn more about {service.label.toLowerCase()}
                                 </div>
                               </Link>
@@ -148,7 +148,7 @@ export default function Header() {
             ))}
           </NavigationMenuList>
           {/* This stabilizes layout positioning */}
-          <NavigationMenuPrimitive.Viewport className="absolute left-0 top-full z-[65] h-[var(--radix-navigation-menu-viewport-height)] w-full origin-top overflow-hidden rounded-b-md border border-brand-teal-blue-dark bg-white shadow-lg transition-all duration-300" />
+          <NavigationMenuPrimitive.Viewport className="absolute left-0 top-full z-[65] h-[var(--radix-navigation-menu-viewport-height)] w-full origin-top overflow-hidden rounded-b-md border border-brand-teal-blue-dark bg-brand-teal-blue shadow-lg transition-all duration-300" />
         </NavigationMenuPrimitive.Root>
 
         <div className="flex items-center gap-x-2">
