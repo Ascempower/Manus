@@ -46,9 +46,19 @@ export default function CalendlyWidget({
   const cleanup = useCallback(() => {
     if (timeoutRef.current) {
       window.clearTimeout(timeoutRef.current);
+      timeoutRef.current = undefined;
     }
     if (styleElementRef.current && styleElementRef.current.parentNode) {
-      styleElementRef.current.parentNode.removeChild(styleElementRef.current);
+      try {
+        styleElementRef.current.parentNode.removeChild(styleElementRef.current);
+        styleElementRef.current = undefined;
+      } catch (e) {
+        // Ignore cleanup errors
+      }
+    }
+    // Clear calendly container
+    if (calendlyRef.current) {
+      calendlyRef.current.innerHTML = '';
     }
   }, []);
 
@@ -68,10 +78,13 @@ export default function CalendlyWidget({
     if (retryCount < CALENDLY_INIT_OPTIONS.maxRetries) {
       setState('retry');
       setRetryCount(prev => prev + 1);
-      window.setTimeout(() => {
-        setState('loading');
-        setError(null);
-      }, CALENDLY_INIT_OPTIONS.retryDelay * (retryCount + 1));
+      window.setTimeout(
+        () => {
+          setState('loading');
+          setError(null);
+        },
+        CALENDLY_INIT_OPTIONS.retryDelay * (retryCount + 1)
+      );
     } else {
       handleError('Maximum retry attempts reached');
     }
@@ -105,7 +118,9 @@ export default function CalendlyWidget({
 
       setState('loaded');
     } catch (err) {
-      handleError(`Failed to initialize widget: ${err instanceof Error ? err.message : 'Unknown error'}`);
+      handleError(
+        `Failed to initialize widget: ${err instanceof Error ? err.message : 'Unknown error'}`
+      );
     }
   }, [calendlyUrl, prefill, onEventScheduled, handleError]);
 
@@ -142,7 +157,9 @@ export default function CalendlyWidget({
       }
 
       // Load JavaScript
-      const existingScript = document.querySelector(`script[src="${CALENDLY_INIT_OPTIONS.scriptUrl}"]`);
+      const existingScript = document.querySelector(
+        `script[src="${CALENDLY_INIT_OPTIONS.scriptUrl}"]`
+      );
       if (!existingScript) {
         const script = document.createElement('script');
         script.src = CALENDLY_INIT_OPTIONS.scriptUrl;
@@ -180,7 +197,9 @@ export default function CalendlyWidget({
         }
       }
     } catch (err) {
-      handleError(`Failed to load resources: ${err instanceof Error ? err.message : 'Unknown error'}`);
+      handleError(
+        `Failed to load resources: ${err instanceof Error ? err.message : 'Unknown error'}`
+      );
     }
   }, [initializeWidget, handleError, retryLoad]);
 
@@ -196,7 +215,17 @@ export default function CalendlyWidget({
     loadCalendlyResources();
 
     // Cleanup on unmount
-    return cleanup;
+    return () => {
+      cleanup();
+      // Additional cleanup for event listeners
+      if (window.Calendly && window.Calendly.closePopupWidget) {
+        try {
+          window.Calendly.closePopupWidget();
+        } catch (e) {
+          // Ignore cleanup errors
+        }
+      }
+    };
   }, [loadCalendlyResources, cleanup]);
 
   // Render loading state
@@ -218,9 +247,13 @@ export default function CalendlyWidget({
           <div className="text-center">
             <div className="mb-4 h-8 w-8 animate-spin rounded-full border-4 border-brand-warm-beige-coral border-t-transparent"></div>
             <p className="text-lg font-medium">
-              {state === 'retry' ? `Retrying... (${retryCount}/${CALENDLY_INIT_OPTIONS.maxRetries})` : 'Loading booking calendar...'}
+              {state === 'retry'
+                ? `Retrying... (${retryCount}/${CALENDLY_INIT_OPTIONS.maxRetries})`
+                : 'Loading booking calendar...'}
             </p>
-            <p className="mt-2 text-sm opacity-75">Please wait while we prepare your scheduling options</p>
+            <p className="mt-2 text-sm opacity-75">
+              Please wait while we prepare your scheduling options
+            </p>
           </div>
         </div>
       </div>
@@ -239,38 +272,45 @@ export default function CalendlyWidget({
             Book a 30-minute meeting with our insurance experts to discuss your needs
           </p>
         </div>
-        <div className={`${CALENDLY_INIT_OPTIONS.errorClass} rounded-b-lg`} style={{ minHeight: `${config.height}px` }}>
-          <div className="flex flex-col items-center justify-center h-full space-y-4">
+        <div
+          className={`${CALENDLY_INIT_OPTIONS.errorClass} rounded-b-lg`}
+          style={{ minHeight: `${config.height}px` }}
+        >
+          <div className="flex h-full flex-col items-center justify-center space-y-4">
             <div className="text-center">
-              <h3 className="text-lg font-semibold text-red-700 mb-2">Unable to Load Booking Calendar</h3>
-              <p className="text-red-600 mb-4">
+              <h3 className="mb-2 text-lg font-semibold text-red-700">
+                Unable to Load Booking Calendar
+              </h3>
+              <p className="mb-4 text-red-600">
                 {error || 'There was a problem loading the scheduling widget.'}
               </p>
             </div>
-            
-            <div className="flex flex-col sm:flex-row gap-4 items-center">
+
+            <div className="flex flex-col items-center gap-4 sm:flex-row">
               <button
                 onClick={retryLoad}
-                className="px-6 py-2 bg-brand-deep-forest-green text-white rounded-lg hover:bg-brand-deep-forest-green/90 transition-colors"
+                className="rounded-lg bg-brand-deep-forest-green px-6 py-2 text-white transition-colors hover:bg-brand-deep-forest-green/90"
                 disabled={retryCount >= CALENDLY_INIT_OPTIONS.maxRetries}
               >
-                {retryCount >= CALENDLY_INIT_OPTIONS.maxRetries ? 'Max Retries Reached' : 'Try Again'}
+                {retryCount >= CALENDLY_INIT_OPTIONS.maxRetries
+                  ? 'Max Retries Reached'
+                  : 'Try Again'}
               </button>
-              
+
               <div className="text-center">
-                <p className="text-sm text-gray-600 mb-2">Or contact us directly:</p>
-                <div className="flex flex-col sm:flex-row gap-4">
+                <p className="mb-2 text-sm text-gray-600">Or contact us directly:</p>
+                <div className="flex flex-col gap-4 sm:flex-row">
                   <a
                     href={CALENDLY_CONFIG.fallback.directUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm"
+                    className="inline-flex items-center rounded-lg bg-blue-600 px-4 py-2 text-sm text-white transition-colors hover:bg-blue-700"
                   >
                     Book on Calendly.com
                   </a>
                   <a
                     href={`tel:${CALENDLY_CONFIG.fallback.phone.replace(/[^\d]/g, '')}`}
-                    className="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-sm"
+                    className="inline-flex items-center rounded-lg bg-green-600 px-4 py-2 text-sm text-white transition-colors hover:bg-green-700"
                   >
                     Call {CALENDLY_CONFIG.fallback.phone}
                   </a>
@@ -304,11 +344,11 @@ export default function CalendlyWidget({
 }
 
 // Inline Calendly Widget (smaller, embedded)
-export function CalendlyInline({ 
+export function CalendlyInline({
   className = '',
   onEventScheduled,
   onError,
-}: { 
+}: {
   className?: string;
   onEventScheduled?: (event: CalendlyEvent) => void;
   onError?: (error: string) => void;
@@ -334,10 +374,10 @@ export function CalendlyPopupButton({
   onEventScheduled?: (event: CalendlyEvent) => void;
 }) {
   const [isLoading, setIsLoading] = useState(false);
-  
+
   const handleClick = useCallback(async () => {
     setIsLoading(true);
-    
+
     try {
       // Try to use Calendly popup if available
       if (window.Calendly && window.Calendly.initPopupWidget) {
@@ -345,7 +385,7 @@ export function CalendlyPopupButton({
           url: getCalendlyUrl(),
           utm: CALENDLY_CONFIG.utm,
         });
-        
+
         if (onEventScheduled) {
           window.Calendly.initEventListener({
             onEventScheduled: onEventScheduled,
@@ -356,7 +396,7 @@ export function CalendlyPopupButton({
         const { width, height } = CALENDLY_CONFIG.dimensions.popup;
         const left = (window.screen.width - width) / 2;
         const top = (window.screen.height - height) / 2;
-        
+
         window.open(
           CALENDLY_CONFIG.fallback.directUrl,
           '_blank',
@@ -376,7 +416,7 @@ export function CalendlyPopupButton({
     <button
       onClick={handleClick}
       disabled={isLoading}
-      className={`inline-flex items-center justify-center rounded-md bg-brand-warm-beige-coral px-6 py-3 text-white transition-colors hover:bg-brand-warm-beige-coral-dark disabled:opacity-50 disabled:cursor-not-allowed ${className}`}
+      className={`inline-flex items-center justify-center rounded-md bg-brand-warm-beige-coral px-6 py-3 text-white transition-colors hover:bg-brand-warm-beige-coral-dark disabled:cursor-not-allowed disabled:opacity-50 ${className}`}
     >
       {isLoading ? (
         <>

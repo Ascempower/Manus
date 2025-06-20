@@ -6,8 +6,8 @@
     "node": "20.x"
   },
   "scripts": {
-    "dev": "npx next dev --turbopack",
-    "build": "npx next build",
+    "dev": "node --max-listeners=20 --max-old-space-size=4096 ./node_modules/.bin/next dev --turbopack",
+    "build": "node --max-old-space-size=4096 ./node_modules/.bin/next build",
     "build:dev": "SKIP_PREBUILD=true npx next build",
     "start": "npx next start",
     "lint": "npx next lint",
