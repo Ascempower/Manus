@@ -99,7 +99,7 @@ const MarkdownComponents = {
       {children}
     </blockquote>
   ),
-  a: ({ href, children }: { href?: string; children: React.ReactNode }) => (
+  a: ({ href, children }: { href?: string; children?: React.ReactNode }) => (
     <InternalLink
       href={href || '#'}
       className="font-medium text-brand-deep-forest-green hover:text-brand-teal-blue"
@@ -160,7 +160,7 @@ export default async function BlogPost({ params }: PageProps) {
               </time>
             )}
             {frontmatter.author && <span>By {frontmatter.author}</span>}
-            {frontmatter.readingTime && <span>{frontmatter.readingTime} min read</span>}
+            {frontmatter.readingTime && <span>{String(frontmatter.readingTime)} min read</span>}
           </div>
           {frontmatter.tags && frontmatter.tags.length > 0 && (
             <div className="mt-4 flex flex-wrap gap-2">

@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 import { BlogThumbnailImage } from '@/components/ui/BlogImage';
-import { getAllBlogPosts } from '@/lib/blog-server';
+import { BlogPost, getAllBlogPosts } from '@/lib/blog-server';
 import { formatDate, generateExcerpt } from '@/lib/blog-utils';
 
 export const metadata: Metadata = {
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
-  let posts = [];
+  let posts: BlogPost[] = [];
   try {
     // Get all published blog posts (excluding future posts)
     posts = getAllBlogPosts({

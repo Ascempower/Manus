@@ -1,26 +1,25 @@
 /// <reference types="react" />
 /// <reference types="react-dom" />
 
-// Calendly Widget Types
-interface CalendlyPrefillData {
-  name?: string;
-  email?: string;
-  customAnswers?: Record<string, string>;
-  [key: string]: string | number | boolean | Record<string, string> | undefined;
-}
-
-interface CalendlyEvent {
-  event: string;
-  payload: {
-    event_type: string;
-    invitee: {
-      name: string;
-      email: string;
-    };
-  };
-}
-
 declare global {
+  // Calendly Widget Types
+  interface CalendlyPrefillData {
+    name?: string;
+    email?: string;
+    customAnswers?: Record<string, string>;
+    [key: string]: string | number | boolean | Record<string, string> | undefined;
+  }
+
+  interface CalendlyEvent {
+    event: string;
+    payload: {
+      event_type: string;
+      invitee: {
+        name: string;
+        email: string;
+      };
+    };
+  }
   namespace JSX {
     interface IntrinsicElements {
       [elemName: string]: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
