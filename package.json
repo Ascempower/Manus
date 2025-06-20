@@ -6,8 +6,8 @@
     "node": "20.x"
   },
   "scripts": {
-    "dev": "NODE_OPTIONS='--max-listeners=20 --max-old-space-size=4096' npx next dev --turbopack",
-    "build": "NODE_OPTIONS='--max-old-space-size=4096' npx next build",
+    "dev": "cross-env NODE_OPTIONS='--max-listeners=20 --max-old-space-size=4096' npx next dev --turbopack",
+    "build": "cross-env NODE_OPTIONS='--max-old-space-size=4096' npx next build",
     "build:dev": "SKIP_PREBUILD=true npx next build",
     "start": "npx next start",
     "lint": "npx next lint",
@@ -97,6 +97,7 @@
     "autoprefixer": "10.4.20",
     "beasties": "^0.3.4",
     "critters": "^0.0.24",
+    "cross-env": "^7.0.3",
     "eslint": "^9.28.0",
     "eslint-config-next": "^15.3.3",
     "eslint-plugin-next": "^0.0.0",
@@ -116,6 +117,6 @@
     "vite": "^6.3.5"
   },
   "packageManager": "pnpm@10.12.1",
-  "buildTime": "2025-06-20T06:25:56.388Z",
-  "cacheVersion": "v2025.6.20.0125"
+  "buildTime": "2025-06-20T06:28:09.492Z",
+  "cacheVersion": "v2025.6.20.0128"
 }
