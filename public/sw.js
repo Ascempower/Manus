@@ -1,6 +1,6 @@
 // Service Worker for Choice Insurance Hub
 // Update this version number to force cache clearing
-const CACHE_VERSION = 'v2025.6.20.0219';
+const CACHE_VERSION = 'v2025.6.20.0248';
 const CACHE_NAME = `choice-insurance-cache-${CACHE_VERSION}`;
 const STATIC_CACHE = `choice-insurance-static-${CACHE_VERSION}`;
 const DYNAMIC_CACHE = `choice-insurance-dynamic-${CACHE_VERSION}`;

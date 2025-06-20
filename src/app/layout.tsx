@@ -1,18 +1,38 @@
 import React from 'react';
 
 import type { Metadata, Viewport } from 'next';
+import dynamic from 'next/dynamic';
 import { Inter, Poppins } from 'next/font/google';
 
-import LazyAnalytics from '@/components/analytics/LazyAnalytics';
-import LazyCompliance from '@/components/compliance/LazyCompliance';
 import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
 import { LocalBusinessSchema, OrganizationSchema } from '@/components/seo/StructuredData';
-import CookieConsent from '@/components/ui/cookie-consent';
-import CacheManager from '@/components/utils/CacheManager';
-import { ChoiceInsuranceBadge } from '@/components/widgets';
 
 import './globals.css';
+
+// Dynamically import client components to prevent SSR issues
+const LazyAnalytics = dynamic(() => import('@/components/analytics/LazyAnalytics'), {
+  ssr: false,
+});
+
+const LazyCompliance = dynamic(() => import('@/components/compliance/LazyCompliance'), {
+  ssr: false,
+});
+
+const CookieConsent = dynamic(() => import('@/components/ui/cookie-consent'), {
+  ssr: false,
+});
+
+const CacheManager = dynamic(() => import('@/components/utils/CacheManager'), {
+  ssr: false,
+});
+
+const ChoiceInsuranceBadge = dynamic(
+  () => import('@/components/widgets').then(mod => ({ default: mod.ChoiceInsuranceBadge })),
+  {
+    ssr: false,
+  }
+);
 
 // Configure fonts
 const inter = Inter({
