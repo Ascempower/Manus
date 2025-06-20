@@ -19,7 +19,7 @@ export default function Footer({ className = '' }: { className?: string }) {
           <div>
             <Link href="/" className="mb-4 inline-block">
               <Image
-                src="/assets/logos/main-logo-orange.png"
+                src="/assets/logos/Main Logo - Orange (3).png"
                 alt="Choice Insurance Hub Logo"
                 width={150}
                 height={50}
