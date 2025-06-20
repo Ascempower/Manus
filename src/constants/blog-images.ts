@@ -50,7 +50,7 @@ export const LOCAL_IMAGES = {
   'life-insurance-riders.jpg': '/images/blog/life-insurance-riders.jpg',
   'life-insurance-riders-2025.jpg': '/images/blog/life-insurance-riders.jpg',
   'understanding-life-insurance.jpg': '/images/blog/understanding-life-insurance.jpg',
-  'business-life-insurance-2025.jpg': '/images/blog/understanding-life-insurance.jpg',
+  'business-life-insurance-2025.jpg': '/images/blog/business-life-insurance-2025.jpg',
   'medicare-comparison-2025.jpg': '/images/blog/medicare-comparison-2025.jpg',
   'medicare-prescription-coverage.jpg': '/images/blog/medicare-prescription-coverage.jpg',
   'health-insurance-changes-2025.jpg': '/images/blog/health-insurance-changes-2025.jpg',
@@ -62,32 +62,32 @@ export const LOCAL_IMAGES = {
   'preventive-care-benefits-2025.jpg': '/images/blog/preventive-care-benefits-2025.jpg',
 } as const;
 
-// Category-based image mapping
+// Category-based image mapping (deployment-resistant)
 export const CATEGORY_IMAGE_MAP = {
   'life-insurance': {
-    primary: CDN_IMAGES['family-life-insurance-2025.jpg'],
+    primary: LOCAL_IMAGES['family-life-insurance-2025.jpg'],
+    cdn: CDN_IMAGES['family-life-insurance-2025.jpg'],
     fallback: PLACEHOLDER_IMAGES.lifeInsurance,
-    local: LOCAL_IMAGES['family-life-insurance-2025.jpg'],
   },
   medicare: {
-    primary: CDN_IMAGES['medicare-comparison-2025.jpg'],
+    primary: LOCAL_IMAGES['medicare-comparison-2025.jpg'],
+    cdn: CDN_IMAGES['medicare-comparison-2025.jpg'],
     fallback: PLACEHOLDER_IMAGES.medicare,
-    local: LOCAL_IMAGES['medicare-comparison-2025.jpg'],
   },
   'health-insurance': {
-    primary: CDN_IMAGES['health-insurance-changes-2025.jpg'],
+    primary: LOCAL_IMAGES['health-insurance-changes-2025.jpg'],
+    cdn: CDN_IMAGES['health-insurance-changes-2025.jpg'],
     fallback: PLACEHOLDER_IMAGES.healthInsurance,
-    local: LOCAL_IMAGES['health-insurance-changes-2025.jpg'],
   },
   'insurance-tips': {
-    primary: CDN_IMAGES['understanding-life-insurance.jpg'],
+    primary: LOCAL_IMAGES['understanding-life-insurance.jpg'],
+    cdn: CDN_IMAGES['understanding-life-insurance.jpg'],
     fallback: PLACEHOLDER_IMAGES.default,
-    local: LOCAL_IMAGES['understanding-life-insurance.jpg'],
   },
   'industry-news': {
-    primary: CDN_IMAGES['health-insurance-changes-2025.jpg'],
+    primary: LOCAL_IMAGES['health-insurance-changes-2025.jpg'],
+    cdn: CDN_IMAGES['health-insurance-changes-2025.jpg'],
     fallback: PLACEHOLDER_IMAGES.default,
-    local: LOCAL_IMAGES['health-insurance-changes-2025.jpg'],
   },
 } as const;
 
@@ -147,7 +147,12 @@ export function getBlogImageSrc(imageName: string, category?: string): string {
   // Extract filename from full path if provided
   const filename = imageName.includes('/') ? imageName.split('/').pop() || imageName : imageName;
   
-  // Try to get from CDN first (most reliable)
+  // Try local first (as per feedback)
+  if (filename in LOCAL_IMAGES) {
+    return LOCAL_IMAGES[filename as keyof typeof LOCAL_IMAGES];
+  }
+  
+  // Try CDN second
   if (filename in CDN_IMAGES) {
     return CDN_IMAGES[filename as keyof typeof CDN_IMAGES];
   }
