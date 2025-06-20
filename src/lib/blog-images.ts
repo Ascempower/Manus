@@ -1,15 +1,21 @@
 /**
  * Blog Image Management System
- * Centralized mapping and fallback system for blog images
+ * DEPRECATED: Use src/constants/blog-images.ts for new robust system
+ * This file is kept for backward compatibility
  */
 
-// Available blog images mapping
+import {
+    getBlogImageSrc as getNewBlogImageSrc,
+    getPlaceholderImage
+} from '@/constants/blog-images';
+
+// Legacy mapping - kept for backward compatibility
 export const BLOG_IMAGES = {
   // Life Insurance Images
   'family-life-insurance-2025.jpg': '/images/blog/family-life-insurance-2025.jpg',
   'term-vs-whole-life-insurance.jpg': '/images/blog/term-vs-whole-life-insurance.jpg',
-  'life-insurance-riders-2025.jpg': '/images/blog/life-insurance-riders.jpg', // Map to existing file
-  'business-life-insurance-2025.jpg': '/images/blog/understanding-life-insurance.jpg', // Fallback
+  'life-insurance-riders-2025.jpg': '/images/blog/life-insurance-riders.jpg',
+  'business-life-insurance-2025.jpg': '/images/blog/understanding-life-insurance.jpg',
   'understanding-life-insurance.jpg': '/images/blog/understanding-life-insurance.jpg',
 
   // Medicare Images
@@ -18,24 +24,24 @@ export const BLOG_IMAGES = {
 
   // Health Insurance Images
   'health-insurance-changes-2025.jpg': '/images/blog/health-insurance-changes-2025.jpg',
-  'preventive-care-expansion-2025.jpg': '/images/blog/preventive-care-benefits-2025.jpg', // Map to existing
-  'mental-health-coverage-2025.jpg': '/images/blog/health-insurance-changes-2025.jpg', // Fallback
-  'digital-health-innovation-2025.jpg': '/images/blog/telehealth-expansion-2025.jpg', // Map to existing
+  'preventive-care-expansion-2025.jpg': '/images/blog/preventive-care-benefits-2025.jpg',
+  'mental-health-coverage-2025.jpg': '/images/blog/health-insurance-changes-2025.jpg',
+  'digital-health-innovation-2025.jpg': '/images/blog/telehealth-expansion-2025.jpg',
   'telehealth-expansion-2025.jpg': '/images/blog/telehealth-expansion-2025.jpg',
   'provider-network-flexibility.jpg': '/images/blog/provider-network-flexibility.jpg',
   'preventive-care-benefits-2025.jpg': '/images/blog/preventive-care-benefits-2025.jpg',
 } as const;
 
 // Default fallback image for blog posts
-export const DEFAULT_BLOG_IMAGE = '/images/og-image.jpg';
+export const DEFAULT_BLOG_IMAGE = getPlaceholderImage();
 
 // Blog categories and their default images
 export const CATEGORY_IMAGES = {
-  'life-insurance': '/images/blog/family-life-insurance-2025.jpg',
-  medicare: '/images/blog/medicare-comparison-2025.jpg',
-  'health-insurance': '/images/blog/health-insurance-changes-2025.jpg',
-  'insurance-tips': '/images/og-image.jpg',
-  'industry-news': '/images/og-image.jpg',
+  'life-insurance': getNewBlogImageSrc('family-life-insurance-2025.jpg', 'life-insurance'),
+  medicare: getNewBlogImageSrc('medicare-comparison-2025.jpg', 'medicare'),
+  'health-insurance': getNewBlogImageSrc('health-insurance-changes-2025.jpg', 'health-insurance'),
+  'insurance-tips': getPlaceholderImage('insurance-tips'),
+  'industry-news': getPlaceholderImage('industry-news'),
 } as const;
 
 /**
@@ -43,23 +49,11 @@ export const CATEGORY_IMAGES = {
  * @param imageName - The image name from the blog post
  * @param category - Optional category for fallback
  * @returns The correct image path or fallback
+ * @deprecated Use getBlogImageSrc from @/constants/blog-images instead
  */
 export function getBlogImage(imageName: string, category?: string): string {
-  // Extract filename from full path if provided
-  const filename = imageName.includes('/') ? imageName.split('/').pop() || imageName : imageName;
-
-  // Check if we have a mapping for this image
-  if (filename in BLOG_IMAGES) {
-    return BLOG_IMAGES[filename as keyof typeof BLOG_IMAGES];
-  }
-
-  // Try category fallback
-  if (category && category in CATEGORY_IMAGES) {
-    return CATEGORY_IMAGES[category as keyof typeof CATEGORY_IMAGES];
-  }
-
-  // Return default fallback
-  return DEFAULT_BLOG_IMAGE;
+  // Use the new robust system
+  return getNewBlogImageSrc(imageName, category);
 }
 
 /**

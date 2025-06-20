@@ -1,186 +1,291 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+
+import {
+    CALENDLY_CONFIG,
+    CALENDLY_CUSTOM_STYLES,
+    CALENDLY_INIT_OPTIONS,
+    getCalendlyUrl,
+} from '@/constants/calendly';
 
 interface CalendlyWidgetProps {
-  url?: string;
-  height?: number;
+  variant?: 'default' | 'inline' | 'popup';
   className?: string;
   prefill?: {
     name?: string;
     email?: string;
     customAnswers?: Record<string, string>;
   };
+  onEventScheduled?: (event: any) => void;
+  onError?: (error: string) => void;
 }
 
-// Calendly types are defined in src/types/calendly.d.ts
+// Widget state management
+type WidgetState = 'loading' | 'loaded' | 'error' | 'retry';
 
 export default function CalendlyWidget({
-  url = 'https://calendly.com/choiceinsurancehub/30-minute-meeting',
-  height = 700,
+  variant = 'default',
   className = '',
   prefill,
+  onEventScheduled,
+  onError,
 }: CalendlyWidgetProps) {
-  // Add branding parameters to URL
-  const brandedUrl = url.includes('?')
-    ? `${url}&primary_color=42615a&text_color=dd8b66&background_color=42615a&hide_gdpr_banner=1&hide_event_type_details=0`
-    : `${url}?primary_color=42615a&text_color=dd8b66&background_color=42615a&hide_gdpr_banner=1&hide_event_type_details=0`;
-  const calendlyRef = React.useRef<HTMLDivElement>(null);
-  const [isLoaded, setIsLoaded] = React.useState(false);
-  const [error, setError] = React.useState<string | null>(null);
+  const calendlyRef = useRef<HTMLDivElement>(null);
+  const [state, setState] = useState<WidgetState>('loading');
+  const [error, setError] = useState<string | null>(null);
+  const [retryCount, setRetryCount] = useState(0);
+  const timeoutRef = useRef<NodeJS.Timeout>();
+  const styleElementRef = useRef<HTMLStyleElement>();
 
-  useEffect(() => {
-    // Only load on client side
-    if (typeof window === 'undefined') return;
+  // Get configuration for the variant
+  const config = CALENDLY_CONFIG.dimensions[variant];
+  const calendlyUrl = getCalendlyUrl();
 
-    let script: HTMLScriptElement | null = null;
+  // Cleanup function
+  const cleanup = useCallback(() => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    if (styleElementRef.current && styleElementRef.current.parentNode) {
+      styleElementRef.current.parentNode.removeChild(styleElementRef.current);
+    }
+  }, []);
 
-    const loadCalendly = async () => {
-      try {
-        // Check if Calendly is already loaded
-        if (window.Calendly) {
-          initializeWidget();
-          return;
-        }
+  // Error handler
+  const handleError = useCallback(
+    (errorMessage: string) => {
+      setState('error');
+      setError(errorMessage);
+      onError?.(errorMessage);
+      console.error('Calendly Widget Error:', errorMessage);
+    },
+    [onError]
+  );
 
-        // Load Calendly script
-        script = document.createElement('script');
-        script.src = 'https://assets.calendly.com/assets/external/widget.js';
+  // Retry mechanism
+  const retryLoad = useCallback(() => {
+    if (retryCount < CALENDLY_INIT_OPTIONS.maxRetries) {
+      setState('retry');
+      setRetryCount(prev => prev + 1);
+      setTimeout(() => {
+        setState('loading');
+        setError(null);
+      }, CALENDLY_INIT_OPTIONS.retryDelay * (retryCount + 1));
+    } else {
+      handleError('Maximum retry attempts reached');
+    }
+  }, [retryCount, handleError]);
+
+  // Initialize Calendly widget
+  const initializeWidget = useCallback(() => {
+    if (!calendlyRef.current || !window.Calendly) {
+      handleError('Calendly container or library not available');
+      return;
+    }
+
+    try {
+      // Clear any existing content
+      calendlyRef.current.innerHTML = '';
+
+      // Initialize Calendly widget with robust configuration
+      window.Calendly.initInlineWidget({
+        url: calendlyUrl,
+        parentElement: calendlyRef.current,
+        prefill: prefill || {},
+        utm: CALENDLY_CONFIG.utm,
+      });
+
+      // Set up event listeners
+      if (onEventScheduled) {
+        window.Calendly.initEventListener({
+          onEventScheduled: onEventScheduled,
+        });
+      }
+
+      setState('loaded');
+    } catch (err) {
+      handleError(`Failed to initialize widget: ${err instanceof Error ? err.message : 'Unknown error'}`);
+    }
+  }, [calendlyUrl, prefill, onEventScheduled, handleError]);
+
+  // Load Calendly resources
+  const loadCalendlyResources = useCallback(async () => {
+    // Check if already loaded
+    if (window.Calendly) {
+      initializeWidget();
+      return;
+    }
+
+    try {
+      // Set loading timeout
+      timeoutRef.current = setTimeout(() => {
+        handleError('Loading timeout exceeded');
+      }, CALENDLY_INIT_OPTIONS.loadTimeout);
+
+      // Load CSS first
+      const existingCss = document.querySelector(`link[href="${CALENDLY_INIT_OPTIONS.cssUrl}"]`);
+      if (!existingCss) {
+        const link = document.createElement('link');
+        link.href = CALENDLY_INIT_OPTIONS.cssUrl;
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        document.head.appendChild(link);
+      }
+
+      // Add custom styles
+      if (!styleElementRef.current) {
+        styleElementRef.current = document.createElement('style');
+        styleElementRef.current.textContent = CALENDLY_CUSTOM_STYLES;
+        styleElementRef.current.setAttribute('data-calendly-custom', 'true');
+        document.head.appendChild(styleElementRef.current);
+      }
+
+      // Load JavaScript
+      const existingScript = document.querySelector(`script[src="${CALENDLY_INIT_OPTIONS.scriptUrl}"]`);
+      if (!existingScript) {
+        const script = document.createElement('script');
+        script.src = CALENDLY_INIT_OPTIONS.scriptUrl;
         script.async = true;
+        script.defer = true;
 
         script.onload = () => {
-          setIsLoaded(true);
+          if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+          }
           initializeWidget();
         };
 
         script.onerror = () => {
-          setError('Failed to load Calendly widget');
+          if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+          }
+          retryLoad();
         };
 
         document.head.appendChild(script);
-
-        // Also load CSS
-        const link = document.createElement('link');
-        link.href = 'https://assets.calendly.com/assets/external/widget.css';
-        link.rel = 'stylesheet';
-        document.head.appendChild(link);
-
-        // Add custom CSS to hide branding and apply custom styling
-        const customStyle = document.createElement('style');
-        customStyle.textContent = `
-          /* Hide Calendly branding and install app prompts */
-          .calendly-inline-widget [data-testid="branding"],
-          .calendly-inline-widget .calendly-badge-widget,
-          .calendly-inline-widget .calendly-badge-content,
-          .calendly-inline-widget [class*="branding"],
-          .calendly-inline-widget [class*="badge"],
-          .calendly-inline-widget [data-testid="install-app"],
-          .calendly-inline-widget [aria-label*="install"],
-          .calendly-inline-widget [title*="install"],
-          .calendly-inline-widget .calendly-popup-close,
-          .calendly-inline-widget [data-testid="popup-website-embed"],
-          .calendly-inline-widget [class*="footer"],
-          .calendly-inline-widget [class*="powered-by"],
-          .calendly-inline-widget [data-testid*="footer"],
-          .calendly-inline-widget [data-testid*="powered"],
-          .calendly-inline-widget [href*="calendly.com"],
-          .calendly-inline-widget a[target="_blank"]:not([href*="choiceinsurancehub"]) {
-            display: none !important;
-            visibility: hidden !important;
-            opacity: 0 !important;
-            height: 0 !important;
-            overflow: hidden !important;
-          }
-
-          /* Style the main widget container */
-          .calendly-widget-container {
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-          }
-
-          /* Style the iframe container */
-          .calendly-inline-widget iframe {
-            border-radius: 0 !important;
-            border: none !important;
-            background-color: #ffffff !important;
-            width: 100% !important;
-            height: 100% !important;
-          }
-
-          /* Ensure proper styling within iframe (if accessible) */
-          .calendly-inline-widget {
-            background-color: #ffffff !important;
-            border-radius: 0 !important;
-          }
-        `;
-        document.head.appendChild(customStyle);
-      } catch (err) {
-        setError('Error loading Calendly widget');
-        console.error('Calendly loading error:', err);
+      } else {
+        // Script already exists, check if Calendly is available
+        if (window.Calendly) {
+          initializeWidget();
+        } else {
+          // Wait a bit and check again
+          setTimeout(() => {
+            if (window.Calendly) {
+              initializeWidget();
+            } else {
+              retryLoad();
+            }
+          }, 500);
+        }
       }
-    };
+    } catch (err) {
+      handleError(`Failed to load resources: ${err instanceof Error ? err.message : 'Unknown error'}`);
+    }
+  }, [initializeWidget, handleError, retryLoad]);
 
-    const initializeWidget = () => {
-      if (!calendlyRef.current || !window.Calendly) return;
+  // Effect to load Calendly
+  useEffect(() => {
+    // Only load on client side
+    if (typeof window === 'undefined') return;
 
-      try {
-        // Clear any existing content
-        calendlyRef.current.innerHTML = '';
+    // Reset state when dependencies change
+    setState('loading');
+    setError(null);
 
-        // Initialize Calendly widget
-        window.Calendly.initInlineWidget({
-          url: brandedUrl,
-          parentElement: calendlyRef.current,
-          prefill: prefill || {},
-          utm: {
-            utmCampaign: 'Website Contact Form',
-            utmSource: 'choiceinsurancehub.com',
-            utmMedium: 'website',
-          },
-        });
-      } catch (err) {
-        setError('Error initializing Calendly widget');
-        console.error('Calendly initialization error:', err);
-      }
-    };
+    loadCalendlyResources();
 
-    loadCalendly();
+    // Cleanup on unmount
+    return cleanup;
+  }, [loadCalendlyResources, cleanup]);
 
-    // Cleanup
-    return () => {
-      if (script && script.parentNode) {
-        script.parentNode.removeChild(script);
-      }
-    };
-  }, [brandedUrl, prefill]);
-
-  if (error) {
+  // Render loading state
+  if (state === 'loading' || state === 'retry') {
     return (
-      <div className={`rounded-lg border border-red-200 bg-red-50 p-6 text-center ${className}`}>
-        <p className="text-red-600">Unable to load booking calendar.</p>
-        <p className="mt-2 text-sm text-red-500">
-          Please{' '}
-          <a
-            href="https://calendly.com/choiceinsurancehub/30-minute-meeting"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline hover:no-underline"
-          >
-            click here to book directly
-          </a>{' '}
-          or call us at{' '}
-          <a href="tel:8774142319" className="underline hover:no-underline">
-            (877) 414-2319
-          </a>
-        </p>
+      <div className={`${CALENDLY_INIT_OPTIONS.containerClass} ${className}`}>
+        <div className="mb-6 rounded-t-lg bg-brand-deep-forest-green p-6 text-center">
+          <h2 className="mb-2 text-2xl font-bold text-brand-warm-beige-coral">
+            Schedule Your Free Consultation
+          </h2>
+          <p className="text-brand-warm-beige-coral/90">
+            Book a 30-minute meeting with our insurance experts to discuss your needs
+          </p>
+        </div>
+        <div
+          className={CALENDLY_INIT_OPTIONS.loadingClass}
+          style={{ minHeight: `${config.height}px` }}
+        >
+          <div className="text-center">
+            <div className="mb-4 h-8 w-8 animate-spin rounded-full border-4 border-brand-warm-beige-coral border-t-transparent"></div>
+            <p className="text-lg font-medium">
+              {state === 'retry' ? `Retrying... (${retryCount}/${CALENDLY_INIT_OPTIONS.maxRetries})` : 'Loading booking calendar...'}
+            </p>
+            <p className="mt-2 text-sm opacity-75">Please wait while we prepare your scheduling options</p>
+          </div>
+        </div>
       </div>
     );
   }
 
+  // Render error state
+  if (state === 'error') {
+    return (
+      <div className={`${CALENDLY_INIT_OPTIONS.containerClass} ${className}`}>
+        <div className="mb-6 rounded-t-lg bg-brand-deep-forest-green p-6 text-center">
+          <h2 className="mb-2 text-2xl font-bold text-brand-warm-beige-coral">
+            Schedule Your Free Consultation
+          </h2>
+          <p className="text-brand-warm-beige-coral/90">
+            Book a 30-minute meeting with our insurance experts to discuss your needs
+          </p>
+        </div>
+        <div className={`${CALENDLY_INIT_OPTIONS.errorClass} rounded-b-lg`} style={{ minHeight: `${config.height}px` }}>
+          <div className="flex flex-col items-center justify-center h-full space-y-4">
+            <div className="text-center">
+              <h3 className="text-lg font-semibold text-red-700 mb-2">Unable to Load Booking Calendar</h3>
+              <p className="text-red-600 mb-4">
+                {error || 'There was a problem loading the scheduling widget.'}
+              </p>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row gap-4 items-center">
+              <button
+                onClick={retryLoad}
+                className="px-6 py-2 bg-brand-deep-forest-green text-white rounded-lg hover:bg-brand-deep-forest-green/90 transition-colors"
+                disabled={retryCount >= CALENDLY_INIT_OPTIONS.maxRetries}
+              >
+                {retryCount >= CALENDLY_INIT_OPTIONS.maxRetries ? 'Max Retries Reached' : 'Try Again'}
+              </button>
+              
+              <div className="text-center">
+                <p className="text-sm text-gray-600 mb-2">Or contact us directly:</p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <a
+                    href={CALENDLY_CONFIG.fallback.directUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm"
+                  >
+                    Book on Calendly.com
+                  </a>
+                  <a
+                    href={`tel:${CALENDLY_CONFIG.fallback.phone.replace(/[^\d]/g, '')}`}
+                    className="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-sm"
+                  >
+                    Call {CALENDLY_CONFIG.fallback.phone}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Render loaded widget
   return (
-    <div className={`calendly-widget-container ${className}`}>
-      {/* Call-to-Action Header */}
+    <div className={`${CALENDLY_INIT_OPTIONS.containerClass} ${className}`}>
       <div className="mb-6 rounded-t-lg bg-brand-deep-forest-green p-6 text-center">
         <h2 className="mb-2 text-2xl font-bold text-brand-warm-beige-coral">
           Schedule Your Free Consultation
@@ -189,58 +294,98 @@ export default function CalendlyWidget({
           Book a 30-minute meeting with our insurance experts to discuss your needs
         </p>
       </div>
-
-      {!isLoaded && (
-        <div
-          className="flex items-center justify-center rounded-b-lg bg-brand-deep-forest-green text-brand-warm-beige-coral"
-          style={{ height: `${height}px` }}
-        >
-          <div className="text-center">
-            <div className="mb-2 h-8 w-8 animate-spin rounded-full border-4 border-brand-warm-beige-coral border-t-transparent"></div>
-            <p>Loading booking calendar...</p>
-          </div>
-        </div>
-      )}
       <div
         ref={calendlyRef}
-        style={{ minHeight: `${height}px` }}
-        className={`${isLoaded ? 'block' : 'hidden'} overflow-hidden rounded-b-lg`}
+        style={{ minHeight: `${config.height}px` }}
+        className="overflow-hidden rounded-b-lg bg-white"
       />
     </div>
   );
 }
 
 // Inline Calendly Widget (smaller, embedded)
-export function CalendlyInline({ className = '' }: { className?: string }) {
+export function CalendlyInline({ 
+  className = '',
+  onEventScheduled,
+  onError,
+}: { 
+  className?: string;
+  onEventScheduled?: (event: any) => void;
+  onError?: (error: string) => void;
+}) {
   return (
     <CalendlyWidget
-      height={600}
+      variant="inline"
       className={`rounded-lg border-2 border-brand-warm-beige-coral shadow-xl ${className}`}
+      onEventScheduled={onEventScheduled}
+      onError={onError}
     />
   );
 }
 
-// Popup trigger button (alternative approach)
+// Popup trigger button (robust fallback approach)
 export function CalendlyPopupButton({
   children,
   className = '',
-  url = 'https://calendly.com/choiceinsurancehub/30-minute-meeting',
+  onEventScheduled,
 }: {
   children: React.ReactNode;
   className?: string;
-  url?: string;
+  onEventScheduled?: (event: any) => void;
 }) {
-  const handleClick = () => {
-    // Open Calendly in a new window as fallback
-    window.open(url, '_blank', 'width=800,height=700,scrollbars=yes,resizable=yes');
-  };
+  const [isLoading, setIsLoading] = useState(false);
+  
+  const handleClick = useCallback(async () => {
+    setIsLoading(true);
+    
+    try {
+      // Try to use Calendly popup if available
+      if (window.Calendly && window.Calendly.initPopupWidget) {
+        window.Calendly.initPopupWidget({
+          url: getCalendlyUrl(),
+          utm: CALENDLY_CONFIG.utm,
+        });
+        
+        if (onEventScheduled) {
+          window.Calendly.initEventListener({
+            onEventScheduled: onEventScheduled,
+          });
+        }
+      } else {
+        // Fallback to opening in new window
+        const { width, height } = CALENDLY_CONFIG.dimensions.popup;
+        const left = (window.screen.width - width) / 2;
+        const top = (window.screen.height - height) / 2;
+        
+        window.open(
+          CALENDLY_CONFIG.fallback.directUrl,
+          '_blank',
+          `width=${width},height=${height},left=${left},top=${top},scrollbars=yes,resizable=yes`
+        );
+      }
+    } catch (error) {
+      console.error('Error opening Calendly popup:', error);
+      // Ultimate fallback - direct link
+      window.open(CALENDLY_CONFIG.fallback.directUrl, '_blank');
+    } finally {
+      setIsLoading(false);
+    }
+  }, [onEventScheduled]);
 
   return (
     <button
       onClick={handleClick}
-      className={`inline-flex items-center justify-center rounded-md bg-brand-warm-beige-coral px-6 py-3 text-white transition-colors hover:bg-brand-warm-beige-coral-dark ${className}`}
+      disabled={isLoading}
+      className={`inline-flex items-center justify-center rounded-md bg-brand-warm-beige-coral px-6 py-3 text-white transition-colors hover:bg-brand-warm-beige-coral-dark disabled:opacity-50 disabled:cursor-not-allowed ${className}`}
     >
-      {children}
+      {isLoading ? (
+        <>
+          <div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
+          Opening...
+        </>
+      ) : (
+        children
+      )}
     </button>
   );
 }
