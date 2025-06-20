@@ -8,6 +8,7 @@ import LazyCompliance from '@/components/compliance/LazyCompliance';
 import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
 import { LocalBusinessSchema, OrganizationSchema } from '@/components/seo/StructuredData';
+import CookieConsent from '@/components/ui/cookie-consent';
 import CacheManager from '@/components/utils/CacheManager';
 import { ChoiceInsuranceBadge } from '@/components/widgets';
 
@@ -144,6 +145,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         {/* Cache Management */}
         <CacheManager checkInterval={15 * 60 * 1000} showNotifications={false} />
+
+        {/* Cookie Consent Banner */}
+        <CookieConsent />
 
         {/* Deferred Service Worker Registration */}
         <script

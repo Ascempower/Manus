@@ -61,6 +61,64 @@ for = "/*"
   max-age=63072000;
   includeSubDomains;
   preload'''
+  # Cookie security headers to fix Chrome DevTools issues
+  Set-Cookie = '''
+  SameSite=Strict;
+  Secure;
+  HttpOnly'''
+  # Content Security Policy to prevent mixed content issues
+  Content-Security-Policy = '''
+  default-src 'self';
+  script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://images.unsplash.com;
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+  font-src 'self' https://fonts.gstatic.com;
+  img-src 'self' data: https: blob:;
+  connect-src 'self' https://www.google-analytics.com https://images.unsplash.com;
+  frame-src 'none';
+  object-src 'none';
+  base-uri 'self';
+  form-action 'self';
+  upgrade-insecure-requests'''
+
+# Handle Netlify analytics and deployment tracking
+[[headers]]
+for = "/cdp/*"
+  [headers.values]
+  Set-Cookie = '''
+  SameSite=None;
+  Secure;
+  HttpOnly'''
+  Access-Control-Allow-Origin = "https://app.netlify.com"
+  Access-Control-Allow-Credentials = "true"
+  # Cookie security headers to fix Chrome DevTools issues
+  Set-Cookie = '''
+  SameSite=Strict;
+  Secure;
+  HttpOnly'''
+  # Content Security Policy to prevent mixed content issues
+  Content-Security-Policy = '''
+  default-src 'self';
+  script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://images.unsplash.com;
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+  font-src 'self' https://fonts.gstatic.com;
+  img-src 'self' data: https: blob:;
+  connect-src 'self' https://www.google-analytics.com https://images.unsplash.com;
+  frame-src 'none';
+  object-src 'none';
+  base-uri 'self';
+  form-action 'self';
+  upgrade-insecure-requests'''
+
+# Handle Netlify analytics and deployment tracking
+[[headers]]
+for = "/cdp/*"
+  [headers.values]
+  Set-Cookie = '''
+  SameSite=None;
+  Secure;
+  HttpOnly'''
+  Access-Control-Allow-Origin = "https://app.netlify.com"
+  Access-Control-Allow-Credentials = "true"
 
 [[redirects]]
   from = "/*"
