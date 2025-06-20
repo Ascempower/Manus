@@ -3,14 +3,14 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import {
-    CALENDLY_CONFIG,
-    CALENDLY_CUSTOM_STYLES,
-    CALENDLY_INIT_OPTIONS,
-    getCalendlyUrl,
+  CALENDLY_CONFIG,
+  CALENDLY_CUSTOM_STYLES,
+  CALENDLY_INIT_OPTIONS,
+  getCalendlyUrl,
 } from '@/constants/calendly';
 
 interface CalendlyWidgetProps {
-  variant?: 'default' | 'inline' | 'popup';
+  variant?: 'default' | 'inline';
   className?: string;
   prefill?: {
     name?: string;
@@ -35,7 +35,7 @@ export default function CalendlyWidget({
   const [state, setState] = useState<WidgetState>('loading');
   const [error, setError] = useState<string | null>(null);
   const [retryCount, setRetryCount] = useState(0);
-  const timeoutRef = useRef<NodeJS.Timeout>();
+  const timeoutRef = useRef<number>();
   const styleElementRef = useRef<HTMLStyleElement>();
 
   // Get configuration for the variant
@@ -68,7 +68,7 @@ export default function CalendlyWidget({
     if (retryCount < CALENDLY_INIT_OPTIONS.maxRetries) {
       setState('retry');
       setRetryCount(prev => prev + 1);
-      setTimeout(() => {
+      window.setTimeout(() => {
         setState('loading');
         setError(null);
       }, CALENDLY_INIT_OPTIONS.retryDelay * (retryCount + 1));
@@ -119,7 +119,7 @@ export default function CalendlyWidget({
 
     try {
       // Set loading timeout
-      timeoutRef.current = setTimeout(() => {
+      timeoutRef.current = window.setTimeout(() => {
         handleError('Loading timeout exceeded');
       }, CALENDLY_INIT_OPTIONS.loadTimeout);
 

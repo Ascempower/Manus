@@ -3,11 +3,11 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import {
-    getBlogImageAlt,
-    getBlogImageSrc,
-    getImageSources,
-    getPlaceholderImage,
-    IMAGE_LOADING_CONFIG,
+  getBlogImageAlt,
+  getBlogImageSrc,
+  getImageSources,
+  getPlaceholderImage,
+  IMAGE_LOADING_CONFIG,
 } from '@/constants/blog-images';
 import { cn } from '@/lib/utils';
 
@@ -42,7 +42,7 @@ export default function BlogImage({
   const [currentSrc, setCurrentSrc] = useState<string>('');
   const [retryCount, setRetryCount] = useState(0);
   const imgRef = useRef<HTMLImageElement>(null);
-  const timeoutRef = useRef<NodeJS.Timeout>();
+  const timeoutRef = useRef<number>();
 
   // Get all available image sources
   const imageSources = getImageSources(src, category);
