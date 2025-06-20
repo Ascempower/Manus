@@ -40,8 +40,8 @@ export const CALENDLY_CONFIG = {
   
   // Widget dimensions for different contexts
   dimensions: {
-    default: { height: 700, width: '100%' },
-    inline: { height: 600, width: '100%' },
+    default: { height: 700, width: '100%' as const },
+    inline: { height: 600, width: '100%' as const },
     popup: { height: 700, width: 800 },
   },
 } as const;

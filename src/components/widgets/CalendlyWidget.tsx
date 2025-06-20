@@ -39,7 +39,7 @@ export default function CalendlyWidget({
   const styleElementRef = useRef<HTMLStyleElement>();
 
   // Get configuration for the variant
-  const config = CALENDLY_CONFIG.dimensions[variant];
+  const config = CALENDLY_CONFIG.dimensions[variant] || CALENDLY_CONFIG.dimensions.default;
   const calendlyUrl = getCalendlyUrl();
 
   // Cleanup function
