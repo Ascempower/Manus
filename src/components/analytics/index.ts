@@ -1,3 +1,5 @@
 export { default as GoogleAnalytics } from './GoogleAnalytics';
-export { default as CookieConsent } from './CookieConsent';
-export { default as LazyAnalytics } from './LazyAnalytics';
+// Note: LazyAnalytics export removed from barrel export to prevent SSR issues with useRef
+// Import CookieConsent } from './CookieConsent';
+// Note: LazyAnalytics export removed from barrel export to prevent SSR issues with useRef
+// Import LazyAnalytics directly from './LazyAnalytics' when needed when needed
