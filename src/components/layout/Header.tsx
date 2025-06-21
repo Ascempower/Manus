@@ -92,16 +92,16 @@ export default function Header() {
                         <div className="grid w-full grid-cols-2 gap-4 p-6">
                           {/* First Column */}
                           <div className="flex flex-col gap-3">
-                            {/* All Services - Dark green button */}
+                            {/* All Services - Large prominent button taking most of first column */}
                             <NavigationMenuLink asChild>
                               <Link
                                 href="/services"
-                                className="block select-none rounded-lg bg-[#42615A] p-6 leading-none text-white no-underline outline-none"
+                                className="mb-2 block select-none rounded-lg bg-[#42615A] p-8 leading-none text-white no-underline outline-none"
                               >
-                                <div className="text-lg font-bold leading-none text-white">
+                                <div className="text-xl font-bold leading-none text-white">
                                   All Services
                                 </div>
-                                <div className="mt-2 text-sm text-white/90">
+                                <div className="mt-3 text-base text-white/90">
                                   Explore our comprehensive range of insurance solutions
                                 </div>
                               </Link>
