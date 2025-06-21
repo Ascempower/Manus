@@ -37,7 +37,7 @@ export default function Header() {
         </Link>
 
         <NavigationMenuPrimitive.Root
-          className="relative z-10 flex hidden max-w-max flex-1 items-center justify-start lg:flex"
+          className="relative z-10 hidden max-w-max flex-1 items-center justify-start lg:flex"
           delayDuration={200}
           skipDelayDuration={300}
         >
@@ -47,18 +47,32 @@ export default function Header() {
                 key={item.href}
                 className="relative"
                 onMouseEnter={e => {
-                  if (item.hasDropdown && !('ontouchstart' in window)) {
+                  if (
+                    item.hasDropdown &&
+                    typeof window !== 'undefined' &&
+                    !('ontouchstart' in window)
+                  ) {
                     const button = e.currentTarget.querySelector('[data-state]');
-                    if (button?.getAttribute('data-state') !== 'open') {
-                      (button as HTMLElement)?.click();
+                    if (
+                      button?.getAttribute('data-state') !== 'open' &&
+                      button instanceof HTMLElement
+                    ) {
+                      button.click();
                     }
                   }
                 }}
                 onMouseLeave={e => {
-                  if (item.hasDropdown && !('ontouchstart' in window)) {
+                  if (
+                    item.hasDropdown &&
+                    typeof window !== 'undefined' &&
+                    !('ontouchstart' in window)
+                  ) {
                     const button = e.currentTarget.querySelector('[data-state]');
-                    if (button?.getAttribute('data-state') === 'open') {
-                      (button as HTMLElement)?.click();
+                    if (
+                      button?.getAttribute('data-state') === 'open' &&
+                      button instanceof HTMLElement
+                    ) {
+                      button.click();
                     }
                   }
                 }}
