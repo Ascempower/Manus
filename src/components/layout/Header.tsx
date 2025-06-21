@@ -73,7 +73,7 @@ export default function Header() {
                     >
                       {item.label}
                     </NavigationMenuTrigger>
-                    <NavigationMenuContent className="absolute left-0 top-full z-[70] mt-1 w-[800px] min-w-[800px] origin-top-left rounded-lg border border-brand-teal-blue-dark bg-brand-teal-blue shadow-lg data-[state=open]:bg-brand-teal-blue">
+                    <NavigationMenuContent className="absolute left-0 top-full z-[70] mt-1 w-[800px] min-w-[800px] origin-top-left rounded-lg border-2 border-red-500 bg-brand-teal-blue shadow-lg data-[state=open]:bg-brand-teal-blue">
                       <div className="grid w-full grid-cols-2 gap-4 p-6">
                         {/* First Column */}
                         <div className="flex flex-col gap-3">
