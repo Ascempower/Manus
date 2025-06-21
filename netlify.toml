@@ -1,6 +1,6 @@
 [build]
 base = "."
-command = "pnpm install --frozen-lockfile && pnpm run print-versions && pnpm run build"
+command = "rm -rf .next && pnpm install --frozen-lockfile && pnpm run print-versions && pnpm run build"
 publish = ".next"
 
 [build.environment]
@@ -31,8 +31,8 @@ package = "netlify-plugin-bundle-env"
 [[plugins]]
 package = "netlify-plugin-cache"
   [plugins.inputs]
-  # Cache node_modules and .next for faster builds
-  paths = ["node_modules", ".next/cache", ".pnpm-store"]
+  # Cache only dependencies, not build output for clean builds
+  paths = ["node_modules", ".pnpm-store"]
 
 # Cache static assets
 [[headers]]
