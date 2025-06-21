@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import dynamic from 'next/dynamic';
 
@@ -11,11 +11,12 @@ const ClientLayoutContent = dynamic(() => import('./ClientLayoutContent'), {
 
 interface ClientOnlyLayoutProps {
   children: React.ReactNode;
-  ga4Id?: string;
-  gtmId?: string;
+  ga4Id: string | undefined;
+  gtmId: string | undefined;
 }
 
-export default function ClientOnlyLayout({ children, ga4Id, gtmId }: ClientOnlyLayoutProps) {
+export default function ClientOnlyLayout(props: ClientOnlyLayoutProps) {
+  const { children, ga4Id, gtmId } = props;
   const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
