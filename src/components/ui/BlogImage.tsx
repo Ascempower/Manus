@@ -167,7 +167,7 @@ function BlogImageInternal({
       img.onload = null;
       img.onerror = null;
     };
-  }, [currentSrc, handleImageLoad, handleImageError]);
+  }, [currentSrc, handleImageLoad, handleImageError, isClient]);
 
   // Don't render anything during SSR
   if (!isClient) {
