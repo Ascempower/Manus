@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Link from 'next/link';
 
 import { CheckCircle, MessageSquare, ShieldCheck, Users } from 'lucide-react';
@@ -109,14 +107,14 @@ export default function HomePage() {
             ].map(service => (
               <Card
                 key={service.title}
-                className="bg-brand-white text-brand-black shadow-lg transition-shadow duration-300 hover:shadow-xl"
+                className="flex h-full flex-col bg-brand-white text-brand-black shadow-lg transition-shadow duration-300 hover:shadow-xl"
               >
                 <CardHeader>
                   <CardTitle className="font-poppins text-2xl text-brand-deep-forest-green">
                     {service.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="flex flex-col items-center">
+                <CardContent className="flex flex-1 flex-col items-center justify-between">
                   <p className="mb-4 text-center text-brand-black/80">{service.description}</p>
                   <Button
                     asChild

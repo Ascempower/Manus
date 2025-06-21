@@ -39,7 +39,7 @@ export default function Header() {
         <NavigationMenuPrimitive.Root
           className="relative z-10 hidden max-w-max flex-1 items-center justify-start lg:flex"
           delayDuration={200}
-          skipDelayDuration={300}
+          skipDelayDuration={3000}
         >
           <NavigationMenuList>
             {MAIN_NAVIGATION.map(item => (
@@ -107,12 +107,12 @@ export default function Header() {
                               </Link>
                             </NavigationMenuLink>
 
-                            {/* First 2 services - Dark green buttons */}
-                            {FOOTER_LINKS.services.slice(0, 2).map(service => (
+                            {/* First 3 services - Dark green buttons */}
+                            {FOOTER_LINKS.services.slice(0, 3).map(service => (
                               <NavigationMenuLink key={service.href} asChild>
                                 <Link
                                   href={service.href}
-                                  className="block select-none rounded-lg bg-[#42615A] p-4 leading-none text-white no-underline outline-none"
+                                  className="block flex min-h-[80px] select-none flex-col justify-center rounded-lg bg-[#42615A] p-4 leading-none text-white no-underline outline-none"
                                 >
                                   <div className="text-base font-medium leading-none text-white">
                                     {service.label}
@@ -127,11 +127,11 @@ export default function Header() {
 
                           {/* Second Column - Remaining services - Dark green buttons */}
                           <div className="flex flex-col gap-3">
-                            {FOOTER_LINKS.services.slice(2).map(service => (
+                            {FOOTER_LINKS.services.slice(3).map(service => (
                               <NavigationMenuLink key={service.href} asChild>
                                 <Link
                                   href={service.href}
-                                  className="block select-none rounded-lg bg-[#42615A] p-4 leading-none text-white no-underline outline-none"
+                                  className="block flex min-h-[80px] select-none flex-col justify-center rounded-lg bg-[#42615A] p-4 leading-none text-white no-underline outline-none"
                                 >
                                   <div className="text-base font-medium leading-none text-white">
                                     {service.label}
