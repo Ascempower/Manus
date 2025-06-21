@@ -1,6 +1,6 @@
-import type { Metadata } from 'next';
+import React from 'react';
 
-export const metadata: Metadata = {
+export const metadata = {
   title: 'Contact Us - Choice Insurance Hub',
   description:
     'Get in touch with Choice Insurance Hub for expert advice on Medicare, life, and health insurance. Book a consultation or request a quote today.',
@@ -11,6 +11,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ContactLayout({ children }: { children: React.ReactNode }) {
+interface ContactLayoutProps {
+  children: React.ReactNode;
+}
+
+export default function ContactLayout({ children }: ContactLayoutProps): React.ReactNode {
   return <>{children}</>;
 }
