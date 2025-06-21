@@ -2,11 +2,20 @@
 
 import { useEffect, useState } from 'react';
 
+import dynamic from 'next/dynamic';
+
+const ClientLayoutContent = dynamic(() => import('./ClientLayoutContent'), {
+  ssr: false,
+  loading: () => null,
+});
+
 interface ClientOnlyLayoutProps {
   children: React.ReactNode;
+  ga4Id?: string;
+  gtmId?: string;
 }
 
-export default function ClientOnlyLayout({ children }: ClientOnlyLayoutProps) {
+export default function ClientOnlyLayout({ children, ga4Id, gtmId }: ClientOnlyLayoutProps) {
   const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
@@ -24,5 +33,9 @@ export default function ClientOnlyLayout({ children }: ClientOnlyLayoutProps) {
     );
   }
 
-  return children;
+  return (
+    <ClientLayoutContent ga4Id={ga4Id} gtmId={gtmId}>
+      {children}
+    </ClientLayoutContent>
+  );
 }

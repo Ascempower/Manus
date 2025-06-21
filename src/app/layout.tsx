@@ -1,18 +1,12 @@
 import React from 'react';
 
 import type { Metadata, Viewport } from 'next';
-import dynamic from 'next/dynamic';
 import { Inter, Poppins } from 'next/font/google';
 
 import ClientOnlyLayout from '@/components/layout/ClientOnlyLayout';
 import { LocalBusinessSchema, OrganizationSchema } from '@/components/seo/StructuredData';
 
 import './globals.css';
-
-const ClientLayoutContent = dynamic(() => import('@/components/layout/ClientLayoutContent'), {
-  ssr: false,
-  loading: () => null,
-});
 
 // Configure fonts
 const inter = Inter({
@@ -136,13 +130,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <LocalBusinessSchema />
       </head>
       <body className="min-h-screen bg-brand-white text-brand-black antialiased">
-        <ClientOnlyLayout>
-          <ClientLayoutContent
-            ga4Id={process.env.NEXT_PUBLIC_GA4_ID}
-            gtmId={process.env.NEXT_PUBLIC_GTM_ID}
-          >
-            {children}
-          </ClientLayoutContent>
+        <ClientOnlyLayout
+          ga4Id={process.env.NEXT_PUBLIC_GA4_ID}
+          gtmId={process.env.NEXT_PUBLIC_GTM_ID}
+        >
+          {children}
         </ClientOnlyLayout>
 
         {/* Deferred Service Worker Registration */}
