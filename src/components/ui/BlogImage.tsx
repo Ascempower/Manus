@@ -39,7 +39,6 @@ export default function BlogImage({
   onError,
 }: BlogImageProps) {
   const [isClient, setIsClient] = useState(false);
-  const [isClient, setIsClient] = useState(false);
   const [imageState, setImageState] = useState<ImageState>('loading');
   const [currentSrc, setCurrentSrc] = useState<string>('');
   const [retryCount, setRetryCount] = useState(0);
@@ -162,16 +161,6 @@ export default function BlogImage({
       img.onerror = null;
     };
   }, [currentSrc, handleImageLoad, handleImageError]);
-
-  // Don't render anything during SSR
-  if (!isClient) {
-    return (
-      <div
-        className={cn('bg-gray-100', className)}
-        style={{ width, height }}
-      />
-    );
-  }
 
   // Don't render anything during SSR
   if (!isClient) {
