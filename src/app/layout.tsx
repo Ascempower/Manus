@@ -7,6 +7,7 @@ import ClientComponents from '@/components/layout/ClientComponents';
 import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
 import { LocalBusinessSchema, OrganizationSchema } from '@/components/seo/StructuredData';
+import NoSSR from '@/components/utils/NoSSR';
 
 import './globals.css';
 
@@ -138,11 +139,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
         </div>
 
-        {/* Client-side components */}
-        <ClientComponents
-          ga4Id={process.env.NEXT_PUBLIC_GA4_ID}
-          gtmId={process.env.NEXT_PUBLIC_GTM_ID}
-        />
+        {/* Client-side components - wrapped in NoSSR to prevent SSR issues */}
+        <NoSSR>
+          <ClientComponents
+            ga4Id={process.env.NEXT_PUBLIC_GA4_ID}
+            gtmId={process.env.NEXT_PUBLIC_GTM_ID}
+          />
+        </NoSSR>
 
         {/* Deferred Service Worker Registration */}
         <script

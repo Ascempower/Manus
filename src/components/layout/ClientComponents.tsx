@@ -1,7 +1,6 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { useEffect, useState } from 'react';
 
 // Dynamically import client components to prevent SSR issues
 // Fixed: Moved all client components with hooks to this wrapper to resolve useRef SSR error
@@ -34,17 +33,6 @@ interface ClientComponentsProps {
 }
 
 export default function ClientComponents({ ga4Id, gtmId }: ClientComponentsProps) {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  // Don't render anything during SSR
-  if (!isClient) {
-    return null;
-  }
-
   return (
     <>
       {/* Calendly Badge Widget */}
