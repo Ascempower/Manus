@@ -19,9 +19,6 @@ export function useIntersectionObserver({
     // Skip during SSR
     if (typeof window === 'undefined') return;
 
-    // Skip during SSR
-    if (typeof window === 'undefined') return;
-
     const element = elementRef.current;
     if (!element) return;
 
