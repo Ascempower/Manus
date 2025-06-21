@@ -1,10 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import dynamic from 'next/dynamic';
-
-import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 
 // Lazy load analytics components
 const GoogleAnalytics = dynamic(() => import('./GoogleAnalytics'), { ssr: false });
@@ -17,22 +15,24 @@ interface LazyAnalyticsProps {
 
 export default function LazyAnalytics({ gtmId, ga4Id }: LazyAnalyticsProps) {
   const [isClient, setIsClient] = useState(false);
+  const [shouldLoad, setShouldLoad] = useState(false);
+  const elementRef = useRef<HTMLDivElement>(null);
 
   // Ensure we're on the client side
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  // Only load analytics after user interaction or after 3 seconds
-  const { elementRef, isIntersecting } = useIntersectionObserver({
-    threshold: 0,
-    rootMargin: '100px',
-  });
+  // Simple timeout-based loading instead of intersection observer
+  useEffect(() => {
+    if (!isClient) return;
 
-  // Don't render anything during SSR
-  if (!isClient) {
-    return <div />;
-  }
+    const timer = setTimeout(() => {
+      setShouldLoad(true);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [isClient]);
 
   // Don't render anything during SSR
   if (!isClient) {
@@ -41,7 +41,7 @@ export default function LazyAnalytics({ gtmId, ga4Id }: LazyAnalyticsProps) {
 
   return (
     <div ref={elementRef}>
-      {isIntersecting && (
+      {shouldLoad && (
         <>
           <GoogleAnalytics gtmId={gtmId} ga4Id={ga4Id} />
           <CookieConsent />

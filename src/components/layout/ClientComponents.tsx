@@ -6,24 +6,32 @@ import dynamic from 'next/dynamic';
 // Fixed: Moved all client components with hooks to this wrapper to resolve useRef SSR error
 const LazyAnalytics = dynamic(() => import('@/components/analytics/LazyAnalytics'), {
   ssr: false,
+  loading: () => null,
 });
 
 const LazyCompliance = dynamic(() => import('@/components/compliance/LazyCompliance'), {
   ssr: false,
+  loading: () => null,
 });
 
 const CookieConsent = dynamic(() => import('@/components/ui/cookie-consent'), {
   ssr: false,
+  loading: () => null,
 });
 
 const CacheManager = dynamic(() => import('@/components/utils/CacheManager'), {
   ssr: false,
+  loading: () => null,
 });
 
 const ChoiceInsuranceBadge = dynamic(
-  () => import('@/components/widgets').then(mod => ({ default: mod.ChoiceInsuranceBadge })),
+  () =>
+    import('@/components/widgets/CalendlyBadge').then(mod => ({
+      default: mod.ChoiceInsuranceBadge,
+    })),
   {
     ssr: false,
+    loading: () => null,
   }
 );
 
