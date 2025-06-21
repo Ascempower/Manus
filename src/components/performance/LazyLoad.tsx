@@ -58,6 +58,11 @@ function LazyLoadInternal({
 
 // Main LazyLoad component with SSR protection
 export default function LazyLoad(props: LazyLoadProps) {
+  // Always return a static fallback during SSR
+  if (typeof window === 'undefined') {
+    return <div style={{ minBlockSize: '200px' }} className={props.className} />;
+  }
+
   return (
     <NoSSR fallback={<div style={{ minBlockSize: '200px' }} className={props.className} />}>
       <LazyLoadInternal {...props} />

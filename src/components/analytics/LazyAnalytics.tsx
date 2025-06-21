@@ -56,6 +56,11 @@ function LazyAnalyticsInternal({ gtmId, ga4Id }: LazyAnalyticsProps) {
 
 // Main LazyAnalytics component with SSR protection
 export default function LazyAnalytics(props: LazyAnalyticsProps) {
+  // Always return a static fallback during SSR
+  if (typeof window === 'undefined') {
+    return <div />;
+  }
+
   return (
     <NoSSR fallback={<div />}>
       <LazyAnalyticsInternal {...props} />

@@ -363,6 +363,11 @@ function CalendlyWidgetInternal({
 
 // Main CalendlyWidget component with SSR protection
 export default function CalendlyWidget(props: CalendlyWidgetProps) {
+  // Always return a static fallback during SSR
+  if (typeof window === 'undefined') {
+    return <div className="h-96 animate-pulse rounded-lg bg-gray-100" />;
+  }
+
   return (
     <NoSSR fallback={<div className="h-96 animate-pulse rounded-lg bg-gray-100" />}>
       <CalendlyWidgetInternal {...props} />
@@ -380,6 +385,15 @@ export function CalendlyInline({
   onEventScheduled?: (event: CalendlyEvent) => void;
   onError?: (error: string) => void;
 }) {
+  // Always return a static fallback during SSR
+  if (typeof window === 'undefined') {
+    return (
+      <div
+        className={`h-96 animate-pulse rounded-lg border-2 border-brand-warm-beige-coral bg-gray-100 shadow-xl ${className}`}
+      />
+    );
+  }
+
   return (
     <CalendlyWidget
       variant="inline"

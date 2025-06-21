@@ -252,6 +252,11 @@ function BlogImageInternal({
 export default function BlogImage(props: BlogImageProps) {
   const { width = 1200, height = 630, className = '' } = props;
 
+  // Always return a static fallback during SSR
+  if (typeof window === 'undefined') {
+    return <div className={cn('animate-pulse bg-gray-100', className)} style={{ width, height }} />;
+  }
+
   return (
     <NoSSR
       fallback={
@@ -271,6 +276,16 @@ export function BlogHeroImage({
   category,
   className = '',
 }: Omit<BlogImageProps, 'width' | 'height' | 'priority'>) {
+  // Always return a static fallback during SSR
+  if (typeof window === 'undefined') {
+    return (
+      <div
+        className={cn('w-full animate-pulse rounded-lg bg-gray-100 shadow-lg', className)}
+        style={{ width: 1200, height: 630 }}
+      />
+    );
+  }
+
   return (
     <BlogImage
       src={src}
@@ -292,6 +307,19 @@ export function BlogThumbnailImage({
   category,
   className = '',
 }: Omit<BlogImageProps, 'width' | 'height'>) {
+  // Always return a static fallback during SSR
+  if (typeof window === 'undefined') {
+    return (
+      <div
+        className={cn(
+          'aspect-video w-full animate-pulse rounded-md bg-gray-100 object-cover',
+          className
+        )}
+        style={{ width: 400, height: 250 }}
+      />
+    );
+  }
+
   return (
     <BlogImage
       src={src}
@@ -312,6 +340,19 @@ export function BlogInlineImage({
   category,
   className = '',
 }: Omit<BlogImageProps, 'width' | 'height'>) {
+  // Always return a static fallback during SSR
+  if (typeof window === 'undefined') {
+    return (
+      <div
+        className={cn(
+          'mx-auto w-full max-w-2xl animate-pulse rounded-md bg-gray-100 shadow-sm',
+          className
+        )}
+        style={{ width: 800, height: 400 }}
+      />
+    );
+  }
+
   return (
     <BlogImage
       src={src}

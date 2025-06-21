@@ -7,6 +7,20 @@ const nextConfig = {
     return 'build-' + Date.now();
   },
 
+  // Disable static generation for error pages
+  trailingSlash: false,
+  skipTrailingSlashRedirect: true,
+
+  // Custom page extensions to avoid conflicts
+  pageExtensions: ['tsx', 'ts', 'jsx', 'js'],
+
+  // Disable static generation for error pages
+  trailingSlash: false,
+  skipTrailingSlashRedirect: true,
+
+  // Custom page extensions to avoid conflicts
+  pageExtensions: ['tsx', 'ts', 'jsx', 'js'],
+
   // Performance optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
