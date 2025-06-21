@@ -2,6 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
 
+  // Skip static generation for error pages to avoid useRef SSR issues
+  generateBuildId: async () => {
+    return 'build-' + Date.now();
+  },
+
   // Performance optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',

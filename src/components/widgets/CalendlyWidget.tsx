@@ -2,6 +2,7 @@
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
+import NoSSR from '@/components/utils/NoSSR';
 import {
   CALENDLY_CONFIG,
   CALENDLY_CUSTOM_STYLES,
@@ -24,7 +25,8 @@ interface CalendlyWidgetProps {
 // Widget state management
 type WidgetState = 'loading' | 'loaded' | 'error' | 'retry';
 
-export default function CalendlyWidget({
+// Internal component that uses useRef - must be client-only
+function CalendlyWidgetInternal({
   variant = 'default',
   className = '',
   prefill,
@@ -356,6 +358,15 @@ export default function CalendlyWidget({
         className="overflow-hidden rounded-b-lg bg-white"
       />
     </div>
+  );
+}
+
+// Main CalendlyWidget component with SSR protection
+export default function CalendlyWidget(props: CalendlyWidgetProps) {
+  return (
+    <NoSSR fallback={<div className="h-96 animate-pulse rounded-lg bg-gray-100" />}>
+      <CalendlyWidgetInternal {...props} />
+    </NoSSR>
   );
 }
 

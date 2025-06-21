@@ -8,13 +8,19 @@ interface NoSSRProps {
 }
 
 export default function NoSSR({ children, fallback = null }: NoSSRProps) {
-  const [isClient, setIsClient] = useState(false);
+  const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
-    setIsClient(true);
+    setHasMounted(true);
   }, []);
 
-  if (!isClient) {
+  // During SSR, always return fallback
+  if (typeof window === 'undefined') {
+    return <>{fallback}</>;
+  }
+
+  // On client, wait for mount before rendering children
+  if (!hasMounted) {
     return <>{fallback}</>;
   }
 

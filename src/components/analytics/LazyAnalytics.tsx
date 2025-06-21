@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from 'react';
 
 import dynamic from 'next/dynamic';
 
+import NoSSR from '@/components/utils/NoSSR';
+
 // Lazy load analytics components
 const GoogleAnalytics = dynamic(() => import('./GoogleAnalytics'), { ssr: false });
 const CookieConsent = dynamic(() => import('./CookieConsent'), { ssr: false });
@@ -13,7 +15,8 @@ interface LazyAnalyticsProps {
   ga4Id?: string;
 }
 
-export default function LazyAnalytics({ gtmId, ga4Id }: LazyAnalyticsProps) {
+// Internal component that uses useRef - must be client-only
+function LazyAnalyticsInternal({ gtmId, ga4Id }: LazyAnalyticsProps) {
   const [isClient, setIsClient] = useState(false);
   const [shouldLoad, setShouldLoad] = useState(false);
   const elementRef = useRef<HTMLDivElement>(null);
@@ -48,5 +51,14 @@ export default function LazyAnalytics({ gtmId, ga4Id }: LazyAnalyticsProps) {
         </>
       )}
     </div>
+  );
+}
+
+// Main LazyAnalytics component with SSR protection
+export default function LazyAnalytics(props: LazyAnalyticsProps) {
+  return (
+    <NoSSR fallback={<div />}>
+      <LazyAnalyticsInternal {...props} />
+    </NoSSR>
   );
 }

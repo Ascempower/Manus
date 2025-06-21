@@ -2,6 +2,8 @@
 
 import React from 'react';
 
+import NoSSR from '@/components/utils/NoSSR';
+
 interface LazyLoadProps {
   children: React.ReactNode;
   threshold?: number;
@@ -9,7 +11,8 @@ interface LazyLoadProps {
   className?: string;
 }
 
-export default function LazyLoad({
+// Internal component that uses useRef - must be client-only
+function LazyLoadInternal({
   children,
   threshold = 0.1,
   rootMargin = '50px',
@@ -50,5 +53,14 @@ export default function LazyLoad({
     <div ref={ref} className={className}>
       {isClient && isVisible ? children : <div style={{ minBlockSize: '200px' }} />}
     </div>
+  );
+}
+
+// Main LazyLoad component with SSR protection
+export default function LazyLoad(props: LazyLoadProps) {
+  return (
+    <NoSSR fallback={<div style={{ minBlockSize: '200px' }} className={props.className} />}>
+      <LazyLoadInternal {...props} />
+    </NoSSR>
   );
 }

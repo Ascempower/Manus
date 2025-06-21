@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 
+import NoSSR from '@/components/utils/NoSSR';
 import {
   IMAGE_LOADING_CONFIG,
   getBlogImageAlt,
@@ -26,7 +27,8 @@ interface BlogImageProps {
 
 type ImageState = 'loading' | 'loaded' | 'error' | 'placeholder';
 
-export default function BlogImage({
+// Internal component that uses useRef - must be client-only
+function BlogImageInternal({
   src,
   alt,
   title,
@@ -243,6 +245,21 @@ export default function BlogImage({
         </div>
       )}
     </div>
+  );
+}
+
+// Main BlogImage component with SSR protection
+export default function BlogImage(props: BlogImageProps) {
+  const { width = 1200, height = 630, className = '' } = props;
+
+  return (
+    <NoSSR
+      fallback={
+        <div className={cn('animate-pulse bg-gray-100', className)} style={{ width, height }} />
+      }
+    >
+      <BlogImageInternal {...props} />
+    </NoSSR>
   );
 }
 
