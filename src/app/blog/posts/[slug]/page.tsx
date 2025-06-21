@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 
 import ReactMarkdown from 'react-markdown';
 
+import { BlogHeroImage } from '@/components/ui/BlogImage';
 import InternalLink from '@/components/ui/InternalLink';
 import { getAllBlogPosts, getBlogPost } from '@/lib/blog-server';
 
@@ -178,6 +179,19 @@ export default async function BlogPost({ params }: PageProps) {
             </div>
           )}
         </header>
+
+        {/* Featured image */}
+        {frontmatter.image && (
+          <div className="mb-8">
+            <BlogHeroImage
+              src={frontmatter.image}
+              alt={frontmatter.title}
+              title={frontmatter.title}
+              category={frontmatter.category}
+              className="w-full rounded-lg shadow-lg"
+            />
+          </div>
+        )}
 
         {/* Blog post content */}
         <div className="prose prose-lg max-w-none">
