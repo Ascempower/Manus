@@ -1,70 +1,42 @@
-// Static 404 page that bypasses the layout to avoid useRef SSR issues
+import { Metadata } from 'next';
+import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: '404 - Page Not Found | Choice Insurance Hub',
+  description: "The page you're looking for could not be found.",
+};
+
 export default function NotFound() {
   return (
-    <html lang="en">
-      <head>
-        <title>404 - Page Not Found | Choice Insurance Hub</title>
-        <meta name="description" content="The page you're looking for could not be found." />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <style
-          dangerouslySetInnerHTML={{
-            __html: `
-            * { margin: 0; padding: 0; box-sizing: border-box; }
-            body { 
-              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-              background: linear-gradient(135deg, #1a4d3a 0%, #d4a574 100%);
-              min-height: 100vh;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              color: white;
-            }
-            .container { text-align: center; max-width: 600px; padding: 2rem; }
-            h1 { font-size: 6rem; font-weight: bold; margin-bottom: 1rem; }
-            h2 { font-size: 2rem; margin-bottom: 1rem; }
-            p { font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9; }
-            .buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-            .btn { 
-              display: inline-block; 
-              padding: 0.75rem 1.5rem; 
-              text-decoration: none; 
-              border-radius: 0.5rem; 
-              font-weight: 600;
-              transition: all 0.2s;
-            }
-            .btn-primary { background: white; color: #1a4d3a; }
-            .btn-primary:hover { background: #f0f0f0; }
-            .btn-secondary { border: 2px solid white; color: white; }
-            .btn-secondary:hover { background: white; color: #1a4d3a; }
-            @media (max-width: 640px) {
-              h1 { font-size: 4rem; }
-              h2 { font-size: 1.5rem; }
-              .buttons { flex-direction: column; align-items: center; }
-            }
-          `,
-          }}
-        />
-      </head>
-      <body>
-        <div className="container">
-          <h1>404</h1>
-          <h2>Page Not Found</h2>
-          <p>
-            Sorry, we couldn't find the page you're looking for. The page may have been moved,
-            deleted, or you may have entered an incorrect URL.
-          </p>
-          <div className="buttons">
-            {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-            <a href="/" className="btn btn-primary">
-              Return Home
-            </a>
-            {}
-            <a href="/contact" className="btn btn-secondary">
-              Contact Us
-            </a>
-          </div>
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-primary to-accent text-white">
+      <div className="max-w-2xl px-8 py-16 text-center">
+        <h1 className="mb-4 text-8xl font-bold text-white md:text-9xl">404</h1>
+        <h2 className="mb-6 text-3xl font-semibold md:text-4xl">Page Not Found</h2>
+        <p className="mb-8 text-lg leading-relaxed opacity-90 md:text-xl">
+          Sorry, we couldn't find the page you're looking for. The page may have been moved,
+          deleted, or you may have entered an incorrect URL.
+        </p>
+        <div className="flex flex-col justify-center gap-4 sm:flex-row">
+          <Link
+            href="/"
+            className="inline-block rounded-lg bg-white px-6 py-3 font-semibold text-primary transition-colors duration-200 hover:bg-gray-100"
+          >
+            Return Home
+          </Link>
+          <Link
+            href="/services"
+            className="inline-block rounded-lg border-2 border-white px-6 py-3 font-semibold text-white transition-colors duration-200 hover:bg-white hover:text-primary"
+          >
+            Our Services
+          </Link>
+          <Link
+            href="/contact"
+            className="inline-block rounded-lg border-2 border-white px-6 py-3 font-semibold text-white transition-colors duration-200 hover:bg-white hover:text-primary"
+          >
+            Contact Us
+          </Link>
         </div>
-      </body>
-    </html>
+      </div>
+    </div>
   );
 }
