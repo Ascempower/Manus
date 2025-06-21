@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 // This should match the version in your service worker
-const APP_VERSION = 'v2025.6.20.2346';
+const APP_VERSION = 'v2025.6.21.0814';
 
 export async function GET() {
   return NextResponse.json({
