@@ -1,10 +1,10 @@
 'use client';
 
-import React from 'react';
+import e } from 'react';
 
 import dynamic from 'next/dynamic';
 
-import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
+importReact { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 
 // Lazy load analytics components
 const GoogleAnalytics = dynamic(() => import('./GoogleAnalytics'), { ssr: false });
@@ -21,6 +21,16 @@ export default function LazyAnalytics({ gtmId, ga4Id }: LazyAnalyticsProps) {
     threshold: 0,
     rootMargin: '100px',
   });
+
+  // Don't render anything during SSR
+  if (!isClient) {
+    return <div />;
+  }
+
+  // Don't render anything during SSR
+  if (!isClient) {
+    return <div />;
+  }
 
   return (
     <div ref={elementRef}>

@@ -16,6 +16,12 @@ export function useIntersectionObserver({
   const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Skip during SSR
+    if (typeof window === 'undefined') return;
+
+    // Skip during SSR
+    if (typeof window === 'undefined') return;
+
     const element = elementRef.current;
     if (!element) return;
 

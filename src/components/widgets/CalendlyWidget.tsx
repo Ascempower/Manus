@@ -31,12 +31,24 @@ export default function CalendlyWidget({
   onEventScheduled,
   onError,
 }: CalendlyWidgetProps) {
+  const [isClient, setIsClient] = useState(false);
+  const [isClient, setIsClient] = useState(false);
   const calendlyRef = useRef<HTMLDivElement>(null);
   const [state, setState] = useState<WidgetState>('loading');
   const [error, setError] = useState<string | null>(null);
   const [retryCount, setRetryCount] = useState(0);
   const timeoutRef = useRef<number>();
   const styleElementRef = useRef<HTMLStyleElement>();
+
+  // Ensure we're on the client side
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  // Ensure we're on the client side
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   // Get configuration for the variant
   const config = CALENDLY_CONFIG.dimensions[variant] || CALENDLY_CONFIG.dimensions.default;
@@ -227,6 +239,16 @@ export default function CalendlyWidget({
       }
     };
   }, [loadCalendlyResources, cleanup]);
+
+  // Don't render anything during SSR
+  if (!isClient) {
+    return <div className={`${CALENDLY_INIT_OPTIONS.containerClass} ${className}`} style={{ minHeight: `${config.height}px` }} />;
+  }
+
+  // Don't render anything during SSR
+  if (!isClient) {
+    return <div className={`${CALENDLY_INIT_OPTIONS.containerClass} ${className}`} style={{ minHeight: `${config.height}px` }} />;
+  }
 
   // Render loading state
   if (state === 'loading' || state === 'retry') {
