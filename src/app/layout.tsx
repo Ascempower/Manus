@@ -1,14 +1,18 @@
 import React from 'react';
 
 import type { Metadata, Viewport } from 'next';
+import dynamic from 'next/dynamic';
 import { Inter, Poppins } from 'next/font/google';
 
-import ClientComponentsWrapper from '@/components/layout/ClientComponentsWrapper';
-import Footer from '@/components/layout/Footer';
-import Header from '@/components/layout/Header';
+import ClientOnlyLayout from '@/components/layout/ClientOnlyLayout';
 import { LocalBusinessSchema, OrganizationSchema } from '@/components/seo/StructuredData';
 
 import './globals.css';
+
+const ClientLayoutContent = dynamic(() => import('@/components/layout/ClientLayoutContent'), {
+  ssr: false,
+  loading: () => null,
+});
 
 // Configure fonts
 const inter = Inter({
@@ -132,17 +136,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <LocalBusinessSchema />
       </head>
       <body className="min-h-screen bg-brand-white text-brand-black antialiased">
-        <div className="flex min-h-screen flex-col">
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
-
-        {/* Client-side components - dynamically loaded to prevent SSR issues */}
-        <ClientComponentsWrapper
-          ga4Id={process.env.NEXT_PUBLIC_GA4_ID}
-          gtmId={process.env.NEXT_PUBLIC_GTM_ID}
-        />
+        <ClientOnlyLayout>
+          <ClientLayoutContent
+            ga4Id={process.env.NEXT_PUBLIC_GA4_ID}
+            gtmId={process.env.NEXT_PUBLIC_GTM_ID}
+          >
+            {children}
+          </ClientLayoutContent>
+        </ClientOnlyLayout>
 
         {/* Deferred Service Worker Registration */}
         <script
