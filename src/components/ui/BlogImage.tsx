@@ -62,8 +62,9 @@ export default function BlogImage({
 
   // Cleanup function
   const cleanup = useCallback(() => {
-    if (timeoutRef.current) {
+    if (typeof window !== 'undefined' && timeoutRef.current) {
       window.clearTimeout(timeoutRef.current);
+      timeoutRef.current = undefined;
     }
   }, []);
 
@@ -129,23 +130,27 @@ export default function BlogImage({
 
   // Initialize image loading
   useEffect(() => {
+    if (!isClient) return;
+
     // Start with the best available source
     const primarySrc = getBlogImageSrc(src, category);
     setCurrentSrc(primarySrc);
     setImageState('loading');
     setRetryCount(0);
 
-    // Set loading timeout
-    timeoutRef.current = window.setTimeout(() => {
-      handleImageError();
-    }, IMAGE_LOADING_CONFIG.loadTimeout);
+    // Set loading timeout only if we're on the client
+    if (typeof window !== 'undefined' && timeoutRef.current !== undefined) {
+      timeoutRef.current = window.setTimeout(() => {
+        handleImageError();
+      }, IMAGE_LOADING_CONFIG.loadTimeout);
+    }
 
     return cleanup;
-  }, [src, category, cleanup, handleImageError]);
+  }, [src, category, cleanup, handleImageError, isClient]);
 
   // Handle image state changes
   useEffect(() => {
-    if (!imgRef.current || !currentSrc) return;
+    if (!isClient || !imgRef.current || !currentSrc) return;
 
     const img = imgRef.current;
 
