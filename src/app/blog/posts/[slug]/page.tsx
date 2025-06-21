@@ -15,60 +15,75 @@ interface PageProps {
 
 // Generate static params for all published blog posts
 export function generateStaticParams() {
-  const posts = getAllBlogPosts({ includeFuturePosts: false });
-  const slugs = posts.map(post => post.slug);
-  return slugs.map(slug => ({ slug }));
+  try {
+    const posts = getAllBlogPosts({ includeFuturePosts: false });
+    const slugs = posts.map(post => post.slug);
+    console.log(`Generated ${slugs.length} static params for blog posts:`, slugs);
+    return slugs.map(slug => ({ slug }));
+  } catch (error) {
+    console.error('Error generating static params for blog posts:', error);
+    // Return empty array to prevent build failure
+    return [];
+  }
 }
 
 // Generate metadata for each blog post
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const post = getBlogPost(slug);
+  try {
+    const { slug } = await params;
+    const post = getBlogPost(slug);
 
-  if (!post) {
+    if (!post) {
+      return {
+        title: 'Post Not Found | Choice Insurance Hub',
+        description: 'The blog post you are looking for could not be found.',
+      };
+    }
+
+    const { frontmatter } = post;
+
     return {
-      title: 'Post Not Found | Choice Insurance Hub',
-      description: 'The blog post you are looking for could not be found.',
-    };
-  }
-
-  const { frontmatter } = post;
-
-  return {
-    title: `${frontmatter.title} | Choice Insurance Hub`,
-    description:
-      frontmatter.description ||
-      'Expert insurance insights and advice from Choice Insurance Hub specialists.',
-    keywords: frontmatter.tags ? frontmatter.tags.join(', ') : undefined,
-    authors: frontmatter.author ? [{ name: frontmatter.author }] : undefined,
-    alternates: {
-      canonical: `https://choiceinsurancehub.com/blog/posts/${slug}`,
-    },
-    openGraph: {
-      title: frontmatter.title,
+      title: `${frontmatter.title} | Choice Insurance Hub`,
       description:
         frontmatter.description ||
         'Expert insurance insights and advice from Choice Insurance Hub specialists.',
-      type: 'article',
-      url: `https://choiceinsurancehub.com/blog/posts/${slug}`,
-      publishedTime: frontmatter.date,
-      authors: frontmatter.author ? [frontmatter.author] : undefined,
-      images: frontmatter.image
-        ? [
-            {
-              url: frontmatter.image,
-              alt: frontmatter.title,
-            },
-          ]
-        : undefined,
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: frontmatter.title,
-      description: frontmatter.description,
-      images: frontmatter.image ? [frontmatter.image] : undefined,
-    },
-  };
+      keywords: frontmatter.tags ? frontmatter.tags.join(', ') : undefined,
+      authors: frontmatter.author ? [{ name: frontmatter.author }] : undefined,
+      alternates: {
+        canonical: `https://choiceinsurancehub.com/blog/posts/${slug}`,
+      },
+      openGraph: {
+        title: frontmatter.title,
+        description:
+          frontmatter.description ||
+          'Expert insurance insights and advice from Choice Insurance Hub specialists.',
+        type: 'article',
+        url: `https://choiceinsurancehub.com/blog/posts/${slug}`,
+        publishedTime: frontmatter.date,
+        authors: frontmatter.author ? [frontmatter.author] : undefined,
+        images: frontmatter.image
+          ? [
+              {
+                url: frontmatter.image,
+                alt: frontmatter.title,
+              },
+            ]
+          : undefined,
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: frontmatter.title,
+        description: frontmatter.description,
+        images: frontmatter.image ? [frontmatter.image] : undefined,
+      },
+    };
+  } catch (error) {
+    console.error(`Error generating metadata for blog post:`, error);
+    return {
+      title: 'Error Loading Post | Choice Insurance Hub',
+      description: 'There was an error loading this blog post.',
+    };
+  }
 }
 
 // Custom components for ReactMarkdown

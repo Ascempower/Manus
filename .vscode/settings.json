@@ -37,5 +37,11 @@
   "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "totalTypeScript.hideAllTips": true
+  "totalTypeScript.hideAllTips": true,
+  "files.associations": {
+    ".gitkeep": "plaintext"
+  },
+  "emmet.includeLanguages": {
+    ".gitkeep": "plaintext"
+  }
 }

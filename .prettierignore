@@ -39,3 +39,6 @@ pnpm-lock.yaml
 
 # Allow formatting of markdown files
 # *.md (commented out to allow formatting)
+
+# Git keep files
+.gitkeep

@@ -31,7 +31,9 @@ function getBlogPostFiles(): string[] {
       console.warn(`Blog posts directory not found: ${BLOG_POSTS_PATH}`);
       return [];
     }
-    return fs.readdirSync(BLOG_POSTS_PATH).filter(file => file.endsWith('.md'));
+    const files = fs.readdirSync(BLOG_POSTS_PATH).filter(file => file.endsWith('.md'));
+    console.log(`Found ${files.length} blog post files:`, files);
+    return files;
   } catch (error) {
     console.error('Error reading blog posts directory:', error);
     return [];
@@ -42,8 +44,20 @@ function getBlogPostFiles(): string[] {
 function readBlogPost(filename: string): BlogPost | null {
   try {
     const filePath = path.join(BLOG_POSTS_PATH, filename);
+
+    if (!fs.existsSync(filePath)) {
+      console.warn(`Blog post file not found: ${filePath}`);
+      return null;
+    }
+
     const fileContents = fs.readFileSync(filePath, 'utf8');
     const { data: frontmatter, content } = matter(fileContents);
+
+    // Validate required frontmatter fields
+    if (!frontmatter.title || !frontmatter.date) {
+      console.error(`Blog post ${filename} is missing required frontmatter (title or date)`);
+      return null;
+    }
 
     const slug = filename.replace(/\.md$/, '');
 
