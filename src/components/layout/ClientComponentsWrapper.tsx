@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic';
 
 const ClientComponents = dynamic(() => import('./ClientComponents'), {
   ssr: false,
-  loading: () => null,
+  loading: () => <div />,
 });
 
 interface ClientComponentsWrapperProps {
@@ -25,12 +25,12 @@ interface ClientComponentsWrapperProps {
 }
 
 export default function ClientComponentsWrapper({
-  ga4Id = undefined,
-  gtmId = undefined,
-  firebaseKey = undefined,
-  sentryDsn = undefined,
-  apiUrl = undefined,
-  siteUrl = undefined,
+  ga4Id,
+  gtmId,
+  firebaseKey,
+  sentryDsn,
+  apiUrl,
+  siteUrl,
 }: ClientComponentsWrapperProps) {
   const [isClient, setIsClient] = useState(false);
 
