@@ -1,0 +1,117 @@
+[build]
+base = "."
+command = "rm -rf .next && pnpm install --frozen-lockfile && pnpm run print-versions && pnpm run build"
+publish = ".next"
+
+[build.environment]
+NODE_VERSION = "20"
+PNPM_VERSION = "10.12.1"
+# Enable Next.js build cache
+NEXT_CACHE = "true"
+# Optimize build performance
+NODE_OPTIONS = "--max-old-space-size=4096"
+
+[functions]
+directory = "netlify/functions"
+
+[[plugins]]
+package = "@netlify/plugin-nextjs"
+  [plugins.inputs]
+  # Enable Next.js 15 App Router support
+  target = "server"
+
+[[plugins]]
+package = "netlify-plugin-bundle-env"
+  [plugins.inputs]
+  directories = ["netlify/functions"]
+  include = [
+    "NEXT_PUBLIC_API_URL",
+    "NEXT_PUBLIC_FIREBASE_KEY",
+    "NEXT_PUBLIC_SENTRY_DSN"
+  ]
+
+# Cache plugin for faster builds and better performance
+[[plugins]]
+package = "netlify-plugin-cache"
+  [plugins.inputs]
+  # Cache dependencies for faster installs
+  paths = ["node_modules", ".pnpm-store", ".next/cache"]
+
+# Cache static assets
+[[headers]]
+for = "/static/*"
+  [headers.values]
+  Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "/_next/static/*"
+  [headers.values]
+  Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "/images/*"
+  [headers.values]
+  Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+for = "/assets/*"
+  [headers.values]
+  Cache-Control = "public, max-age=31536000"
+
+# Security headers
+[[headers]]
+for = "/*"
+  [headers.values]
+  X-Frame-Options = "DENY"
+  X-Content-Type-Options = "nosniff"
+  Referrer-Policy = "strict-origin-when-cross-origin"
+  Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+  Strict-Transport-Security = '''
+  max-age=63072000;
+  includeSubDomains;
+  preload'''
+  # Cookie security headers to fix Chrome DevTools issues
+  Set-Cookie = '''
+  SameSite=Strict;
+  Secure;
+  HttpOnly'''
+  # Content Security Policy to prevent mixed content issues
+  Content-Security-Policy = '''
+  default-src 'self';
+  script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://images.unsplash.com https://assets.calendly.com;
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://assets.calendly.com;
+  font-src 'self' https://fonts.gstatic.com;
+  img-src 'self' data: https: blob:;
+  connect-src 'self' https://www.google-analytics.com https://images.unsplash.com https://assets.calendly.com;
+  frame-src 'self' https://calendly.com;
+  object-src 'none';
+  base-uri 'self';
+  form-action 'self';
+  upgrade-insecure-requests'''
+
+# Handle Netlify analytics and deployment tracking
+[[headers]]
+for = "/cdp/*"
+  [headers.values]
+  Set-Cookie = '''
+  SameSite=None;
+  Secure;
+  HttpOnly'''
+  Access-Control-Allow-Origin = "https://app.netlify.com"
+  Access-Control-Allow-Credentials = "true"
+  # Content Security Policy to prevent mixed content issues
+  Content-Security-Policy = '''
+  default-src 'self';
+  script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://images.unsplash.com https://assets.calendly.com;
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://assets.calendly.com;
+  font-src 'self' https://fonts.gstatic.com;
+  img-src 'self' data: https: blob:;
+  connect-src 'self' https://www.google-analytics.com https://images.unsplash.com https://assets.calendly.com;
+  frame-src 'self' https://calendly.com;
+  object-src 'none';
+  base-uri 'self';
+  form-action 'self';
+  upgrade-insecure-requests'''
+
+# Next.js handles routing internally - no manual redirects needed
+# The @netlify/plugin-nextjs handles all routing automatically

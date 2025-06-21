@@ -1,0 +1,27 @@
+# Netlify Headers Configuration
+# This file provides additional header configuration for cookie security
+
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# Fix cookie issues for Netlify analytics
+/cdp/*
+  Set-Cookie: SameSite=None; Secure; HttpOnly
+  Access-Control-Allow-Origin: https://app.netlify.com
+  Access-Control-Allow-Credentials: true
+
+# Static assets caching
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/images/*
+  Cache-Control: public, max-age=31536000
+
+/assets/*
+  Cache-Control: public, max-age=31536000

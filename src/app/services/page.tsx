@@ -1,31 +1,43 @@
-""
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import { Button } from "@/components/ui/button";
+
+import CustomBreadcrumb from '@/components/navigation/CustomBreadcrumb';
+import ButtonLink from '@/components/ui/ButtonLink';
+import { BookConsultationButton } from '@/components/ui/CTAButton';
+import RelatedLinks from '@/components/ui/RelatedLinks';
+import { getRelatedLinks } from '@/lib/internal-links';
 
 export const metadata: Metadata = {
-  title: 'Our Insurance Services - Choice Insurance Agency',
-  description: 'Explore comprehensive insurance solutions including Medicare, life insurance, health coverage, and more from Choice Insurance Agency.',
+  title: 'Insurance Services | Choice Insurance Hub - Medicare, Life & Health',
+  description:
+    'Explore comprehensive insurance solutions from Choice Insurance Hub including Medicare Supplement, Life Insurance, Health Coverage, Final Expense, and more. Expert guidance for IL, GA, TX, AL, OH, KY, MS, SC residents.',
+  keywords:
+    'Choice Insurance services, Medicare Supplement, Life Insurance, Health Insurance, Final Expense, Cancer Insurance, Annuities, Hospital Indemnity, insurance solutions',
+  alternates: {
+    canonical: 'https://choiceinsurancehub.com/services',
+  },
 };
 
 const services = [
   {
-    title: "Medicare Supplement Plans (Medigap)",
-    slug: "medicare-supplement",
-    excerpt: "Complement your Original Medicare with Medigap to cover out-of-pocket costs like deductibles, copayments, and coinsurance.",
-    detailsLink: "/services/medicare-supplement"
+    title: 'Medicare Supplement Plans (Medigap)',
+    slug: 'medicare-supplement',
+    excerpt:
+      'Complement your Original Medicare with Medigap to cover out-of-pocket costs like deductibles, copayments, and coinsurance.',
+    detailsLink: '/services/medicare-supplement',
   },
   {
-    title: "Hospital Indemnity Plans",
-    slug: "hospital-indemnity",
-    excerpt: "Gain extra financial protection for hospital stays, covering costs not handled by your primary health insurance or Medicare.",
-    detailsLink: "/services/hospital-indemnity"
+    title: 'Hospital Indemnity Plans',
+    slug: 'hospital-indemnity',
+    excerpt:
+      'Gain extra financial protection for hospital stays, covering costs not handled by your primary health insurance or Medicare.',
+    detailsLink: '/services/hospital-indemnity',
   },
   {
-    title: "Cancer and Catastrophic Illness Insurance",
-    slug: "cancer-illness",
-    excerpt: "Receive a lump-sum cash benefit upon diagnosis of cancer or other serious illnesses to cover treatment and other expenses.",
-    detailsLink: "/services/cancer-illness"
+    title: 'Cancer and Catastrophic Illness Insurance',
+    slug: 'cancer-illness',
+    excerpt:
+      'Receive a lump-sum cash benefit upon diagnosis of cancer or other serious illnesses to cover treatment and other expenses.',
+    detailsLink: '/services/cancer-illness',
   },
   // Medicare Advantage was removed as per previous instructions, keeping it out unless specified otherwise
   // {
@@ -35,40 +47,58 @@ const services = [
   //   detailsLink: "/services/medicare-advantage"
   // },
   {
-    title: "Life Insurance",
-    slug: "life-insurance",
-    excerpt: "Protect your family’s financial future with term life, whole life, or final expense insurance plans tailored to your needs.",
-    detailsLink: "/services/life-insurance"
+    title: 'Life Insurance',
+    slug: 'life-insurance',
+    excerpt:
+      "Protect your family's financial future with term life, whole life, or final expense insurance plans tailored to your needs.",
+    detailsLink: '/services/life-insurance',
   },
   {
-    title: "Final Expense Plans",
-    slug: "final-expense",
-    excerpt: "Affordable life insurance policies designed to cover end-of-life costs, such as funeral services and medical bills.",
-    detailsLink: "/services/final-expense"
+    title: 'Final Expense Plans',
+    slug: 'final-expense',
+    excerpt:
+      'Affordable life insurance policies designed to cover end-of-life costs, such as funeral services and medical bills.',
+    detailsLink: '/services/final-expense',
   },
   {
-    title: "Annuities",
-    slug: "annuities",
-    excerpt: "Secure a reliable income stream for your retirement with fixed and indexed annuity options.",
-    detailsLink: "/services/annuities"
+    title: 'Annuities',
+    slug: 'annuities',
+    excerpt:
+      'Secure a reliable income stream for your retirement with fixed and indexed annuity options.',
+    detailsLink: '/services/annuities',
   },
   {
-    title: "Individual Health Insurance",
-    slug: "health-insurance",
-    excerpt: "Find the right health insurance plan for you and your family, ensuring access to quality healthcare.",
-    detailsLink: "/services/health-insurance"
-  }
+    title: 'Individual Health Insurance',
+    slug: 'health-insurance',
+    excerpt:
+      'Find the right health insurance plan for you and your family, ensuring access to quality healthcare.',
+    detailsLink: '/services/health-insurance',
+  },
 ];
 
 export default function ServicesPage() {
+  const relatedLinks = getRelatedLinks(['insurance', 'coverage', 'protection'], '/services');
+
   return (
     <div className="bg-brand-white text-brand-black">
+      {/* Breadcrumbs */}
+      <section className="border-b border-brand-teal-blue/20 bg-brand-white py-4">
+        <div className="container mx-auto px-4">
+          <CustomBreadcrumb items={[{ label: 'Insurance Services' }]} />
+        </div>
+      </section>
+
       {/* Page Header */}
-      <section className="py-12 bg-brand-teal-blue/20">
+      <section className="bg-brand-teal-blue/20 py-12">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-brand-deep-forest-green font-poppins">Our Insurance Services</h1>
-          <p className="text-lg text-brand-black/80 mt-4 max-w-3xl mx-auto">
-            At Choice Insurance Agency, we offer a comprehensive suite of insurance products designed to protect you, your family, and your future. Explore our services below to find the coverage that best meets your needs. Our experienced agents are here to guide you every step of the way.
+          <h1 className="font-poppins text-4xl font-bold text-brand-deep-forest-green md:text-5xl">
+            Our Insurance Services
+          </h1>
+          <p className="mx-auto mt-4 max-w-3xl text-lg text-brand-black/80">
+            At Choice Insurance Hub, we offer a comprehensive suite of insurance products designed
+            to protect you, your family, and your future. Explore our services below to find the
+            coverage that best meets your needs. Our experienced agents are here to guide you every
+            step of the way.
           </p>
         </div>
       </section>
@@ -76,33 +106,51 @@ export default function ServicesPage() {
       {/* Services Grid */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service) => (
-              <div key={service.slug} className="bg-brand-white p-6 rounded-lg shadow-lg flex flex-col border border-brand-teal-blue/30 hover:shadow-xl transition-shadow duration-300">
-                <h2 className="text-2xl font-bold mb-3 text-brand-deep-forest-green font-poppins">{service.title}</h2>
-                <p className="text-brand-black/80 mb-6 flex-grow">{service.excerpt}</p>
-                <Button asChild className="mt-auto bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black font-semibold">
-                  <Link href={service.detailsLink}>Learn More</Link>
-                </Button>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {services.map(service => (
+              <div
+                key={service.slug}
+                className="flex flex-col rounded-lg border border-brand-teal-blue/30 bg-brand-white p-6 shadow-lg transition-shadow duration-300 hover:shadow-xl"
+              >
+                <h2 className="mb-3 font-poppins text-2xl font-bold text-brand-deep-forest-green">
+                  {service.title}
+                </h2>
+                <p className="mb-6 flex-grow text-brand-black/80">{service.excerpt}</p>
+                <ButtonLink
+                  href={service.detailsLink}
+                  className="mt-auto bg-brand-warm-beige-coral font-semibold text-brand-black hover:bg-brand-warm-beige-coral/80"
+                >
+                  Learn More
+                </ButtonLink>
               </div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* Related Links Section */}
+      <section className="bg-brand-white py-16">
+        <div className="container mx-auto px-4">
+          <RelatedLinks
+            links={relatedLinks}
+            title="Explore More"
+            variant="grid"
+            showDescriptions={true}
+          />
+        </div>
+      </section>
+
       {/* CTA Section */}
-      <section className="py-16 bg-brand-deep-forest-green text-brand-white">
+      <section className="bg-brand-deep-forest-green py-16 text-brand-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6 font-poppins">Not Sure Where to Start?</h2>
-          <p className="text-lg text-brand-white/90 mb-8 max-w-2xl mx-auto">
-            Choosing the right insurance can be complex. Let our experts help you navigate your options and find the perfect plan tailored to your unique situation and budget.
+          <h2 className="mb-6 font-poppins text-3xl font-bold">Not Sure Where to Start?</h2>
+          <p className="mx-auto mb-8 max-w-2xl text-lg text-brand-white/90">
+            Choosing the right insurance can be complex. Let our experts help you navigate your
+            options and find the perfect plan tailored to your unique situation and budget.
           </p>
-          <Button size="lg" asChild className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black font-semibold">
-            <Link href="/contact#book-a-call">Book a Free Consultation</Link>
-          </Button>
+          <BookConsultationButton size="lg" trackingContext="services_page" />
         </div>
       </section>
     </div>
   );
 }
-

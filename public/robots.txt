@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://choiceinsurancehub.com/sitemap.xml
+
+# Block sensitive areas
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /private/
+
+# Allow important resources
+Allow: /assets/
+Allow: /images/
+Allow: /icons/

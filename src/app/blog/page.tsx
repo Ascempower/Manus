@@ -1,101 +1,181 @@
-import Link from "next/link";
-import type { Metadata } from 'next';
+import { Metadata } from 'next';
+import Link from 'next/link';
+
+import { BlogThumbnailImage } from '@/components/ui/BlogImage';
+import { BlogPost, getAllBlogPosts } from '@/lib/blog-server';
+import { formatDate, generateExcerpt } from '@/lib/blog-utils';
 
 export const metadata: Metadata = {
-  title: 'Blog - Choice Insurance Agency',
-  description: 'Read the latest news, tips, and insights on insurance from Choice Insurance Agency.',
+  title: 'Insurance Blog | Choice Insurance Hub - Expert Insurance Insights',
+  description:
+    'Stay informed with the latest insurance insights, tips, and industry updates from Choice Insurance Hub. Expert advice on Medicare, life insurance, health insurance, and more.',
+  keywords:
+    'insurance blog, Medicare, life insurance, health insurance, insurance tips, Choice Insurance, insurance advice, insurance updates, insurance industry news',
+  alternates: {
+    canonical: 'https://choiceinsurancehub.com/blog',
+  },
 };
 
-// Placeholder data for blog posts
-const blogPosts = [
-  {
-    slug: "understanding-medicare-part-d",
-    title: "Understanding Medicare Part D: Prescription Drug Coverage",
-    date: "May 10, 2025",
-    excerpt: "Medicare Part D can be confusing. This post breaks down what it covers, how to enroll, and tips for choosing the right plan for your prescription needs.",
-    imageUrl: "/images/blog/placeholder-1.jpg", // Replace with actual image path
-  },
-  {
-    slug: "top-5-questions-about-life-insurance",
-    title: "Top 5 Questions to Ask When Buying Life Insurance",
-    date: "May 3, 2025",
-    excerpt: "Buying life insurance is a big decision. We cover the most important questions you should ask your agent to ensure you get the best policy for your family.",
-    imageUrl: "/images/blog/placeholder-2.jpg", // Replace with actual image path
-  },
-  {
-    slug: "navigating-open-enrollment",
-    title: "Navigating Health Insurance Open Enrollment: A Simple Guide",
-    date: "April 25, 2025",
-    excerpt: "Open enrollment season is here! Learn how to prepare, compare plans, and make the most of this period to secure your health coverage for the upcoming year.",
-    imageUrl: "/images/blog/placeholder-3.jpg", // Replace with actual image path
-  },
-];
-
 export default function BlogPage() {
+  let posts: BlogPost[] = [];
+  try {
+    // Get all published blog posts (excluding future posts)
+    posts = getAllBlogPosts({
+      sortBy: 'date',
+      sortOrder: 'desc',
+      includeFuturePosts: false, // Only show published posts
+    });
+    console.log(`Found ${posts.length} published blog posts`);
+  } catch (error) {
+    console.error('Error loading blog posts:', error);
+    // Continue with empty posts array
+  }
+
   return (
-    <div className="bg-brand-white text-brand-black">
-      {/* Page Header */}
-      <section className="py-12 bg-brand-teal-blue/20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-brand-deep-forest-green font-poppins">Our Blog</h1>
-          <p className="text-lg text-brand-black/80 mt-4 max-w-2xl mx-auto">
-            Stay informed with the latest news, tips, and insights on health, life, and Medicare insurance from the experts at Choice Insurance Agency.
-          </p>
-        </div>
-      </section>
+    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <div className="mb-12 text-center">
+        <h1 className="mb-4 text-4xl font-bold text-gray-900">Insurance Insights Blog</h1>
+        <p className="mx-auto max-w-3xl text-xl text-gray-600">
+          Stay informed with the latest insurance news, tips, and expert advice from Choice
+          Insurance Hub. Our comprehensive guides provide in-depth analysis and practical insights
+          to help you make informed insurance decisions.
+        </p>
+      </div>
 
-      {/* Blog Posts Grid */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          {blogPosts.length > 0 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {blogPosts.map((post) => (
-                <Link key={post.slug} href={`/blog/${post.slug}`} className="block group">
-                  <div className="bg-brand-white rounded-lg shadow-lg overflow-hidden h-full flex flex-col border border-brand-teal-blue/30 hover:shadow-xl transition-shadow duration-300">
-                    {/* Placeholder for image - In a real app, you would use Next/Image */}
-                    <div className="w-full h-48 bg-brand-teal-blue/30 flex items-center justify-center text-brand-deep-forest-green">
-                      {/* <img src={post.imageUrl} alt={post.title} className="w-full h-full object-cover" /> */}
-                      <span>Blog Post Image</span> {/* Placeholder text */}
-                    </div>
-                    <div className="p-6 flex flex-col flex-grow">
-                      <h2 className="text-2xl font-bold mb-2 text-brand-deep-forest-green font-poppins group-hover:text-brand-teal-blue transition-colors duration-300">{post.title}</h2>
-                      <p className="text-sm text-brand-black/70 mb-1">{post.date}</p>
-                      <p className="text-brand-black/80 mb-4 flex-grow">{post.excerpt}</p>
-                      <span className="mt-auto text-brand-warm-beige-coral font-semibold group-hover:underline">
-                        Read More &rarr;
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-12">
-              <h2 className="text-2xl font-bold text-brand-deep-forest-green mb-4">Coming Soon!</h2>
-              <p className="text-lg text-brand-black/80">
-                We are working on bringing you insightful articles. Please check back later.
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {posts.map(post => (
+          <div
+            key={post.slug}
+            className="overflow-hidden rounded-lg bg-white shadow-md transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg"
+          >
+            {/* Featured Image */}
+            {post.frontmatter.image && (
+              <BlogThumbnailImage
+                src={post.frontmatter.image}
+                alt={post.frontmatter.title || 'Blog post image'}
+                title={post.frontmatter.title}
+                category={post.frontmatter.category}
+              />
+            )}
+
+            <div className="p-6">
+              {/* Date and Category */}
+              <div className="mb-2 flex items-center justify-between">
+                {post.frontmatter.date && (
+                  <p className="text-sm text-gray-500">{formatDate(post.frontmatter.date)}</p>
+                )}
+                {post.frontmatter.category && (
+                  <span className="inline-block rounded-full bg-brand-teal-blue px-2 py-1 text-xs font-medium text-brand-black">
+                    {post.frontmatter.category}
+                  </span>
+                )}
+              </div>
+
+              {/* Title */}
+              <h2 className="mb-2 line-clamp-2 text-xl font-bold text-gray-900">
+                {post.frontmatter.title}
+              </h2>
+
+              {/* Description or Excerpt */}
+              <p className="mb-4 line-clamp-3 text-gray-600">
+                {post.frontmatter.description || generateExcerpt(post.content)}
               </p>
-            </div>
-          )}
-        </div>
-      </section>
 
-      {/* CTA Section (Optional, can be similar to other pages) */}
-      <section className="py-16 bg-brand-deep-forest-green text-brand-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6 font-poppins">Have Questions or Need Insurance Advice?</h2>
-          <p className="text-lg text-brand-white/90 mb-8 max-w-2xl mx-auto">
-            Our experienced agents are ready to help you find the best coverage solutions tailored to your needs.
+              {/* Tags */}
+              {post.frontmatter.tags && post.frontmatter.tags.length > 0 && (
+                <div className="mb-4 flex flex-wrap gap-1">
+                  {post.frontmatter.tags.slice(0, 3).map((tag: string) => (
+                    <span
+                      key={tag}
+                      className="inline-block rounded bg-gray-100 px-2 py-1 text-xs text-gray-600"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                  {post.frontmatter.tags.length > 3 && (
+                    <span className="inline-block px-2 py-1 text-xs text-gray-500">
+                      +{post.frontmatter.tags.length - 3} more
+                    </span>
+                  )}
+                </div>
+              )}
+
+              {/* Read More Link */}
+              <Link
+                href={`/blog/posts/${post.slug}`}
+                className="inline-flex items-center font-semibold text-brand-warm-beige-coral hover:text-brand-warm-beige-coral/80"
+              >
+                Read More
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="ml-1 h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </Link>
+            </div>
+          </div>
+        ))}
+
+        {/* Show message if no posts found */}
+        {posts.length === 0 && (
+          <div className="col-span-full py-12 text-center">
+            <h3 className="mb-2 text-xl font-semibold text-gray-900">No Blog Posts Found</h3>
+            <p className="text-gray-600">
+              Check back soon for new insurance insights and expert advice.
+            </p>
+          </div>
+        )}
+      </div>
+
+      <div className="mt-16 text-center">
+        <h2 className="mb-6 text-2xl font-bold text-gray-900">
+          Subscribe to Our Insurance Newsletter
+        </h2>
+        <p className="mx-auto mb-8 max-w-2xl text-gray-600">
+          Stay updated with the latest insurance trends, tips, and exclusive offers delivered
+          straight to your inbox.
+        </p>
+        <div className="mx-auto max-w-md">
+          <div className="flex flex-col gap-2 sm:flex-row">
+            <input
+              type="email"
+              placeholder="Your email address"
+              className="flex-grow rounded-md border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand-warm-beige-coral"
+            />
+            <button className="rounded-md bg-brand-warm-beige-coral px-6 py-2 font-semibold text-white hover:bg-brand-warm-beige-coral/80">
+              Subscribe
+            </button>
+          </div>
+          <p className="mt-2 text-xs text-gray-500">
+            We respect your privacy. Unsubscribe at any time.
           </p>
-          <Link 
-            href="/contact#book-a-call" 
-            className="inline-block bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black font-semibold py-3 px-8 rounded-lg text-lg transition duration-300 ease-in-out transform hover:scale-105"
+        </div>
+      </div>
+
+      <div className="mt-16 rounded-lg bg-gray-50 p-8">
+        <div className="mb-8 text-center">
+          <h2 className="mb-2 text-2xl font-bold text-gray-900">Have Insurance Questions?</h2>
+          <p className="text-gray-600">
+            Our insurance experts are ready to provide personalized guidance for your specific
+            needs.
+          </p>
+        </div>
+        <div className="text-center">
+          <Link
+            href="https://calendly.com/choiceinsuranceagency/30-minute-meeting"
+            className="inline-block rounded-md bg-brand-warm-beige-coral px-8 py-3 font-semibold text-white hover:bg-brand-warm-beige-coral/80"
           >
             Book a Free Consultation
           </Link>
         </div>
-      </section>
+      </div>
     </div>
   );
 }
-

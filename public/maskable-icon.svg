@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Maskable icon for Choice Insurance Hub -->
+  <!-- Safe zone: 20% padding from edges (102.4px from each edge) -->
+  <!-- Icon content should be within 307.2x307.2px centered area -->
+  
+  <!-- Background circle that fills the entire space -->
+  <circle cx="256" cy="256" r="256" fill="#42615A"/>
+  
+  <!-- Safe zone background -->
+  <circle cx="256" cy="256" r="153.6" fill="#F97316" opacity="0.1"/>
+  
+  <!-- Main icon content within safe zone -->
+  <g transform="translate(256, 256)">
+    <!-- Shield shape representing insurance protection -->
+    <path d="M-60 -80 L60 -80 L60 -20 L40 0 L20 20 L0 40 L-20 20 L-40 0 L-60 -20 Z" 
+          fill="#FFFFFF" stroke="#F97316" stroke-width="4"/>
+    
+    <!-- Insurance symbol - stylized "C" for Choice -->
+    <path d="M-20 -40 Q-40 -40 -40 -20 Q-40 0 -40 20 Q-40 40 -20 40 Q0 40 20 40" 
+          stroke="#42615A" stroke-width="8" fill="none" stroke-linecap="round"/>
+    
+    <!-- Accent dot -->
+    <circle cx="25" cy="-30" r="6" fill="#F97316"/>
+    
+    <!-- Text indicator -->
+    <rect x="-50" y="50" width="100" height="20" rx="10" fill="#F97316"/>
+    <text x="0" y="65" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="12" font-weight="bold">INSURANCE</text>
+  </g>
+</svg>
