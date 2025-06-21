@@ -200,6 +200,53 @@ NEXT_PUBLIC_SENTRY_DSN=your_sentry_dsn
 
 ## 🎯 Navigation Features
 
+### Recent UI Improvements & Fixes (December 2024)
+
+#### **Navigation Menu Delay Fix**
+
+- **Issue**: Navigation dropdown was closing too quickly when moving mouse between elements
+- **Solution**: Increased `skipDelayDuration` from 300ms to 3000ms in `Header.tsx`
+- **Location**: `src/components/layout/Header.tsx` line 42
+- **Impact**: Improved user experience with more forgiving navigation timing
+
+#### **Service Cards Uniform Sizing**
+
+- **Issue**: Homepage service cards had inconsistent heights due to varying content lengths
+- **Solution**: Applied flexbox layout with consistent height distribution
+- **Changes Made**:
+  - Added `flex h-full flex-col` to Card components
+  - Added `flex flex-1 flex-col items-center justify-between` to CardContent
+- **Location**: `src/app/page.tsx` lines 110-119
+- **Result**: All service cards now have uniform height with buttons aligned at bottom
+
+#### **Header Dropdown Menu Layout Reorganization**
+
+- **Issue**: Unbalanced layout with first column having 2 services, second column having 6 services
+- **Solution**: Redistributed services for better visual balance
+- **Changes**:
+  - **Before**: First column (All Services + 2 services), Second column (6 services)
+  - **After**: First column (All Services + 3 services), Second column (5 services)
+- **Implementation**: Modified `slice(0, 2)` to `slice(0, 3)` and `slice(2)` to `slice(3)`
+- **Location**: `src/components/layout/Header.tsx` lines 111 and 130
+
+#### **Service Button Uniform Sizing**
+
+- **Issue**: Service buttons in dropdown had inconsistent heights
+- **Solution**: Applied consistent minimum height and flexbox centering
+- **Changes**: Added `min-h-[80px] flex flex-col justify-center` to all service buttons
+- **CSS Conflict Fix**: Removed conflicting `block` class that was conflicting with `flex`
+- **Location**: `src/components/layout/Header.tsx` lines 115 and 134
+
+#### **Navigation Menu Background Fix**
+
+- **Issue**: Navigation dropdown appeared to be floating without proper background
+- **Solution**: Enhanced background styling for better visibility
+- **Changes**:
+  - Changed from `bg-brand-teal-blue` to `bg-white` for better contrast
+  - Enhanced shadow from `shadow-lg` to `shadow-xl`
+  - Updated text color to `text-brand-black` for readability
+- **Location**: `src/components/layout/Header.tsx` line 91
+
 ### Dropdown Service Menu
 
 The website features a sophisticated dropdown navigation menu for the Services section with the following characteristics:
@@ -325,6 +372,82 @@ To modify the dropdown menu:
 5. Commit your changes: `git commit -m 'Add amazing feature'`
 6. Push to the branch: `git push origin feature/amazing-feature`
 7. Open a Pull Request
+
+## 🔧 Troubleshooting
+
+### Common Issues & Solutions
+
+#### **Navigation Menu Issues**
+
+**Problem**: Navigation dropdown closes too quickly
+
+- **Solution**: Check `skipDelayDuration` in `Header.tsx` (should be 3000ms)
+- **Location**: `src/components/layout/Header.tsx` line 42
+
+**Problem**: Navigation menu appears floating without background
+
+- **Solution**: Ensure proper background classes are applied
+- **Check**: `bg-white text-brand-black shadow-xl` on dropdown container
+- **Location**: `src/components/layout/Header.tsx` line 91
+
+**Problem**: CSS conflicts in Tailwind classes
+
+- **Solution**: Remove conflicting classes (e.g., `block` + `flex`)
+- **Check**: Service button classes should use `flex` without `block`
+- **Location**: `src/components/layout/Header.tsx` lines 115, 134
+
+#### **Layout Issues**
+
+**Problem**: Service cards have inconsistent heights
+
+- **Solution**: Apply flexbox layout with height distribution
+- **Required Classes**:
+  - Card: `flex h-full flex-col`
+  - CardContent: `flex flex-1 flex-col items-center justify-between`
+- **Location**: `src/app/page.tsx`
+
+**Problem**: Unbalanced dropdown menu layout
+
+- **Solution**: Redistribute services between columns
+- **Current Setup**: First column (3 services), Second column (5 services)
+- **Modify**: `slice(0, 3)` and `slice(3)` in service mapping
+- **Location**: `src/components/layout/Header.tsx`
+
+#### **Development Issues**
+
+**Problem**: Build fails with TypeScript errors
+
+- **Solution**: Run `pnpm run type-check` to identify issues
+- **Fix**: Address type errors before building
+
+**Problem**: Linting errors prevent build
+
+- **Solution**: Run `pnpm run lint:fix` to auto-fix issues
+- **Manual**: Check ESLint output for remaining issues
+
+**Problem**: Styling not applying correctly
+
+- **Solution**: Check Tailwind class conflicts
+- **Tool**: Use browser dev tools to inspect computed styles
+- **Verify**: Ensure classes are not being overridden
+
+### Quick Fixes Reference
+
+```bash
+# Fix navigation delay
+# In Header.tsx line 42: skipDelayDuration={3000}
+
+# Fix service card heights
+# In page.tsx: className="flex h-full flex-col"
+# In CardContent: className="flex flex-1 flex-col items-center justify-between"
+
+# Fix dropdown background
+# In Header.tsx line 91: className="...bg-white text-brand-black shadow-xl"
+
+# Fix CSS conflicts
+# Remove 'block' class when using 'flex'
+# Use: className="flex min-h-[80px] select-none flex-col justify-center..."
+```
 
 ## 📞 Support
 
