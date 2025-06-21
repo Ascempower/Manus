@@ -1,7 +1,7 @@
 ---
 title: 'Understanding Life Insurance: A Complete Guide for 2025'
 description: "Learn about different types of life insurance, how much coverage you need, and how to choose the right policy for your family's financial security."
-date: '2025-04-10'
+date: '2024-12-10'
 author: 'Choice Insurance Hub'
 category: 'Life Insurance'
 tags: ['Life Insurance', 'Term Life', 'Whole Life', 'Financial Planning', 'Family Protection']

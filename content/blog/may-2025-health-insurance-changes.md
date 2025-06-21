@@ -1,7 +1,7 @@
 ---
 title: '2025 Health Insurance Changes: What You Need to Know'
 description: 'Stay informed about the latest health insurance changes for 2025, including new regulations, marketplace updates, and how they affect your coverage options.'
-date: '2025-05-05'
+date: '2024-12-05'
 author: 'Choice Insurance Hub'
 category: 'Health Insurance'
 tags: ['Health Insurance', 'ACA', 'Healthcare Reform', 'Insurance Marketplace', '2025 Changes']
