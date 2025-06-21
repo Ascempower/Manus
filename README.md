@@ -1,6 +1,6 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/2f5338f7-f76b-4c16-9878-81fe347d2049/deploy-status)](https://app.netlify.com/projects/choice22/deploys)
-
 # Choice Insurance Website
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2f5338f7-f76b-4c16-9878-81fe347d2049/deploy-status)](https://app.netlify.com/projects/choice22/deploys)
 
 A modern, high-performance insurance website built with Next.js, TypeScript, and Tailwind CSS. Optimized for speed, accessibility, and SEO.
 
@@ -30,11 +30,13 @@ A modern, high-performance insurance website built with Next.js, TypeScript, and
 
 1. **Clone and setup the project:**
 
-   ```bash
+   ````bash
    git clone <repository-url>
    cd choice-insurance-website
    pnpm run setup
-   ```
+   ```bash
+
+   ````
 
 2. **Start development server:**
 
@@ -112,9 +114,11 @@ The project is configured for automatic deployment on Netlify:
 1. **Automatic Deployment**: Push to `main` branch triggers production deployment
 2. **Preview Deployments**: Pull requests create preview deployments
 3. **Build Command**:
-   ```
+
+   ```bash
    pnpm install --frozen-lockfile && pnpm run print-versions && pnpm run build
    ```
+
 4. **Publish Directory**: `.next`
 
 #### Netlify Configuration (`netlify.toml`)
@@ -210,7 +214,7 @@ The website features a sophisticated dropdown navigation menu for the Services s
 
 #### **Layout & Structure**
 
-```
+```text
 [Services ▼]  ← Trigger button
 ┌─────────────────────────────────────────────────────────┐
 │  [All Services - Large Button]    │  [Health Insurance] │
@@ -273,7 +277,7 @@ To modify the dropdown menu:
 
 ## 📁 Project Structure
 
-```
+```text
 ├── src/
 │   ├── app/                 # Next.js app directory
 │   ├── components/          # Reusable components
@@ -332,4 +336,4 @@ For questions or issues, please:
 
 ---
 
-**Happy coding! 🚀**
+## Happy coding! 🚀

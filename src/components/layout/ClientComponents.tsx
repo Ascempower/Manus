@@ -53,10 +53,10 @@ interface ClientComponentsProps {
 export default function ClientComponents({
   ga4Id,
   gtmId,
-  firebaseKey,
-  sentryDsn,
-  apiUrl,
-  siteUrl,
+  firebaseKey: _firebaseKey,
+  sentryDsn: _sentryDsn,
+  apiUrl: _apiUrl,
+  siteUrl: _siteUrl,
 }: ClientComponentsProps) {
   return (
     <>
