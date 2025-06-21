@@ -37,7 +37,7 @@ const Footer = dynamic(() => import('./Footer'), {
 
 const ClientComponents = dynamic(() => import('./ClientComponents'), {
   ssr: false,
-  loading: () => null,
+  loading: () => <div />,
 });
 
 interface ClientLayoutContentProps {

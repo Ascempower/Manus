@@ -176,7 +176,7 @@ NEXT_PUBLIC_API_URL=your_api_url
 NEXT_PUBLIC_SITE_URL=your_site_url
 
 # Optional
-NEXT_PUBLIC_GA_ID=your_google_analytics_id
+NEXT_PUBLIC_GA4_ID=your_google_analytics_4_id
 NEXT_PUBLIC_GTM_ID=your_google_tag_manager_id
 NEXT_PUBLIC_FIREBASE_KEY=your_firebase_key
 NEXT_PUBLIC_SENTRY_DSN=your_sentry_dsn

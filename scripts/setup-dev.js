@@ -87,7 +87,7 @@ NEXT_PUBLIC_API_URL=http://localhost:3000/api
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 
 # Analytics (optional)
-# NEXT_PUBLIC_GA_ID=
+# NEXT_PUBLIC_GA4_ID=
 # NEXT_PUBLIC_GTM_ID=
 
 # Database (if applicable)
