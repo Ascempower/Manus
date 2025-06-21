@@ -112,7 +112,7 @@ export default function Header() {
                               <NavigationMenuLink key={service.href} asChild>
                                 <Link
                                   href={service.href}
-                                  className="block flex min-h-[80px] select-none flex-col justify-center rounded-lg bg-[#42615A] p-4 leading-none text-white no-underline outline-none"
+                                  className="flex min-h-[80px] select-none flex-col justify-center rounded-lg bg-[#42615A] p-4 leading-none text-white no-underline outline-none"
                                 >
                                   <div className="text-base font-medium leading-none text-white">
                                     {service.label}
@@ -131,7 +131,7 @@ export default function Header() {
                               <NavigationMenuLink key={service.href} asChild>
                                 <Link
                                   href={service.href}
-                                  className="block flex min-h-[80px] select-none flex-col justify-center rounded-lg bg-[#42615A] p-4 leading-none text-white no-underline outline-none"
+                                  className="flex min-h-[80px] select-none flex-col justify-center rounded-lg bg-[#42615A] p-4 leading-none text-white no-underline outline-none"
                                 >
                                   <div className="text-base font-medium leading-none text-white">
                                     {service.label}
