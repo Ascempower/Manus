@@ -8,9 +8,9 @@ import { getAllBlogPosts, getBlogPost } from '@/lib/blog-server';
 
 // Blog post page component
 
-type PageProps = {
+interface PageProps {
   params: Promise<{ slug: string }>;
-};
+}
 
 // Generate static params for all published blog posts
 export function generateStaticParams() {
@@ -160,7 +160,8 @@ export default async function BlogPost({ params }: PageProps) {
               </time>
             )}
             {frontmatter.author && <span>By {frontmatter.author}</span>}
-            {(typeof frontmatter.readingTime === 'number' || typeof frontmatter.readingTime === 'string') && (
+            {(typeof frontmatter.readingTime === 'number' ||
+              typeof frontmatter.readingTime === 'string') && (
               <span>{frontmatter.readingTime} min read</span>
             )}
           </div>

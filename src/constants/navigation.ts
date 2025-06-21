@@ -1,8 +1,8 @@
-type NavItem = {
+interface NavItem {
   href: string;
   label: string;
   hasDropdown: boolean;
-};
+}
 
 export const MAIN_NAVIGATION: NavItem[] = [
   { href: '/', label: 'Home', hasDropdown: false },

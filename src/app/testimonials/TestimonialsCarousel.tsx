@@ -5,12 +5,12 @@ import React from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-type Testimonial = {
+interface Testimonial {
   quote: string;
   name: string;
   location: string;
   service: string;
-};
+}
 
 interface TestimonialsCarouselProps {
   testimonials: Testimonial[];
