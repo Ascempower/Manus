@@ -87,60 +87,64 @@ export default function Header() {
                     >
                       {item.label}
                     </NavigationMenuTrigger>
-                    <NavigationMenuContent className="absolute left-0 top-full z-[70] mt-1 w-[800px] min-w-[800px] origin-top-left rounded-lg border border-brand-teal-blue-dark bg-brand-teal-blue shadow-lg data-[state=open]:bg-brand-teal-blue">
-                      <div className="grid w-full grid-cols-2 gap-4 p-6">
-                        {/* First Column */}
-                        <div className="flex flex-col gap-3">
-                          {/* All Services - Forest Green, takes most space */}
-                          <NavigationMenuLink asChild>
-                            <Link
-                              href="/services"
-                              className="group block flex-1 transform select-none rounded-lg border border-[#42615A] bg-[#42615A] p-6 leading-none text-white no-underline outline-none transition-all duration-200 hover:scale-[1.02] hover:bg-[#42615A]/90 hover:shadow-lg focus:bg-[#42615A]/90"
-                            >
-                              <div className="text-lg font-bold leading-none text-white transition-colors duration-200">
-                                All Services
-                              </div>
-                              <div className="mt-2 text-sm text-white/90 transition-colors duration-200">
-                                Explore our comprehensive range of insurance solutions
-                              </div>
-                            </Link>
-                          </NavigationMenuLink>
-
-                          {/* First 2 services - Dark green buttons */}
-                          {FOOTER_LINKS.services.slice(0, 2).map(service => (
-                            <NavigationMenuLink key={service.href} asChild>
+                    <NavigationMenuContent className="data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 left-0 top-0 w-full md:absolute md:w-[800px]">
+                      <div className="rounded-lg border border-brand-teal-blue-dark bg-brand-teal-blue text-white shadow-lg">
+                          <div className="grid w-full grid-cols-2 gap-4 p-6">
+                                {/* First Column */}
+                            <div className="flex flex-col gap-3">
+                              {/* All Services - Dark green button */}
+                            <NavigationMenuLink asChild>
                               <Link
-                                href={service.href}
-                                className="group block transform select-none rounded-lg border border-[#42615A] bg-[#42615A] p-4 leading-none text-white no-underline outline-none transition-all duration-200 hover:scale-[1.02] hover:bg-[#42615A]/90 hover:shadow-md focus:bg-[#42615A]/90"
+                                href="/services"
+                                      className="block select-none rounded-lg bg-[#42615A] p-6 leading-none text-white no-underline outline-none"
                               >
-                                <div className="text-base font-medium leading-none text-white transition-colors duration-200">
-                                  {service.label}
-                                </div>
-                                <div className="mt-2 text-sm text-white/80 transition-colors duration-200">
-                                  Learn more about {service.label.toLowerCase()}
-                                </div>
-                              </Link>
-                            </NavigationMenuLink>
-                          ))}
-                        </div>
+                                  <div className="text-lg font-bold leading-none text-white  ">
+                                  All Services
+block select-none rounded-lg bg-[#42615A] p-6 leading-none text-white no-underline outline-none"
+                                  </div>
+                                <div className="mt-2 text-sm text-white/90">
+                                    Explore our comprehensive range of insurance solutions
+                                  </div>
+                                </Link>
+                              </NavigationMenuLink>
 
-                        {/* Second Column - Remaining services - Dark green buttons */}
-                        <div className="flex flex-col gap-3">
-                          {FOOTER_LINKS.services.slice(2).map(service => (
-                            <NavigationMenuLink key={service.href} asChild>
-                              <Link
-                                href={service.href}
-                                className="group block transform select-none rounded-lg border border-[#42615A] bg-[#42615A] p-4 leading-none text-white no-underline outline-none transition-all duration-200 hover:scale-[1.02] hover:bg-[#42615A]/90 hover:shadow-md focus:bg-[#42615A]/90"
-                              >
-                                <div className="text-base font-medium leading-none text-white transition-colors duration-200">
-                                  {service.label}
-                                </div>
-                                <div className="mt-2 text-sm text-white/80 transition-colors duration-200">
-                                  Learn more about {service.label.toLowerCase()}
-                                </div>
-                              </Link>
-                            </NavigationMenuLink>
-                          ))}
+                              {/* First 2 services - Dark green buttons */}
+                              {FOOTER_LINKS.services.slice(0, 2).map(service => (
+                                <NavigationMenuLink key={service.href} asChild>
+                                  <Link
+                                    href={service.href}
+                                      className="block select-none rounded-lg bg-[#42615A] p-4 leading-none text-white no-underline outline-none"
+                                  >
+                                  <div className="text-base font-medium leading-none text-white">
+                                    {service.label}
+                                      </div>
+                                      <div className="mt-2 text-sm text-white/80  ">
+                                    Learn more about {service.label.toLowerCase()}
+                                    </div>
+                                  </Link>
+                                  </NavigationMenuLink>
+                              ))}
+                            </div>
+
+                            {/* Second Column - Remaining services - Dark green buttons */}
+                            <div className="flex flex-col gap-3">
+                              {FOOTER_LINKS.services.slice(2).map(service => (
+                              <NavigationMenuLink key={service.href} asChild>
+                                <Link
+                                  href={service.href}
+                                    className="block select-none rounded-lg p-4 leading-none text-white no-underline outline-none"
+                                  >
+                                    <div className="text-base font-medium leading-none text-white  ">
+                                    {service.label}
+                                      </div>
+                                      <div className="mt-2 text-sm text-white/80  ">
+                                    Learn more about {service.label.toLowerCase()}
+                                  </div>
+                                </Link>
+                                </NavigationMenuLink>
+                              ))}
+                          </div>
+                          </div>
                         </div>
                       </div>
                     </NavigationMenuContent>
@@ -162,7 +166,7 @@ export default function Header() {
             ))}
           </NavigationMenuList>
           {/* This stabilizes layout positioning */}
-          <NavigationMenuPrimitive.Viewport className="absolute left-0 top-full z-[65] h-[var(--radix-navigation-menu-viewport-height)] w-full origin-top overflow-hidden rounded-b-md border border-brand-teal-blue-dark bg-brand-teal-blue shadow-lg transition-all duration-300" />
+          <NavigationMenuPrimitive.Viewport className="origin-top-center data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 absolute left-0 top-full z-[65] flex h-[var(--radix-navigation-menu-viewport-height)] w-full justify-center overflow-hidden md:w-[var(--radix-navigation-menu-viewport-width)]" />
         </NavigationMenuPrimitive.Root>
 
         <div className="flex items-center gap-x-2">
