@@ -44,17 +44,20 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
+      { url: '/favicon.ico', sizes: '16x16 32x32', type: 'image/x-icon' },
       { url: '/favicon.png', sizes: '16x16', type: 'image/png' },
       { url: '/favicon.png', sizes: '32x32', type: 'image/png' },
       { url: '/icon.png', sizes: '192x192', type: 'image/png' },
       { url: '/icons/icon-512x512.png', sizes: '512x512', type: 'image/png' },
     ],
-    apple: [
-      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
-      { url: '/icons/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
-    ],
-    shortcut: '/favicon.png',
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+    shortcut: '/favicon.ico',
     other: [
+      {
+        rel: 'icon',
+        type: 'image/svg+xml',
+        url: '/icon.svg',
+      },
       {
         rel: 'icon',
         type: 'image/png',
@@ -66,6 +69,17 @@ export const metadata: Metadata = {
         type: 'image/png',
         sizes: '144x144',
         url: '/icons/icon-144x144.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '192x192',
+        url: '/icons/icon-192x192.png',
+      },
+      {
+        rel: 'mask-icon',
+        url: '/maskable-icon.svg',
+        color: '#42615A',
       },
     ],
   },

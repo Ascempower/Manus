@@ -247,6 +247,30 @@ NEXT_PUBLIC_SENTRY_DSN=your_sentry_dsn
   - Updated text color to `text-brand-black` for readability
 - **Location**: `src/components/layout/Header.tsx` line 91
 
+#### **Meta Icons & PWA Configuration Enhancement**
+
+- **Issue**: Inconsistent icon references and missing comprehensive favicon support
+- **Solution**: Optimized meta icons configuration for better browser and PWA support
+- **Changes Made**:
+  - **Layout.tsx Icons**: Enhanced icon configuration with multiple formats
+    - Added proper favicon.ico support with correct MIME type
+    - Added SVG icon support for modern browsers
+    - Included comprehensive PNG icon sizes (16x16, 32x32, 96x96, 144x144, 192x192, 512x512)
+    - Added Safari mask-icon with brand color
+    - Optimized Apple touch icon configuration
+  - **Manifest.json**: Fixed PWA manifest with correct file paths
+    - Updated icon references to use existing files in `/icons/` directory
+    - Fixed shortcuts to use proper icon paths
+    - Ensured maskable icons for better PWA experience
+- **Locations**:
+  - `src/app/layout.tsx` lines 45-87
+  - `public/manifest.json` lines 15-55, 62-93
+- **Benefits**:
+  - Better favicon display across all browsers
+  - Improved PWA installation experience
+  - Consistent branding across all platforms
+  - Enhanced SEO with proper meta icons
+
 ### Dropdown Service Menu
 
 The website features a sophisticated dropdown navigation menu for the Services section with the following characteristics:
@@ -431,6 +455,30 @@ To modify the dropdown menu:
 - **Tool**: Use browser dev tools to inspect computed styles
 - **Verify**: Ensure classes are not being overridden
 
+#### **Meta Icons & PWA Issues**
+
+**Problem**: Favicon not displaying correctly in browsers
+
+- **Solution**: Check icon file paths and formats
+- **Verify**: Ensure favicon.ico, favicon.png, and icon.svg exist in `/public/`
+- **Check**: Browser cache - clear cache and hard refresh
+- **Location**: `src/app/layout.tsx` icons configuration
+
+**Problem**: PWA installation not working properly
+
+- **Solution**: Validate manifest.json configuration
+- **Check**: All icon paths in manifest.json point to existing files
+- **Verify**: Icon sizes match actual file dimensions
+- **Tool**: Use browser dev tools > Application > Manifest to debug
+- **Location**: `public/manifest.json`
+
+**Problem**: Icons not showing on mobile devices
+
+- **Solution**: Ensure apple-touch-icon.png exists and is properly configured
+- **Check**: Apple touch icon should be 180x180 pixels
+- **Verify**: Meta tags in layout.tsx include apple-mobile-web-app settings
+- **Location**: `public/apple-touch-icon.png`
+
 ### Quick Fixes Reference
 
 ```bash
@@ -447,6 +495,11 @@ To modify the dropdown menu:
 # Fix CSS conflicts
 # Remove 'block' class when using 'flex'
 # Use: className="flex min-h-[80px] select-none flex-col justify-center..."
+
+# Fix meta icons configuration
+# In layout.tsx: Ensure comprehensive icon configuration with multiple formats
+# In manifest.json: Update icon paths to match existing files in /icons/ directory
+# Check: favicon.ico, favicon.png, icon.svg, apple-touch-icon.png exist in /public/
 ```
 
 ## 📞 Support
