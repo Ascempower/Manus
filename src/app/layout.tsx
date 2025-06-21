@@ -1,15 +1,19 @@
 import React from 'react';
 
 import type { Metadata, Viewport } from 'next';
+import dynamic from 'next/dynamic';
 import { Inter, Poppins } from 'next/font/google';
 
-import ClientComponents from '@/components/layout/ClientComponents';
 import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
 import { LocalBusinessSchema, OrganizationSchema } from '@/components/seo/StructuredData';
-import NoSSR from '@/components/utils/NoSSR';
 
 import './globals.css';
+
+const ClientComponents = dynamic(() => import('@/components/layout/ClientComponents'), {
+  ssr: false,
+  loading: () => null,
+});
 
 // Configure fonts
 const inter = Inter({
@@ -139,13 +143,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
         </div>
 
-        {/* Client-side components - wrapped in NoSSR to prevent SSR issues */}
-        <NoSSR>
-          <ClientComponents
-            ga4Id={process.env.NEXT_PUBLIC_GA4_ID}
-            gtmId={process.env.NEXT_PUBLIC_GTM_ID}
-          />
-        </NoSSR>
+        {/* Client-side components - dynamically loaded to prevent SSR issues */}
+        <ClientComponents
+          ga4Id={process.env.NEXT_PUBLIC_GA4_ID}
+          gtmId={process.env.NEXT_PUBLIC_GTM_ID}
+        />
 
         {/* Deferred Service Worker Registration */}
         <script
