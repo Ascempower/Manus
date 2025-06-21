@@ -1,21 +1,12 @@
 // src/app/contact/page.tsx
-import type { Metadata } from 'next';
+'use client';
 
 import { CalendarDays, Mail, MapPin, Phone } from 'lucide-react';
 
 import ContactFormWrapper from '@/components/forms/ContactFormWrapper';
 import ButtonLink from '@/components/ui/ButtonLink';
 
-export const metadata: Metadata = {
-  title: 'Contact Us - Choice Insurance Hub',
-  description:
-    'Get in touch with Choice Insurance Hub for expert advice on Medicare, life, and health insurance. Book a consultation or request a quote today.',
-  keywords:
-    'insurance contact, insurance consultation, insurance quote, Choice Insurance Hub contact, insurance agency phone number, insurance agency email',
-  alternates: {
-    canonical: 'https://choiceinsurancehub.com/contact',
-  },
-};
+// src/app/contact/page.tsx
 
 export default function ContactPage() {
   return (
