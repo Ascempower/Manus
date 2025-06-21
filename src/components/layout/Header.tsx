@@ -1,7 +1,5 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -24,48 +22,6 @@ import { FOOTER_LINKS, MAIN_NAVIGATION } from '@/constants/navigation';
 import { cn } from '@/lib/utils';
 
 export default function Header() {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  // Render a simple header during SSR
-  if (!isClient) {
-    return (
-      <header className="sticky top-0 z-50 w-full border-b border-brand-teal-blue/40 bg-brand-deep-forest-green text-brand-white">
-        <div className="container mx-auto flex h-16 items-center justify-between px-4">
-          <Link href="/" className="mr-6 flex items-center">
-            <Image
-              src="/assets/logos/Main Logo - Orange (3).png"
-              alt="Choice Insurance Hub Logo"
-              width={120}
-              height={40}
-              className="max-h-10 w-auto object-contain"
-              priority
-            />
-          </Link>
-          <nav className="hidden lg:flex lg:items-center lg:space-x-6">
-            {MAIN_NAVIGATION.map(item => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-sm font-medium text-brand-white transition-colors hover:text-brand-teal-blue"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-          <div className="flex items-center gap-x-2">
-            <div className="hidden md:flex md:gap-2">
-              <div className="h-9 w-20 animate-pulse rounded bg-brand-deep-forest-green/50" />
-              <div className="h-9 w-24 animate-pulse rounded bg-brand-deep-forest-green/50" />
-            </div>
-          </div>
-        </div>
-      </header>
-    );
-  }
   return (
     <header className="sticky top-0 z-50 w-full border-b border-brand-teal-blue/40 bg-brand-deep-forest-green text-brand-white">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
