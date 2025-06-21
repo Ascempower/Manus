@@ -34,7 +34,7 @@ export default function InternalNavigation({
 
   const isActivePath = (href: string) => {
     if (href === '/') return pathname === '/';
-    return pathname.startsWith(href);
+    return pathname?.startsWith(href) || false;
   };
 
   const NavLink = ({ link, mobile = false }: { link: InternalLink; mobile?: boolean }) => (

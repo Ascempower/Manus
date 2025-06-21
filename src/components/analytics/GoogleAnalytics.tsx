@@ -19,7 +19,7 @@ export default function GoogleAnalytics({ gtmId, ga4Id }: GoogleAnalyticsProps) 
   React.useEffect(() => {
     // Check HIPAA compliance before loading any analytics
     const hasConsent = hasHIPAAConsent();
-    const isPHIPage = isPotentialPHIPage(pathname);
+    const isPHIPage = isPotentialPHIPage(pathname || '');
 
     // Only load analytics if we have consent and not on PHI pages
     if (hasConsent && !isPHIPage) {
