@@ -17,7 +17,6 @@ export default function LazyLoad({
 }: LazyLoadProps) {
   const [isVisible, setIsVisible] = React.useState(false);
   const [isClient, setIsClient] = React.useState(false);
-  const [isClient, setIsClient] = React.useState(false);
   const ref = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
@@ -27,22 +26,16 @@ export default function LazyLoad({
   React.useEffect(() => {
     if (!isClient || typeof window === 'undefined') return;
 
-    setIsClient(true);
-  }, []);
-
-  React.useEffect(() => {
-    if (!isClient || typeof window === 'undefined') return;
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          isClient && setIsVisible(true);
+          setIsVisible(true);
           observer.disconnect();
         }
       },
       {
         threshold,
-        rootMargin, isClient,
+        rootMargin,
       }
     );
 
