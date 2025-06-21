@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 
+import BuildTimeGuard from '@/components/utils/BuildTimeGuard';
+import BuildTimeGuard from '@/components/utils/BuildTimeGuard';
 import NoSSR from '@/components/utils/NoSSR';
 import {
   IMAGE_LOADING_CONFIG,
@@ -258,13 +260,24 @@ export default function BlogImage(props: BlogImageProps) {
   }
 
   return (
-    <NoSSR
+    <BuildTimeGuard
       fallback={
         <div className={cn('animate-pulse bg-gray-100', className)} style={{ width, height }} />
       }
     >
-      <BlogImageInternal {...props} />
-    </NoSSR>
+      <BuildTimeGuard
+        fallback={
+          <div className={cn('animate-pulse bg-gray-100', className)} style={{ width, height }} />
+        }
+      >
+          <NoSSR
+        fallback={
+          <div className={cn('animate-pulse bg-gray-100', className)} style={{ width, height }} />
+        }
+      >
+        <BlogImageInternal {...props} />
+      </NoSSR>
+    </BuildTimeGuard>
   );
 }
 
@@ -279,24 +292,50 @@ export function BlogHeroImage({
   // Always return a static fallback during SSR
   if (typeof window === 'undefined') {
     return (
-      <div
+    <BuildTimeGuard
+      fallback={
+        <div 
+          className={cn('w-full rounded-lg shadow-lg animate-pulse bg-gray-100', className)} 
+          style={{ width: 1200, height: 630 }} 
+        />
+      }
+    >
+        <div
         className={cn('w-full animate-pulse rounded-lg bg-gray-100 shadow-lg', className)}
-        style={{ width: 1200, height: 630 }}
       />
+    </BuildTimeGuard    style={{ width: 1200, height: 630 }}
+        />
     );
   }
 
   return (
-    <BlogImage
-      src={src}
-      alt={alt}
-      title={title}
-      category={category}
-      width={1200}
-      height={630}
-      priority={true}
-      className={cn('w-full rounded-lg shadow-lg', className)}
-    />
+    <BuildTimeGuard
+      fallback={
+        <div 
+          className={cn('w-full rounded-lg shadow-lg animate-pulse bg-gray-100', className)} 
+          style={{ width: 1200, height: 630 }} 
+        />
+      }
+    >
+      <BuildTimeGuard
+      fallback={
+        <div 
+          className={cn('aspect-video w-full rounded-md object-cover animate-pulse bg-gray-100', className)} 
+          style={{ width: 400, height: 250 }} 
+        />
+      }
+    >
+      <BlogImage
+            src={src}
+            alt={alt}
+            title={title}
+            category={category}
+            width={1200}
+            height={630}
+          priority={true}
+        className={cn('w-full rounded-lg shadow-lg', className)}
+      />
+    </BuildTimeGuard>
   );
 }
 
@@ -321,15 +360,33 @@ export function BlogThumbnailImage({
   }
 
   return (
-    <BlogImage
-      src={src}
-      alt={alt}
-      title={title}
-      category={category}
-      width={400}
-      height={250}
-      className={cn('aspect-video w-full rounded-md object-cover', className)}
-    />
+    <BuildTimeGuard
+      fallback={
+        <div 
+          className={cn('mx-auto w-full max-w-2xl rounded-md shadow-sm animate-pulse bg-gray-100', className)} 
+          style={{ width: 800, height: 400 }} 
+        />
+      }
+    >
+      <BuildTimeGuard
+      fallback={
+        <div 
+          className={cn('aspect-video w-full rounded-md object-cover animate-pulse bg-gray-100', className)} 
+          style={{ width: 400, height: 250 }} 
+        />
+      }
+    >
+      <BlogImage
+          src={src}
+          alt={alt}
+          title={title}
+          category={category}
+          width={400}
+          height={250}
+          className={cn('aspect-video w-full rounded-md object-cover', className)}
+        />
+    </BuildTimeGuard>
+    </BuildTimeGuard>
   );
 }
 
@@ -354,14 +411,23 @@ export function BlogInlineImage({
   }
 
   return (
-    <BlogImage
-      src={src}
-      alt={alt}
-      title={title}
-      category={category}
-      width={800}
-      height={400}
-      className={cn('mx-auto w-full max-w-2xl rounded-md shadow-sm', className)}
-    />
+    <BuildTimeGuard
+      fallback={
+        <div 
+          className={cn('mx-auto w-full max-w-2xl rounded-md shadow-sm animate-pulse bg-gray-100', className)} 
+          style={{ width: 800, height: 400 }} 
+        />
+      }
+    >
+      <BlogImage
+        src={src}
+        alt={alt}
+        title={title}
+        category={category}
+        width={800}
+        height={400}
+        className={cn('mx-auto w-full max-w-2xl rounded-md shadow-sm', className)}
+      />
+    </BuildTimeGuard>
   );
 }
