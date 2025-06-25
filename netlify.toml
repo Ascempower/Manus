@@ -6,7 +6,6 @@
 [build.environment]
   NODE_VERSION = "18"
 
-# Disable Netlify's prerendering to ensure consistent builds
 [build.processing]
   skip_processing = false
 
@@ -21,7 +20,6 @@
 [build.processing.html]
   pretty_urls = true
 
-# Explicitly disable prerendering
 [[headers]]
   for = "/*"
   [headers.values]
