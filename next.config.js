@@ -1,15 +1,15 @@
 /** @type {import("next").NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // Ensuring proper output configuration for Netlify deployment
-  // Using standard output configuration for Next.js on Netlify
+  // Configuration for Next.js 13+ with SSR/ISR support on Netlify
+  // Using Netlify's official Next.js plugin for full functionality
   
-  // Enable static image imports for Next.js Image component
+  // Enable optimized images for SSR/ISR
   images: {
-    unoptimized: true,
+    // Netlify's Next.js plugin handles image optimization
+    domains: [], // Add your image domains here if needed
   },
-  // Ensure output is configured for static export
-  output: 'export',
+  // No output: 'export' needed - Netlify plugin handles SSR/ISR automatically
 };
 
 module.exports = nextConfig;
