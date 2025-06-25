@@ -14,7 +14,17 @@ export const metadata: Metadata = {
   description: 'Find answers to common questions about insurance, our services, and how Choice Insurance Agency can help you.',
 };
 
-const faqData = [
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface FAQCategory {
+  category: string;
+  questions: FAQItem[];
+}
+
+const faqData: FAQCategory[] = [
   {
     category: "General Insurance Questions",
     questions: [
