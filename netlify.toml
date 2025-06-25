@@ -5,8 +5,9 @@
 [build.environment]
   NODE_VERSION = "18"
 
+# Use Netlify's built-in Next.js support
 [[plugins]]
-  package = "@netlify/next"
+  package = "@netlify/plugin-nextjs"
 
 [[headers]]
   for = "/*"
