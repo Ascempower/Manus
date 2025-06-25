@@ -1,2 +1,5 @@
+[[plugins]]
+package = "netlify-plugin-bundle-env"
+
 # VGS Integration is managed through the Netlify UI
 # See vgs-integration-notes.md for details
