@@ -5,8 +5,15 @@
 [build.environment]
   NODE_VERSION = "18"
 
-[[plugins]]
-package = "netlify-plugin-bundle-env"
+# Production context: deploys from the Production branch
+[context.production]
+  publish = "output/"
+  command = "chmod +x scripts/publish.sh && ./scripts/publish.sh"
+
+# Deploy Preview context: deploys from pull/merge requests
+[context.deploy-preview]
+  publish = "dist/"
+  command = "pnpm install --frozen-lockfile && pnpm run build:preview"
 
 # VGS Integration is managed through the Netlify UI
 # See vgs-integration-notes.md for details
