@@ -1,14 +1,12 @@
 [build]
-  base = ""
-  publish = ".next"
   command = "pnpm install --frozen-lockfile && pnpm run build"
+  publish = ".next"
 
 [build.environment]
   NODE_VERSION = "18"
 
-# Use Netlify's official Next.js plugin for SSR/ISR support
 [[plugins]]
-  package = "@netlify/plugin-nextjs"
+  package = "@netlify/next"
 
 [[headers]]
   for = "/*"
