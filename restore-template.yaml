@@ -1,0 +1,34 @@
+name: Restore Original Template and Create PR
+
+on:
+  workflow_dispatch: # Allows manual triggering from the Actions tab
+
+jobs:
+  restore-template:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # ensures full history is available
+
+      - name: Create branch from specific commit
+        run: |
+          git branch original-template 240053a || echo "Branch already exists"
+          git checkout original-template
+
+      - name: Push branch to origin
+        run: |
+          git push origin original-template --force
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title: "Restore original template from commit 240053a (May 22, 2025)"
+          body: |
+            This pull request restores the original site template based on commit `240053a` from May 22, 2025.
+            - Use this PR to review, resolve any conflicts, and merge the baseline template back into `main`.
+          base: main
+          head: original-template
+          draft: true
