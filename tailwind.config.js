@@ -47,8 +47,12 @@ module.exports = {
         brand: {
           white: "#FFFFFF",
           "teal-blue": "#A7C9CA",
+          "teal-blue-dark": "#7a9ea3",
           "deep-forest-green": "#42615A",
+          "deeper-forest-green": "#1f3b34", // Darker green for better contrast
           "warm-beige-coral": "#DD8B66",
+          "warm-beige-coral-dark": "#e5793b", // Darker orange for better contrast
+          "warm-beige-coral-darker": "#cf6b2d", // Even darker orange for hover states
           black: "#000000",
         },
       },
