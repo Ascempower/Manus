@@ -72,68 +72,76 @@ export default function BlogPage() {
         </div>
       </div>
 
-      {/* Category Navigation */}
-      <div className="mb-10">
-        <h2 className="text-xl font-bold text-gray-900 mb-4">Browse by Category</h2>
-        <div className="flex flex-wrap items-center gap-3">
-          {categories.map((category) => (
-            <Link 
-              key={category}
-              href={`#${category.replace(/\s+/g, '-').toLowerCase()}`}
-              className="px-4 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full text-sm font-medium"
-            >
-              {category}
-            </Link>
-          ))}
-        </div>
-      </div>
-
-      {/* Blog Posts by Category */}
-      {categories.map((category) => (
-        <div 
-          id={category.replace(/\s+/g, '-').toLowerCase()}
-          key={category} 
-          className="mb-16"
-        >
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 pb-2 border-b">
-            {category}
-          </h2>
+      {/* Future Blog Categories */}
+      <div className="mb-16">
+        <h2 className="text-2xl font-bold text-gray-900 mb-6 pb-2 border-b">
+          Future Blog Categories
+        </h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+          {/* Medicare Category Preview */}
+          <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100">
+            <div className="bg-brand-warm-beige-coral/10 p-6">
+              <h3 className="text-xl font-bold mb-2 text-gray-900">Medicare</h3>
+              <p className="text-gray-600 mb-4">
+                Coming soon: Expert insights on Medicare Advantage, Medicare Supplements, enrollment periods, and coverage options.
+              </p>
+            </div>
+          </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {getPostsByCategory(category).map((post) => (
-              <div 
-                key={post.slug}
-                className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-1"
-              >
-                <div className="relative h-48 w-full">
-                  <Image 
-                    src={post.coverImage}
-                    alt={post.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <p className="text-sm text-gray-500 mb-2">{post.date}</p>
-                  <h3 className="text-xl font-bold mb-2 text-gray-900">{post.title}</h3>
-                  <p className="text-gray-600 mb-4 line-clamp-3">
-                    {post.description}
-                  </p>
-                  <Link 
-                    href={`/blog/posts/${post.slug}`}
-                    className="text-brand-warm-beige-coral hover:text-brand-warm-beige-coral/80 font-semibold inline-flex items-center"
-                  >
-                    Read More
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
-                  </Link>
-                </div>
-              </div>
-            ))}
+          {/* Life Insurance Category Preview */}
+          <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100">
+            <div className="bg-brand-warm-beige-coral/10 p-6">
+              <h3 className="text-xl font-bold mb-2 text-gray-900">Life Insurance</h3>
+              <p className="text-gray-600 mb-4">
+                Coming soon: Guides on term life, whole life, universal life policies, and choosing the right coverage for your family.
+              </p>
+            </div>
+          </div>
+          
+          {/* Health Insurance Category Preview */}
+          <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100">
+            <div className="bg-brand-warm-beige-coral/10 p-6">
+              <h3 className="text-xl font-bold mb-2 text-gray-900">Health Insurance</h3>
+              <p className="text-gray-600 mb-4">
+                Coming soon: Updates on health insurance plans, marketplace options, and maximizing your healthcare benefits.
+              </p>
+            </div>
           </div>
         </div>
-      ))}
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Retirement Planning Category Preview */}
+          <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100">
+            <div className="bg-brand-warm-beige-coral/10 p-6">
+              <h3 className="text-xl font-bold mb-2 text-gray-900">Retirement Planning</h3>
+              <p className="text-gray-600 mb-4">
+                Coming soon: Strategies for retirement savings, annuities, and creating a secure financial future.
+              </p>
+            </div>
+          </div>
+          
+          {/* Insurance Tips Category Preview */}
+          <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100">
+            <div className="bg-brand-warm-beige-coral/10 p-6">
+              <h3 className="text-xl font-bold mb-2 text-gray-900">Insurance Tips</h3>
+              <p className="text-gray-600 mb-4">
+                Coming soon: Practical advice on comparing policies, understanding coverage, and avoiding common insurance mistakes.
+              </p>
+            </div>
+          </div>
+          
+          {/* Industry News Category Preview */}
+          <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100">
+            <div className="bg-brand-warm-beige-coral/10 p-6">
+              <h3 className="text-xl font-bold mb-2 text-gray-900">Industry News</h3>
+              <p className="text-gray-600 mb-4">
+                Coming soon: The latest updates on insurance regulations, industry changes, and how they affect your coverage.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div className="mt-16 text-center">
         <h2 className="text-2xl font-bold text-gray-900 mb-6">Subscribe to Our Insurance Newsletter</h2>
