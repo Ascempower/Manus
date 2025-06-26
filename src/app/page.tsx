@@ -7,7 +7,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative py-20 md:py-32 bg-gradient-to-br from-brand-deep-forest-green to-brand-teal-blue text-brand-white overflow-hidden">
+      <section className="relative py-20 md:py-32 bg-brand-deep-forest-green text-brand-white overflow-hidden">
         {/* Background Pattern - CSS Grid Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle,_#ffffff_1px,_transparent_1px)] bg-[length:20px_20px] opacity-20"></div>
