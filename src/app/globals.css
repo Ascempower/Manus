@@ -41,8 +41,12 @@
     /* These can be removed or kept for non-Tailwind specific CSS if needed */
     --brand-white: 0 0% 100%; /* #FFFFFF */
     --brand-teal-blue: 181 25% 73%; /* #A7C9CA */
+    --brand-teal-blue-dark: 181 15% 56%; /* #7a9ea3 */
     --brand-deep-forest-green: 165 19% 32%; /* #42615A */
+    --brand-deeper-forest-green: 165 30% 18%; /* #1f3b34 */
     --brand-warm-beige-coral: 20 60% 60%; /* #DD8B66 */
+    --brand-warm-beige-coral-dark: 20 70% 56%; /* #e5793b */
+    --brand-warm-beige-coral-darker: 20 70% 50%; /* #cf6b2d */
     --brand-black: 0 0% 0%; /* #000000 */
   }
 
@@ -88,6 +92,16 @@
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-poppins font-bold;
+  }
+}
+
+@layer components {
+  .footer-links {
+    @apply flex justify-center flex-wrap gap-4 mb-4;
+  }
+  
+  .footer-links a {
+    @apply text-brand-warm-beige-coral-dark hover:underline;
   }
 }
 
