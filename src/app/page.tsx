@@ -105,40 +105,7 @@ export default function HomePage() {
           </Button>
         </div>
       </section>
-      {/* Services Section */}
-      <section className="py-16 md:py-24 bg-brand-teal-blue/10">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-brand-deep-forest-green font-poppins">Insurance Services from Choice Insurance</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { title: "Medicare Supplement", description: "Explore options for Medicare Supplement (Medigap) plans with Choice Insurance experts.", href: "/services/medicare-supplement" },
-              { title: "Life Insurance", description: "Secure your family's future with various life insurance policies from Choice Insurance.", href: "/services/life-insurance" },
-              { title: "Health Insurance", description: "Find individual and group health insurance plans through Choice Insurance Agency.", href: "/services/health-insurance" },
-              { title: "Medicare Advantage", description: "Discover Medicare Advantage (Part C) options with guidance from Choice Insurance specialists.", href: "/services/medicare-advantage" },
-              { title: "Final Expense", description: "Plan ahead with final expense insurance solutions from Choice Insurance.", href: "/services/final-expense" },
-              { title: "Cancer & Critical Illness", description: "Get protection and help manage costs associated with critical illnesses through Choice Insurance.", href: "/services/cancer-illness" },
-              { title: "Annuities", description: "Secure your retirement with reliable income streams through annuities from Choice Insurance.", href: "/services/annuities" },
-            ].map((service) => (
-              <Card key={service.title} className="bg-brand-white shadow-lg hover:shadow-xl transition-shadow duration-300 text-brand-black">
-                <CardHeader>
-                  <CardTitle className="text-brand-deep-forest-green font-poppins text-2xl">{service.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="flex flex-col items-center">
-                  <p className="text-brand-black/80 mb-4 text-center">{service.description}</p>
-                  <Button asChild className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black">
-                    <Link href={service.href}>Learn More →</Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-          <div className="text-center mt-12">
-            <Button asChild className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black">
-              <Link href="/services">Explore All Choice Insurance Services</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+
       {/* Why Choose Us Section */}
       <section className="py-16 md:py-24 bg-brand-white text-brand-black">
         <div className="container mx-auto px-4">
