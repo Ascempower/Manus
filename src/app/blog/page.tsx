@@ -29,21 +29,40 @@ export default function BlogPage() {
         </p>
       </div>
 
-      {/* Coming Soon Section */}
+      {/* Latest Articles Section */}
       <div className="mb-16">
         <h2 className="text-2xl font-bold text-gray-900 mb-6 pb-2 border-b">Latest Articles</h2>
-        <div className="bg-brand-warm-beige-coral/10 rounded-lg p-8 text-center">
-          <h3 className="text-xl font-bold mb-4 text-gray-900">Blog Articles Coming Soon!</h3>
-          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            We're working on creating valuable insurance content to help you make informed decisions. 
-            Check back soon for expert insights, tips, and guides on Medicare, health insurance, life insurance, and more.
-          </p>
-          <Link 
-            href="/contact"
-            className="inline-block bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-white font-semibold py-2 px-6 rounded-md"
-          >
-            Contact Us for Insurance Information
-          </Link>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {recentPosts.map((post) => (
+            <div key={post.slug} className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100">
+              <Link href={`/blog/posts/${post.slug}`}>
+                <div className="relative h-48 w-full">
+                  <Image 
+                    src={post.coverImage} 
+                    alt={post.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </Link>
+              <div className="p-6">
+                <div className="text-xs text-gray-500 mb-2">{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
+                <Link href={`/blog/posts/${post.slug}`} className="block">
+                  <h3 className="text-xl font-bold mb-2 text-gray-900 hover:text-brand-warm-beige-coral transition-colors">{post.title}</h3>
+                </Link>
+                <p className="text-gray-600 mb-4 line-clamp-3">{post.description}</p>
+                <Link 
+                  href={`/blog/posts/${post.slug}`}
+                  className="text-brand-warm-beige-coral hover:text-brand-warm-beige-coral/80 font-medium inline-flex items-center"
+                >
+                  Read More
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
