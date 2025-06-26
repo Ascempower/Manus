@@ -51,15 +51,6 @@ const blogPosts: Record<string, BlogPost> = {
 
         <h3 className="text-xl font-semibold mt-6 mb-3">1. Cost Considerations</h3>
 
-        <div className="relative w-full h-[400px] my-6">
-          <Image 
-            src="/images/blog/medicare-comparison-2025.jpg" 
-            alt="Medicare Advantage vs Medicare Supplement comparison showing two seniors reviewing their Medicare options" 
-            fill
-            className="object-cover rounded-lg"
-          />
-        </div>
-
         <p className="mb-2"><strong>Medicare Advantage:</strong></p>
         <ul className="list-disc pl-6 mb-4">
           <li>Lower monthly premiums (some plans have $0 premium)</li>
