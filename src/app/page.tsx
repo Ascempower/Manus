@@ -31,7 +31,7 @@ export default function HomePage() {
                 <Button size="lg" asChild className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black font-semibold">
                   <Link href="/contact#book-a-call">Book a Free Consultation</Link>
                 </Button>
-                <Button size="lg" asChild variant="outline" className="border-brand-white text-brand-white hover:bg-brand-white/10">
+                <Button size="lg" asChild className="bg-brand-teal-blue border-2 border-brand-teal-blue text-white font-semibold hover:bg-brand-teal-blue/80 hover:border-brand-teal-blue/80">
                   <Link href="/services">Explore Our Services</Link>
                 </Button>
               </div>
