@@ -11,7 +11,13 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
+  // Get all posts sorted by date (newest first)
   const allPosts = getAllPostsMetadata();
+  
+  // Get the 3 most recent posts
+  const recentPosts = allPosts.slice(0, 3);
+  
+  // Get all categories
   const categories = getAllCategories();
   
   return (
@@ -23,27 +29,72 @@ export default function BlogPage() {
         </p>
       </div>
 
-      {/* Category Filter */}
+      {/* Recent Posts Section */}
+      <div className="mb-16">
+        <h2 className="text-2xl font-bold text-gray-900 mb-6 pb-2 border-b">Latest Articles</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {recentPosts.map((post) => (
+            <div 
+              key={post.slug}
+              className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-1"
+            >
+              <div className="relative h-48 w-full">
+                <Image 
+                  src={post.coverImage}
+                  alt={post.title}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <div className="flex justify-between items-center mb-2">
+                  <p className="text-sm text-gray-500">{post.date}</p>
+                  <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full">
+                    {post.category}
+                  </span>
+                </div>
+                <h3 className="text-xl font-bold mb-2 text-gray-900">{post.title}</h3>
+                <p className="text-gray-600 mb-4 line-clamp-3">
+                  {post.description}
+                </p>
+                <Link 
+                  href={`/blog/posts/${post.slug}`}
+                  className="text-brand-warm-beige-coral hover:text-brand-warm-beige-coral/80 font-semibold inline-flex items-center"
+                >
+                  Read More
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Category Navigation */}
       <div className="mb-10">
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
-          <span className="text-gray-700 font-medium">Filter by category:</span>
-          <button className="px-4 py-1.5 bg-brand-warm-beige-coral text-white rounded-full text-sm font-medium">
-            All Posts
-          </button>
+        <h2 className="text-xl font-bold text-gray-900 mb-4">Browse by Category</h2>
+        <div className="flex flex-wrap items-center gap-3">
           {categories.map((category) => (
-            <button 
+            <Link 
               key={category}
+              href={`#${category.replace(/\s+/g, '-').toLowerCase()}`}
               className="px-4 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full text-sm font-medium"
             >
               {category}
-            </button>
+            </Link>
           ))}
         </div>
       </div>
 
       {/* Blog Posts by Category */}
       {categories.map((category) => (
-        <div key={category} className="mb-16">
+        <div 
+          id={category.replace(/\s+/g, '-').toLowerCase()}
+          key={category} 
+          className="mb-16"
+        >
           <h2 className="text-2xl font-bold text-gray-900 mb-6 pb-2 border-b">
             {category}
           </h2>
