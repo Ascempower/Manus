@@ -2,6 +2,7 @@ import React from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
+import { getAllPostsMetadata, getAllCategories, getPostsByCategory } from '@/lib/blog-utils';
 
 export const metadata: Metadata = {
   title: 'Insurance Blog | Choice Insurance Agency',
@@ -10,6 +11,9 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
+  const allPosts = getAllPostsMetadata();
+  const categories = getAllCategories();
+  
   return (
     <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-12">
@@ -19,91 +23,66 @@ export default function BlogPage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {/* May 2025 Blog Post */}
-        <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
-          <div className="relative h-48 w-full">
-            <Image 
-              src="/images/blog/health-insurance-changes-2025.jpg" 
-              alt="Doctor explaining healthcare policy changes to patient" 
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="p-6">
-            <p className="text-sm text-gray-500 mb-2">May 7, 2025</p>
-            <h2 className="text-xl font-bold mb-2 text-gray-900">Key Health Insurance Changes to Watch for in 2025</h2>
-            <p className="text-gray-600 mb-4">
-              Explore major health insurance developments in 2025 including telehealth expansion, preventive care benefits, prescription drug reforms, and mental health coverage improvements.
-            </p>
-            <Link 
-              href="/blog/posts/may-2025-health-insurance-changes" 
-              className="text-brand-warm-beige-coral hover:text-brand-warm-beige-coral/80 font-semibold inline-flex items-center"
+      {/* Category Filter */}
+      <div className="mb-10">
+        <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
+          <span className="text-gray-700 font-medium">Filter by category:</span>
+          <button className="px-4 py-1.5 bg-brand-warm-beige-coral text-white rounded-full text-sm font-medium">
+            All Posts
+          </button>
+          {categories.map((category) => (
+            <button 
+              key={category}
+              className="px-4 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full text-sm font-medium"
             >
-              Read More
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
-            </Link>
-          </div>
-        </div>
-
-        {/* April 2025 Blog Post */}
-        <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
-          <div className="relative h-48 w-full">
-            <Image 
-              src="/images/blog/family-life-insurance-2025.jpg" 
-              alt="Family discussing life insurance options" 
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="p-6">
-            <p className="text-sm text-gray-500 mb-2">April 3, 2025</p>
-            <h2 className="text-xl font-bold mb-2 text-gray-900">Understanding Life Insurance Options in 2025: A Complete Guide</h2>
-            <p className="text-gray-600 mb-4">
-              Explore life insurance options for 2025 including term vs. whole life, policy riders, and how to choose the right coverage for your family's financial security.
-            </p>
-            <Link 
-              href="/blog/posts/april-2025-understanding-life-insurance" 
-              className="text-brand-warm-beige-coral hover:text-brand-warm-beige-coral/80 font-semibold inline-flex items-center"
-            >
-              Read More
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
-            </Link>
-          </div>
-        </div>
-
-        {/* March 2025 Blog Post */}
-        <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
-          <div className="relative h-48 w-full">
-            <Image 
-              src="/images/blog/medicare-comparison-2025.jpg" 
-              alt="Medicare Advantage vs Medicare Supplement comparison" 
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="p-6">
-            <p className="text-sm text-gray-500 mb-2">March 5, 2025</p>
-            <h2 className="text-xl font-bold mb-2 text-gray-900">Medicare Advantage vs. Medicare Supplement: Which is Right for You in 2025?</h2>
-            <p className="text-gray-600 mb-4">
-              Compare Medicare Advantage and Medicare Supplement plans for 2025. Learn about costs, provider networks, prescription coverage, and which option might be best for your healthcare needs.
-            </p>
-            <Link 
-              href="/blog/posts/march-2025-medicare-advantage-vs-supplement" 
-              className="text-brand-warm-beige-coral hover:text-brand-warm-beige-coral/80 font-semibold inline-flex items-center"
-            >
-              Read More
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
-            </Link>
-          </div>
+              {category}
+            </button>
+          ))}
         </div>
       </div>
+
+      {/* Blog Posts by Category */}
+      {categories.map((category) => (
+        <div key={category} className="mb-16">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 pb-2 border-b">
+            {category}
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {getPostsByCategory(category).map((post) => (
+              <div 
+                key={post.slug}
+                className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-1"
+              >
+                <div className="relative h-48 w-full">
+                  <Image 
+                    src={post.coverImage}
+                    alt={post.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <p className="text-sm text-gray-500 mb-2">{post.date}</p>
+                  <h3 className="text-xl font-bold mb-2 text-gray-900">{post.title}</h3>
+                  <p className="text-gray-600 mb-4 line-clamp-3">
+                    {post.description}
+                  </p>
+                  <Link 
+                    href={`/blog/posts/${post.slug}`}
+                    className="text-brand-warm-beige-coral hover:text-brand-warm-beige-coral/80 font-semibold inline-flex items-center"
+                  >
+                    Read More
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
 
       <div className="mt-16 text-center">
         <h2 className="text-2xl font-bold text-gray-900 mb-6">Subscribe to Our Insurance Newsletter</h2>
