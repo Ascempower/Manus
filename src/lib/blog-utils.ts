@@ -16,7 +16,7 @@ export const blogPostsMetadata: BlogPostMeta[] = [
     title: 'Medicare Advantage vs. Medicare Supplement: Which is Right for You?',
     date: '2025-03-15',
     description: 'A comprehensive comparison of Medicare Advantage and Medicare Supplement plans to help you make an informed decision about your healthcare coverage.',
-    coverImage: '/images/blog/medicare-comparison.jpg',
+    coverImage: '/images/blog/medicare-comparison-2025.jpg',
     category: 'Medicare',
   },
   {
@@ -24,7 +24,7 @@ export const blogPostsMetadata: BlogPostMeta[] = [
     title: 'Understanding the Different Types of Life Insurance Policies',
     date: '2025-04-10',
     description: 'Explore the differences between term life, whole life, and universal life insurance to find the best protection for your loved ones.',
-    coverImage: '/images/blog/life-insurance-types.jpg',
+    coverImage: '/images/blog/term-vs-whole-life-insurance.jpg',
     category: 'Life Insurance',
   },
   {
@@ -32,7 +32,7 @@ export const blogPostsMetadata: BlogPostMeta[] = [
     title: 'Important Health Insurance Changes for 2025',
     date: '2025-05-05',
     description: 'Stay informed about the latest changes to health insurance regulations and how they might affect your coverage and benefits.',
-    coverImage: '/images/blog/health-insurance-update.jpg',
+    coverImage: '/images/blog/health-insurance-changes-2025.jpg',
     category: 'Health Insurance',
   },
 ];
