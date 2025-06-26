@@ -7,17 +7,90 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="py-20 md:py-32 bg-gradient-to-br from-brand-deep-forest-green to-brand-teal-blue text-brand-white">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 font-poppins">
-            Choice Insurance: Your Trusted Partner for Health, Life & Medicare Insurance
-          </h1>
-          <p className="text-lg md:text-xl mb-10 max-w-3xl mx-auto text-brand-white/90">
-            Choice Insurance provides personalized plans and expert guidance for residents of Illinois, Alabama, Georgia, Ohio, Kentucky, Mississippi, South Carolina, and Texas.
-          </p>
-          <Button size="lg" asChild className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black font-semibold">
-            <Link href="/contact#book-a-call">Book a Free Consultation</Link>
-          </Button>
+      <section className="relative py-20 md:py-32 bg-gradient-to-br from-brand-deep-forest-green to-brand-teal-blue text-brand-white overflow-hidden">
+        {/* Background Pattern - CSS Grid Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle,_#ffffff_1px,_transparent_1px)] bg-[length:20px_20px] opacity-20"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+            {/* Hero Content */}
+            <div className="md:w-3/5 text-left md:pr-8">
+              <div className="inline-block px-4 py-1 rounded-full bg-brand-warm-beige-coral/20 text-brand-warm-beige-coral text-sm font-medium mb-6">
+                Personalized Insurance Solutions
+              </div>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-poppins leading-tight">
+                Your Trusted Partner for <span className="text-brand-warm-beige-coral">Health, Life & Medicare</span> Insurance
+              </h1>
+              <p className="text-lg md:text-xl mb-8 text-brand-white/90 max-w-2xl">
+                We provide personalized plans and expert guidance for residents of Illinois, Alabama, Georgia, Ohio, Kentucky, Mississippi, South Carolina, and Texas.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 mt-2">
+                <Button size="lg" asChild className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black font-semibold">
+                  <Link href="/contact#book-a-call">Book a Free Consultation</Link>
+                </Button>
+                <Button size="lg" asChild variant="outline" className="border-brand-white text-brand-white hover:bg-brand-white/10">
+                  <Link href="/services">Explore Our Services</Link>
+                </Button>
+              </div>
+              
+              {/* Trust Indicators */}
+              <div className="mt-10 flex items-center gap-6 flex-wrap">
+                <div className="flex items-center gap-2">
+                  <CheckCircle size={20} className="text-brand-warm-beige-coral" />
+                  <span className="text-sm font-medium">Licensed in 8 States</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle size={20} className="text-brand-warm-beige-coral" />
+                  <span className="text-sm font-medium">Multiple Top Carriers</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle size={20} className="text-brand-warm-beige-coral" />
+                  <span className="text-sm font-medium">Personalized Service</span>
+                </div>
+              </div>
+            </div>
+            
+            {/* Hero Image/Card */}
+            <div className="md:w-2/5 relative">
+              <div className="bg-white rounded-lg shadow-xl p-6 text-brand-black">
+                <h3 className="text-xl font-bold mb-4 text-brand-deep-forest-green">Get a Personalized Quote</h3>
+                <p className="text-sm text-gray-600 mb-6">Our insurance experts are ready to help you find the perfect coverage for your needs.</p>
+                
+                <div className="space-y-4 mb-6">
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-brand-teal-blue/10">
+                    <ShieldCheck className="text-brand-teal-blue flex-shrink-0" size={24} />
+                    <div>
+                      <h4 className="font-medium text-brand-deep-forest-green">Medicare Solutions</h4>
+                      <p className="text-xs text-gray-600">Advantage, Supplement, and Part D plans</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-brand-teal-blue/10">
+                    <ShieldCheck className="text-brand-teal-blue flex-shrink-0" size={24} />
+                    <div>
+                      <h4 className="font-medium text-brand-deep-forest-green">Life Insurance</h4>
+                      <p className="text-xs text-gray-600">Term, Whole, and Universal Life options</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-brand-teal-blue/10">
+                    <ShieldCheck className="text-brand-teal-blue flex-shrink-0" size={24} />
+                    <div>
+                      <h4 className="font-medium text-brand-deep-forest-green">Health Insurance</h4>
+                      <p className="text-xs text-gray-600">Individual and family health plans</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <Button asChild className="w-full bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black font-semibold">
+                  <Link href="/contact#get-a-quote">Get Your Free Quote</Link>
+                </Button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       {/* About Us Snippet */}
