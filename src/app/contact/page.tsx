@@ -25,11 +25,11 @@ export default function ContactPage() {
       {/* Main Content Area */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 mb-16">
+          <div className="grid md:grid-cols-1 gap-12 mb-16">
             {/* Contact Information Section */}
             <div className="bg-brand-teal-blue/10 p-8 rounded-lg shadow-md">
               <h2 className="text-2xl md:text-3xl font-bold text-brand-deep-forest-green font-poppins mb-6">Get in Touch Directly</h2>
-              <div className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
                 <div className="flex items-start">
                   <MapPin size={28} className="text-brand-deep-forest-green mr-4 mt-1 flex-shrink-0" />
                   <div>
