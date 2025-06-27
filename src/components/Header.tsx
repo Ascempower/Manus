@@ -140,7 +140,7 @@ export default function Header() {
             <Link href={quoteNowUrl} target="_blank" rel="noopener noreferrer">Quote Now</Link>
           </Button>
           <Button asChild className="hidden md:flex bg-brand-warm-beige-coral-dark hover:bg-brand-warm-beige-coral-darker text-white text-sm md:text-base shadow-md">
-            <Link href="https://calendly.com/choiceinsuranceagency/30-minute-meeting" target="_blank" rel="noopener noreferrer">Book a Free Consultation</Link>
+            <Link href="https://calendly.com/choiceinsurancehub" target="_blank" rel="noopener noreferrer">Book a Free Consultation</Link>
           </Button>
 
           {/* Mobile Navigation */}
@@ -211,7 +211,7 @@ export default function Header() {
                   <Link href={quoteNowUrl} target="_blank" rel="noopener noreferrer">Quote Now</Link>
                 </Button>
                 <Button size="sm" className="w-full bg-brand-warm-beige-coral-dark hover:bg-brand-warm-beige-coral-darker text-white shadow-md" asChild>
-                  <Link href="https://calendly.com/choiceinsuranceagency/30-minute-meeting" target="_blank" rel="noopener noreferrer">Book a Free Consultation</Link>
+                  <Link href="https://calendly.com/choiceinsurancehub" target="_blank" rel="noopener noreferrer">Book a Free Consultation</Link>
                 </Button>
               </div>
             </SheetContent>

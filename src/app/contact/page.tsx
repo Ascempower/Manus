@@ -82,7 +82,7 @@ export default function ContactPage() {
           </p>
           <Button size="lg" asChild className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black font-semibold">
             {/* Updated to the correct Calendly link */}
-            <a href="https://calendly.com/choiceinsuranceagency/30-minute-meeting" target="_blank" rel="noopener noreferrer">Book Your Free Consultation Now</a>
+            <a href="https://calendly.com/choiceinsurancehub" target="_blank" rel="noopener noreferrer">Book Your Free Consultation Now</a>
           </Button>
           <p className="text-sm text-brand-white/70 mt-4">(You will be redirected to our scheduling partner)</p>
         </div>

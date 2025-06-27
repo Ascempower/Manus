@@ -323,7 +323,7 @@ export default function HealthInsuranceBlogPost() {
       
       <div className="bg-brand-warm-beige-coral/10 border border-brand-warm-beige-coral rounded-lg p-6 mb-8">
         <p className="mb-4 font-semibold text-lg">Ready to find the right health insurance plan for your needs?</p>
-        <Link href="https://calendly.com/choiceinsuranceagency/30-minute-meeting" className="inline-block bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-white font-semibold py-2 px-4 rounded">
+        <Link href="https://calendly.com/choiceinsurancehub" className="inline-block bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-white font-semibold py-2 px-4 rounded">
           Book a Free Consultation
         </Link>
       </div>

@@ -168,7 +168,7 @@ export default function BlogPage() {
         </div>
         <div className="text-center">
           <Link 
-            href="https://calendly.com/choiceinsuranceagency/30-minute-meeting" 
+            href="https://calendly.com/choiceinsurancehub" 
             className="inline-block bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-white font-semibold py-3 px-8 rounded-md"
           >
             Book a Free Consultation
