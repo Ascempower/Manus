@@ -300,7 +300,7 @@ export default function LifeInsuranceBlogPost() {
         <h3 className="text-xl font-semibold mb-4">Ready to Protect Your Family's Future?</h3>
         <p className="mb-4">Our life insurance specialists are here to provide personalized guidance and help you find the right coverage for your needs.</p>
         <Link 
-          href="https://calendly.com/choiceinsuranceagency/30-minute-meeting"
+          href="https://calendly.com/choiceinsurancehub"
           className="inline-block bg-brand-warm-beige-coral text-white font-medium py-2 px-6 rounded-md hover:bg-opacity-90 transition-colors"
           target="_blank"
           rel="noopener noreferrer"
