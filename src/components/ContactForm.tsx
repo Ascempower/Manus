@@ -12,7 +12,7 @@ export default function ContactForm() {
         width="100%" 
         height={1200} 
         frameBorder={0} 
-        style={{ marginHeight: 0, marginWidth: 0 }}
+        style={{ margin: 0 }}
         title="Secure Contact Form"
         sandbox="allow-scripts allow-forms allow-same-origin"
         loading="lazy"
