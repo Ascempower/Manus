@@ -26,6 +26,12 @@ export default function ContactPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-1 gap-12 mb-16">
+            {/* Contact Form Section */}
+            <div className="bg-brand-teal-blue/10 p-8 rounded-lg shadow-md" id="get-a-quote">
+              <h2 className="text-2xl md:text-3xl font-bold text-brand-deep-forest-green font-poppins mb-6">Send Us a Message</h2>
+              <ContactForm />
+            </div>
+
             {/* Contact Information Section */}
             <div className="bg-brand-teal-blue/10 p-8 rounded-lg shadow-md">
               <h2 className="text-2xl md:text-3xl font-bold text-brand-deep-forest-green font-poppins mb-6">Get in Touch Directly</h2>
@@ -62,12 +68,6 @@ export default function ContactPage() {
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Contact Form Section */}
-            <div className="bg-brand-teal-blue/10 p-8 rounded-lg shadow-md" id="get-a-quote">
-              <h2 className="text-2xl md:text-3xl font-bold text-brand-deep-forest-green font-poppins mb-6">Send Us a Message</h2>
-              <ContactForm />
             </div>
           </div>
         </div>
