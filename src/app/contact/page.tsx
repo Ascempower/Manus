@@ -28,15 +28,21 @@ export default function ContactPage() {
             {/* Contact Form Section */}
             <div className="bg-brand-teal-blue/10 p-8 rounded-lg shadow-md" id="get-a-quote">
               <h2 className="text-2xl md:text-3xl font-bold text-brand-deep-forest-green font-poppins mb-6">Send Us a Message</h2>
-              <iframe 
-                src="https://docs.google.com/forms/d/e/1FAIpQLSfdGFGTjJ6R8Gv0YxYxwQxCNpN9fNn7WZP7F-EjLxUGrQ7Y5A/viewform?embedded=true" 
-                width="100%" 
-                height={1200} 
-                frameBorder={0} 
-                style={{ margin: 0 }}
-              > 
-                Loading… 
-              </iframe>
+              <div style={{ width: '100%', height: '1200px' }}>
+                <iframe 
+                  src="https://docs.google.com/forms/d/e/1FAIpQLSfdGFGTjJ6R8Gv0YxYxwQxCNpN9fNn7WZP7F-EjLxUGrQ7Y5A/viewform?embedded=true" 
+                  style={{ 
+                    width: '100%', 
+                    height: '100%', 
+                    border: 'none',
+                    margin: 0,
+                    padding: 0
+                  }}
+                  title="Contact Form"
+                >
+                  Loading…
+                </iframe>
+              </div>
             </div>
 
             {/* Contact Information Section */}
