@@ -35,13 +35,10 @@ export default function ContactPage() {
                     width: '100%', 
                     height: '100%', 
                     border: 'none',
-                    margin: 0,
-                    padding: 0
                   }}
-                  title="Contact Form"
-                >
-                  Loading…
-                </iframe>
+                  title="Secure Contact Form"
+                  allowFullScreen
+                />
               </div>
             </div>
 
