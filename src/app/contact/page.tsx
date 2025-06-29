@@ -2,7 +2,6 @@
 import type { Metadata } from 'next';
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, CalendarDays } from 'lucide-react';
-import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
   title: 'Contact Us - Choice Insurance Agency',
@@ -29,7 +28,16 @@ export default function ContactPage() {
             {/* Contact Form Section */}
             <div className="bg-brand-teal-blue/10 p-8 rounded-lg shadow-md" id="get-a-quote">
               <h2 className="text-2xl md:text-3xl font-bold text-brand-deep-forest-green font-poppins mb-6">Send Us a Message</h2>
-              <ContactForm />
+              <iframe 
+                src="https://docs.google.com/forms/d/e/1FAIpQLSfdGFGTjJ6R8Gv0YxYxwQxCNpN9fNn7WZP7F-EjLxUGrQ7Y5A/viewform?embedded=true" 
+                width="100%" 
+                height="1200" 
+                frameBorder="0" 
+                marginHeight="0" 
+                marginWidth="0"
+              > 
+                Loading… 
+              </iframe>
             </div>
 
             {/* Contact Information Section */}
