@@ -31,10 +31,9 @@ export default function ContactPage() {
               <iframe 
                 src="https://docs.google.com/forms/d/e/1FAIpQLSfdGFGTjJ6R8Gv0YxYxwQxCNpN9fNn7WZP7F-EjLxUGrQ7Y5A/viewform?embedded=true" 
                 width="100%" 
-                height="1200" 
-                frameBorder="0" 
-                marginHeight="0" 
-                marginWidth="0"
+                height={1200} 
+                frameBorder={0} 
+                style={{ margin: 0 }}
               > 
                 Loading… 
               </iframe>
