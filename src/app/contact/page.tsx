@@ -48,8 +48,7 @@ export default function ContactPage() {
                   <Phone size={28} className="text-brand-deep-forest-green mr-4 mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="font-bold text-xl text-brand-deep-forest-green font-poppins">Phone</h3>
-                    <p className="text-brand-black/80">Toll-Free: <a href="tel:8772049648" className="hover:text-brand-teal-blue underline"> (877) 204-9648</a></p>
-                    <p className="text-brand-black/80">Local: <a href="tel:6182785927" className="hover:text-brand-teal-blue underline">(618) 278-5927</a></p>
+                    <p className="text-brand-black/80"><a href="tel:6184784003" className="hover:text-brand-teal-blue underline">(618) 478-4003</a></p>
                   </div>
                 </div>
                 <div className="flex items-start">
