@@ -17,7 +17,8 @@ export default function Footer() {
                 alt="Choice Insurance Agency Logo" 
                 width="600"
                 height="292"
-                style={{ width: '150px', height: 'auto' }} 
+                style={{ width: '180px', height: 'auto' }} 
+                loading="lazy"
               />
             </Link>
             <p className="text-sm mb-4 text-brand-white/80">

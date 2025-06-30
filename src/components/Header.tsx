@@ -63,9 +63,11 @@ export default function Header() {
           <img 
             src="/assets/logos/main-logo-optimized-transparent.png" 
             alt="Choice Insurance Agency Logo" 
-            className="max-h-10 w-auto object-contain"
+            className="h-12 w-auto object-contain"
             width="600"
             height="292"
+            loading="eager"
+            fetchPriority="high"
           />
         </Link>
 
@@ -162,9 +164,10 @@ export default function Header() {
                   <img 
                     src="/assets/logos/main-logo-optimized-transparent.png" 
                     alt="Choice Insurance Agency Logo" 
-                    className="max-h-8 w-auto object-contain"
+                    className="h-10 w-auto object-contain"
                     width="600"
                     height="292"
+                    loading="lazy"
                   />
                 </Link>
                 <Link
