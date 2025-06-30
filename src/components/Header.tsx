@@ -60,15 +60,21 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-brand-teal-blue/40 bg-brand-deeper-forest-green text-brand-white">
       <div className="container mx-auto px-4 flex h-16 items-center justify-between">
         <Link href="/" className="mr-6 flex items-center">
-          <img 
-            src="/assets/logos/main-logo-optimized-transparent.png" 
-            alt="Choice Insurance Agency Logo" 
-            className="h-12 w-auto object-contain"
-            width="600"
-            height="292"
-            loading="eager"
-            fetchPriority="high"
-          />
+          <picture>
+            <source 
+              srcSet="/assets/logos/main-logo-optimized.webp" 
+              type="image/webp" 
+            />
+            <img 
+              src="/assets/logos/main-logo-optimized-transparent.png" 
+              alt="Choice Insurance Agency Logo" 
+              className="h-12 w-auto object-contain"
+              width="600"
+              height="292"
+              loading="eager"
+              fetchPriority="high"
+            />
+          </picture>
         </Link>
 
         {/* Desktop Navigation */}
@@ -161,14 +167,20 @@ export default function Header() {
                   href="/"
                   className="flex items-center gap-2 text-lg font-semibold mb-4"
                 >
-                  <img 
-                    src="/assets/logos/main-logo-optimized-transparent.png" 
-                    alt="Choice Insurance Agency Logo" 
-                    className="h-10 w-auto object-contain"
-                    width="600"
-                    height="292"
-                    loading="lazy"
-                  />
+                  <picture>
+                    <source 
+                      srcSet="/assets/logos/main-logo-optimized.webp" 
+                      type="image/webp" 
+                    />
+                    <img 
+                      src="/assets/logos/main-logo-optimized-transparent.png" 
+                      alt="Choice Insurance Agency Logo" 
+                      className="h-10 w-auto object-contain"
+                      width="600"
+                      height="292"
+                      loading="lazy"
+                    />
+                  </picture>
                 </Link>
                 <Link
                   href="/"

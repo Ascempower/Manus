@@ -14,9 +14,18 @@ export default function Document() {
         {/* Preload critical assets */}
         <link 
           rel="preload" 
+          href="/assets/logos/main-logo-optimized.webp" 
+          as="image" 
+          type="image/webp"
+          fetchpriority="high"
+          imagesrcset="/assets/logos/main-logo-optimized.webp"
+        />
+        <link 
+          rel="preload" 
           href="/assets/logos/main-logo-optimized-transparent.png" 
           as="image" 
           fetchpriority="high"
+          imagesizes="100vw"
         />
         
         {/* Add preconnect for external domains */}

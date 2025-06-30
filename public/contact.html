@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Preload critical assets -->
+    <link rel="preload" href="/assets/logos/main-logo-optimized.webp" as="image" type="image/webp" fetchpriority="high">
     <link rel="preload" href="/assets/logos/main-logo-optimized-transparent.png" as="image" fetchpriority="high">
     
     <!-- Custom FormFacade styling -->
@@ -430,7 +431,10 @@
     <header class="site-header">
         <div class="container header-container">
             <a href="/" class="logo-link">
-                <img src="/assets/logos/main-logo-optimized-transparent.png" alt="Choice Insurance Agency Logo" class="logo" width="600" height="292" style="height: 48px; width: auto;" loading="eager" fetchpriority="high" onerror="this.style.display='none'">
+                <picture>
+                    <source srcset="/assets/logos/main-logo-optimized.webp" type="image/webp">
+                    <img src="/assets/logos/main-logo-optimized-transparent.png" alt="Choice Insurance Agency Logo" class="logo" width="600" height="292" style="height: 48px; width: auto;" loading="eager" fetchpriority="high" onerror="this.style.display='none'">
+                </picture>
             </a>
             
             <!-- Desktop Navigation -->
@@ -524,7 +528,10 @@
                 <!-- Logo and About -->
                 <div>
                     <a href="/" class="footer-logo-link">
-                        <img src="/assets/logos/main-logo-optimized-transparent.png" alt="Choice Insurance Agency Logo" class="footer-logo" width="600" height="292" style="width: 180px; height: auto;" loading="lazy">
+                        <picture>
+                            <source srcset="/assets/logos/main-logo-optimized.webp" type="image/webp">
+                            <img src="/assets/logos/main-logo-optimized-transparent.png" alt="Choice Insurance Agency Logo" class="footer-logo" width="600" height="292" style="width: 180px; height: auto;" loading="lazy">
+                        </picture>
                     </a>
                     <p class="footer-about">
                         Your trusted partner for health, life, and Medicare insurance solutions. Helping you make informed choices for a secure future.

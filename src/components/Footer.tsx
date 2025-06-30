@@ -12,14 +12,20 @@ export default function Footer() {
           {/* Logo and About */}
           <div>
             <Link href="/" className="mb-4 inline-block">
-              <img 
-                src="/assets/logos/main-logo-optimized-transparent.png" 
-                alt="Choice Insurance Agency Logo" 
-                width="600"
-                height="292"
-                style={{ width: '180px', height: 'auto' }} 
-                loading="lazy"
-              />
+              <picture>
+                <source 
+                  srcSet="/assets/logos/main-logo-optimized.webp" 
+                  type="image/webp" 
+                />
+                <img 
+                  src="/assets/logos/main-logo-optimized-transparent.png" 
+                  alt="Choice Insurance Agency Logo" 
+                  width="600"
+                  height="292"
+                  style={{ width: '180px', height: 'auto' }} 
+                  loading="lazy"
+                />
+              </picture>
             </Link>
             <p className="text-sm mb-4 text-brand-white/80">
               Your trusted partner for health, life, and Medicare insurance solutions. Helping you make informed choices for a secure future.
