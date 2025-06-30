@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "analyze": "ANALYZE=true next build"
+    "analyze": "next build",
+    "postinstall": "echo 'Postinstall complete'"
   },
   "dependencies": {
     "@formfacade/embed-react": "^1.1.2",
@@ -70,6 +71,7 @@
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "10.4.20",
+    "cross-env": "^7.0.3",
     "eslint": "^9.15.0",
     "eslint-config-next": "^15.3.2",
     "eslint-plugin-react-hooks": "^5.0.0",
