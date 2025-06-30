@@ -7,6 +7,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom FormFacade styling -->
+    <style id="formfacade-custom-style">
+        .formfacade .submit {
+            background-color: #e5793b !important;
+            color: white !important;
+            font-family: 'Poppins', sans-serif !important;
+            border: none !important;
+            border-radius: 4px !important;
+        }
+        .formfacade .submit:hover {
+            background-color: #cf6b2d !important;
+        }
+    </style>
     <style>
         :root {
             /* Brand Colors */
@@ -237,6 +251,34 @@
             max-width: 1000px;
         }
         
+        /* Custom styling for FormFacade submit button */
+        #ff-compose .ff-submit {
+            background-color: var(--brand-warm-beige-coral-dark) !important;
+            color: white !important;
+            border: none !important;
+            font-family: 'Poppins', sans-serif !important;
+            font-weight: 500 !important;
+            padding: 10px 24px !important;
+            border-radius: 4px !important;
+            cursor: pointer !important;
+            transition: background-color 0.3s ease !important;
+        }
+        
+        #ff-compose .ff-submit:hover {
+            background-color: var(--brand-warm-beige-coral-darker) !important;
+        }
+        
+        /* Additional FormFacade styling to match brand */
+        #ff-compose .ff-title {
+            color: var(--brand-deep-forest-green) !important;
+            font-family: 'Poppins', sans-serif !important;
+        }
+        
+        #ff-compose .ff-description {
+            color: rgba(0, 0, 0, 0.8) !important;
+            font-family: 'Poppins', sans-serif !important;
+        }
+        
         /* Footer Styles */
         .site-footer {
             background-color: var(--brand-deeper-forest-green);
@@ -434,6 +476,40 @@
             <div id="ff-compose"></div>
             <script async defer
                 src="https://formfacade.com/include/108178716957596495252/form/1FAIpQLScw-dgH0FXYkm_O-BjGXNVQrmXM9cwHdluCZ-D87oqE5aiPpg/classic.js?div=ff-compose">
+            </script>
+            
+            <!-- Additional script to ensure button styling is applied after form loads -->
+            <script>
+                // Apply custom styling to form elements after they load
+                window.addEventListener('load', function() {
+                    // Give the form a moment to fully render
+                    setTimeout(function() {
+                        // Style the submit button
+                        const submitButtons = document.querySelectorAll('#ff-compose .ff-submit');
+                        if (submitButtons.length > 0) {
+                            submitButtons.forEach(function(button) {
+                                button.style.backgroundColor = '#e5793b';
+                                button.style.color = 'white';
+                                button.style.fontFamily = "'Poppins', sans-serif";
+                                button.style.fontWeight = '500';
+                                button.style.borderRadius = '4px';
+                                button.style.border = 'none';
+                                button.style.padding = '10px 24px';
+                                button.style.cursor = 'pointer';
+                                button.style.transition = 'background-color 0.3s ease';
+                                
+                                // Add hover effect
+                                button.addEventListener('mouseover', function() {
+                                    this.style.backgroundColor = '#cf6b2d';
+                                });
+                                
+                                button.addEventListener('mouseout', function() {
+                                    this.style.backgroundColor = '#e5793b';
+                                });
+                            });
+                        }
+                    }, 1000); // Wait 1 second for form to fully load
+                });
             </script>
         </div>
     </div>
