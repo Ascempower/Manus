@@ -1,14 +1,10 @@
 [build]
-  command = "pnpm run build"
+  command = "cp package.json.new package.json && rm -f pnpm-lock.yaml && pnpm install && pnpm run build"
   publish = ".next"
 
 [build.environment]
   NODE_VERSION = "18"
-  NPM_FLAGS = "--no-frozen-lockfile"
   NETLIFY_USE_PNPM = "true"
-
-[[plugins]]
-  package = "./plugins/pnpm-no-frozen"
 
 # Use Netlify's built-in Next.js support
 [[plugins]]
