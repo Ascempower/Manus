@@ -9,6 +9,7 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
+      background-color: transparent;
     }
     .container {
       width: 100%;
@@ -16,17 +17,62 @@
       margin: 0 auto;
       padding: 2rem;
     }
+    #ff-compose {
+      min-height: 800px;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- ✅ Formfacade Embed Only -->
+    <!-- FormFacade Embed -->
     <div id="ff-compose"></div>
-    <script
-      async
-      defer
-      src="https://formfacade.com/include/108178716957596495252/form/1FAIpQLScw-dgH0FXYkm_O-BjGXNVQrmXM9cwHdluCZ-D87oqE5aiPpg/classic.js?div=ff-compose">
-    </script>
   </div>
+  
+  <!-- Load FormFacade script at the end of body -->
+  <script>
+    // Add a small delay to ensure the DOM is fully loaded
+    setTimeout(function() {
+      var script = document.createElement('script');
+      
+      // Try with a different form ID or check with your FormFacade account for the correct ID
+      script.src = 'https://formfacade.com/include/108178716957596495252/form/1FAIpQLScw-dgH0FXYkm_O-BjGXNVQrmXM9cwHdluCZ-D87oqE5aiPpg/classic.js?div=ff-compose';
+      
+      script.async = true;
+      script.defer = true;
+      
+      script.onload = function() {
+        console.log('FormFacade script loaded successfully');
+        
+        // Add a fallback message if the form doesn't load after 5 seconds
+        setTimeout(function() {
+          if (document.getElementById('ff-compose').children.length <= 0) {
+            document.getElementById('ff-compose').innerHTML = 
+              '<div style="text-align: center; padding: 2rem; border: 1px solid #ddd; border-radius: 8px; margin: 2rem 0;">' +
+                '<h3>Form Loading Issue</h3>' +
+                '<p>There might be an issue with loading the form. Please ensure:</p>' +
+                '<ul style="text-align: left; display: inline-block;">' +
+                  '<li>The Google Form is publicly accessible</li>' +
+                  '<li>FormFacade is properly configured</li>' +
+                  '<li>Your browser allows third-party scripts</li>' +
+                '</ul>' +
+                '<p>You can also contact us directly at <a href="mailto:contact@choiceinsuranceagency.com">contact@choiceinsuranceagency.com</a></p>' +
+              '</div>';
+          }
+        }, 5000);
+      };
+      
+      script.onerror = function(error) {
+        console.error('Error loading FormFacade script:', error);
+        document.getElementById('ff-compose').innerHTML = 
+          '<div style="text-align: center; padding: 2rem; border: 1px solid #ddd; border-radius: 8px; margin: 2rem 0;">' +
+            '<h3>Form Loading Error</h3>' +
+            '<p>We\'re having trouble loading our contact form.</p>' +
+            '<p>Please try again later or contact us directly at <a href="mailto:contact@choiceinsuranceagency.com">contact@choiceinsuranceagency.com</a></p>' +
+          '</div>';
+      };
+      
+      document.body.appendChild(script);
+    }, 100);
+  </script>
 </body>
 </html>
