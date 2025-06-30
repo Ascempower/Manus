@@ -7,9 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "analyze": "next build",
-    "postinstall": "echo 'Postinstall complete'",
-    "netlify-build": "pnpm install --no-frozen-lockfile && pnpm run build"
+    "analyze": "next build"
   },
   "dependencies": {
     "@formfacade/embed-react": "^1.1.2",
