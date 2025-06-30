@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Choice Insurance Hub</title>
+    <title>Contact Us - Choice Insurance Agency</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -21,91 +21,208 @@
             --brand-black: #000000;
         }
         
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
             color: var(--brand-black);
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
             background-color: var(--brand-white);
         }
         
-        header {
-            text-align: center;
-            margin-bottom: 30px;
+        a {
+            text-decoration: none;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        /* Header Styles */
+        .site-header {
             background-color: var(--brand-deeper-forest-green);
             color: var(--brand-white);
-            padding: 40px 20px;
-            border-radius: 8px;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            width: 100%;
+            border-bottom: 1px solid rgba(167, 201, 202, 0.4);
+        }
+        
+        .header-container {
+            display: flex;
+            height: 4rem;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1rem;
+        }
+        
+        .logo-link {
+            margin-right: 1.5rem;
+            display: flex;
+            align-items: center;
         }
         
         .logo {
-            max-width: 200px;
-            margin-bottom: 20px;
+            max-height: 2.5rem;
+            width: auto;
+            object-fit: contain;
         }
         
-        h1 {
+        .desktop-nav {
+            display: none;
+        }
+        
+        @media (min-width: 1024px) {
+            .desktop-nav {
+                display: flex;
+            }
+        }
+        
+        .nav-list {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-item a {
+            display: block;
+            padding: 0.5rem 1rem;
             color: var(--brand-white);
-            margin-bottom: 10px;
-            font-weight: 700;
+            font-weight: 500;
         }
         
-        .description {
-            max-width: 800px;
-            margin: 0 auto 20px;
+        .nav-item a:hover {
+            background-color: var(--brand-teal-blue-dark);
+            color: var(--brand-white);
+            border-radius: 0.25rem;
+        }
+        
+        .header-buttons {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            font-weight: 500;
             text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-primary {
+            background-color: var(--brand-warm-beige-coral-dark);
             color: var(--brand-white);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--brand-warm-beige-coral-darker);
+        }
+        
+        .hidden-mobile {
+            display: none;
+        }
+        
+        @media (min-width: 768px) {
+            .hidden-mobile {
+                display: inline-block;
+            }
+        }
+        
+        .mobile-menu-btn {
+            display: block;
+        }
+        
+        @media (min-width: 768px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+        
+        .mobile-menu-btn button {
+            background-color: var(--brand-deeper-forest-green);
+            color: var(--brand-white);
+            border: 1px solid var(--brand-teal-blue-dark);
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+        }
+        
+        .mobile-menu-btn button:hover {
+            background-color: var(--brand-teal-blue-dark);
+        }
+        
+        /* Page Content Styles */
+        .page-title {
+            text-align: center;
+            padding: 3rem 0;
+            background-color: var(--brand-deeper-forest-green);
+            color: var(--brand-white);
+        }
+        
+        .page-title h1 {
+            font-weight: 700;
+            margin-bottom: 1rem;
         }
         
         .tagline {
             background-color: rgba(229, 121, 59, 0.3);
             color: var(--brand-white);
-            padding: 4px 16px;
+            padding: 0.25rem 1rem;
             border-radius: 9999px;
-            font-size: 14px;
+            font-size: 0.875rem;
             font-weight: 500;
             display: inline-block;
-            margin-bottom: 24px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .description {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
         }
         
         .form-container {
             background-color: var(--brand-white);
-            border-radius: 8px;
+            border-radius: 0.5rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            margin-bottom: 40px;
-        }
-        
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid var(--brand-teal-blue);
-            color: var(--brand-deep-forest-green);
-            font-size: 14px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 1000px;
         }
         
         .contact-info {
-            margin-top: 40px;
+            margin: 2.5rem auto;
             text-align: center;
             background-color: rgba(167, 201, 202, 0.1);
-            padding: 30px;
-            border-radius: 8px;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            max-width: 1000px;
         }
         
         .contact-info h2 {
             color: var(--brand-deep-forest-green);
-            margin-bottom: 20px;
+            margin-bottom: 1.25rem;
+            font-weight: 700;
         }
         
         .contact-info p {
-            margin: 10px 0;
+            margin: 0.625rem 0;
         }
         
         .contact-info a {
             color: var(--brand-warm-beige-coral-dark);
-            text-decoration: none;
             font-weight: 500;
         }
         
@@ -113,57 +230,290 @@
             text-decoration: underline;
         }
         
-        .footer-links {
+        /* Footer Styles */
+        .site-footer {
+            background-color: var(--brand-deeper-forest-green);
+            color: var(--brand-white);
+            padding: 3rem 0;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        .footer-logo {
+            width: 150px;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-about {
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .social-icons {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 16px;
-            margin-bottom: 16px;
+            gap: 1rem;
+        }
+        
+        .social-link {
+            color: var(--brand-teal-blue-dark);
+        }
+        
+        .social-link:hover {
+            color: var(--brand-warm-beige-coral-dark);
+        }
+        
+        .footer-heading {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
         }
         
         .footer-links a {
-            color: var(--brand-warm-beige-coral-dark);
-            text-decoration: none;
+            color: rgba(255, 255, 255, 0.8);
         }
         
         .footer-links a:hover {
-            text-decoration: underline;
+            color: var(--brand-warm-beige-coral-dark);
+        }
+        
+        .footer-address {
+            font-style: normal;
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .footer-address p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-address a {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .footer-address a:hover {
+            color: var(--brand-warm-beige-coral-dark);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(122, 158, 163, 0.5);
+            padding-top: 2rem;
+            text-align: center;
+        }
+        
+        @media (min-width: 768px) {
+            .footer-bottom {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+        
+        .copyright {
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        @media (min-width: 768px) {
+            .copyright {
+                margin-bottom: 0;
+            }
+        }
+        
+        .legal-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            font-size: 0.875rem;
+        }
+        
+        .legal-links a {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .legal-links a:hover {
+            color: var(--brand-warm-beige-coral-dark);
+        }
+        
+        .disclaimer {
+            border-top: 1px solid rgba(122, 158, 163, 0.5);
+            padding-top: 2rem;
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.5;
         }
     </style>
 </head>
 <body>
-    <header>
-        <span class="tagline">Get in Touch</span>
-        <img src="/assets/logos/main-logo-orange.png" alt="Choice Insurance Hub Logo" class="logo" onerror="this.style.display='none'">
-        <h1>Contact Us</h1>
-        <p class="description">Have questions about our insurance services? Fill out the form below and one of our representatives will get back to you as soon as possible.</p>
+    <!-- Header matching the main site -->
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="/" class="logo-link">
+                <img src="/assets/logos/main-logo-orange.png" alt="Choice Insurance Agency Logo" class="logo" onerror="this.style.display='none'">
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <nav class="desktop-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="/">Home</a></li>
+                    <li class="nav-item"><a href="/about">About Us</a></li>
+                    <li class="nav-item"><a href="/services">Services</a></li>
+                    <li class="nav-item"><a href="/testimonials">Testimonials</a></li>
+                    <li class="nav-item"><a href="/faq">FAQ</a></li>
+                    <li class="nav-item"><a href="/contact">Contact Us</a></li>
+                    <li class="nav-item"><a href="/blog">Blog</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-buttons">
+                <a href="https://www.planenroll.com/?purl=kOW7ufSy" target="_blank" rel="noopener noreferrer" class="btn btn-primary hidden-mobile">Quote Now</a>
+                <a href="https://calendly.com/choiceinsurancehub" target="_blank" rel="noopener noreferrer" class="btn btn-primary hidden-mobile">Book a Free Consultation</a>
+                
+                <!-- Mobile Menu Button (just visual, no functionality in static HTML) -->
+                <div class="mobile-menu-btn">
+                    <button aria-label="Toggle navigation menu">
+                        ☰
+                    </button>
+                </div>
+            </div>
+        </div>
     </header>
 
-    <div class="form-container">
-        <!-- FormFacade Google Form Embed -->
-        <div id="ff-compose"></div>
-        <script async defer
-            src="https://formfacade.com/include/108178716957596495252/form/1FAIpQLScw-dgH0FXYkm_O-BjGXNVQrmXM9cwHdluCZ-D87oqE5aiPpg/classic.js?div=ff-compose">
-        </script>
-    </div>
-
-    <div class="contact-info">
-        <h2>Other Ways to Reach Us</h2>
-        <p><strong>Phone:</strong> <a href="tel:+16184784003">(618) 478-4003</a></p>
-        <p><strong>Email:</strong> <a href="mailto:info@choiceinsurancehub.com">info@choiceinsurancehub.com</a></p>
-        <p><strong>Address:</strong> 1234 Main Street, Anytown, IL 62000</p>
-    </div>
-
-    <footer>
-        <div class="footer-links">
-            <a href="/">Home</a>
-            <a href="/about">About Us</a>
-            <a href="/services">Services</a>
-            <a href="/contact.html">Contact</a>
-            <a href="/privacy-policy">Privacy Policy</a>
-            <a href="/terms-of-service">Terms of Service</a>
+    <!-- Page Title Section -->
+    <div class="page-title">
+        <div class="container">
+            <span class="tagline">Get in Touch</span>
+            <h1>Contact Us</h1>
+            <p class="description">Have questions about our insurance services? Fill out the form below and one of our representatives will get back to you as soon as possible.</p>
         </div>
-        <p>&copy; 2024 Choice Insurance Hub. All rights reserved.</p>
+    </div>
+
+    <!-- Form Container -->
+    <div class="container">
+        <div class="form-container">
+            <!-- FormFacade Google Form Embed -->
+            <div id="ff-compose"></div>
+            <script async defer
+                src="https://formfacade.com/include/108178716957596495252/form/1FAIpQLScw-dgH0FXYkm_O-BjGXNVQrmXM9cwHdluCZ-D87oqE5aiPpg/classic.js?div=ff-compose">
+            </script>
+        </div>
+
+        <div class="contact-info">
+            <h2>Other Ways to Reach Us</h2>
+            <p><strong>Phone:</strong> <a href="tel:+16184784003">(618) 478-4003</a></p>
+            <p><strong>Email:</strong> <a href="mailto:info@choiceinsurancehub.com">info@choiceinsurancehub.com</a></p>
+            <p><strong>Address:</strong> 200 E 3rd, Alton IL 62002</p>
+        </div>
+    </div>
+
+    <!-- Footer matching the main site -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Logo and About -->
+                <div>
+                    <a href="/" class="footer-logo-link">
+                        <img src="/assets/logos/main-logo-orange.png" alt="Choice Insurance Agency Logo" class="footer-logo">
+                    </a>
+                    <p class="footer-about">
+                        Your trusted partner for health, life, and Medicare insurance solutions. Helping you make informed choices for a secure future.
+                    </p>
+                    <!-- Social Media Icons -->
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=100093359186285" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                        </a>
+                        <a href="https://www.instagram.com/choice2day/" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/services">Services</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+                        <li><a href="/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Our Services -->
+                <div>
+                    <h3 class="footer-heading">Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="/services/medicare-supplement">Medicare Supplement</a></li>
+                        <li><a href="/services/life-insurance">Life Insurance</a></li>
+                        <li><a href="/services/health-insurance">Health Insurance</a></li>
+                        <li><a href="/services/final-expense">Final Expense</a></li>
+                        <li><a href="/services/annuities">Annuities</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="footer-heading">Contact Information</h3>
+                    <address class="footer-address">
+                        <p>Choice Insurance Agency</p>
+                        <p>200 E 3rd<br>Alton IL 62002</p>
+                        <p>Phone: <a href="tel:6184784003">(618) 478-4003</a></p>
+                        <p>Email: <a href="mailto:info@choiceinsurancehub.com">info@choiceinsurancehub.com</a></p>
+                    </address>
+                </div>
+            </div>
+
+            <!-- Copyright and Legal Links -->
+            <div class="footer-bottom">
+                <p class="copyright">
+                    &copy; 2024 Choice Insurance Agency. All rights reserved.
+                </p>
+                <div class="legal-links">
+                    <a href="/privacy-policy">Privacy Policy</a>
+                    <a href="/terms-of-service">Terms of Service</a>
+                    <a href="/accessibility-statement">Accessibility</a>
+                </div>
+            </div>
+
+            <!-- Disclaimer -->
+            <div class="disclaimer">
+                <p>
+                    Not affiliated with or endorsed by any government agency. This is a solicitation for insurance. By contacting us by one of the methods above you are agreeing to discuss the insurance products listed. We do not offer every plan available in your area. Currently, we represent 10 organizations, which offer 72 products in your area. Please contact Medicare.gov, 1-800-MEDICARE, or your local State Health Insurance Program to get information on all your options.
+                </p>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
