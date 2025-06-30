@@ -19,10 +19,10 @@ export default function Footer() {
                 />
                 <img 
                   src="/assets/logos/main-logo-optimized-transparent.png" 
-                  alt="Choice Insurance Agency Logo" 
+                  alt="Choice Insurance Hub Logo" 
                   width="600"
                   height="292"
-                  style={{ width: '180px', height: 'auto' }} 
+                  style={{ width: '100%', maxWidth: '300px', height: 'auto' }} 
                   loading="lazy"
                 />
               </picture>

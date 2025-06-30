@@ -58,7 +58,7 @@ export default function Header() {
   const quoteNowUrl = "https://www.planenroll.com/?purl=kOW7ufSy";
   return (
     <header className="sticky top-0 z-50 w-full border-b border-brand-teal-blue/40 bg-brand-deeper-forest-green text-brand-white">
-      <div className="container mx-auto px-4 flex h-16 items-center justify-between">
+      <div className="container mx-auto px-4 flex h-20 items-center justify-between">
         <Link href="/" className="mr-6 flex items-center">
           <picture>
             <source 
@@ -67,8 +67,8 @@ export default function Header() {
             />
             <img 
               src="/assets/logos/main-logo-optimized-transparent.png" 
-              alt="Choice Insurance Agency Logo" 
-              className="h-12 w-auto object-contain"
+              alt="Choice Insurance Hub Logo" 
+              className="w-full max-w-[300px] h-auto object-contain"
               width="600"
               height="292"
               loading="eager"
@@ -174,8 +174,8 @@ export default function Header() {
                     />
                     <img 
                       src="/assets/logos/main-logo-optimized-transparent.png" 
-                      alt="Choice Insurance Agency Logo" 
-                      className="h-10 w-auto object-contain"
+                      alt="Choice Insurance Hub Logo" 
+                      className="w-full max-w-[250px] h-auto object-contain"
                       width="600"
                       height="292"
                       loading="lazy"
