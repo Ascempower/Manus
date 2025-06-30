@@ -11,6 +11,14 @@ export default function Document() {
           as="style"
         />
         
+        {/* Preload critical assets */}
+        <link 
+          rel="preload" 
+          href="/assets/logos/main-logo-optimized-transparent.png" 
+          as="image" 
+          fetchpriority="high"
+        />
+        
         {/* Add preconnect for external domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
