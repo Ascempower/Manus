@@ -1,10 +1,17 @@
 'use client';
 
-import dynamic from 'next/dynamic';
-
-// Dynamically import the ContactForm component with no SSR
-const ContactForm = dynamic(() => import('./ContactForm'), { ssr: false });
-
 export default function ContactFormWrapper() {
-  return <ContactForm />;
+  return (
+    <div style={{ width: "100%", minHeight: "1400px", padding: "2rem 0" }}>
+      <iframe
+        src="/contact-form.html"
+        width="100%"
+        height="1400"
+        style={{ border: "none" }}
+        title="Contact Form"
+      >
+        Loading…
+      </iframe>
+    </div>
+  );
 }
