@@ -3,69 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Choice Insurance</title>
+    <title>Contact Us - Choice Insurance Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            /* Brand Colors */
+            --brand-white: #FFFFFF;
+            --brand-teal-blue: #A7C9CA;
+            --brand-teal-blue-dark: #7a9ea3;
+            --brand-deep-forest-green: #42615A;
+            --brand-deeper-forest-green: #1f3b34;
+            --brand-warm-beige-coral: #DD8B66;
+            --brand-warm-beige-coral-dark: #e5793b;
+            --brand-warm-beige-coral-darker: #cf6b2d;
+            --brand-black: #000000;
+        }
+        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: var(--brand-black);
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f9f9f9;
+            background-color: var(--brand-white);
         }
+        
         header {
             text-align: center;
             margin-bottom: 30px;
+            background-color: var(--brand-deeper-forest-green);
+            color: var(--brand-white);
+            padding: 40px 20px;
+            border-radius: 8px;
         }
+        
         .logo {
             max-width: 200px;
             margin-bottom: 20px;
         }
+        
         h1 {
-            color: #2c5282;
+            color: var(--brand-white);
             margin-bottom: 10px;
+            font-weight: 700;
         }
+        
         .description {
             max-width: 800px;
-            margin: 0 auto 40px;
+            margin: 0 auto 20px;
             text-align: center;
-            color: #555;
+            color: var(--brand-white);
         }
+        
+        .tagline {
+            background-color: rgba(229, 121, 59, 0.3);
+            color: var(--brand-white);
+            padding: 4px 16px;
+            border-radius: 9999px;
+            font-size: 14px;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 24px;
+        }
+        
         .form-container {
-            background-color: white;
+            background-color: var(--brand-white);
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 30px;
             margin-bottom: 40px;
         }
+        
         footer {
             text-align: center;
             margin-top: 50px;
             padding-top: 20px;
-            border-top: 1px solid #ddd;
-            color: #666;
+            border-top: 1px solid var(--brand-teal-blue);
+            color: var(--brand-deep-forest-green);
             font-size: 14px;
         }
+        
         .contact-info {
             margin-top: 40px;
             text-align: center;
+            background-color: rgba(167, 201, 202, 0.1);
+            padding: 30px;
+            border-radius: 8px;
         }
+        
+        .contact-info h2 {
+            color: var(--brand-deep-forest-green);
+            margin-bottom: 20px;
+        }
+        
         .contact-info p {
-            margin: 5px 0;
+            margin: 10px 0;
         }
+        
         .contact-info a {
-            color: #2c5282;
+            color: var(--brand-warm-beige-coral-dark);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .footer-links a {
+            color: var(--brand-warm-beige-coral-dark);
             text-decoration: none;
         }
-        .contact-info a:hover {
+        
+        .footer-links a:hover {
             text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <header>
-        <img src="/assets/logos/choice-insurance-logo.png" alt="Choice Insurance Logo" class="logo">
+        <span class="tagline">Get in Touch</span>
+        <img src="/assets/logos/main-logo-orange.png" alt="Choice Insurance Hub Logo" class="logo" onerror="this.style.display='none'">
         <h1>Contact Us</h1>
         <p class="description">Have questions about our insurance services? Fill out the form below and one of our representatives will get back to you as soon as possible.</p>
     </header>
@@ -80,14 +149,21 @@
 
     <div class="contact-info">
         <h2>Other Ways to Reach Us</h2>
-        <p><strong>Phone:</strong> <a href="tel:+18001234567">(800) 123-4567</a></p>
-        <p><strong>Email:</strong> <a href="mailto:info@choiceinsurance.com">info@choiceinsurance.com</a></p>
-        <p><strong>Address:</strong> 123 Insurance Way, Insurance City, IC 12345</p>
+        <p><strong>Phone:</strong> <a href="tel:+16184784003">(618) 478-4003</a></p>
+        <p><strong>Email:</strong> <a href="mailto:info@choiceinsurancehub.com">info@choiceinsurancehub.com</a></p>
+        <p><strong>Address:</strong> 1234 Main Street, Anytown, IL 62000</p>
     </div>
 
     <footer>
-        <p>&copy; 2024 Choice Insurance. All rights reserved.</p>
-        <p><a href="/privacy-policy">Privacy Policy</a> | <a href="/terms-of-service">Terms of Service</a></p>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/about">About Us</a>
+            <a href="/services">Services</a>
+            <a href="/contact.html">Contact</a>
+            <a href="/privacy-policy">Privacy Policy</a>
+            <a href="/terms-of-service">Terms of Service</a>
+        </div>
+        <p>&copy; 2024 Choice Insurance Hub. All rights reserved.</p>
     </footer>
 </body>
 </html>
