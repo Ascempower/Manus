@@ -10,6 +10,18 @@ export const metadata: Metadata = {
   icons: {
     icon: '/images/favicon.png',
     apple: '/images/favicon.png',
+  },
+  // Add CSP meta tag
+  other: {
+    'content-security-policy': `
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://formfacade.com https://*.google.com https://*.googleapis.com https://www.googletagmanager.com;
+      style-src 'self' 'unsafe-inline' https://formfacade.com https://*.google.com https://*.googleapis.com;
+      img-src 'self' data: https://formfacade.com https://*.google.com https://*.googleapis.com;
+      connect-src 'self' https://formfacade.com https://*.google.com https://*.googleapis.com;
+      frame-src 'self' https://formfacade.com https://*.google.com https://*.googleapis.com https://www.googletagmanager.com;
+      font-src 'self' data: https://formfacade.com https://*.google.com https://*.googleapis.com;
+    `.replace(/\s+/g, ' ').trim(),
   }
 };
 
