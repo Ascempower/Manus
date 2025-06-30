@@ -1,12 +1,18 @@
 "use client";
 
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 
 type FormData = {
@@ -24,41 +30,62 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  
-  const { register, handleSubmit, formState: { errors }, reset, setValue, watch } = useForm<FormData>();
-  
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+    setValue,
+    watch,
+  } = useForm<FormData>();
+
+  useEffect(() => {
+    register("insuranceType", {
+      required: "Please select an insurance type",
+    });
+    register("agreeToTerms", {
+      required: "You must accept the terms",
+    });
+  }, [register]);
+
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     setError(null);
-    
+
     try {
-      const response = await fetch('https://formspree.io/f/xpzvgkrj', {
-        method: 'POST',
+      const response = await fetch("https://formspree.io/f/xpzvgkrj", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify({
+          ...data,
+          _replyto: data.email,
+        }),
       });
-      
+
       if (response.ok) {
         setIsSubmitted(true);
         reset();
       } else {
-        setError('There was a problem submitting your form. Please try again.');
+        setError("There was a problem submitting your form. Please try again.");
       }
     } catch (err) {
-      setError('There was a problem connecting to our server. Please try again later.');
+      setError("There was a problem connecting to our server. Please try again later.");
     } finally {
       setIsSubmitting(false);
     }
   };
-  
+
   if (isSubmitted) {
     return (
       <div className="bg-green-50 border border-green-200 rounded-md p-6 text-center">
         <h3 className="text-xl font-semibold text-green-800 mb-2">Thank You!</h3>
-        <p className="text-green-700 mb-4">Your message has been sent successfully. We'll get back to you as soon as possible.</p>
-        <Button 
+        <p className="text-green-700 mb-4">
+          Your message has been sent successfully. We'll get back to you as soon as possible.
+        </p>
+        <Button
           onClick={() => setIsSubmitted(false)}
           className="bg-brand-deep-forest-green hover:bg-brand-deep-forest-green/90"
         >
@@ -67,7 +94,7 @@ export default function ContactForm() {
       </div>
     );
   }
-  
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       {error && (
@@ -75,49 +102,47 @@ export default function ContactForm() {
           {error}
         </div>
       )}
-      
+
+      <input type="hidden" name="_replyto" value={watch("email")} />
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
           <Label htmlFor="name">Full Name <span className="text-red-500">*</span></Label>
           <Input
             id="name"
+            {...register("name", { required: "Name is required" })}
             placeholder="John Doe"
-            {...register('name', { required: 'Name is required' })}
-            className={errors.name ? 'border-red-500' : ''}
+            className={errors.name ? "border-red-500" : ""}
           />
           {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
         </div>
-        
+
         <div className="space-y-2">
           <Label htmlFor="email">Email Address <span className="text-red-500">*</span></Label>
           <Input
             id="email"
             type="email"
-            placeholder="john.doe@example.com"
-            {...register('email', { 
-              required: 'Email is required',
+            {...register("email", {
+              required: "Email is required",
               pattern: {
-                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: 'Invalid email address'
-              }
+                value: /^[^@\s]+@[^@\s]+\.[^@\s]+$/,
+                message: "Invalid email address",
+              },
             })}
-            className={errors.email ? 'border-red-500' : ''}
+            placeholder="you@example.com"
+            className={errors.email ? "border-red-500" : ""}
           />
           {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
         </div>
-        
+
         <div className="space-y-2">
           <Label htmlFor="phone">Phone Number</Label>
-          <Input
-            id="phone"
-            placeholder="(123) 456-7890"
-            {...register('phone')}
-          />
+          <Input id="phone" placeholder="(123) 456-7890" {...register("phone")} />
         </div>
-        
+
         <div className="space-y-2">
-          <Label htmlFor="insuranceType">Insurance Type</Label>
-          <Select onValueChange={(value) => setValue('insuranceType', value)}>
+          <Label htmlFor="insuranceType">Insurance Type <span className="text-red-500">*</span></Label>
+          <Select onValueChange={(val) => setValue("insuranceType", val)}>
             <SelectTrigger>
               <SelectValue placeholder="Select insurance type" />
             </SelectTrigger>
@@ -131,89 +156,76 @@ export default function ContactForm() {
               <SelectItem value="other">Other</SelectItem>
             </SelectContent>
           </Select>
+          {errors.insuranceType && <p className="text-red-500 text-sm">{errors.insuranceType.message}</p>}
         </div>
       </div>
-      
+
       <div className="space-y-2">
         <Label htmlFor="subject">Subject <span className="text-red-500">*</span></Label>
         <Input
           id="subject"
+          {...register("subject", { required: "Subject is required" })}
           placeholder="How can we help you?"
-          {...register('subject', { required: 'Subject is required' })}
-          className={errors.subject ? 'border-red-500' : ''}
+          className={errors.subject ? "border-red-500" : ""}
         />
         {errors.subject && <p className="text-red-500 text-sm">{errors.subject.message}</p>}
       </div>
-      
+
       <div className="space-y-2">
         <Label htmlFor="message">Message <span className="text-red-500">*</span></Label>
         <Textarea
           id="message"
-          placeholder="Please provide details about your insurance needs or questions..."
+          {...register("message", { required: "Message is required" })}
+          placeholder="Please provide details..."
           rows={5}
-          {...register('message', { required: 'Message is required' })}
-          className={errors.message ? 'border-red-500' : ''}
+          className={errors.message ? "border-red-500" : ""}
         />
         {errors.message && <p className="text-red-500 text-sm">{errors.message.message}</p>}
       </div>
-      
+
       <div className="space-y-2">
         <Label>Preferred Contact Method</Label>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="flex items-center space-x-2">
+        <div className="flex gap-4">
+          <label className="flex items-center gap-2">
             <input
               type="radio"
-              id="contact-email"
               value="email"
-              {...register('preferredContact')}
+              {...register("preferredContact", { required: true })}
               defaultChecked
-              className="h-4 w-4 text-brand-deep-forest-green"
             />
-            <Label htmlFor="contact-email" className="font-normal">Email</Label>
-          </div>
-          <div className="flex items-center space-x-2">
+            Email
+          </label>
+          <label className="flex items-center gap-2">
             <input
               type="radio"
-              id="contact-phone"
               value="phone"
-              {...register('preferredContact')}
-              className="h-4 w-4 text-brand-deep-forest-green"
+              {...register("preferredContact", { required: true })}
             />
-            <Label htmlFor="contact-phone" className="font-normal">Phone</Label>
-          </div>
+            Phone
+          </label>
         </div>
       </div>
-      
-      <div className="flex items-start space-x-2">
+
+      <div className="flex items-start gap-2">
         <Checkbox
-          id="terms"
-          onCheckedChange={(checked) => setValue('agreeToTerms', checked === true)}
-          required
+          id="agreeToTerms"
+          onCheckedChange={(checked) => setValue("agreeToTerms", checked === true)}
         />
-        <div className="grid gap-1.5 leading-none">
-          <Label
-            htmlFor="terms"
-            className="text-sm font-normal leading-snug text-gray-700"
-          >
-            I agree to the <a href="/privacy-policy" className="text-brand-teal-blue hover:underline">Privacy Policy</a> and <a href="/terms-of-service" className="text-brand-teal-blue hover:underline">Terms of Service</a>. <span className="text-red-500">*</span>
-          </Label>
-        </div>
+        <Label htmlFor="agreeToTerms" className="text-sm font-normal leading-snug">
+          I agree to the <a href="/privacy-policy" className="text-blue-600 underline">Privacy Policy</a> and <a href="/terms-of-service" className="text-blue-600 underline">Terms of Service</a>. <span className="text-red-500">*</span>
+        </Label>
       </div>
-      
-      <div className="pt-2">
-        <Button 
-          type="submit" 
-          className="w-full bg-brand-deep-forest-green hover:bg-brand-deep-forest-green/90"
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? 'Sending...' : 'Send Message'}
-        </Button>
-      </div>
-      
-      <div className="text-xs text-gray-500 text-center">
-        <p>Your information is secure and will never be shared with third parties.</p>
-        <p>Fields marked with <span className="text-red-500">*</span> are required.</p>
-      </div>
+      {errors.agreeToTerms && (
+        <p className="text-red-500 text-sm">{errors.agreeToTerms.message}</p>
+      )}
+
+      <Button
+        type="submit"
+        className="w-full bg-brand-deep-forest-green hover:bg-brand-deep-forest-green/90"
+        disabled={isSubmitting}
+      >
+        {isSubmitting ? "Sending..." : "Send Message"}
+      </Button>
     </form>
   );
 }
