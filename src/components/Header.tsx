@@ -61,7 +61,7 @@ export default function Header() {
       <div className="container mx-auto px-4 flex h-16 items-center justify-between">
         <Link href="/" className="mr-6 flex items-center">
           <img 
-            src="/assets/logos/main-logo-optimized.png" 
+            src="/assets/logos/main-logo-optimized-transparent.png" 
             alt="Choice Insurance Agency Logo" 
             className="max-h-10 w-auto object-contain"
             width="600"
@@ -160,7 +160,7 @@ export default function Header() {
                   className="flex items-center gap-2 text-lg font-semibold mb-4"
                 >
                   <img 
-                    src="/assets/logos/main-logo-optimized.png" 
+                    src="/assets/logos/main-logo-optimized-transparent.png" 
                     alt="Choice Insurance Agency Logo" 
                     className="max-h-8 w-auto object-contain"
                     width="600"

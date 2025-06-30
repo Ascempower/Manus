@@ -13,7 +13,7 @@ export default function Footer() {
           <div>
             <Link href="/" className="mb-4 inline-block">
               <img 
-                src="/assets/logos/main-logo-optimized.png" 
+                src="/assets/logos/main-logo-optimized-transparent.png" 
                 alt="Choice Insurance Agency Logo" 
                 width="600"
                 height="292"
