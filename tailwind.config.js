@@ -2,6 +2,10 @@
 module.exports = {
   darkMode: ["class"],
   content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
+  safelist: [
+    // Add any classes that might be dynamically generated and should not be purged
+    'font-poppins',
+  ],
   theme: {
     extend: {
       borderRadius: {
@@ -57,8 +61,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ["Poppins", "sans-serif"], // Set Poppins as default sans-serif
-        poppins: ["Poppins", "sans-serif"], // Specific Poppins utility
+        sans: ["var(--font-poppins)", "sans-serif"], // Use the CSS variable for Poppins
+        poppins: ["var(--font-poppins)", "sans-serif"], // Specific Poppins utility
       },
       keyframes: {
         "accordion-down": {
