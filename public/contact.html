@@ -164,33 +164,68 @@
         }
         
         /* Page Content Styles */
-        .page-title {
+        section {
+            display: block;
+        }
+        
+        .py-12 {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+        
+        .bg-brand-teal-blue\/20 {
+            background-color: rgba(167, 201, 202, 0.2);
+        }
+        
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .px-4 {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        .text-center {
             text-align: center;
-            padding: 3rem 0;
-            background-color: var(--brand-deeper-forest-green);
-            color: var(--brand-white);
         }
         
-        .page-title h1 {
-            font-weight: 700;
-            margin-bottom: 1rem;
+        .text-4xl {
+            font-size: 2.25rem;
+            line-height: 2.5rem;
         }
         
-        .tagline {
-            background-color: rgba(229, 121, 59, 0.3);
-            color: var(--brand-white);
-            padding: 0.25rem 1rem;
-            border-radius: 9999px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            display: inline-block;
-            margin-bottom: 1.5rem;
+        .mt-4 {
+            margin-top: 1rem;
         }
         
-        .description {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
+        .text-lg {
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+        }
+        
+        .text-brand-black\/80 {
+            color: rgba(0, 0, 0, 0.8);
+        }
+        
+        .max-w-2xl {
+            max-width: 42rem;
+        }
+        
+        @media (min-width: 768px) {
+            .text-5xl {
+                font-size: 3rem;
+                line-height: 1;
+            }
+        }
+        
+        .text-brand-deep-forest-green {
+            color: var(--brand-deep-forest-green);
+        }
+        
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
         }
         
         .form-container {
@@ -198,36 +233,8 @@
             border-radius: 0.5rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 2rem;
-            margin: 2rem auto;
+            margin: 0 auto;
             max-width: 1000px;
-        }
-        
-        .contact-info {
-            margin: 2.5rem auto;
-            text-align: center;
-            background-color: rgba(167, 201, 202, 0.1);
-            padding: 2rem;
-            border-radius: 0.5rem;
-            max-width: 1000px;
-        }
-        
-        .contact-info h2 {
-            color: var(--brand-deep-forest-green);
-            margin-bottom: 1.25rem;
-            font-weight: 700;
-        }
-        
-        .contact-info p {
-            margin: 0.625rem 0;
-        }
-        
-        .contact-info a {
-            color: var(--brand-warm-beige-coral-dark);
-            font-weight: 500;
-        }
-        
-        .contact-info a:hover {
-            text-decoration: underline;
         }
         
         /* Footer Styles */
@@ -408,30 +415,26 @@
         </div>
     </header>
 
-    <!-- Page Title Section -->
-    <div class="page-title">
-        <div class="container">
-            <span class="tagline">Get in Touch</span>
-            <h1>Contact Us</h1>
-            <p class="description">Have questions about our insurance services? Fill out the form below and one of our representatives will get back to you as soon as possible.</p>
+    <!-- Page Title Section - Matching About Us page -->
+    <section class="py-12 bg-brand-teal-blue/20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-brand-deep-forest-green font-poppins">
+                Contact Us
+            </h1>
+            <p class="mt-4 text-lg text-brand-black/80 max-w-2xl mx-auto">
+                Have questions about our insurance services? Fill out the form below and one of our representatives will get back to you as soon as possible.
+            </p>
         </div>
-    </div>
+    </section>
 
     <!-- Form Container -->
-    <div class="container">
+    <div class="container mx-auto py-12 px-4">
         <div class="form-container">
             <!-- FormFacade Google Form Embed -->
             <div id="ff-compose"></div>
             <script async defer
                 src="https://formfacade.com/include/108178716957596495252/form/1FAIpQLScw-dgH0FXYkm_O-BjGXNVQrmXM9cwHdluCZ-D87oqE5aiPpg/classic.js?div=ff-compose">
             </script>
-        </div>
-
-        <div class="contact-info">
-            <h2>Other Ways to Reach Us</h2>
-            <p><strong>Phone:</strong> <a href="tel:+16184784003">(618) 478-4003</a></p>
-            <p><strong>Email:</strong> <a href="mailto:info@choiceinsurancehub.com">info@choiceinsurancehub.com</a></p>
-            <p><strong>Address:</strong> 200 E 3rd, Alton IL 62002</p>
         </div>
     </div>
 
