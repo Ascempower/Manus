@@ -22,7 +22,7 @@ export default function Footer() {
                   alt="Choice Insurance Hub Logo" 
                   width="600"
                   height="292"
-                  style={{ width: '100%', maxWidth: '300px', height: 'auto' }} 
+                  style={{ inline-size: '100%', maxinline-size: '300px', block-size: 'auto' }} 
                   loading="lazy"
                 />
               </picture>
