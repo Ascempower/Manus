@@ -42,10 +42,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={poppins.variable}>
       <head>
-        {/* Google Tag Manager */}
+        {/* Google Tag Manager - Using beforeInteractive for earliest possible execution */}
         <Script
           id="gtm-script"
-          strategy="afterInteractive"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
