@@ -71,7 +71,7 @@ export default function Footer() {
             <h3 className="text-lg font-bold text-brand-white mb-4 font-poppins">Contact Information</h3>
             <address className="not-italic space-y-2 text-sm text-brand-white/80">
               <p>Choice Insurance Agency</p>
-              <p>200 E 3rd<br />Alton IL 62002</p>
+              <p>2501 Chatham Rd Ste 8089<br />Springfield IL 62704</p>
               <p>Phone: <a href="tel:6184784003" className="hover:text-brand-warm-beige-coral-dark">(618) 478-4003</a></p>
               <p>Email: <a href="mailto:info@choiceinsurancehub.com" className="hover:text-brand-warm-beige-coral-dark">info@choiceinsurancehub.com</a></p>
             </address>

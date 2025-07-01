@@ -41,7 +41,7 @@ export default function ContactPage() {
                   <MapPin size={28} className="text-brand-deep-forest-green mr-4 mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="font-bold text-xl text-brand-deep-forest-green font-poppins">Our Office (By Appointment)</h3>
-                    <p className="text-brand-black/80">200 E 3rd<br />Alton IL 62002</p>
+                    <p className="text-brand-black/80">2501 Chatham Rd Ste 8089<br />Springfield IL 62704</p>
                     <p className="text-sm text-brand-black/70 mt-1">(Please call to schedule an appointment)</p>
                   </div>
                 </div>
