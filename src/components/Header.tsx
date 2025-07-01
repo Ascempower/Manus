@@ -137,7 +137,7 @@ export default function Header() {
                 <Link href="/contact">Contact Us</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
-             <NavigationMenuItem>
+             <NavigationMenuItem className="mr-4">
               <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-brand-deeper-forest-green text-brand-white hover:bg-brand-teal-blue-dark hover:text-white")}>
                 <Link href="/blog">Blog</Link>
               </NavigationMenuLink>

@@ -80,7 +80,7 @@ export default function ContactPage() {
           <p className="text-lg text-brand-white/90 mb-8 max-w-2xl mx-auto">
             Schedule a free, no-obligation consultation with one of our expert insurance advisors at your convenience. We can discuss your needs and help you find the perfect plan.
           </p>
-          <Button size="lg" asChild className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black font-semibold">
+          <Button size="lg" asChild className="bg-brand-warm-beige-coral hover:bg-brand-warm-beige-coral/80 text-brand-black font-semibold whitespace-nowrap">
             {/* Updated to the correct Calendly link */}
             <a href="https://calendly.com/choiceinsurancehub" target="_blank" rel="noopener noreferrer">Book Your Free Consultation Now</a>
           </Button>
