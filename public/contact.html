@@ -1,42 +1,67 @@
+<<!-- Custom Secure Contact & Intake Form -->
 <section class="container mx-auto py-16 px-4 font-poppins">
-  <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; align-items: flex-start; max-width: 1200px; margin: auto;">
+  <form id="contactForm" name="contactForm" method="POST" onsubmit="return handleSubmit(event);" style="max-width: 900px; margin: auto; background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.05);">
     
-    <!-- Left Column: Contact Info + Logo -->
-    <div style="flex: 1 1 350px; min-width: 300px;">
-      <img src="/assets/logos/secondary-logo-orange.png" alt="Choice Insurance Logo" style="max-width: 200px; height: auto; margin-bottom: 1.5rem;" />
+    <h2 style="font-size: 1.75rem; color: #42615A; margin-bottom: 1.5rem;">Secure Contact & Intake Form</h2>
+    
+    <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+      <!-- Left Column -->
+      <div style="flex: 1 1 45%;">
+        <label>Full Name *</label>
+        <input type="text" name="Full Name" required style="width: 100%; padding: 0.5rem;" />
 
-      <h2 style="color: var(--brand-deep-forest-green); font-size: 1.6rem; margin-bottom: 1rem;">We’re here to help</h2>
-      <p style="margin-bottom: 1rem; line-height: 1.6; color: rgba(0,0,0,0.8); font-size: 1rem;">
-        Licensed advisors are standing by to assist with Medicare, Life, and Under-65 Health plans. Fill out the form and we’ll reach out shortly.
-      </p>
-      <ul style="list-style: none; padding-left: 0; font-size: 0.95rem; color: rgba(0,0,0,0.85);">
-        <li style="margin-bottom: 0.5rem;">
-          <strong>Email:</strong> <a href="mailto:info@choiceinsurancehub.com">info@choiceinsurancehub.com</a>
-        </li>
-        <li style="margin-bottom: 0.5rem;">
-          <strong>Phone:</strong> <a href="tel:6184784003">(618) 478-4003</a>
-        </li>
-        <li>
-          <strong>Based in:</strong> Springfield, IL
-        </li>
-      </ul>
-    </div>
+        <label>Email Address *</label>
+        <input type="email" name="Email Address" required style="width: 100%; padding: 0.5rem;" />
 
-    <!-- Right Column: Embedded Google Form -->
-    <div style="flex: 1 1 600px; min-width: 320px;">
-      <div style="border: 1px solid #ccc; border-radius: 10px; overflow: hidden; box-shadow: 0 0 12px rgba(0,0,0,0.04);">
-        <div style="height: 70px; background: #f7f7f7;"></div> <!-- Visual buffer to push down Google header -->
-        <iframe 
-          src="https://docs.google.com/forms/d/e/1FAIpQLSeCXgQIYakQv1A6PQ5mOUGTVw0aI5N9ZDqHQ7lQsp-MYK2AJA/viewform?embedded=true" 
-          width="100%" 
-          height="1450" 
-          frameborder="0" 
-          style="border: none; width: 100%; min-height: 1450px; margin-top: -70px;"
-          title="Secure Contact Intake Form">
-          Loading…
-        </iframe>
+        <label>Phone Number *</label>
+        <input type="tel" name="Phone Number" required style="width: 100%; padding: 0.5rem;" />
+
+        <label>ZIP Code *</label>
+        <input type="text" name="ZIP Code" required style="width: 100%; padding: 0.5rem;" />
+      </div>
+
+      <!-- Right Column -->
+      <div style="flex: 1 1 45%;">
+        <label>What type of insurance are you interested in? *</label>
+        <select name="What type of insurance are you interested in?" required style="width: 100%; padding: 0.5rem;">
+          <option value="" disabled selected>Select</option>
+          <option>Medicare</option>
+          <option>Life Insurance</option>
+          <option>Health Insurance (under 65)</option>
+        </select>
+
+        <label>Are you over or under the age of 65? *</label>
+        <select name="Are you over or under the age of 65?" required style="width: 100%; padding: 0.5rem;">
+          <option value="" disabled selected>Select</option>
+          <option>Over 65</option>
+          <option>Under 65</option>
+        </select>
+
+        <label>Preferred Appointment Date *</label>
+        <input type="date" name="Preferred Appointment Date" required style="width: 100%; padding: 0.5rem;" />
+
+        <label>Preferred Time Window *</label>
+        <select name="Preferred Time Window" required style="width: 100%; padding: 0.5rem;">
+          <option value="" disabled selected>Select</option>
+          <option>Morning</option>
+          <option>Afternoon</option>
+          <option>Evening</option>
+        </select>
       </div>
     </div>
 
-  </div>
+    <label style="margin-top: 1rem; display: block;">Additional Info</label>
+    <textarea name="Message/additional Info" rows="4" style="width: 100%; padding: 0.5rem;"></textarea>
+
+    <label style="display: flex; align-items: center; margin-top: 1rem;">
+      <input type="checkbox" name="May we contact you?" value="Yes" required style="margin-right: 0.5rem;" />
+      I consent to be contacted for the purpose of insurance services. *
+    </label>
+
+    <button type="submit" style="margin-top: 1.5rem; padding: 0.75rem 1.5rem; background: #DD8B66; color: white; font-weight: 600; border: none; border-radius: 4px; cursor: pointer;">
+      Submit Form
+    </button>
+
+    <p id="formStatus" style="margin-top: 1rem; font-size: 0.95rem;"></p>
+  </form>
 </section>
