@@ -124,9 +124,241 @@
   </main>
 
   <footer>
-    <img src="/assets/logos/secondary-logo-transparent.png" alt="Choice Insurance Hub Logo" class="footer-logo">
-    <p>&copy; 2024 Choice Insurance Hub. All rights reserved.</p>
-    <div class="footer-links">
-      <a href="/">Home</a>
-      <a href="/about">About</a>
-      <a h
+    <div class="footer-container">
+      <div class="footer-grid">
+        <!-- Logo and About -->
+        <div class="footer-column">
+          <a href="/" class="footer-logo-link">
+            <img src="/assets/logos/secondary-logo-transparent.png" alt="Choice Insurance Hub Logo" class="footer-logo">
+          </a>
+          <p class="footer-about">
+            Your trusted partner for health, life, and Medicare insurance solutions. Helping you make informed choices for a secure future.
+          </p>
+          <!-- Social Media Icons -->
+          <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=100093359186285" target="_blank" rel="noopener noreferrer" class="social-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+            <a href="https://www.instagram.com/choice2day/" target="_blank" rel="noopener noreferrer" class="social-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-column">
+          <h3 class="footer-heading">Quick Links</h3>
+          <ul class="footer-links-list">
+            <li><a href="/" class="footer-link">Home</a></li>
+            <li><a href="/about" class="footer-link">About Us</a></li>
+            <li><a href="/services" class="footer-link">Services</a></li>
+            <li><a href="/blog" class="footer-link">Blog</a></li>
+            <li><a href="/faq" class="footer-link">FAQ</a></li>
+            <li><a href="/contact" class="footer-link">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Our Services -->
+        <div class="footer-column">
+          <h3 class="footer-heading">Our Services</h3>
+          <ul class="footer-links-list">
+            <li><a href="/services/medicare-supplement" class="footer-link">Medicare Supplement</a></li>
+            <li><a href="/services/life-insurance" class="footer-link">Life Insurance</a></li>
+            <li><a href="/services/health-insurance" class="footer-link">Health Insurance</a></li>
+            <li><a href="/services/final-expense" class="footer-link">Final Expense</a></li>
+            <li><a href="/services/annuities" class="footer-link">Annuities</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="footer-column">
+          <h3 class="footer-heading">Contact Information</h3>
+          <address class="footer-address">
+            <p>Choice Insurance Agency</p>
+            <p>2501 Chatham Rd Ste 8089<br>Springfield IL 62704</p>
+            <p>Phone: <a href="tel:6184784003" class="footer-contact-link">(618) 478-4003</a></p>
+            <p>Email: <a href="mailto:info@choiceinsurancehub.com" class="footer-contact-link">info@choiceinsurancehub.com</a></p>
+          </address>
+        </div>
+      </div>
+
+      <!-- Copyright and Legal Links -->
+      <div class="footer-bottom">
+        <p class="copyright">
+          &copy; 2024 Choice Insurance Agency. All rights reserved.
+        </p>
+        <div class="legal-links">
+          <a href="/privacy-policy" class="footer-link">Privacy Policy</a>
+          <a href="/terms-of-service" class="footer-link">Terms of Service</a>
+          <a href="/accessibility-statement" class="footer-link">Accessibility</a>
+        </div>
+      </div>
+
+      <!-- Disclaimer -->
+      <div class="disclaimer">
+        <p>
+          Not affiliated with or endorsed by any government agency. This is a solicitation for insurance. By contacting us by one of the methods above you are agreeing to discuss the insurance products listed. We do not offer every plan available in your area. Currently, we represent 10 organizations, which offer 72 products in your area. Please contact Medicare.gov, 1-800-MEDICARE, or your local State Health Insurance Program to get information on all your options.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    /* Footer Styles */
+    footer {
+      background: var(--deeper-green);
+      color: var(--white);
+      padding: 3rem 1rem;
+      font-size: 0.875rem;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .footer-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .footer-column {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-logo {
+      width: 100%;
+      max-width: 240px;
+      margin-bottom: 1rem;
+    }
+
+    .footer-about {
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-icon {
+      color: var(--teal-blue);
+      transition: color 0.3s ease;
+    }
+
+    .social-icon:hover {
+      color: var(--coral);
+    }
+
+    .footer-heading {
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--white);
+    }
+
+    .footer-links-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .footer-link {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-link:hover {
+      color: var(--coral);
+    }
+
+    .footer-address {
+      font-style: normal;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.5;
+    }
+
+    .footer-address p {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-contact-link {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-contact-link:hover {
+      color: var(--coral);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(167, 201, 202, 0.3);
+      padding-top: 1.5rem;
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+    }
+
+    .copyright {
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .copyright {
+        margin-bottom: 0;
+      }
+    }
+
+    .legal-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .disclaimer {
+      border-top: 1px solid rgba(167, 201, 202, 0.3);
+      padding-top: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .disclaimer p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.75rem;
+      line-height: 1.5;
+      text-align: center;
+    }
+  </style>
+</body>
+</html>
