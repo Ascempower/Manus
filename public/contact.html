@@ -477,10 +477,11 @@
     <!-- Form Container -->
     <div class="container mx-auto py-12 px-4">
         <div class="form-container">
-            <!-- Secure Contact & Intake Form Embed -->
+            <!-- Secure Contact & Intake Form Embed with redirect -->
             <div style="max-width: 800px; margin: 0 auto; padding: 2rem 1rem;">
               <iframe 
-                src="https://docs.google.com/forms/d/e/1FAIpQLSeK3AVJv-Ju7x5IK0-w3Fb3dUOpbAGnMWUvNH0eKMh38e9ZQA/viewform?embedded=true" 
+                id="contact-form-iframe"
+                src="https://docs.google.com/forms/d/e/1FAIpQLSeK3AVJv-Ju7x5IK0-w3Fb3dUOpbAGnMWUvNH0eKMh38e9ZQA/viewform?embedded=true&usp=pp_url&formResponse=thank-you" 
                 width="100%" 
                 height="1800" 
                 frameborder="0" 
@@ -489,6 +490,52 @@
                 Loading…
               </iframe>
             </div>
+            
+            <!-- Form submission detection and redirect script -->
+            <script>
+                // Listen for messages from the iframe
+                window.addEventListener('message', function(event) {
+                    // Check if the message is from Google Forms
+                    if (event.origin.includes('google.com')) {
+                        try {
+                            // Check if the message contains form submission data
+                            if (event.data && event.data.includes('formResponse')) {
+                                // Redirect to thank you page
+                                window.location.href = '/thank-you.html';
+                            }
+                        } catch (e) {
+                            console.error('Error processing message:', e);
+                        }
+                    }
+                });
+                
+                // Alternative method: Check URL hash changes
+                window.addEventListener('hashchange', function() {
+                    if (window.location.hash.includes('formResponse')) {
+                        window.location.href = '/thank-you.html';
+                    }
+                });
+                
+                // Also check on page load in case the hash is already present
+                document.addEventListener('DOMContentLoaded', function() {
+                    if (window.location.hash.includes('formResponse')) {
+                        window.location.href = '/thank-you.html';
+                    }
+                    
+                    // Add a listener to detect when the form is submitted
+                    const formIframe = document.getElementById('contact-form-iframe');
+                    formIframe.addEventListener('load', function() {
+                        // This will fire when the iframe reloads after submission
+                        const iframeSrc = formIframe.src;
+                        if (iframeSrc.includes('formResponse=thank-you')) {
+                            // Check if we're on the confirmation page
+                            setTimeout(function() {
+                                window.location.href = '/thank-you.html';
+                            }, 1000); // Give it a second to ensure the form is fully submitted
+                        }
+                    });
+                });
+            </script>
         </div>
     </div>
 
