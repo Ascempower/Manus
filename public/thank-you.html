@@ -35,10 +35,15 @@
     header {
       background-color: var(--deeper-green);
       padding: 1.5rem 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     header img {
-      height: 90px;
+      height: auto;
+      width: 100%;
+      max-width: 300px;
     }
 
     main {
@@ -111,7 +116,18 @@
 </head>
 <body>
   <header>
-    <img src="/assets/logos/secondary-logo-transparent.png" alt="Choice Insurance Hub Logo">
+    <picture>
+      <source 
+        srcSet="/assets/logos/main-logo-optimized.webp" 
+        type="image/webp" 
+      />
+      <img 
+        src="/assets/logos/main-logo-optimized-transparent.png" 
+        alt="Choice Insurance Hub Logo" 
+        width="600"
+        height="292"
+      />
+    </picture>
   </header>
 
   <main>

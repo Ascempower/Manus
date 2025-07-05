@@ -32,11 +32,15 @@
     header {
       background: var(--deeper-green);
       padding: 1rem 0;
-      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     header img {
-      height: 90px;
+      height: auto;
+      width: 100%;
+      max-width: 300px;
     }
 
     .container {
@@ -125,7 +129,18 @@
 </head>
 <body>
   <header>
-    <img src="/assets/logos/secondary-logo-transparent.png" alt="Choice Insurance Hub Secondary Logo">
+    <picture>
+      <source 
+        srcSet="/assets/logos/main-logo-optimized.webp" 
+        type="image/webp" 
+      />
+      <img 
+        src="/assets/logos/main-logo-optimized-transparent.png" 
+        alt="Choice Insurance Hub Logo" 
+        width="600"
+        height="292"
+      />
+    </picture>
   </header>
 
   <section class="container">
