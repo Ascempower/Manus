@@ -1,0 +1,177 @@
+/* Google Fonts are now loaded in the layout.tsx file with preload */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* New Color Palette */
+    --background: 0 0% 100%; /* #FFFFFF White */
+    --foreground: 0 0% 0%; /* #000000 Black */
+
+    --card: 0 0% 100%; /* #FFFFFF White */
+    --card-foreground: 0 0% 0%; /* #000000 Black */
+
+    --popover: 0 0% 100%; /* #FFFFFF White */
+    --popover-foreground: 0 0% 0%; /* #000000 Black */
+
+    --primary: 165 19% 32%; /* #42615A Deep Forest Green */
+    --primary-foreground: 0 0% 100%; /* #FFFFFF White */
+
+    --secondary: 181 25% 73%; /* #A7C9CA Teal Blue */
+    --secondary-foreground: 0 0% 0%; /* #000000 Black */
+
+    --muted: 210 40% 96.1%; /* Keeping original muted for now, can be adjusted */
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 20 60% 60%; /* #DD8B66 Warm Beige/Coral */
+    --accent-foreground: 0 0% 0%; /* #000000 Black */
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%; /* White text on destructive */
+
+    --border: 214.3 31.8% 91.4%; /* Keeping original border for now, can be adjusted */
+    --input: 214.3 31.8% 91.4%; /* Keeping original input for now, can be adjusted */
+    --ring: 165 19% 32%; /* #42615A Deep Forest Green for ring */
+
+    --radius: 0.5rem;
+
+    /* Brand colors are now primarily managed via tailwind.config.js */
+    /* These can be removed or kept for non-Tailwind specific CSS if needed */
+    --brand-white: 0 0% 100%; /* #FFFFFF */
+    --brand-teal-blue: 181 25% 73%; /* #A7C9CA */
+    --brand-teal-blue-dark: 181 15% 56%; /* #7a9ea3 */
+    --brand-deep-forest-green: 165 19% 32%; /* #42615A */
+    --brand-deeper-forest-green: 165 30% 18%; /* #1f3b34 */
+    --brand-warm-beige-coral: 20 60% 60%; /* #DD8B66 */
+    --brand-warm-beige-coral-dark: 20 70% 56%; /* #e5793b */
+    --brand-warm-beige-coral-darker: 20 70% 50%; /* #cf6b2d */
+    --brand-black: 0 0% 0%; /* #000000 */
+  }
+
+  .dark {
+    /* Update dark mode colors according to new palette if specified, or invert light mode */
+    /* For now, let's define a basic dark theme based on the new palette */
+    --background: 0 0% 10%; /* Darker background */
+    --foreground: 0 0% 95%; /* Lighter foreground */
+
+    --card: 0 0% 15%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 15%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 165 19% 42%; /* Slightly lighter Deep Forest Green */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 181 25% 63%; /* Slightly darker Teal Blue */
+    --secondary-foreground: 0 0% 0%;
+
+    --muted: 217.2 32.6% 27.5%;
+    --muted-foreground: 215 20.2% 75.1%;
+
+    --accent: 20 60% 70%; /* Slightly lighter Warm Beige/Coral */
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 217.2 32.6% 27.5%;
+    --input: 217.2 32.6% 27.5%;
+    --ring: 165 19% 42%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-poppins font-normal;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-poppins font-bold;
+  }
+}
+
+@layer components {
+  .footer-links {
+    @apply flex justify-center flex-wrap gap-4 mb-4;
+  }
+  
+  .footer-links a {
+    @apply text-brand-warm-beige-coral-dark hover:underline;
+  }
+  
+  /* Hero Section Styling */
+  .hero-section {
+    @apply bg-brand-deeper-forest-green text-white py-16 md:py-24 flex flex-wrap justify-between gap-8;
+  }
+  
+  .hero-content {
+    @apply max-w-[600px] flex-1;
+  }
+  
+  .tagline {
+    @apply bg-brand-warm-beige-coral-dark/30 text-white px-4 py-1 rounded-full text-sm font-medium inline-block mb-6;
+  }
+  
+  .highlight {
+    @apply text-brand-warm-beige-coral-dark;
+  }
+  
+  .badges {
+    @apply mt-10 flex items-center gap-6 flex-wrap;
+  }
+  
+  .quote-card {
+    @apply bg-white text-brand-deeper-forest-green p-6 rounded-lg shadow-xl max-w-[400px] flex-1;
+  }
+  
+  .btn-full {
+    @apply w-full block text-center;
+  }
+  
+  /* CTA Section Styling */
+  .cta-section {
+    @apply bg-brand-deeper-forest-green text-white py-16 md:py-24 relative overflow-hidden;
+  }
+  
+  .cta-content {
+    @apply max-w-3xl mx-auto text-center relative z-10;
+  }
+  
+  /* Testimonial Section Styling */
+  .testimonial-section {
+    @apply py-16 md:py-24 bg-brand-teal-blue/10;
+  }
+  
+  .testimonial-card {
+    @apply max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg text-brand-black hover:shadow-xl transition-shadow duration-300;
+  }
+  
+  /* Features Section Styling */
+  .features-section {
+    @apply py-16 md:py-24 bg-white text-brand-black;
+  }
+  
+  .feature-card {
+    @apply p-6 rounded-lg hover:shadow-md transition-shadow duration-300 text-center;
+  }
+  
+  /* About Section Styling */
+  .about-section {
+    @apply py-16 md:py-24 bg-white text-brand-black;
+  }
+  
+  /* Button Styling */
+  .btn-primary {
+    @apply bg-brand-warm-beige-coral-dark hover:bg-brand-warm-beige-coral-darker text-white shadow-md;
+  }
+  
+  .btn-secondary {
+    @apply bg-brand-teal-blue-dark hover:bg-brand-teal-blue-dark/90 text-white shadow-md;
+  }
+}
+
