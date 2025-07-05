@@ -1,35 +1,42 @@
-<!-- Form Container -->
-<div class="container mx-auto py-12 px-4">
-  <div class="form-container">
-    <!-- Secure Contact & Intake Form Embed (Cleaned) -->
-    <div style="max-width: 800px; margin: 0 auto; padding: 2rem 1rem;">
-      <iframe 
-        id="contact-form-iframe"
-        src="https://docs.google.com/forms/d/e/1FAIpQLSeCXgQIYakQv1A6PQ5mOUGTVw0aI5N9ZDqHQ7lQsp-MYK2AJA/viewform?embedded=true"
-        width="100%" 
-        height="1800" 
-        frameborder="0" 
-        style="border: none; width: 100%; min-height: 1800px; background-color: #fff;"
-        title="Contact Form">
-        Loading…
-      </iframe>
+<section class="container mx-auto py-16 px-4 font-poppins">
+  <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; align-items: flex-start; max-width: 1200px; margin: auto;">
+    
+    <!-- Left Column: Contact Info + Logo -->
+    <div style="flex: 1 1 350px; min-width: 300px;">
+      <img src="/assets/logos/secondary-logo-orange.png" alt="Choice Insurance Logo" style="max-width: 200px; height: auto; margin-bottom: 1.5rem;" />
+
+      <h2 style="color: var(--brand-deep-forest-green); font-size: 1.6rem; margin-bottom: 1rem;">We’re here to help</h2>
+      <p style="margin-bottom: 1rem; line-height: 1.6; color: rgba(0,0,0,0.8); font-size: 1rem;">
+        Licensed advisors are standing by to assist with Medicare, Life, and Under-65 Health plans. Fill out the form and we’ll reach out shortly.
+      </p>
+      <ul style="list-style: none; padding-left: 0; font-size: 0.95rem; color: rgba(0,0,0,0.85);">
+        <li style="margin-bottom: 0.5rem;">
+          <strong>Email:</strong> <a href="mailto:info@choiceinsurancehub.com">info@choiceinsurancehub.com</a>
+        </li>
+        <li style="margin-bottom: 0.5rem;">
+          <strong>Phone:</strong> <a href="tel:6184784003">(618) 478-4003</a>
+        </li>
+        <li>
+          <strong>Based in:</strong> Springfield, IL
+        </li>
+      </ul>
     </div>
 
-    <!-- Optional: Form submission detection and redirect -->
-    <script>
-      // Optional: hash-based redirect if using confirmation anchors
-      window.addEventListener('hashchange', function () {
-        if (window.location.hash.includes('formResponse')) {
-          window.location.href = '/thank-you.html';
-        }
-      });
+    <!-- Right Column: Embedded Google Form -->
+    <div style="flex: 1 1 600px; min-width: 320px;">
+      <div style="border: 1px solid #ccc; border-radius: 10px; overflow: hidden; box-shadow: 0 0 12px rgba(0,0,0,0.04);">
+        <div style="height: 70px; background: #f7f7f7;"></div> <!-- Visual buffer to push down Google header -->
+        <iframe 
+          src="https://docs.google.com/forms/d/e/1FAIpQLSeCXgQIYakQv1A6PQ5mOUGTVw0aI5N9ZDqHQ7lQsp-MYK2AJA/viewform?embedded=true" 
+          width="100%" 
+          height="1450" 
+          frameborder="0" 
+          style="border: none; width: 100%; min-height: 1450px; margin-top: -70px;"
+          title="Secure Contact Intake Form">
+          Loading…
+        </iframe>
+      </div>
+    </div>
 
-      // Also check on page load in case it's already in the hash
-      document.addEventListener('DOMContentLoaded', function () {
-        if (window.location.hash.includes('formResponse')) {
-          window.location.href = '/thank-you.html';
-        }
-      });
-    </script>
   </div>
-</div>
+</section>
